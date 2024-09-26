@@ -1,0 +1,1168 @@
+#+title:Note
+#+startup: num latexpreview indent overview
+#+options: tex:dvisvgm
+#+archive: ~/org/archive.org::* head
+#+latex_header: \usepackage{amsmath}
+#+latex_header: \usepackage{amssymb}
+#+latex_header: \usepackage{bussproofs}
+
+
+* ONGOING visa relatively
+
+Anyway, this is the only note.
+
+** part one
+
+*** TODO translation
+
+*** many scan
+
+*** DONE photo requirements
+
+https://www.immigration.govt.nz/new-zealand-visas/preparing-a-visa-application/character-and-identity/acceptable-photos
+
+I spent 180 for this shit?
+
+*** things to prepare for vistor visa
+
+- a photo of one self
+- a credit card for the fee, the thing is that
+- a scan for passport
+- a document
+
+*** English translation has requirements
+
+https://www.immigration.govt.nz/new-zealand-visas/preparing-a-visa-application/english-language/translating-supporting-documents-into-english
+
+** part two: documents
+
+*** DONE list of document
+
+- 护照信息页
+- 身份证正反面（以及翻译）
+- 户口本正本（以及翻译）
+- 旅行计划（英文）
+- 多次入境说明（英文）
+- 银行流水（以及翻译）
+
+*** DONE the problem for 交易明细
+
+There are no English version available.
+
+** part 3rd: more document
+
+https://www.xiaohongshu.com/explore/665adbb60000000015013dd8?xsec_token=ABF2THlGG0x2Df1IYIRZZ-ZzMgdHvrDJLwn3grLoHVGjA=&xsec_source=pc_search
+
+*** letter documentclass
+
+https://en.wikibooks.org/wiki/LaTeX/Letters
+
+use \LaTeX to write a cover letter
+
+[[file:~/tex/main.tex][link to tex file]]
+
+*** cover letter content
+**** front
+
+#+name: front
+#+begin_src latex
+   \documentclass[11pt]{letter}
+   \usepackage{newtxtext}
+   \usepackage{hyperref}
+
+   \signature{Mao, Hanxiang \\
+     +86~13823043183 \\
+     \href{mailto:maojun464@gmail.com}{maojun464@gmail.com}}
+
+   \address{Mao, Hanxiang}
+   \begin{document}
+   \begin{letter}{}
+#+end_src
+
+**** content
+
+#+begin_src latex
+  \ldots
+  \closing{Yours Faithfully,}
+  \ps
+  \url{http://www.gnu.org/copyleft/fdl.html}.
+  \encl{Copyright permission form}
+#+end_src
+
+**** open
+
+这个部分我们写明自己的身份，就读学校和联系方式。
+
+#+name: open
+#+begin_src latex
+  \opening{Dear Sir or Madam:}
+
+  My name is Mao, Hanxiang (my passport number: \texttt{EN3809338} and my date of birth: 11~MAY~2003). I am writing to express my sincere intention to apply for a New Zealand Visa to visit New Zealand. I am currently an undergraduate student, pursuing my studies in computer science in Harbin Institute of Technology Shenzhen.
+#+end_src
+
+**** p1
+
+解释自己的 financial support
+
+#+name: p1
+#+begin_src latex
+  I would like to bring to your attention that my financial support for this trip is primarily provided by my parents---my father is jewelry crafter, and my mother mainly works as an assistant for my father, mainly helping with jewelry design. They have graciously agreed to fund the major expenses related to my New Zealand travle, covering transportation fee and accommodation. Additionally, I have accumulated funds with my acadamic scholarships and part-time employment. The bank saving evidence is the proof of the fund that is prepared for this trip. And the kinship can be proved from the household document I attached, this document can prove that we are indeed a family.
+#+end_src
+
+**** p2
+
+这个自然段用于说明以往的出境经历。但是我没有就算了。所以用于说明一下动机吧。
+
+#+name: p2
+#+begin_src latex
+  I am planning to a travel to New Zealand at the beginning of next year. I seldom have chances for trips, regardless a trip abroad. I have always wanted to have a trip abroad, and always been fascinated by the natural scenery and landscape that I occasionally read on travel magazines and travel websites. Recently, I have my parents' support for such a travel to New Zealand and moreover my friend would join me for this trip, who spent years during her childhood. As I am approaching graduation, and after securing a job in China mainland, with things getting settled, I feel like it is a great chance to slow down and spend time on enjoying life. So, I want to apply for New Zealand Vistor Visa.
+#+end_src
+
+**** p3
+
+简要说明一下旅行计划？
+
+#+name: p3
+#+begin_src latex
+For this upcoming trip, I would go with my friend I mentioned in the above paragraph. We are planning to stay in New Zealan for up to 2 weeks. We would visit various cultural and stunning beautiful landmarks in New Zealand. I assure that I will return to my home country before visa expiration. The future plan after graduation is to working in China. I have provided the Undergraduate Enrollment Verification in order to prove my identify.
+#+end_src
+
+**** back
+
+#+name: back
+#+begin_src latex
+
+  \bigskip
+
+  Highly appreciated if you consider my application favorably and grant me New Zealand Vissa. I am looking forward to the opportunity to explore natural landscapes in New Zealand and create a lasting memory during my visit. I am more than willing to provide any additional information or docuemntation if required. Please do contact me with my phone number or via email.
+
+  \closing{Sincerely,}
+  \end{letter}
+  \end{document}
+#+end_src
+
+*** description letter
+
+**** dp1
+
+#+name: dp1
+#+begin_src latex
+  \opening{Dear Sir or Madam:}
+
+  My name Mao, Hanxiang (passport number: \texttt{EN3809338} date of birth 11~MAY~2003). I am writing apply for multiple vistor visa to New Zealand. I wish to provide addtional evidence of my intention to visit New Zealand for future trips. These visits are primarily for the purpose of spending quality time for vacation. I have outlined below the specific dates and times of my ipcoming visits:
+
+  The first upcoming visit: Dates of Travel 06.01.2025--15.01.2025 (winter break in China)
+
+  The second upcoming visit: Dates of Travel 10.06-2024--25.06.2025 (summer break in China)
+#+end_src
+
+**** dp2
+
+#+name: dp2
+#+begin_src latex
+  New Zealand has so many stunning wonderful natural sceneries. I really want to fully enjoy the the beauty of New Zealand. I am not sure if 2 weeks to visti the South Island and North Island both, so I write this letter to apply for Multiple Vistor Visa. Secondly, I would like to also enjoy a trip during my Summer break but I am not quite whether I still have time for traveling since I am facing graduation. So I am planning to visit New Zealand once more if I have any chance. I think I need to spend more time experiencing the beauty and culture of New Zealand. And I believe that my intention to make these future visits
+#+end_src
+
+**** dback
+
+#+name: dback
+#+begin_src latex
+  If any further information or document is required, please do contact me at +86~13823043183 or via email \href{mailto:maojun464@gmail.com}{maojun464@gmail.com}.
+
+  \closing{Sincerely,}
+  \end{letter}
+  \end{document}
+#+end_src
+
+*** COMMENT cover letter generator
+
+#+begin_src latex :tangle "~/tex/main.tex" :noweb yes
+  <<front>>
+
+  <<open>>
+
+  <<p1>>
+
+  <<p2>>
+
+  <<p3>>
+
+  <<back>>
+#+end_src
+
+*** COMMENT description letter generator
+
+#+begin_src latex :tangle "~/tex/main.tex" :noweb yes
+  <<front>>
+
+  <<dp1>>
+
+  <<dp2>>
+
+  <<dback>>
+#+end_src
+
+*** COMMENT about trip itinerary
+
+#+begin_src latex :tangle "~/tex/main.tex"
+  \documentclass[12pt]{article}
+  \usepackage[left=1in,right=1in,top=1in,bottom=1in]{geometry}
+  \usepackage{graphicx}
+
+  \graphicspath{ {./images/} }
+
+  \setlength{\parindent}{0pt}
+  \title{Trip Itinerary}
+  \author{Mao, Hanxiang}
+  \date{\today}
+
+  \begin{document}
+
+  \maketitle
+
+  Here is my Trip Itinerary. Firstly I would like to present some preliminary information about where I prepare to visit, and there would be a figure to explain the my rough schedule.
+
+
+  I would liek to take plane from China (Guangzhou) to Auckland, and take bus (maybe InterCity Bus) to get anohter city. I would like to see Auckland Art Gallery, Sky Tower and harbour area. After Auckland, I will go to Rotorua, to go to the Museum and Redwook Forest for hiking and natureexploration. Next is Lkate Taupo, which is known in social media that I highly want to visit. And next maybe Tongariro, and Wellington.
+
+  \bigskip\bigskip
+  \begin{figure}[h]
+  \centering
+  \includegraphics[width=13cm]{trip itinerary.png}
+  \caption{A very rough sketch for the route}
+  \end{figure}
+
+  \end{document}
+#+end_src
+
+** info
+
+*** [#A] genuine intentions
+
+https://www.immigration.govt.nz/new-zealand-visas/preparing-a-visa-application/character-and-identity/bona-fide
+
+*** mislead info
+
+https://www.immigration.govt.nz/new-zealand-visas/preparing-a-visa-application/character-and-identity/false-and-misleading-information
+
+*** the waiting time is 3 weeks for visitor visa
+:PROPERTIES:
+:ARCHIVE_TIME: 2024-09-18 Wed 13:44
+:ARCHIVE_FILE: ~/org/note.org
+:ARCHIVE_OLPATH: this is the note
+:ARCHIVE_CATEGORY: note
+:END:
+
+https://www.immigration.govt.nz/new-zealand-visas/waiting-for-a-visa/how-long-it-takes-to-process-your-visa-application/visitor-visa-wait-times
+*** safe question for nz when I apply for visa
+
+When asked about the name, I answered CC for the name.
+
+When asked about the city and street that I live in, I answered chinese, faithfully.
+
+* little logic
+
+** chapter 3: LK
+
+*** part 1: starting up, rules and more
+**** the problem with Modus Ponens
+
+There are actually problems with Modus Ponens. Modus Ponens is actually very like cut rule.  Why?  Because in the view of proof finding, we start from nothing: if we want to proof \(B\), then probably we have to image such \(A\),
+\[
+A \to B,
+\]
+holds.  "We have to image such \(A\)".  And this is the problem.
+
+**** generalization
+
+From \(A[x]\) to \(\forall xA[x]\). And this is called generalization.  What is wrong with it?
+
+**** problems with hilbert's formalism and system
+
+Anyway, the two rules make the Hilbert's logic system non-usable, because it has no good structural property.
+And thus even the slightest automated deduction is impossible.
+
+It is said that hilbert's system is a garbage, in the sense of equivalence, it does no more than other system but hinder our understanding.
+
+**** deduction theorem
+
+if \(B\) is provable in system \(\mathcal F + A\), with \(A\) closed, then \(A \Rightarrow B\) is provable in \(\mathcal F\).
+
+The proof is not provided somehow.
+
+**** seqeunt and hypothesis
+
+I don't really know the intuition behind the idea that LK is better than Hilbert's, but it seems that it is the introduction of hypothesis.
+
+Anyway, the problem of "image a premise \(A\)" can be solved via
+1. LK
+2. cut-elimination.
+
+**** sequents
+
+A sequent is expression of \(\Gamma \vdash \Delta\), where \(\Gamma\) and \(\Delta\) are all finite sequences of formulas.
+
+**** the notion of context
+
+We use more notion of context, in order to make a difference from other stuff.  The reason we are doing this?  I don't know.
+
+But anyway, \(\Gamma \vdash A, \Delta\) for example, the context of it is \(\Gamma, \Delta\), one can write as \(\Gamma \vdash {-}, \Delta\)
+
+**** the intuitive "semantic" of LK
+
+\[
+\Gamma \vdash \Delta
+\]
+for this expression, it means "if all the formulas in \(\Gamma\) are correct", then "one of the formula in \(\Delta\) is correct". By the way, the symbol \(\vdash\) is called "turnsile".
+
+The symbols used in LK are:
+1. left commas: means «and»
+2. right commas: «or»
+3. turnsiles: «implies»
+
+**** special sequent in LK
+
+\begin{gather}
+A \vdash\\
+\vdash \\
+\vdash A
+\end{gather}
+the first one means \(A\) leads to nothing, which means \(A\) is contradictory, and 2 means an expression like \(v \to f\), which is bad, 3 means \(A\) is true without hypothesis, which is to say \(A\) is tautology.
+
+The proof of second is important, given by Gentzen, saying that LK is *consistent*.
+
+**** negate of \(A\)
+
+I think we have this \(A \vdash\) then \(\vdash \neg A\). The precise definition is not here tho.
+
+**** rules for LK
+
+The content of LK is the rules. The rules are divided into three groups, we can actually only introduce those important ones, because introducing those about the connectives is always not necessary.
+
+***** the identity group
+
+There are two rules in this group they are called identity and cut rule
+\[
+\frac{}{A \vdash A}\ (\mathrm{id}) \quad \quad \quad
+\frac{\Gamma \vdash A, \Delta \quad \Lambda, A \vdash \Pi}{\Gamma, \Lambda\vdash \Delta, \Pi}\ (\mathrm{cut})
+\]
+There are special cases for cut rules, because of the context. They are 1. modus ponens 2. transitivity
+\[
+\frac{\vdash A\quad A \vdash B}{\vdash B}\ (\mathrm{modus ponens})
+\]
+\[
+\frac{A\vdash B\quad B\vdash C}{A\vdash C} \ (\mathrm{transitivity})
+\]
+cut rule is most important one.
+
+***** Hauptsatz of Gentzen
+
+Hauptsatz is called the cut-elimination. So basically it says that cut rule is redundant. Hauptsatz means big in Germany. So it can be called the main theorem.
+
+***** structural group
+
+\begin{align}
+&&\frac{\Gamma\vdash\Delta}{\sigma(\Gamma)\vdash\tau(\Delta)}\tag{exchange}\\
+&\frac{\Gamma \vdash \Delta}{\Gamma, A \vdash \Delta}
+&&\frac{\Gamma \vdash \Delta}{\Gamma \vdash A, \Delta}\tag{weak} \\
+&{\Gamma \vdash A, A, \Delta \over \Gamma \vdash A, \Delta}
+&&{\Gamma, A, A \vdash \Delta \over \Gamma, A \vdash \Delta}\tag{contract}
+\end{align}
+
+***** contraction and weakening
+
+The rules seem intuitive at first, but there are spaces for we to discuss.
+
+See page 61.
+
+***** logical group
+
+The logical group is about those connectives like \(\forall\) \(\exists\) and so on. Here is the deal
+
+\[
+\frac{\Gamma\vdash A, \Delta}{\Gamma \vdash \forall x A, \Delta}(\vdash \forall) \quad \quad
+\frac{\Gamma, A[t/x]\vdash \Delta}{\Gamma, \forall x A\vdash \Delta}
+(\forall\vdash)
+\]
+
+there are important constrains for the rules:
+
+1. for \(\forall \vdash\) and \(\vdash \exists\), \(t\) should not use \(x\).
+2. \(\vdash \forall\) and \(\exists\vdash\), as \(x\) is introduced, there should be no appearance of \(x\) in context of \(A\), that is \(\Gamma \vdash {-}, \Delta\).
+
+And of course, there are some other rules for \(\Rightarrow\)
+
+\[
+\frac{\Gamma, A \vdash B, \Delta}{\Gamma \vdash A\Rightarrow B, \Delta}\quad\quad
+\frac{\Gamma \vdash A, \Delta\quad\Lambda, B \vdash \Pi}{\Gamma,\Lambda, A\Rightarrow B\vdash\Delta,\Pi}
+\]
+
+You may need some time to process this one.
+
+\[
+\frac{\Gamma \vdash A[t], \Delta}{\Gamma \vdash \exists xA[x], \Delta}\ (\vdash \exists)
+\quad\quad
+\frac{\Gamma, A\vdash \Delta}{\Gamma, \exists x A\vdash \Delta}\ (\exists\vdash)
+\]
+
+here \(A[t]\) is the same as \(A[t/x]\), the latter is more precise. Why are there two symbols because those are symbols used separately in book « proof theory and logic complexity » and « The Blind Spot ».
+
+***** eigenvariable
+
+The notion eigenvariable is not unambiguous.
+
+Since we introduce a variable \(x\) in \(\vdash \forall\), we don't want the premise has \(x\) in it. Thus the premise is written as \(\Gamma \vdash A[v/x],\Delta\).
+
+The thing is to avoid the notion of "bound variable".
+
+***** laxist notation of eigenvariable
+
+Here we have the laxist notation when confronting the variable \(x\) in the rule \(\vdash \forall\). This is because "bound variable" is sometimes confusing.
+
+We say that when introducing \(x\), the premise has no occurrence of \(x\) in it. \(A\) becomes \(A[v/x]\) using a placeholder variable \(v\) that does not appear anywhere.
+
+Significant details really.
+
+**** right hand calculus of LK
+
+The symmetry of LK makes it possible to decrease the size of rules significantly.
+
+\[\begin{aligned}
+&\frac{}{\vdash \neg A, A}\ (\mathrm{id})
+& %
+& \frac{\vdash \Delta, A\quad \vdash \neg A, \Pi}{\vdash \Delta, \Pi} (\mathrm{cut})
+\\
+\\
+& \frac{\vdash \Delta}{\vdash \tau (\Delta)}\ (X)
+& \frac{\vdash \Delta}{\vdash A, \Delta}\ (W)\quad\quad
+& \frac{\vdash A,A,\Delta}{\vdash A, \Delta}\ (\mathrm{con}) %
+\\
+\\
+& \frac{\vdash A, \Delta}{\vdash A \lor B, \Delta}\ (\vdash \lor)
+& %
+& \frac{\vdash A, \Delta\quad \vdash B, \Delta}{\vdash A\land B, \Delta}\ (\vdash \land)
+\\
+\\
+& \frac{\vdash A, \Delta}{\vdash \forall x A, \Delta}
+&
+& \frac{\vdash A[t/x], \Delta}{\vdash \exists x A, \Delta}
+\end{aligned}\]
+
+*** part 1.5: some exercises
+
+**** some basic
+
+Check for [[*logical group]]
+
+***** \(A \to (B \to A)\)
+
+\begin{prooftree}
+\AxiomC{\(A\vdash A\)}
+\UnaryInfC{\(A, B\vdash A\)}
+\UnaryInfC{\(A\vdash B \to A\)}
+\UnaryInfC{\(\vdash A\to (B \to A)\)}
+\end{prooftree}
+
+***** \((A\to (B \to C)) \to (A\to B) \to A \to C\)
+
+\begin{prooftree}
+\AxiomC{\(A \vdash A\)}
+   \AxiomC{\(A \vdash A\)}  \AxiomC{\(B \vdash B\)}
+   \BinaryInfC{\(A \to B, A \vdash B\)}
+                                    \AxiomC{\(C\vdash C\)}
+                    \BinaryInfC{\(B \to C, A\to B, A \vdash C\)}
+\BinaryInfC{\(A\to (B \to C), A, A\to B \vdash C\)}
+\end{prooftree}
+
+***** \(A \to A\lor B\)
+
+apparent
+
+***** \((\neg A\to\neg B) \to (\neg A\to B)\to A\)
+
+I don't want to prove it.
+
+***** \(\forall xA[x] \to A[t/x]\)
+
+\begin{prooftree}
+\AxiomC{\(A[t]\vdash A[t]\)}
+\UnaryInfC{\(\forall xA[x]\vdash A[t]\)}
+\UnaryInfC{\(\vdash \forall x A[x]\to A[t]\)}
+\end{prooftree}
+
+***** \(A[t/x]\to \exists xA[x]\)
+
+\begin{prooftree}
+\AxiomC{\(A[t]\vdash A[t]\)}
+\UnaryInfC{\(A[t]\vdash \exists xA[x]\)}
+\UnaryInfC{\(\vdash A[t]\to \exists xA[x]\)}
+\end{prooftree}
+
+**** prove that it is legit to restrict the id axiom on atom formula
+
+that is, if axioms \(\dfrac{}{A \vdash A}\) holds only when \(A\) is atomic, the system is still legit.
+
+Proof is simple. We use induction on formula \(A\)
+
+***** if \(A\) is of form \(B \to C\)
+
+\begin{prooftree}
+\AxiomC{\(C\vdash C\)}
+\AxiomC{\(B\vdash B\)}
+\BinaryInfC{\(B\to C, B \vdash C\)}
+\UnaryInfC{\(B\to C\vdash B\to C\)}
+\end{prooftree}
+
+***** if \(A\) is of form \(\neg B\)
+
+\begin{prooftree}
+\AxiomC{\(B \vdash B\)}
+\UnaryInfC{\(\vdash B, \neg B\)}
+\UnaryInfC{\(\neg B \vdash \neg B\)}
+\end{prooftree}
+
+***** if \(A\) is of form \(B \lor C\)
+
+\begin{prooftree}
+\AxiomC{\(B\vdash B\)}
+\UnaryInfC{\(B \vdash B \lor C\)}
+  \AxiomC{\(C\vdash C\)}
+  \UnaryInfC{\(C\vdash B \lor C\)}
+\BinaryInfC{\(B\lor C\vdash B \lor C\)}
+\end{prooftree}
+
+***** if \(A\) is of form \(B\land C\)
+
+\begin{prooftree}
+\AxiomC{\(B\vdash B\)}
+\UnaryInfC{\(B\land C \vdash B\)}
+  \AxiomC{\(C\vdash C\)}
+  \UnaryInfC{\(B\land C\vdash C\)}
+\BinaryInfC{\(B\land C\vdash B\land C\)}
+\end{prooftree}
+
+***** if \(A\) is of form \(\forall x B\)
+
+***** if \(A\) is of form \(\exists xB\)
+
+**** without structural rules, set-based sequent calculus
+
+Structural rules are exchange, weakening and contraction. See [[*structural group]]
+
+If we exclude those rules, we have set-based sequent calculus, where we treat \(\Gamma\) as set! This can be viewed as a variation of sequent calculus.
+
+How can I prove this?
+
+**** signature
+
+Here is the def of signature of an occurrence of formula \(P\) in \(A\). \(\pi\) is an occurrence of \(P\).
+
+1. if \(A\) is atomic, \(P\) is pos.
+2. if \(\pi\) is pos in \(A\), then it is so in \(A\lor B\), \(A\land B\), \(B\to A\), \(\forall xA\), \(\exists xA\).
+3. if \(\pi\) is pos in \(A\), then it is neg in \(A \to B\) and \(\neg A\).
+
+We need also def signature of \(\pi\) of \(P\) in a sequent \(\Gamma \vdash \Delta\). as one can imagine, if \(\pi\) is pos in \(\Gamma\), then \(\pi\) is neg in sequent. if \(\pi\) is pos in \(\Delta\), then \(\pi\) is still pos in the sequent.
+
+Prove that cut-free proofs preserve the signature.
+
+Proof. Obvious.
+
+**** \(A\sb{1}\dots A\sb{n}\vdash B\sb{1}\dots B\sb{m}\) leads to \(A\sb{1}\land,\dots,\land,A\sb{n}\vdash B\sb{1}\lor,\dots,\lor B\sb{m}\)
+
+The proof is actually obvious. I think.
+
+*** part 2: cut free and subformulas properties
+
+**** Hauptsatz of Gentzen
+
+The theorem can be stated as follow:
+
+Every theorem in *LK* or *LJ* has a cut-free proof.
+
+**** the proof given by Gentzen
+
+The proof of Hauptsatz is not worth trusting. It is tedious and hard to follow. The idea is that there are many key cases he can list, where the cut can be push upward. In this process of pushing and potentially expanding the proof size, we can prove that the process is decisive.
+
+And thus we can conclude that we can construct a cut-free proof.
+
+**** subformula properties
+
+***** subformulas
+
+if \(A\) is atomic, then the subformula of \(A\) is \(A\) itself and nothing else.
+
+if \(A\) is of form \(B * C\), then the subformula of \(A\) is \(A\) itself and subformulas of \(B\) and \(C\).
+
+if \(A\) is of form \(\forall x B\) or \(\exists x B\), then the subformula of \(A\) is \(A\) itself and the subformulas of \(B[t]\) for some term \(t\).
+
+***** the theorem
+
+The cut-free proofs of a sequent \(\Gamma \vdash \Delta\) are consisted of sequents made out of the subformulas in \(\Gamma\) and \(\Delta\).
+
+It is obvious that if there is quantifiers (\(\forall\), \(\exists\)) in the \(\Gamma\vdash \Delta\), there are infinite number of subformulas. The proof searching seems to be indecisive. However, ...
+
+*** part 3: more
+
+**** second order
+
+***** the notation
+
+We use \(X\) as variable for predicate. But we have some different notations.
+
+- If \(X\) is arity 1, then it is supposed to be \(X(t)\) for term \(t\). But we wrote \(t \in X\), just like \(X\) is a set.
+- If \(A\) is a formula, and we use it to create a predicate \(\{x; A\}\) (arity 1). Just like a set, whose elements are all \(x\) that satisfied \(A\).
+
+I don't really know why we do this. I think this implies an relation with another expression of second order predicate logic. That is we treat \(X\) like a set. For example, we say that \(\mathbf{N}\) is the set of natural number, and thus we have:
+\[
+x \in \mathbf{N} := \mathsf{N}(x)
+\]
+where we say \(\mathsf{N}\) is a 1 arity predicate, and \(\mathsf{N}(x)\) means «\(x\) is natural number».
+
+***** rules in second order
+
+\[
+\frac{\Gamma\vdash A,\Delta}{\Gamma\vdash\forall XA,\Delta}\ (\vdash \forall\sb{2})\quad\quad
+\frac{\Gamma, A[T/X]\vdash\Delta}{\Gamma, \forall XA\vdash\Delta}\ %
+(\forall\sb{2}\vdash)
+\]
+
+\[
+\frac{\Gamma\vdash A[T/X],\Delta}{\Gamma\vdash \exists XA,\Delta}
+\ (\vdash \exists\sb{2})
+\quad\quad
+\frac{\Gamma, A\vdash\Delta}{\Gamma,\exists A\vdash\Delta}
+\ (\exists\sb{2}\vdash)
+\]
+
+where \(T\) should have the same arity of \(X\), in \(A[T/X]\).
+
+**** \(\mathrm{PA}\sb{2}\) second order peano arithmetic
+
+We write a Dedekind integers for example:
+\[
+N := \{x ; \forall X(0 \in X \land \forall z(z \in X \Rightarrow Sz \in X) \Rightarrow x \in X) \}
+\]
+How to understand this one, we treat \(X\) as a simple propostion for example \(A\). \(x \in X\) is \(A\), and \(z\in X\) is \(A[z/x]\).
+Then we may have
+\[
+x \in N \vdash A[0] \land \forall z(A[z/x]\Rightarrow A[Sz / x]) \Rightarrow A[x/x]
+\]
+
+**** comprehension schema in second order
+
+This is something that I don't understand, about the terms that Girard was using.
+
+We start with \(\vdash \forall x (A \Leftrightarrow A)\), how can we get
+\[
+\vdash \exists X \forall x ( x \in X \Leftrightarrow A)
+\]
+What he said is we use a rule \(\vdash \exists\sb{2}\), on the abstract term \(T := \{x ; A\}\)
+
+Okay, if \(T\) is \(\{x; A\}\) then \(x\in T\) means actually \(A\). And here we should look at \(\forall x  A\). We assume that there is a \(x\) in \(A\). Then \(\forall x A \equiv \forall x (x \in T)\) seems very legit.
+The overall process is \(\vdash \forall x (A \Leftrightarrow A)\) rewrite as \(\vdash\forall x (x \in T \Leftrightarrow A)\), and then we apply \(\vdash \exists\sb{2}\), with result \(\vdash \exists X \forall x(x \in X \Leftrightarrow A)\).
+
+Okay, what the fuck is this schema used for?
+
+**** LJ is a subsystem of LK
+
+LJ, where all the sequent \(\Gamma\vdash\Delta\) where \(\Delta\) consists of at most one formula, is a subsystem of LK.
+
+LJ actually enjoys Hauptsatz and subformula properties.
+
+**** decisiveness of LJ
+
+The introduction of LJ is owing to an obvious reason, the LJ is relatively less expressive (where law of middle excluded can be derived), but LJ is fucking decisive.
+
+** chapter 4: LJ
+
+place holder.
+
+*** intuitionistic sequent
+
+A intuitionistic sequent is of form \(\Gamma \vdash A\), where \(A\) is a formula.
+
+That is LJ is a subset of LK, with the restriction of there is one and only one formula one the right hand side.
+
+*** 0 in the LJ
+
+The right hand side can not be empty but can be \(0\). There is rule of the introduction \(0\):
+
+\[
+\frac{}{\Gamma, 0 \vdash A}\ (0\vdash)
+\]
+
+*** rules
+
+id
+
+\[
+\frac{}{A\vdash A}
+\quad\quad
+\frac{\Gamma \vdash A \quad \Lambda, A \vdash B}{\Gamma, \Lambda \vdash B}
+\]
+
+structural
+
+\[
+\frac{\Gamma\vdash A}{\sigma(\Gamma)\vdash A}
+\]
+
+\[
+\frac{\Gamma\vdash B}{\Gamma, A\vdash B}
+\]
+
+\[
+\frac{\Gamma, A, A\vdash B}{\Gamma, A\vdash B}
+\]
+logical group is 略
+
+\[
+\frac{\Gamma \vdash A}{\Gamma \vdash \forall x A}\ (\vdash \forall)
+\quad\quad
+\frac{\Gamma, A\vdash B}{\Gamma, \forall xA\vdash B}\ (\forall\vdash)
+\]
+
+\[
+\frac{\Gamma \vdash A[t/x]}{\Gamma\vdash \exists x A}\ (\vdash \exists)
+\quad\quad
+\frac{\Gamma, A\vdash B}{\Gamma, \exists x A\vdash B}\ (\exists\vdash)
+\]
+\[
+\frac{}{\Gamma, \mathbf{0}\vdash A}
+\]
+
+*** \text{G\"odel}'s translation
+
+**** use \(A \to B\) induce \(\neg B \to \neg A\)
+
+This is trivial in LK, but not in LJ.
+
+\begin{prooftree}
+\AxiomC{\(A \vdash B\)}
+   \AxiomC{ }
+   \UnaryInfC{\(\textbf{0} \vdash \textbf{0}\)}
+\BinaryInfC{\(A, \neg B \vdash \textbf{0}\)}
+\UnaryInfC{\(\neg B \vdash \neg A\)}
+\end{prooftree}
+
+**** the intuition of «hole» in LJ
+
+in the introduction of \(\neg B \vdash \neg A\), we notice that when migrating \(B\) to the left side, we leave a «hole» one right side that is \(\textbf{0}\). And respectively, when migrating \(A\) to the right side, it occupies the «hole».
+
+**** double migration to prove \(A \to \neg\neg A\)
+
+A migration of a formula \(A\) will add a \(\neg\) to it. So a double migration on right hand side of \(A \vdash A\) will naturally lead to \(A \vdash \neg \neg A\).
+
+\begin{prooftree}
+\AxiomC{ }
+\UnaryInfC{\(A\vdash A\)}
+  \AxiomC{ }
+  \UnaryInfC{\(0 \vdash 0\)}
+\BinaryInfC{\(A, \neg A \vdash 0\)}
+\UnaryInfC{\(A\vdash \neg\neg A\)}
+\end{prooftree}
+
+in the classic logic we can prove \(\neg\neg A \vdash A\), this is because we can do a double migration on the left hand side of \(A\vdash A\).
+
+Although it is not possible to prove \(\neg\neg A \vdash A\), \(\neg\neg\neg A \Leftrightarrow \neg A\) is provable.
+
+**** the \text{G\"odel}'s theorem
+
+\(A\) is classically provable (provable in LK) iff \(A^{g}\) is intuitionistically provable (provable in LJ).
+
+where we get \(A^{g}\) by adding \(\neg\neg\) to the front of every atomic formulas, quantifiers and connectives:
+
+- \(A^{g} := \neg\neg A\),
+- \((A \land B)^{g} := \neg\neg(A^{g} \land B^{g})\)
+- \((\forall x A)^{g} := \neg\neg \forall x A^{g}\)
+
+Proof is simple. And a sort of completeness is achieved in LJ.
+
+*** Hauptsatz in LJ
+
+**** the decidability of LJ
+
+there is a remark that I don't understand in page 74.
+
+**** intuitionistic existence and disjunction
+
+LJ has a remarkable property:
+
+\textsc{Theorem} if \(\vdash A\lor B\) is provable, then either \(\vdash A\) or \(\vdash B\) is provable.
+
+\textsc{Theorem} if \(\vdash \exists xA\) is provable, then there is an appropriate \(t\), such that \(\vdash A[t/x]\) is provable.
+
+**** the myth around the fine property of LJ
+
+there is some misunderstanding about the fine property above: if we can \(\vdash A\) is provable, why bother to prove \(A\lor B\)?
+
+From \(A \lor B\) to either \(A\) or \(B\), this is explicit only if you use cut-free proof system, but a cut-free proof is so tedious and something unnecessary. We may implicitly prove (with cut) \(A\lor B\) without knowing which one is true. We know only after cut-elimination!
+
+Keep in mind that the propery is the corollary of Hauptsatz.
+
+**** explicitable logic
+
+LJ is not an explicit logic (it is if cut-free), but we can say it is explicitable.
+
+*** NJ
+
+**** conclusion and hypothesis
+
+The begin of structure like
+
+
+
+** supplements
+
+*** logic complexity, first order
+
+Logic complexity is about something like first order, second order; about the logic hierarchy, logic classification.
+
+**** unbound quantifiers
+
+Unbound quantifiers refer to quantifiers whose domain is not specified. But I think we can understand it as quantifiers whose domain is unbound, which is infinite.
+
+**** prenex
+
+prenex form is of form
+\[
+Q\sb{1}x\sb{1}\dots Q\sb{n}x\sb{n} A
+\]
+where \(A\) is quantifier free. /prenex/ is not that useful.
+
+**** \(\Sigma\sp{0}\sb{1}\) and \(\Pi \sb{1}\sp{0}\)
+
+The sb of the above notations is about the alternation of unbound quantifiers. I don't really know what is an unbound quantifiers. But zero alternation means no quantifier.
+
+One alternation means the quantifiers are the same. For \(\Sigma\), the quantifer can only be \(\forall\), and for \(\Pi\) \(\exists\). Thus all formulas in \(\Sigma\sb{1}\sp{0}\) and \(\Pi\sb{1}\sp{0}\) are respectively of form:
+\[
+\exists x\sb{1}\dots\exists x\sb{n}A,\quad\quad
+\forall x\sb{1}\dots\forall x\sb{n}A
+\]
+where \(A\) is \(Q\)-free. So you know alternation \(2\) means something like \(\forall\forall\forall\exists\exists\exists\exists\exists\exists\)
+
+**** \(\Sigma\sp{0}\sb{1}\) sets
+
+Here we understand \(\Sigma\sp{0}\sb{1}\) as a collection of sets. A \(\Sigma\sp{0}\sb{1}\) set is a set \(A\) that satify:
+\[
+x \in A \Leftrightarrow \exists y R(x,y)
+\]
+where \(R\) is a \(Q\)-free quantifier and can not be arbitrary.
+
+**** \(\Delta\sb{1}\sp{0}\)
+
+\(\Sigma_{1}^{0}\) and \(\Pi\sb{1}\sp{0}\) sets are respectively semi-decidable and co-semi-decidable.
+
+semi-decidable means \(x \in A\) is decidable if \(x \in A\).
+co-semi-decidable means \(x \in A\) is decidable if \(x \notin A\).
+
+So a \(\Delta^{0}_{1}\) set is decidable, since \(\Delta^{0}_{1}:= \Sigma^{0}_{1}\cap \Pi _{1}^{0}\).
+
+**** a classic example of \(\Delta\sp{0}\sb{1}\) set
+(given by Copilot)
+
+Sure! A classic example of a \(\Delta_1\sp{0}\) set is the set of even numbers.
+
+- The set of even numbers can be defined by the formula: \( x \in \text{Even} \iff \exists y \, (x = 2y) \). This shows that the set of even numbers is in \(\Sigma_1\).
+
+- The set of even numbers can also be defined by the formula: \(x \in \text{Even} \iff \forall y \, (x \neq 2y + 1) \). This shows that the set of even numbers is in \(\Pi_1\).
+
+Since the set of even numbers can be characterized by both an existential and a universal quantifier, it is in the intersection of \(\Sigma_1\) and \(\Pi_1\), making it a \(\Delta_1\) set.
+
+*** arithmetic RR
+
+RR is the child of formalism. And we introduce \(=\) \(<\) and some constant \(0\) \(S\) \(\times\) \(+\).
+
+Arithmetic system right now is boring because it is merely formalism shit.
+
+**** group: equality
+
+- \(x = x\)
+- \(x = y \Rightarrow y = x\)
+- \(x = y \land y = z \Rightarrow x = z\)
+- \(x = y \land z =t \land x < z \Rightarrow y < t\)
+- \(x  = y \Rightarrow S x = Sy\)
+- \(x = y \land z = t \Rightarrow x + z = y + t\)
+- \(x = y \land z = t \Rightarrow x \times z = y \times t\)
+
+There rules are used to prove \(x = y \land A[x] \Rightarrow A[y]\).
+
+**** group: definitions
+
+- \(x + 0 = x\)
+- \(x + S y = S(x+y)\)
+- \(x \times 0 = 0\)
+- \(x \times S(y) = (x\times y) + x\)
+
+These can prove that if two terms \(x,y\) are the same number, then \(x = y\) is provable.
+
+the 3rd and 4th peano axioms
+
+- \(Sx \ne 0\)
+- \(S x = S y \Rightarrow x = y\)
+
+These group can be used to prove that if \(x, y\) are different number, then \(x \ne y\) is provable.
+Also, these two things shamelessly assume an infinite domain, otherwise \(\overline{10} = \bar{0}\) could be proved.
+
+**** group three: a last axiom
+\[
+x < y  \lor x = y \lor x > y
+\]
+what is this one used for? Let us check what Girard says:
+
+#+begin_quote
+  the last axiom of a slightly different nature from the rest, since it is not needed for /incompleteness/: the representation of expansive properties is handled by the definition axioms. It is used in the representation of recursive functions and therefore in the algorithmic undecidability of RR and all its consistent extensions. It is also used in the Rosser variant.
+#+end_quote
+
+*** PA
+
+**** induction schema
+
+Let us check how to express induction schema:
+\[
+A[0] \land \forall y (A[y] \Rightarrow A[Sy]) \Rightarrow \forall x A[x]
+\]
+here [[*\(\mathrm{PA}\sb{2}\) second order peano arithmetic][\(\mathrm{PA}\sb{2}\) second order peano arithmetic]], we have relative description for induction schema, where we have that if \(x\) is a nat number, then
+\[
+A[0]\land \forall y(A[y] \Rightarrow A[Sy]) \Rightarrow A[x]
+\]
+is provable.
+
+**** the definition of PA
+
+Peano's Arithmetic is derived from \textbf{RR}, added with induction schema.
+\[
+A[0] \land \forall y (A[y] \Rightarrow A[Sy]) \Rightarrow \forall x A[x]
+\]
+Here \(A\) is not arbitrary.
+
+*** satisfiable
+
+A formula is satisfiable if there is an assignment that makes it true.
+
+An assignment for a formula is a set of assignments (the process of give value, some people use validate) for variables in the formula. After giving value to variables, we can now decide the true/false of the formula (by writing down the truth table).
+
+A (propositional) formula is unsatisfiable means that there is no way for it to be true.
+
+Remark: The definition of satisfiable can be extended to predicate logic, where instead of assignment, we say /model/. I just don't remember the terminology.
+
+*** there is an assignment makes it true
+
+There is an entry in truth table that is true.
+
+*** ground terms
+
+Ground terms are terms that have no variable.
+
+*** ground instances
+
+A ground instance of a formula \(S\) is a formula derived from \(S\), where all the variables are replaced with ground terms.
+
+*** alternative explain for Herbrand's theorem
+
+An formula \(S\) has a Herbrand's model means that there are a set of ground terms that makes \(S\) true.
+
+*** simultaneous substitution \(\theta\)
+
+A \(\theta\) can be applied to a formula or expression \(E\), but anyway I prefer \(A\) for a formula, \(\Gamma\) for a set of formulas.
+
+\(\Gamma\theta\) means carry the substitution to every formulas in \(\Gamma\). We can compose those \(\theta\). For example, \(\theta\sigma\) means carrying \(\theta\) first and then \(\sigma\).
+
+*** unifier \(\theta\)
+
+A unifer \(\theta\) for a set of expressions \(S:=\{E\sb{i}\}\), is such \(\theta\), that
+
+\[
+E\sb{1}\theta = \dots = E\sb{n}\theta
+\]
+
+*** most general unifier
+
+The most general unifier, a.k.a., m.g.u. is like the smallest unifier. A m.g.u. noted as \(\theta\), suit that \(\forall \sigma\) which is a unifier, there is a \(\rho\) such that
+\[
+\sigma = \theta \rho
+\]
+
+*** unification algorithm
+
+unification algorithm is an effective algorithm used for search m.g.u.
+
+Using the algorithm, we will find a mgu \(\sigma\) satisfies that for all unifier \(\theta\)
+\[
+\sigma \theta = \theta
+\]
+holds.
+
+*** herbrand's theorem and cut-elimination
+
+Herbrand’s Theorem: This theorem provides a way to transform a first-order logic formula into a purely propositional form.
+
+It states that if a first-order formula is universally valid, then there is a finite set of ground instances (instances with no variables) of its clauses that are propositionally valid.
+
+
+How they are related is that they both transfer something undecidable to decidable.
+
+* some cnn
+
+** convolution
+
+Convolution is used for smoothing a noised function sometimes.
+Say \(x(t)\) is the noised function where \(t\) is time and \(x\) is distance of a airplane. And then we use a weighting function \(w(a)\), where\(a\) is the age of a measurement(?). The convolution is defined as
+
+\[
+s(t) = \int x(a)w(t-a) \mathrm{d}a
+\]
+we write as
+\[
+s(t) = (x * w) (t)
+\]
+https://www.deeplearningbook.org/contents/convnets.html
+
+** input and kernel
+
+in \(s(t) = (x * w)(t)\), \(x\) is *input* and \(w\) is *kernel*. The output is called feature map.
+
+both input and kernel can be expressed with multi-dimensional matrix.
+
+** sparse interactions
+
+A covolution is matrix manipulation. It allows sparse interactions by making kernel smaller than input, as oppose to traditional ways where an interaction is made by matrix multiplication.
+
+** pooling
+
+The pooling layer is used for smoothing the result. In max pooling, the output \(s\sb{i}\) is the \(\max\) of the vicinity of input \(x\sb{i}\), for example
+
+\[
+s\sb{i} = \max\{x\sb{i-1},x\sb{i},x\sb{i+1}\}
+\]
+
+It is said that the pooling enable a resist for a small amount of translation. Damn bitch, why use the word translation?
+
+* diary
+
+** [2024-09-25 Wed] 装置的大小
+
+装置是什么？舞台装置！
+
+若要写个好短篇小说，你的装置得往大的写。仿佛是在进入眼帘的一刻开始就在蓄力。
+
+对于长篇小说就不必然，装置可以和玩具一样。但是说它的大小变得如此之小，而玩弄的意味是如此的足，让人觉得其仅仅是玩具，像是 margin 上的涂鸦，像是道具而不是装置，像是一个超链接，给你导到不知哪里去了。
+
+乔伊斯的«芬尼根的守灵夜»，我只看过第一句话，其首字母没有大写，明显是半句。“不会吧”，心里想着，翻到全书最后一句话上，“shit”，确实是和第一句能接上……这似乎是最大的装置，贯穿了整部小说！但果真如此吗？
+** [2024-09-24 Tue] 脆弱的“好看”
+
+看到了一个reddit的帖子：有哪部电视剧是如此烂尾以至于你一直记恨它。我立刻就想起了我曾经看过的那些。
+
+- lost 莫名其妙的结局，浪费了10季的时间
+- arrow 本身就垃圾
+- gothom 除了第一季就是垃圾
+- the big thoery 越后来就越垃圾
+- sherlock 最后一季根本不应该存在
+- 2 broken girls 毫无疑问的垃圾
+
+除了质量下滑之外，自己那么会被这种事情 trigger，其实是因为这种“好看”有一种非常脆弱的基底。你的“好看”为什么那么容易地被摧毁？怎么没见人被战争与和平恶心到，那里也有地雷的情节。
+
+本身阅读（观影）是一种对话。但是人看小说就跟自慰一样，小说也写得和黄片一样。何来对话？
+
+举个例子，人曾说自己因为犯了某一个错误，小说订阅数崩了几万。这似乎能说明对于人来说，小说只是随意替换的道具，就如同你的飞机杯坏了就买个新的。替换小说就如同关掉这个黄片然后打开另一个黄片一样简单。
+
+在这里不仅是对话゠阅读，而且还是对于好看的质疑。若是以一种脆弱的形式享受，潜在的风险让人觉得不值当。这是某种抽离、自己的理智给出的警告——一种对下降的警告。
+
+** [2024-09-24 Tue] 其实是失败的，因为还是什么都没有做
+
+至少得设置一个TODO。
+
+** [2024-09-22 Sun]
+
+I feel like I am alive again.
+
+** [2024-09-21 Sat] 行动力的缺失……到底如何诊断
+[2024-09-21 Sat 10:15]
+
+昨天很累，12 点钟就很累。没了，没啥别的想法。
+
+有时候感觉自己是ADHD，注意力相当的涣散。这原来是早就有的迹象。
+
+** [2024-09-20 Fri]
+
+跑了好几趟，行动力的错误方向。一种虚伪的行动力。
+
+还得更加那个。
+
+** COMMENT [2024-09-19 Thu]
+[2024-09-19 Thu 12:07]
+
+[[*写作的步骤]]
+[[*任务书，这周末]]
+
+Preparing for shit.
+
+作为人类的缺点，并不是不在乎……其实是清楚的
+
+* entries
+
+** TODO <2024-09-26 Thu> 上午上课
+** TODO send a pdf at least...
+<2024-09-23 Mon>
+* archive
+
+** 写作的步骤
+
+*** 2-3 核心论文
+
+- 顶会发展
+- 比较近
+- 积累一些 introduction
+  - 研究背景
+
+*** 实现的工作
+
+- 展现的形式
+  - 怎么布局、怎么画图
+  - 框架图
+  - 技术细节
+- 复现？
+
+*** 做实验
+
+- 指标
+- 形式、图标
+- 日志
+
+*** 写论文
+
+- 文字衔接、润色
+** some useless math
+*** goal directed proof search
+
+In the concept of proof search, things can be simplified as
+\[
+\Delta \to G
+\]
+here \(\Delta\) is a set or multi-set, anyway a collection of formulas, called =proof clauses=, while \(G\) is called the =goal=.  And this is why we called this goal-directed.
+
+We can have a basic duality here: proof clauses vs. goals
+
+*** reduction and backchaining                                    :ARCHIVE:
+
+The term is sus.
+
+The constant in formulas can be divided into two groups:
+1. logical constants (connectives), including \(\forall\) \(\exists\) and \(\Rightarrow\) and so on.
+2. non-logical one, including \(f\) function symbols, and predicative.
+
+And I honestly don't know what is reduction and backchaining. I do know that for the former, it is all about logical inference, but I don't know what backchain means at all.
+
+*** Prolog                                                        :ARCHIVE:
+
+The book mentions about Prolog, which indicates that the book is actually kinda outdated.
+
+*** logic programming languages building                          :ARCHIVE:
+
+**** constants
+
+First the constants include: \(v\), \(\land\), \(\lor\), \(\to\), \(\forall\), \(\exists\).
+
+**** Horn clauses
+
+what the fuck is this fucking article!
