@@ -1,13 +1,13 @@
 #+title:Note
 #+startup: num latexpreview indent overview
-#+options: tex:dvisvgm
 #+archive: ~/org/archive.org::* head
 #+latex_header: \usepackage{amsmath}
 #+latex_header: \usepackage{amssymb}
 #+latex_header: \usepackage{bussproofs}
+#+latex_header: \usepackage{prftree}
 
 
-* ONGOING visa relatively
+* DONE visa relatively
 
 Anyway, this is the only note.
 
@@ -259,6 +259,8 @@ https://www.immigration.govt.nz/new-zealand-visas/waiting-for-a-visa/how-long-it
 When asked about the name, I answered CC for the name.
 
 When asked about the city and street that I live in, I answered chinese, faithfully.
+
+** ONGOING waiting for reply
 
 * little logic
 
@@ -675,8 +677,6 @@ The introduction of LJ is owing to an obvious reason, the LJ is relatively less 
 
 ** chapter 4: LJ
 
-place holder.
-
 *** intuitionistic sequent
 
 A intuitionistic sequent is of form \(\Gamma \vdash A\), where \(A\) is a formula.
@@ -731,7 +731,7 @@ logical group is 略
 \frac{}{\Gamma, \mathbf{0}\vdash A}
 \]
 
-*** \text{G\"odel}'s translation
+*** Gödel's translation
 
 **** use \(A \to B\) induce \(\neg B \to \neg A\)
 
@@ -766,7 +766,7 @@ in the classic logic we can prove \(\neg\neg A \vdash A\), this is because we ca
 
 Although it is not possible to prove \(\neg\neg A \vdash A\), \(\neg\neg\neg A \Leftrightarrow \neg A\) is provable.
 
-**** the \text{G\"odel}'s theorem
+**** the Gödel's theorem
 
 \(A\) is classically provable (provable in LK) iff \(A^{g}\) is intuitionistically provable (provable in LJ).
 
@@ -809,8 +809,30 @@ LJ is not an explicit logic (it is if cut-free), but we can say it is explicitab
 **** conclusion and hypothesis
 
 The begin of structure like
+\[
+\prfsummary{\Gamma}{A}
+\]
+The structure needs more clarification. It is more like a tree but upside down. The root is \(A\), and there are multiple leaves. The leaves are called hypothesis. The \(\Gamma\) here is the set of leaves in the proof tree.
 
+\[
+A
+\]
 
+is the proof of \(A\vdash A\), where the hypothesis \(A\) and the conclusion \(A\) itself.
+
+**** introduction of \(\Rightarrow\)
+
+\[
+\prftree[r]{$(I \Rightarrow)$}
+{\prfsummary{[A]}{B}}
+{A\Rightarrow B}
+\]
+
+The introduction of \(\Rightarrow\) introduce \([A]\) means the \(A\) is marked as discarded. So one of the subproof (whose conclusion is \(A\)) is marked as used.
+
+Let us say the proof of \(A\) use hypothesis \(\Gamma_{1}\), and the proof of \(B\) use hypothesis \(\Gamma_{1} * \Gamma_{2}\), here the proof of \(A\Rightarrow B\) use hypothesis \(\Gamma_{2}\), because the proof of \(A\) is abandoned. This becomes clear when you translate NJ to LJ.
+
+** chapter 5: function interpretation
 
 ** supplements
 
