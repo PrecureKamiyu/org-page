@@ -1,5 +1,6 @@
 #+title:Note
 #+startup: num latexpreview indent overview
+#+options: tex:dvisvgm toc:2
 #+archive: ~/org/archive.org::* head
 #+latex_header: \usepackage{amsmath}
 #+latex_header: \usepackage{amssymb}
@@ -1249,7 +1250,6 @@ It is said that the pooling enable a resist for a small amount of translation. D
 
 也就是这种事情最能打击人的积极性……
 
-
 ** [2024-10-07 Mon] 双重身
 
 “我觉得我说很多事情都被当放屁了”，我当时是怎么想的？
@@ -1406,7 +1406,6 @@ John Steinbeck 的 east of eden。首先是让人惋惜，其次是让人骂出�
 - [ ] 是再次申请还是等别的？
 
 *** 那个问题的描述
-
 
 * archive
 
