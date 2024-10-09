@@ -78,7 +78,954 @@ Some how I can get it.
 :END:
 <2024-09-24 Tue>
 
+** DONE visa relatively
+:PROPERTIES:
+:ARCHIVE_TIME: 2024-09-27 Fri 19:49
+:ARCHIVE_FILE: ~/org/note.org
+:ARCHIVE_CATEGORY: note
+:ARCHIVE_TODO: DONE
+:END:
+
+Anyway, this is the only note.
+
+*** part one
+
+**** TODO translation
+
+**** many scan
+
+**** DONE photo requirements
+
+https://www.immigration.govt.nz/new-zealand-visas/preparing-a-visa-application/character-and-identity/acceptable-photos
+
+I spent 180 for this shit?
+
+**** things to prepare for vistor visa
+
+- a photo of one self
+- a credit card for the fee, the thing is that
+- a scan for passport
+- a document
+
+**** English translation has requirements
+
+https://www.immigration.govt.nz/new-zealand-visas/preparing-a-visa-application/english-language/translating-supporting-documents-into-english
+
+*** part two: documents
+
+**** DONE list of document
+
+- 护照信息页
+- 身份证正反面（以及翻译）
+- 户口本正本（以及翻译）
+- 旅行计划（英文）
+- 多次入境说明（英文）
+- 银行流水（以及翻译）
+
+**** DONE the problem for 交易明细
+
+There are no English version available.
+
+*** part 3rd: more document
+
+https://www.xiaohongshu.com/explore/665adbb60000000015013dd8?xsec_token=ABF2THlGG0x2Df1IYIRZZ-ZzMgdHvrDJLwn3grLoHVGjA=&xsec_source=pc_search
+
+**** letter documentclass
+
+https://en.wikibooks.org/wiki/LaTeX/Letters
+
+use \LaTeX to write a cover letter
+
+[[file:~/tex/main.tex][link to tex file]]
+
+**** cover letter content
+***** front
+
+#+name: front
+#+begin_src latex
+   \documentclass[11pt]{letter}
+   \usepackage{newtxtext}
+   \usepackage{hyperref}
+
+   \signature{Mao, Hanxiang \\
+     +86~13823043183 \\
+     \href{mailto:maojun464@gmail.com}{maojun464@gmail.com}}
+
+   \address{Mao, Hanxiang}
+   \begin{document}
+   \begin{letter}{}
+#+end_src
+
+***** content
+
+#+begin_src latex
+  \ldots
+  \closing{Yours Faithfully,}
+  \ps
+  \url{http://www.gnu.org/copyleft/fdl.html}.
+  \encl{Copyright permission form}
+#+end_src
+
+***** open
+
+这个部分我们写明自己的身份，就读学校和联系方式。
+
+#+name: open
+#+begin_src latex
+  \opening{Dear Sir or Madam:}
+
+  My name is Mao, Hanxiang (my passport number: \texttt{EN3809338} and my date of birth: 11~MAY~2003). I am writing to express my sincere intention to apply for a New Zealand Visa to visit New Zealand. I am currently an undergraduate student, pursuing my studies in computer science in Harbin Institute of Technology Shenzhen.
+#+end_src
+
+***** p1
+
+解释自己的 financial support
+
+#+name: p1
+#+begin_src latex
+  I would like to bring to your attention that my financial support for this trip is primarily provided by my parents---my father is jewelry crafter, and my mother mainly works as an assistant for my father, mainly helping with jewelry design. They have graciously agreed to fund the major expenses related to my New Zealand travle, covering transportation fee and accommodation. Additionally, I have accumulated funds with my acadamic scholarships and part-time employment. The bank saving evidence is the proof of the fund that is prepared for this trip. And the kinship can be proved from the household document I attached, this document can prove that we are indeed a family.
+#+end_src
+
+***** p2
+
+这个自然段用于说明以往的出境经历。但是我没有就算了。所以用于说明一下动机吧。
+
+#+name: p2
+#+begin_src latex
+  I am planning to a travel to New Zealand at the beginning of next year. I seldom have chances for trips, regardless a trip abroad. I have always wanted to have a trip abroad, and always been fascinated by the natural scenery and landscape that I occasionally read on travel magazines and travel websites. Recently, I have my parents' support for such a travel to New Zealand and moreover my friend would join me for this trip, who spent years during her childhood. As I am approaching graduation, and after securing a job in China mainland, with things getting settled, I feel like it is a great chance to slow down and spend time on enjoying life. So, I want to apply for New Zealand Vistor Visa.
+#+end_src
+
+***** p3
+
+简要说明一下旅行计划？
+
+#+name: p3
+#+begin_src latex
+For this upcoming trip, I would go with my friend I mentioned in the above paragraph. We are planning to stay in New Zealan for up to 2 weeks. We would visit various cultural and stunning beautiful landmarks in New Zealand. I assure that I will return to my home country before visa expiration. The future plan after graduation is to working in China. I have provided the Undergraduate Enrollment Verification in order to prove my identify.
+#+end_src
+
+***** back
+
+#+name: back
+#+begin_src latex
+
+  \bigskip
+
+  Highly appreciated if you consider my application favorably and grant me New Zealand Vissa. I am looking forward to the opportunity to explore natural landscapes in New Zealand and create a lasting memory during my visit. I am more than willing to provide any additional information or docuemntation if required. Please do contact me with my phone number or via email.
+
+  \closing{Sincerely,}
+  \end{letter}
+  \end{document}
+#+end_src
+
+**** description letter
+
+***** dp1
+
+#+name: dp1
+#+begin_src latex
+  \opening{Dear Sir or Madam:}
+
+  My name Mao, Hanxiang (passport number: \texttt{EN3809338} date of birth 11~MAY~2003). I am writing apply for multiple vistor visa to New Zealand. I wish to provide addtional evidence of my intention to visit New Zealand for future trips. These visits are primarily for the purpose of spending quality time for vacation. I have outlined below the specific dates and times of my ipcoming visits:
+
+  The first upcoming visit: Dates of Travel 06.01.2025--15.01.2025 (winter break in China)
+
+  The second upcoming visit: Dates of Travel 10.06-2024--25.06.2025 (summer break in China)
+#+end_src
+
+***** dp2
+
+#+name: dp2
+#+begin_src latex
+  New Zealand has so many stunning wonderful natural sceneries. I really want to fully enjoy the the beauty of New Zealand. I am not sure if 2 weeks to visti the South Island and North Island both, so I write this letter to apply for Multiple Vistor Visa. Secondly, I would like to also enjoy a trip during my Summer break but I am not quite whether I still have time for traveling since I am facing graduation. So I am planning to visit New Zealand once more if I have any chance. I think I need to spend more time experiencing the beauty and culture of New Zealand. And I believe that my intention to make these future visits
+#+end_src
+
+***** dback
+
+#+name: dback
+#+begin_src latex
+  If any further information or document is required, please do contact me at +86~13823043183 or via email \href{mailto:maojun464@gmail.com}{maojun464@gmail.com}.
+
+  \closing{Sincerely,}
+  \end{letter}
+  \end{document}
+#+end_src
+
+**** COMMENT cover letter generator
+
+#+begin_src latex :tangle "~/tex/main.tex" :noweb yes
+  <<front>>
+
+  <<open>>
+
+  <<p1>>
+
+  <<p2>>
+
+  <<p3>>
+
+  <<back>>
+#+end_src
+
+**** COMMENT description letter generator
+
+#+begin_src latex :tangle "~/tex/main.tex" :noweb yes
+  <<front>>
+
+  <<dp1>>
+
+  <<dp2>>
+
+  <<dback>>
+#+end_src
+
+**** COMMENT about trip itinerary
+
+#+begin_src latex :tangle "~/tex/main.tex"
+  \documentclass[12pt]{article}
+  \usepackage[left=1in,right=1in,top=1in,bottom=1in]{geometry}
+  \usepackage{graphicx}
+
+  \graphicspath{ {./images/} }
+
+  \setlength{\parindent}{0pt}
+  \title{Trip Itinerary}
+  \author{Mao, Hanxiang}
+  \date{\today}
+
+  \begin{document}
+
+  \maketitle
+
+  Here is my Trip Itinerary. Firstly I would like to present some preliminary information about where I prepare to visit, and there would be a figure to explain the my rough schedule.
+
+
+  I would liek to take plane from China (Guangzhou) to Auckland, and take bus (maybe InterCity Bus) to get anohter city. I would like to see Auckland Art Gallery, Sky Tower and harbour area. After Auckland, I will go to Rotorua, to go to the Museum and Redwook Forest for hiking and natureexploration. Next is Lkate Taupo, which is known in social media that I highly want to visit. And next maybe Tongariro, and Wellington.
+
+  \bigskip\bigskip
+  \begin{figure}[h]
+  \centering
+  \includegraphics[width=13cm]{trip itinerary.png}
+  \caption{A very rough sketch for the route}
+  \end{figure}
+
+  \end{document}
+#+end_src
+
+*** info
+
+**** [#A] genuine intentions
+
+https://www.immigration.govt.nz/new-zealand-visas/preparing-a-visa-application/character-and-identity/bona-fide
+
+**** mislead info
+
+https://www.immigration.govt.nz/new-zealand-visas/preparing-a-visa-application/character-and-identity/false-and-misleading-information
+
+**** the waiting time is 3 weeks for visitor visa
+:PROPERTIES:
+:ARCHIVE_TIME: 2024-09-18 Wed 13:44
+:ARCHIVE_FILE: ~/org/note.org
+:ARCHIVE_OLPATH: this is the note
+:ARCHIVE_CATEGORY: note
+:END:
+
+https://www.immigration.govt.nz/new-zealand-visas/waiting-for-a-visa/how-long-it-takes-to-process-your-visa-application/visitor-visa-wait-times
+**** safe question for nz when I apply for visa
+
+When asked about the name, I answered CC for the name.
+
+When asked about the city and street that I live in, I answered chinese, faithfully.
+
+*** ONGOING waiting for reply
+
+** DONE use column view to do something
+:PROPERTIES:
+:ARCHIVE_TIME: 2024-10-05 Sat 23:34
+:ARCHIVE_FILE: ~/org/note.org
+:ARCHIVE_OLPATH: entries
+:ARCHIVE_CATEGORY: note
+:ARCHIVE_TODO: DONE
+:END:
+<2024-09-29 Sun>
+
+http://blog.lujun9972.win/blog/2020/05/08/使用-org-mode-columnview-生成任务列表/index.html
+
+** DONE 买个洗面奶
+:PROPERTIES:
+:ARCHIVE_TIME: 2024-10-08 Tue 08:42
+:ARCHIVE_FILE: ~/org/note.org
+:ARCHIVE_OLPATH: entries
+:ARCHIVE_CATEGORY: note
+:ARCHIVE_TODO: DONE
+:END:
+<2024-10-08 Tue>
+
+** CANCELED X 账号
+:PROPERTIES:
+:ARCHIVE_TIME: 2024-10-08 Tue 08:49
+:ARCHIVE_FILE: ~/org/note.org
+:ARCHIVE_OLPATH: entries
+:ARCHIVE_CATEGORY: note
+:ARCHIVE_TODO: CANCELED
+:END:
+<2024-10-08 Tue>
+
+** CANCELED 洗衣服
+:PROPERTIES:
+:ARCHIVE_TIME: 2024-10-08 Tue 08:49
+:ARCHIVE_FILE: ~/org/note.org
+:ARCHIVE_OLPATH: entries
+:ARCHIVE_CATEGORY: note
+:ARCHIVE_TODO: CANCELED
+:END:
+<2024-10-08 Tue>
+
+** 旧书店
+:PROPERTIES:
+:ARCHIVE_TIME: 2024-10-08 Tue 09:16
+:ARCHIVE_FILE: ~/org/note.org
+:ARCHIVE_OLPATH: entries
+:ARCHIVE_CATEGORY: note
+:END:
+
+看过旧书店了，感觉没啥可去的。
+
+** 面包店
+:PROPERTIES:
+:ARCHIVE_TIME: 2024-10-08 Tue 09:16
+:ARCHIVE_FILE: ~/org/note.org
+:ARCHIVE_OLPATH: entries
+:ARCHIVE_CATEGORY: note
+:END:
+
+🈚️
+
+** DONE 吃饭
+:PROPERTIES:
+:ARCHIVE_TIME: 2024-10-08 Tue 09:51
+:ARCHIVE_FILE: ~/org/note.org
+:ARCHIVE_OLPATH: entries
+:ARCHIVE_CATEGORY: note
+:ARCHIVE_TODO: DONE
+:END:
+<2024-10-08 Tue>
+
+** DONE 汉书选
+:PROPERTIES:
+:ARCHIVE_TIME: 2024-10-08 Tue 10:50
+:ARCHIVE_FILE: ~/org/note.org
+:ARCHIVE_OLPATH: entries
+:ARCHIVE_CATEGORY: note
+:ARCHIVE_TODO: DONE
+:END:
+<2024-10-08 Tue>
+
+** DONE 吃饭
+:PROPERTIES:
+:ARCHIVE_TIME: 2024-10-08 Tue 14:14
+:ARCHIVE_FILE: ~/org/note.org
+:ARCHIVE_OLPATH: entries
+:ARCHIVE_CATEGORY: note
+:ARCHIVE_TODO: DONE
+:END:
+<2024-10-08 Tue>
+
+** DONE 发个信息
+:PROPERTIES:
+:ARCHIVE_TIME: 2024-10-08 Tue 21:08
+:ARCHIVE_FILE: ~/org/note.org
+:ARCHIVE_OLPATH: entries
+:ARCHIVE_CATEGORY: note
+:ARCHIVE_TODO: DONE
+:END:
+<2024-10-08 Tue>
+
 * other
+
+** [2024-10-08 Tue] 如何在百年大变局之中存活
+
+一言以蔽之：要在下行周期里找个人生活的上行机会，近一百年来，这是头一回。
+
+经济增速一定是下台阶的，这在官方经济智库已经是共识。唯一有分歧的是，下几个台阶，平台期有多长。
+
+前几代人都没有这方面的经验。
+
+很多生存逻辑是要重构的。比如，知识型人才和技能型人才的社会定价，肯定是要发生变化的，前者的均价会下降，后者会上升，但具体怎么变，变到什么程度，不知道。
+
+再比如，现在多生娃肯定是负担很重的，但将来娃多的人可能反而可能会活得更省钱，这个投入产出的平衡点怎么拿捏，没有前辈经验可借鉴。
+
+** [2024-10-08 Tue] 为什么报价那么低，中国的企业也不能中标
+
+不知道这篇能存活多久。赶紧看吧。
+
+说下为何报价低也无法中标吧。
+
+我就是做国际工程的，在不同国家都工作过，目前在墨西哥做工程，很清楚保加利亚作为客户的担心。中方报价低于保加利亚客户预算的百分之四十多，就是说，客户预算是 100 块，他们期望的各家报价在 90-99 之间，而突然有一家报价 40，你作为客户，你是否懵逼？你敢相信么？你真的认为低价就能占到大便宜么？
+
+保加利亚一定是吸取了之前一个中国公司在波兰的教训 — 也是最低价中标，但是干的过程中，说是当时漏项了少报了，要加钱！
+
+这种不遵守契约的行为，在国内很多玩的很熟练了。
+
+但是去国外还真不好用。
+
+因为后来，波兰那个项目，客户就是怒了，废标，重新招！
+
+
+而中国公司在海外，互相之间，为了夺标，也是靠这种打法。在非洲在东南亚，最后一轮投标，都是中国公司，因为价格超级低。比如客户预算 100，西方公司是 90，中国公司就能 50，而且，中国公司之间为了竞争，有的就能报到超级低价 30 或 20！我们当时就问那些超级低价的中国公司，你们这样玩，能赚钱么？他们骄傲滴说 “先进入这个市场，把你们挤出去就行！”
+
+之前我在其他欧洲国家竞标一些设备，本来我们都是报价范围内的合理价格和条款，比如我把货运到客户指定地点，客户给我多少钱那种。
+
+突然，就能杀出一个国内同行：我不要钱！我可以先把设备运到指定地点，你先用，用好了再给钱！
+
+我擦，你贱啊！倒贴也要把其他人都撵出去呗！
+
+所以一个市场，只要这种不要命的公司一去，整个市场全乱套了！
+
+好了，但是商业世界，多少钱，就有多少钱的质量！
+
+拼命低价的结果，就是：粗制滥造！
+
+比如我们公司在拉美，要建设一个厂房，当地一个中国公司低价中标，结果就是，他们为了省钱，用最烂的料 —— 厕所门都关不上，因为插销采购的是最劣质的！以至于你蹲坑，一手拉着裤子，一手拉着门把手，因为你不拽着门，门就是开着的，任何人都能观赏到你蹲坑的姿势哈哈
+
+然后要求他们整改，他们又买了一些插销，这才能把门关上！
+
+这只是其中一个案例，其他的都不敢说！
+
+这就是低价的代价！
+
+低价的结果，就是造出的东西，都是质量超差，设计使用年限 15 年的，实际只能用 5 年就报废了！
+
+而且，跟西方产品比起来，又丑又没档次！
+
+中国制造在海外的声誉，就是被这些超级低价的公司玩坏的！
+
+-
+
+而实际上，中国是能造出又好用又美观的产品的！
+
+为啥我说中国能造出优秀的好产品？
+
+因为首先我买过啊！
+
+当年我爱人怀孕的时候，我去美国出差，她给我开了一个单子，说要买一些备孕的和婴儿使用的产品，说美国那边的放心。于是，我去美国商店买了。
+
+在美国商店，看到琳琅满目的商品，仔细一看，全是 “Made in China”!
+
+我当时心里就是一句 “哇草！”
+
+TMD，我大老远来美国，买中国货！
+
+但是没办法，为了符合美国标准，中国这些产品就是比国内的好 -----
+
+还有一次经历，是我卖过中国的好产品！
+
+有一年我在一家公司，将一批工业设备卖到了欧洲，当欧洲客户打开货柜后，他们惊讶了，把我叫过去竖着大拇指跟我说 “没想到，你们可以将产品做的这么漂亮美观，超出我们的想像！对不起，我们之前一直以为中国制造是低端货 -----”
+
+你们知道当时我多么为公司，自己的国家，而骄傲么！
+
+还有更骄傲的：第二天，欧洲客户就给我一个订单，说第二批货也要我们公司的！
+
+但是，噩梦这就来了！
+
+当几个月后，第二批货到了后，一开箱 ----- 全是低端货！
+
+是的，我毫不隐瞒，当时我所在的公司，为了省成本，把我耍了，发现第一批货卖滴好以后，还有第二批，就以为客户好耍，为了降低成本，以次充好，买的都是低端配件，攒成一个又丑又不实用的破烂给客户！
+
+客户当场跟我发疯了：“你在干么？你这个骗子！我给你一个宝马的钱，却卖给我一个桑塔纳！”
+
+我就这样被客户一顿猛喷，后来，根据合同，我必须赔偿。
+
+我们公司呢，倒是根据要求，赔偿了。
+
+但是从此后，也被客户踢出了供应商名单！
+
+现在想起来，我都觉得恶心！
+
+公司为了省成本，用破烂材料，事先瞒着我，都不告诉我，也不想想，这样结果就是把客户关系都毁掉了啊！为啥总想着短期利益，不考虑长远呢？
+
+那次后，我也实在对那个公司太失望了，赶紧跑了，他们不要脸，我还要！
+
+我在其他的回答中也说过，我们公司就有同事，被中东客户挖走，去给他们当采购，因为中东人也发现，中国公司以次充好特别严重，所以需要 “以华制华”，雇佣中国人当采购，对付中国供应商！
+
+这已经是行业内不明说的事情了 ---
+
+---
+
+就是因为内卷太严重，导致中国公司进入到一种无序竞争中，主要目标是干死同行，什么代价都可以！
+
+而低价的背后，还有对工人的压榨，比如免费加班和那句 “你不干有的是人干”。
+
+还有很多中国公司，因为低价竞争，导致利润很薄，怎么办？
+
+从员工身上扣啊！
+
+反正 “你不干有的是人干”!
+
+于是，中国公司就有很多省钱大招：
+
+在非洲，曾经有中国公司让员工在有野兽出没的荒原上，住在帐篷里，这样可以省钱；
+在中东，在疫情期间中国公司让感染的员工，两人一个房间隔离，为了省钱；
+在南亚，疫情期间有的中国员工进了 ICU，公司第一反应是如何撇清责任，而不是去救助；
+在拉美，有的中国员工本来要结婚了，没有去海外常驻的愿望，但是呢，公司就以出差的名义，让他 “短期” 出国，然后，就没收护照 ----- 这样不得已，只能留在那里工作了哈哈
+也在拉美，有的公司，早上八点半上班，晚上九点多下班，员工工资低，补助少，所以，有的员工为了省钱，四个人一起合伙吃饭，一个星期，才花掉了人民币 600 元！都不知道他们吃了啥。
+有的公司，低价中标后，用低劣的材料，导致各种问题，于是客户要罚款，甚至有的时候会延误工期，那么怎么办？反正劳动法就是形同虚设，没问题，直接从员工奖金里扣呗！说是干好了会有补偿，但是等你要的时候，就各种理由赖掉了 ----
+如果你跟公司抱怨这些条件和各种克扣，大部分情况下，公司会先跟你讲奉献精神……
+
+如果讲不明白，那句 “你不干有的是人干” 就是结束语………
+
+不信你不服！
+
+不服又能咋样？
+
+以上这些公司，都不是国内的寂寂无名的皮包公司！
+
+都是有头有脸的行业内响当当的大企业，有市值上亿的上市企业，也有大名鼎鼎的国企央企！
+
+反正他们的理由都是利润薄，所有就牺牲掉员工利益就行。
+
+中国公司过去几年，就是靠这些招数赢了一个又一个市场。
+
+但是，只要所在的那些国家一开始反腐，你们猜谁第一批被抓？
+
+秘鲁、厄瓜多尔等等这些地区，前一阵就是反腐败了，国内大名鼎鼎的中国公司，都是榜上有名，第一批被收拾的！
+
+为何反腐？其实都是美国的阴谋！
+
+对，美国阴谋解决一切！
+
+
+
+在对待员工方面，在国内劳动法可有可无的情况下，的确可以这样干。但是，很多公司还是将这套做法拿到了国外！
+
+比如在一些严格执行劳动法的国家，中国公司忽悠当地员工加班，说有加班工资。等人家要工资的时候，又跟人家说，给你调休吧！那么结果当然是，当地员工去告了！以至于很多中国公司在国外，一身官司！这也在市场上留下了 “不遵守法律”“产品品质低” 的恶劣影响和形象。
+
+于是中国公司在海外的形象是：压榨、没法律观念、低价、低质量、靠贿赂夺标 ----
+
+至于问题问的，会有啥影响，当然是很恶劣的影响。全世界都知道，中国产品便宜，但是，质量不行。尽管实际上不是那么回事。
+
+只希望，以后还是用质量取胜吧，低价，甚至是白给那种，最终是害了自己，结果就是目前，在很多国家，中国制造就是与低价格烂质量划了等号！
+
+…
+
+关于低价中标，评论区也有同感的：
+
+
+
+
+现在海外还有些企业，是将销售这块单独核算了，就是说，你只要签了单，业绩就完成了，其他的破事，甩给执行公司就行。
+
+这种结果就是，前端销售那帮人是最好做的，能中标就行，其他一概不管。
+
+结果就是隐患很多！
+
+相当于签合同的是一帮人，执行工程的是另一帮人……
+
+这也把中国公司形象抹黑的很严重……
+
+这些中国企业在海外的低价竞争，也间接导致中国人在海外，去一个国家，那个国家就反华～～～比如墨西哥近年中国人开始增多，有些中国商人去了后，就是打价格战，比如十块钱的手机壳，中国商贩去了后，就能干到八块甚至更低…… 导致墨西哥商贩联合起来反华……
+
+中国人在海外互相竞争，更导致中国人与中国人之间关系也及其紧张，也是互相提防，加上一些非法行径的影响，让中国人在海外最害怕的还是同胞……
+
+** [2024-10-07 Mon] 一个 23 岁的中国留学生，在瑞士砍伤了三名儿童，他为什么要这么做？
+
+大萌饼王毛文龙、硅谷 IT 胖子 等 2491 人赞同了该回答
+我觉得这起治安事件，或者近期爆料颇多的海外治安事件是在逐渐曝光一个不为人所知的群体：边缘化的底层留学生。
+
+与刻板印象里的留学生不同，在我个人经历里，认识过很多这样的留学生，他们画像无外乎是挣扎在温饱线上，才疏学浅整日或泡在图书馆里赶作业却成绩平平，当初在国内不明就里，依赖本地略微有竞争力的家庭条件开拓了一条赛道，选了一个不怎么好移民或者就业的天坑专业，然后满怀理想去海外非 top 学校读书，当初炙热的对海外生活的期望在高昂的生活成本，逆天的基础食物价格与性价比极低的住房条件中消磨殆尽。从小被福柯式监狱一样的应试教育圈养大，封闭且相对优越的家庭环境使得他们社会化过程缓慢而痛苦，在面对显然的阶级滑落时力不从心，年轻的，生为独生子女的他们不知 networking 与社会套磁的重要性，或舍不下体面，或被安排得习得性无助导致根本拓展不了圈子只能蹲在家里独来独往。总之生活过得压抑、愤怒而抑郁。他们有的自己孤身一人来到陌生的国家，家里没有资源，在本地没有任何可以帮助过渡生活的亲戚与社会联系，不怎么好的英语在生活上处处碰壁，而傲慢的本地人对他们实行冷漠且隔离的社交策略，无处不在的隐性种族主义与公开的社会化阉割使得群体中的性格内向、无依无靠、没有竞争力的社会资本与经济资本的男性成为了完美的交叉性歧视受害者，社会边缘群体。
+
+我接触过有爱好极端金属的历史学专业的学生，平日里躲在满是蟑螂，房型老旧但是 900 刀一个月的老式公寓，除了完成作业外就是沉迷于过去的愧疚与创伤记忆的闪回，恶劣的精神状态得不到有效治疗，曾经对西方发达国家的文化憧憬被所学专业根本留不下的冰冷现实打得粉碎，于是在最压抑的一年里经历了外卖盒子堆积成山，日日憔心沥血，恐慌发作到夜夜无眠，病理化的抑郁反应在尿频尿急，过度频繁的排泄甚至都有致命的风险；更不要说在学校里时不时还被几个本地 teenager 开几个关于大陆关于红色中国的歧视性玩笑，笔几个关于小眼睛的手势...... 他的确也如此案件里的人一样，沉迷黄色幻想，怀念曾经错过的爱情，怀念中国遇见的对象，怀念被抹平的青春意气，虽然有报复的心理，但苦于性格柔弱，最后草草回家，没有发生更多不堪设想的事情。我还见过学习优越的女性社会学精英，博闻强识，与大众保持距离，热爱无非是读书与学习。拥有高功能自闭症，家住西南某二线城市，受不了本地冷漠而无趣的社交生活，已经毅然决然的将未来定在回国发展。曾专门花重金看长津湖、封神等电影，热泪盈眶；或是捧着一本红楼梦，在社交平台指点抄检大观园如何反应了美国当下的政治撕裂，如何说明了后现代女权主义的荒谬之处。政治上的偏激如同毒品一样，治愈缓和着每一个吃不饱吃不好，睡觉还要面对臭虫与蟑螂的日子。更有来自西北二三线城市，落魄到居住在廉价适应性的住房的光线严重不足的半地下室的学生，在每一个睁眼即处在黑暗中的日子里煎熬；一方面，要面对前途迷茫而惨淡的未来，一方面要面对长达半年的寒冬所带来的季节性抑郁。这样的学生群体还有很多，他们的贫穷与压抑不仅仅是经济上的，更多是社会性的，交叉性的，是法农笔下描绘的边缘族裔的现实代表。
+
+我想，返回中国对于这种年轻留学生而言至少能看得见解脱，而不是在一个未置可否的未来耗尽钱财，耗尽家庭和睦，让道德与良心在等待身份的焦虑的日子里不断被侵蚀抹除要好。最后，我为受害者感到悲哀，但一切犯罪行为离不开社会构造，离不开个人经历的叠加，离不开交叉性的逼迫，长久以来，家境富裕，享受着无数离岸利益的权贵留学群体塑造着大众的刻板印象，固化了群体画像，而这些隐入尘埃里的底层留学生却苦于无所爆料，无所被人理解而挣扎在社会边缘。不在沉默中爆发，就在沉默中灭亡，而爆发的后果就是本案例所展现的真实，而这必然不会是最后一起，而是个人的苦难投射到外部社会所发生的必然。
+
+[[https://www.zhihu.com/question/722362816/answer/4264254300][原连接]]
+
+*** 评论
+
+呵呵呵呵
+别的都可以省，但是吃住上坚决不省本来生活就很辛苦，回来一看奇葩室友 + 棺材房子 + 猪食一样的饭，立刻就不想活了
+367
+
+ 牟某人 量产型 momo
+ 人是社会性的动物。缺乏社交或者糟糕的人际关系，对于现代人的影响远大于住宿。
+
+ 量产型 momo
+ 比国内大学住宿条件强就行
+
+
+析分函泛
+每个系的博士，都有那么几个精神有点问题的跟您描述差不多。
+
+ anthonyll
+ 博士生还好点，多数来自科研和导师的压力。
+
+ 生吃柠檬
+ 天下博士一个样特别是洋博
+
+sheng yan
+确实，这种留学生被有意无意的忽略了，精神上的重压会引发行为问题
+
+ 知乎用户 AZ1974
+ 不仅是忽略，而且经常在网络上 “被代表”（被困在网络对于各种二代留子们的刻板印象中，开 party 享福时没有他们，遇到点不好的事全给连坐了）
+
+ 孟德尔如是说 → 知乎用户 AZ1974
+ 太对了，别的倒还好，被代表是真的难受
+
+嘻嘻哈哈
+出国留学的不一定都是有钱人。这边很多留子连学校 15 刀一顿的饭都舍不得吃
+
+ Archernar
+ 哥，把摄像头关了吧，我有个朋友汗流浃背了
+
+ 李欣宜
+ 15 刀一顿的饭确实贵啊，除非赶 ddl 和社交需求，尽量把每日餐标控制在 10 刀以下。
+ 查看全部 26 条回复
+
+李欣宜
+我是真有重度抑郁症和重度焦虑症的诊断书，经济问题也都是自己解决的，现在也是每天吃完药再上班，但最难的时候也只是 suicide plan，没想过图图别人，更别说抽刀向更弱者。呼吁关注心理问题和社会矛盾这个建议支持，但其实多次开图的人并不是什么底层，评论区提到的卢刚更是一路顺风顺水，北京土著没缺过钱，绝笔书提到交往过很多女友早腻了，做不出预期成果实验室也从不吝啬工资，反而受害者山林华的经历才是模板化的小镇老实做题家。
+昨天 09:29 · 美国
+
+ 慕容龙城
+ 可以试试 张至顺道长的金刚长寿功，张道爷说过抑郁就是身弱了，把经络通了，气血旺起来那些都会改善，道家最实际就是当作健康问题去处理，就是需要你坚持，三个月左右才会有比较明显的效果。心情不好的时候若不排斥可以试试 六字真言 莲师心咒 准提咒，坚持也会有所获，祝康复 学业有成。
+ Note: 评价为：神经
+
+
+ 日行一喷 → 慕容龙城
+ 我就知道，知乎的路在戒色吧
+
+Ursus maritimus
+现在哪个发达国家没有些移民？东欧人，拉美人，东南亚人有没有活得那么别扭？
+有没有可能，在 “硬追求融入本地族群” 和 “封闭在出国之前的世界里” 之外还有第三个选项，去和其他的外来移民群体来往？
+我悟出的经验就是，多去一些国籍和族群组成丰富的圈子里会很开心，也交了一些东南亚朋友。
+
+ 李欣宜
+ 就算只混华人族群我觉得也没什么，事实上湾区很多人真这样，只吃中餐，只看中文节目，只刷中文 SNS，只和老中同事来往，甚至直接就在 tiktok 这种上班直接能中文开会的公司。「老乡坑老乡」这个说法是有 bias 的，因为刚到不熟悉的地区接触最多的只会是老乡，样本多了坑货当然多，但接受到的来自于华人的帮助也多，华人恰好属于优点和缺点都比较鲜明的族群。我虽然鼓励别人多走出去和其他文化下成长的人打交道，互相启发学习，但如果就是觉得很痛苦也没必要强行去融入他们的文化。同族群移民社区抱团，比如很多拉美裔社区的孩子连英文都不会只会西班牙语，没人觉得有什么奇怪的，反而都挺尊重他们的社区和族群文化的。
+
+ 此时此刻
+ 不要对中国人要求太高。东欧人、拉美人、东南亚人照样有压力大的，有犯罪分子。人一上百，形形色色。
+
+
+Tina-L
+贫穷、孤独、学业压力、生活不便、种族歧视…… 留学生很容易出现情绪问题。
+
+ fuzzy
+ 主要还是国内人日本人太内向挑剔，接触的韩国（内部报团儿）台湾（表面热情的双面人）这俩群体在北美过的都比较舒服（融入？），也不怎么跟当地人来往，他们都爱找亚洲人混
+
+
+今天风好大
+他们只是尝到了国内底层人的滋味的罢了
+
+ K769
+ 国内底层人不远行起码言语没问题，周围亲朋好友熟悉，国外这种真就一个人了
+
+ PiccolaStella → K769
+ 贷款出国留学不评价 但是都出国了 在国内语言不好也不说了 我朋友里还有在美国待两年英语都不利索的 我真无法理解 这种学习能力和适应能力为啥要出国去受洋罪
+
+爱吃番茄滴香菜
+我还是觉得把报复社会的对象设定为孩童，还是太出生了
+
+ 阿敏
+ 瑞士今年初，发生一起：一个难民冲进一家幼儿园，威胁小朋友的事件。我想，可能是这个留学生受到启发，也这么做了。
+
+
+falcon
+首先我不是说凶手就是性格内向，没钱，才做这种事，如此行凶是没任何借口可以去弥补的，性格内向，家境相对一般的人里大多是也是善良的。但是还是借这回答稍微延伸一下。
+
+不是说没钱成绩差的才会这样，性格比较内向，不算特别帅气，生活方式兴趣爱好比较东亚大城市的，去欧美以后孤独的大有人在。
+
+uzh（苏黎世大学）也不算差学校了，只是这两年 qs 掉下去了，前几年都是七十几名。这个凶手读的计算机语言学在 uzh 也算好专业了，uzh 的经济学，金融学也很强，经济学博士竞争都是百里挑一的，只是欧陆学校除了 eth，epfl，其他学校硕士基本都是过线就录取，但是课难给分低不好毕业。这种学校反而会给人更大的压力，因为难度高，正反馈低，瑞士又不如英联邦，北美多元，娱乐也更少，中国人也少。
+
+学习成绩好也最多说能在科研，找实习找工作上获得些成就感，有些盼头。但是和社交，恋爱上的成功也没多少直接关系。除非你厉害到顶层，比如美国名校 cs phd，各种会议的常客，能在知乎上被人叫一声大佬那种。家境上除非有钱到在国外直接买房，买跑车，奢侈品闭着眼睛买那种，否则比如在加州，一年加上学费花个小一百万，住的好点，吃的奢侈点，时不时买点潮牌，时不时出去旅游几趟那种小富，也不一定能弥补不了性格内向的劣势的。反正不存在躺着就有人来倒贴的。性格内向不是错，问题是在海外本来选择就少，欧美也没什么人会欣赏低调的人（国内就有）。特别是谈恋爱更是如此。不是说性格内向在海外一定找不到对象，但是孤独的概率会大于国内。我认识很多人都是同样的性格在国内还有人喜欢，出来就不行了。这个没什么好争的。
+
+networking 也是需要资本的，你得英语很好或者对当地文化很了解，或者真的非常外向，或者你有资源，才好点。要不然 networking 也许能帮你认识两个浮于表面的外国朋友，能帮你找科研找工作，但毕竟不是深层沟通。我有朋友本科一直都是和外国人住一个宿舍的，但是最后毕业了也没有很深的联系了。
+
+总之一直以来，都有部分人很适应欧美社会，或者有的人无所谓社交，精神需求，本来就宅，钱赚的多，科研做的好就很开心了。所以我只是想说，普通人出去留学，如果感觉不习惯，回国是非常正常的，真的太孤独忍一忍呗，毕业了有谁不让你回去了吗？真心不要受过去网上一些误导，什么回国肯定后悔，普通人肯定在国外更好，精神都要崩溃了还不给自己个盼头，那状态必然越来越差。或者说不喜欢村里生活，不喜欢奔放性格社会的，就别老惦记着欧美，尤其是美国了，还不如去香港，日本之类。
+
+燃烛照痴花
+作者
+你说得对，其实绝大多数不适合当地文化的留学生都是被回国等于失败者这个致命的思想钢印禁锢住了，这导致了在一条错误的道路上越陷越深，精神状态越发恶劣。
+
+LIUShirley → 燃烛照痴花
+也有些人是有心想回国的，甚或者一开始就没想过留下，只是想着自己在国内学得比较一般，出国换个赛道再回来找工作的话，是不是讨生活能稍微容易一点。
+尤其是实在想学或不得已学了一些冷门专业的人。
+恰恰是对于这种人来说，回国就意味着一切重来，不止是面子问题，更是非常现实的成本问题。
+举个比较极端的例子。
+一个中学阶段就出国的学生，大学幸运（同时也是头铁）挤进梦校，通过成为微波炉战神来饲养自己，勉强跟着卷了两三年。
+天天吃不好睡不好跟唯一的朋友互相监测对方是不是还活着，瘦得并住膝盖大腿肉不挨着，精神状态终于到了崩溃的边缘 ——
+此时他其实并没有一个回国的可选项，因为回国后他甚至没有一个高中文凭，想读大学只能参加高考，而此时他很可能已经 20 多岁了。
+如果他能说服家人 “再这样下去就真的死了”，那可能唯一比较现实的方案就是放弃梦校转学水校，好歹拿个文凭，以日后挨更多社会毒打为代价换取眼下活命。
+
+咖啡猫
+还外卖盒子堆积如山，配送费根本不是穷学生负担得起的
+
+ 燃烛照痴花
+ 作者
+ 实际上 20 刀一顿的外卖，倘若是 Uber 会员配送费甚至是豁免的，别的平台也有各种补贴。
+
+ 咖啡猫 → 燃烛照痴花
+ 我原来在 UK 点外卖，3 英镑配送费，送到还凉了。好在食品工业发达，我基本都自己买半成品
+
+听涛
+你接触的那个人是怎么做到住差公寓还有钱点外卖的？不了解文科生，说说理工科博士，我接触的几个都是读博压力太大有点神经质，和💰倒没啥关系，住个 house 或者 4B4B 每个月导师给 2500+🔪也够活
+
+
+ Jackie 程
+ 地位不一样，理科博士和文科不能比的，文科上下限差别极大。理科你能博士就已经很不一样了，自己具备生产资料了，但文科的能干啥？不过理科这话生产资料也有高低，有的就业前景很有限
+
+ falcon
+ 有的就是住么尽量找便宜点的，也不讲究，吃这块没心情和精力做饭了，就点外卖了，到不完全是钱的问题。当然也有人就是一直吃超市冷冻菜
+
+风一般的自由
+谁叫洋人不发三个异性学伴？
+
+ 道哥
+ 其实许多男性对洋女排斥。
+
+ 金硕珍的老公
+ 很多国男干不了白女 因为白女五官太立体 进攻性很强 很多男的 hold 不住
+
+柯南鸭
+郁达夫你好
+
+哥谭噩梦孙笑川
+不是哥们，这个你真得删，我没事，但是我有个哥们你知道吧，我跟他情同手足，我怕他不小心看到破防了，我当然没事啊，哈哈哈哈，这期删了呗，这跟我朋友的经历有点相似，不过我是无所谓的，没什么感觉，我不轻易破防的，但是我一个朋友可能有点汗流浃背了，他不太舒服想睡了，当然不是我哈，我一直都是行的，以一个旁观者的心态看吧，也不至于破防吧，就是想照顾下我朋友的感受，他有点破防了，还是建议删了吧，当然删不删随你，因为我是没感觉的，就是为朋友感到不平罢了首先我没破防，就是我有个朋友是这样的，他就和你说的一样，但他不是那样的，我觉得你这样真的没意思，你就算发了他们也不会破防，因为我朋友是这样的所以我知道，我劝你最好删了，因为我朋友就算看了也不会破防，所以你这句话留着也没啥用，还不如删了，然后就是我没破防，只是我朋友是那样的，我提替我朋友说话，我没破防，我就是提醒一下你，记得把这句话删了，我可没破防，我替我朋友求求你了，删了吧哥，呜呜呜
+昨天 08:50 · 日本
+
+ 奇奇怪怪
+ 日本留学生不都挺滋润的嘛
+
+ AAAA
+ 日本真的还好吧。。。。至少长得都一样啊，经济吃紧的话，打零工的机会也很多啊，毕业后工作机会又多。
+
+螺丝钉
+资质一般的中产放着国内按部就班的日子不过四处乱润，就是自寻绝路
+
+黄浦江之猫
+说得很中肯，很多留子也就是普通中产甚至工薪家庭，父母省吃俭用供着。英美的可能富裕点，欧陆学费其实没那么贵。而且这人应该也不算学习特别顶尖的，真大佬在他对面那所
+昨天 09:48 · 美国
+
+ping qing
+自晚清以来，除清政府之外的所有政治势力，都开动全部的宣传机器，给全体中国人描绘着一个美好灿烂无比幸福完美的地上天国 —— 外国。
+
+深蓝秘境
+真是本国混不下去，出国更难。
+中国人就不像印度人一样，骗到是荣耀，团结耍赖是国家特色。
+
+ 你不够忠诚
+ 国内这方面比起印度人来说可不遑多让哦
+
+奥巧棒儿
+“性格内向” 又和这些负面品行捆绑在一起了？为什么你觉得是他性格内向，而不是社会化训练不完善呢？性格内向的人也可以很好的和别人交际，完成必要的社会来往，当然这也许是他所不喜欢的。但是不代表一有什么杀人犯、凶手就是性格内向的人吧。太片面了。
+昨天 06:54 · 安徽
+
+ EVEBABYCHAO
+ 可是社会化训练  大部分人都是靠着自己完成的啊…
+ 昨天 08:14 · 中国台湾
+
+陈一阳
+说的很对。除了民间的隐形歧视外，还有移民局的政策性歧视，某些道德不佳的导师的冷漠和打击，甚至父母在出国探望的时候还会给因为不熟悉西方法律在不小心中给子女制造麻烦。如果运气不好的话会掉进非常大的坑，只能依靠自己的强大意志去挣脱出来。远离堕落，哪怕有一百个理由，也不要沉沦。
+昨天 07:59 · 加拿大
+
+猫猫虫
+虽然但是，就算是经济过得去的留子，乃至已经工作的，也不会 “外卖盒堆积如山” 吧，外卖贵到要死，加上税和配送费一餐 $30 + 也不出奇
+昨天 13:26 · 美国
+
+ 燃烛照痴花
+ 作者
+ 看地区，我所生活的是加拿大边远城市，物价稍微好一点。
+ 23 小时前 · 加拿大
+
+鸣海
+别说欧美留学的了，就算是我们这种来第三世界国家创业的中国人，也分好多类型，有的还可以融入当地发展起来。有的就是出来了，把投资款在这边耗完就灰溜溜回国的，更有甚者，在这边专门坑老乡或者干边缘行业，它们名声太差乃至于当地人听到它们名字都要抖三抖
+16 小时前 · 津巴布韦
+
+---
+忘言
+住的有国内学生差吗？吃的可能是吃不惯，住就别和国内八人间碰瓷了。看到给这种留学生卖惨着实共情不了哈，毕竟我宿舍真有蟑螂
+20 小时前 · 山西
+
+橘子屋
+国内八人间上海一年费用 1200 人民币你是半个字不提啊，题主说了 “性价比极低”，租房的昂贵价格在环境之外还会产生沉重的额外焦虑…… 不用出国留学，你来上海脱离宿舍租个单间住住就知道了，真比宿舍还闷疯了
+14 小时前 · 上海
+
+tracytang
+哪没有蟑螂………………
+6 小时前 · 广东
+
+---
+岐山臊子面
+
+本就是边缘人，短暂的 “知识改变命运” 的春天让高学历低社会功能人群有了自己是中产的错觉。
+这些年随着世界秩序的变化，真相要彻底露出来了，海市蜃楼已经消失，新秩序即将来临。
+昨天 13:08 · 北京
+
+
+亚心
+所谓的高社会功能人群不过是沉迷于奶头乐、娱乐八卦、消费主义，以及婚孩房车这种传统大坑路径的庸俗人群罢了
+20 小时前 · 加拿大
+
+---
+金晓明
+
+想到了爱荷华卢刚案
+昨天 02:08 · 浙江
+
+探险精灵
+卢刚太轴，当时偏要留在美国。当初读完回国，中科院也亏待不了他，同时还和美国保持联系，过 20 年让孩子再留学和就业，等差不多了再带他润。
+
+EVEBABYCHAO
+可是我觉得他自己有很严重的问题  他除了做学问以外 在心态 / 待人接物 / 外形等方面完全没有一点点理解和融入的意愿 也许在学术上很优秀 但是在不熟悉的人看起来 这就是一个不修边幅 / 谈吐欠佳 / 气质怪异的边缘人 是个外国来的怪胎呀  再加上又有一个敬业乐群 各方面都堪称对照组的同学山林华 他完完全全被人比下去了 但是单纯愤恨地认为对方是 “溜须拍马的小人” 系上的教职员 “联合起来整他” 从来没有 1 分钟检讨过自己 在犯罪方面倒是非常融入当地 来了个 random shooting  我觉得发生在他身上的事 和运气有点关系 但他自己也有很大的责任 他这样的性格 留在国内也未必能发展得好
+昨天 08:12 · 中国台湾
+
+---
+供蛋供匪
+国家对外国人友好政策甚至跪舔是一种长期投入，不一定有回报消除白皮对黄种人的歧视，只能保证部分来过中国或了解中国的人对中国人不歧视，世界都是底层最多，中国亲外，而外国排中，受害的只有被排斥国的底层民众。
+18 小时前 · 湖南
+** [2024-10-06 Sun] 为什么我感觉哲学中相当一部分内容像是脱产者的无病呻吟？
+
+罗心澄
+罗心澄
+数学等 3 个话题下的优秀答主
+刘镇锐 等 130 人赞同了该回答
+IMHO，“无病呻吟” 这个词本身就很 “有病”。它自带的嫌弃色彩，外加对于 “刮骨疗伤” 这种故事的推崇，实际上构成了一种 “任何情况下都应该忍痛不说” 的文化底色。
+
+在这种大的教育背景下，最终的结果就是一群现在不可期的父母养育出来了一群未来不可期的子女：
+
+为什么女儿忍痛不向我们说？
+9227 关注・3781 回答问题
+实际上，在我们整个文化底色下这样的语言使用有很多：“你这算啥？你才到哪儿呢？”“就这点困难克服一下不就行了吗？”“别人都没事你怎么就有事了？”“我们当年吃过的屎比你吃过的饭还多”……
+
+
+
+而考虑到 “呻吟” 这个词的含义，你会发现 “无病呻吟” 还有一种不让叫床的美。怎么？人家爽到叫两声是招你惹你了？
+
+
+
+当然，这里更加核心的问题是，“病” 和 “痛” 是两个不同的概念：
+
+假设你大脚趾踢到桌脚了，你疼吗？疼。叫吗？叫。你有病吗？你没病。那这算不算无病呻吟？
+
+另一方面，为什么很多癌症都是晚期？因为早期根本不痛啊。你等到肿瘤大到压迫周围神经，让你疼得叫出声再去医院，那可不就是癌症晚期。
+
+所以说，非要把 “病” 和 “痛” 捆绑在一起，硬生生造一个 “无病呻吟” 这样的词。我只能说，真他娘的有病。想都不用想，一定不是医生造的词，而是文人造的词。
+
+既然整个问题和 “无病呻吟” 没关系，我觉得题主还真不如大大方方地问：
+
+为什么我感觉哲学中相当一部分内容像是脱产者的狗叫？
+—— 你但凡这样问了，我还敬你三分。
+
+但我还是那两句话：
+
+你感觉什么都行，我没有必要为 “你感觉” 负责。任何属于你的思想都可以被冠以 “我认为……” 的方式陈述出来。
+你有本事把 它们 骂到不搞 A4 雕花艺术，否则本质上就是柿子捡软的捏：
+
+ 回答：哲学理论如何避免陷入文字游戏的陷阱？
+ 127 赞同・0 评论回答
+
+表面上，创造出了大量 狗叫 的工作是管理、销售之类东西。当然，也有一些客户（甲方），比如说，他们就要求病能治好，就要求数据能恢复，就要求车能修好 —— 并且还非得在一定成本限度内。
+
+但是，仔细一想，我们会发现，“狗叫” 的评价是相互的。你作为药物研发者，可能会觉得觉得负责销售的人过度强调的那些玩意儿是不说人话，看到推销和客户相互交流，你会产生一种很微妙的感觉。
+
+而患者呢？患者真的在乎药物的作用机制吗？真的在乎临床试验报告吗？他们在乎的内容本就不是这些专业性的内容。你看，知乎上不就有人问这个吗：“为什么现在的药品名都不直接写明治什么病，而是用一堆奇怪的音译名？”—— 消费者 和 研发者 并不共享一个概念池。消费者不关心你这个东西怎么来的，具体如何作用的，他们甚至不一定关心具体的成分、物料是什么，他们只关心体验，什么时候吃，吃几个疗程，效果如何。你不把 “体验” 标注出来，那对于消费者来说就是狗叫。这里当然不仅限于药物。实际上治疗的很多 fancy 的玩意儿，不管是 “靶向药物” “γ 刀” 还是啥的，对于大多数患者来说都是 fashionable nonsense 一样的狗叫。只不过，消费端单纯以一种信仰宗教的方式将这些对于他们本人而言是 fashionable nonsense 的玩意儿奉为圭臬全盘接受罢了。
+
+类似地，游戏策划真的玩游戏吗？调香师真的用自己的香水吗？在生产链条很短的时候，比如说，我在自己家做菜的时候，我当然可以一边尝味道一边调整。类似地，调酒师可以自己尝自己调出来的酒。
+
+但是如果我是一个预制菜生产环节中的一员呢？我将全程戴着口罩头套，可能这辈子都不会吃到我生产出来的食品。那么这种情况下，生产者对于产品有什么额外的评价资格呢？我甚至不一定知道用的奶油是动物奶油还是植物奶油，上面写的英文，我看不懂。我可能知道制作的环境还算干净卫生，但是我必然知道产品什么味道吗？不是这一款产品，而是每一款产品。—— 企业里面肯定有个别部门的人知道每款产品是什么味道，但是每个工人都知道吗？如果他们连自己生产了什么都不知道，那作为这些产品的生产者这个身份本身又有什么意义呢？你和我说 “你们家的蛋糕太咸了”，“但是我只负责抹奶油，不知道咸味是在哪一步调节的”—— 当然也未必不知道，但是可能根本和我没有关系，就算我和工友说了，和研发反馈了，那又怎么样呢？负责放盐的工友不可能我一句话就把机器参数调整了，而市场部的人会说这个咸度我们做过调研，是销量最好的，个别汇报没有商业价值。于是在双方眼中，对方都是在狗叫。
+
+这也就是所谓的 “脱产者” 这个概念滑稽的地方。实际上绝大多数事物的评价上，你是不是 产品方 和你是否有资格讨论和评价一整个的产品没有关系。你可能就是一个销售，就是一个客服，就负责一块电路板的设计。你回答不了为什么这个地方有毛刺，那个地方手感不好，你甚至不知道所谓的 “手感” 指什么，一方面当然可能单纯是因为 “手感” 是一个非常抽象的词汇，但是另一方面可能是因为你不用你们家生产出来的产品。或者，你用了，但是不在具体使用环境中用，而仅仅是在测试环境中用。
+
+
+
+更进一步，这是一种危险的倾向：仿佛 你 作为 被管理者，就 没有资格 对 管理者 提意见，因为他们 从事的工作 就是 管理，所以 他们 必然是 专业的。因为 你 只是 被管理，所以 你提管理上的建议 必然是 不专业的。—— 大面上没错，但是真的吗？或者说，当它们在执行所谓的管理的时候，管理、行政 真的能和 业务、事务 的部分一刀两断吗？
+
+过于强调这种 “不在其位不谋其政” 某种意义上是一种切分，最终一个综合性的决策因为不是任何一个专业技术人员可以定的，反而让管理者摘了桃子。在管理者看来，这群臭搞技术的懂个锤子治理的艺术。至于会发生什么，那就去相信后入的智慧吧。
+
+** [2024-10-06 Sun] 为什么我们总有人觉得中国比不过外国，而且在领导岗位上的人尤其有这种感觉？
+真知棒
+真知棒
+闹麻了
+Deep Van、硅谷 IT 胖子 等 271 人赞同了该回答
+因为领导见的比你多。
+
+省市级别的领导很容易就能找到我这样水准的去和他们聊我的专业领域，而在同样的领域你只能看抖音百家号知乎带 V。
+
+这种领域见多了之后，自然而然就会有这种感觉。
+
+不要去质疑领导的思考回路怎么来的，执行就完了，这不是你应该操心的事。
+
+众生皆有优劣次第。你赢完了眼一闭一睁接着打螺丝送外卖就可以了，领导在领导岗位上需要思考的就多了。
+
+** [2024-10-06 Sun] 美军退伍以后是沦为流浪汉，还是直接送进监狱？
+真知棒 等 132 人赞同了该回答
+题主，我好心建议，这类话题慎重提出。
+
+如果你把大家挑唆的纷纷站出来，详细述说并对比两国的退伍老兵待遇。。。那么你提出这种问题的行为，妥妥的属于寻衅滋事，很可能会被认定为间谍。
+
+而且我要说，今天中国的普通退伍士兵，不管是义务兵还是志愿兵，其退伍待遇都还算是不错的。别看经常有大批老兵维泉的新闻，但那些基本都是十年或几十年前的退伍兵。
+
+而且我也很理解做决定的人，在现在这种氛围环境下，拼命把军人的待遇提高，甭管现役还是退伍，都绝对有利于自己安全。我说的是美国。
+
+美国人太惨了，退伍老兵待遇特别差，只能沦为流浪汉，美国人民真是凄惨无比，打倒美帝国主义。。。。
+
+** [2024-10-06 Sun] 如何评价上海松江沃尔玛男子无差别杀人事件？
+
+刘镇锐 等 222 人赞同了该回答
+这个回答很多人会觉得反感，但这就是血淋淋的现实。
+
+2013 年，我正值高考，我在的这个城市发生了一起爆炸案，一个中年男性因更新身份证未果，导致社保领不到，去相关部门办理被踢皮球，最后选择汽油点燃公交。
+
+首先，他加害无辜之人，不符合正常人的三观，不符合社会价值观，但是经过这件事后，当地的行政服务水准，不吹牛逼，向前推进 20 年。
+
+爆炸案前，这些行政服务人员，吊的半死，拽的二五八万，比省部级架子还大，一问三不知，问多了还要屌你。
+
+爆炸案后，上层施压，所有车站增设安保人员，安检装置，紧接着，对基层胥吏进行整顿，服务态度简直一百八十度大转弯，有问必答，耐心十足。
+
+你猜怎么样？就这样一个杀害无辜的人，民间坊间谈论起来，还会为他的死唏嘘，说他为厦门的发展做出了贡献。
+
+讽刺不？意外不？三观毁灭了没？
+
+最后还是悼念一下车上的死者，当时车上还有一中、双十的学生，985211 稳的，这些孩子未来一定是璀璨的，可惜了，所以我们生存在同一个社会，一定要对身边的苦难感同身受，对生活绝望的人越多，我们普通老百姓就越危险。
+
+** [2024-09-30 Mon] 江苏南通一年轻女村干部被一低保户杀害，当地「正在调查」，干部在任职时应注意哪些问题？此事带来哪些警示？
+1852 人赞同了该回答
+这个五十多岁的犯罪者（已自杀，无法经审判成为罪犯了），是知道杀人该偿命的，他也确实自杀了。
+
+这说明一个问题：
+
+在失去了低保的情况下，他已经认为自己没有生活来源，根本无法在这个社会维持生存了。
+
+所以他在临死之前才会去找个 “垫背” 的。
+
+至于他为什么找到并非直接责任人的年轻女驻村干部？那很显然：这是一种 “集体主义” 的思维。他针对的是组织，杀死组织内的哪个成员并不重要。
+
+理论上说，“有劳动能力随便找个活一个月就能挣两千”，“捡废品一个月都能挣一千”，但实际生活中，找工作跑几天没人要，或者跑两天街道发现人们舍不得扔纸箱无纸可捡，承受能力弱的人就绝望了。否则无法解释有人年薪几十万有房，还会因为被裁员而自杀。
+
+按法律这肯定不对，但他都已经决定要去死了，最高的死刑也没办法威慑他不犯罪。就算恢复满清十大酷刑，也只会促使凶手们自杀时再狠些确保成功。至于恢复株连制度？这个人没家人孤身一人。
+
+如果他确实有两万元存款，那么就说明，这点存款并不足以让他产生 “可以正常生活” 的安全感。
+
+至于被害人是因为值班而被别人拖累，确实冤，给人的警示就是：
+
+别加班了，别人走你也就走。尤其是不能孤身一人上班。
+享受集体的好处，就也要承担集体的风险。要注意你所在的集体是否有风险。
+这事还反映出另外一个问题：财产的判定标准差异过大。
+
+比如一个上海人住在自家 50 平方米老旧但学区不错的老公房（福利分房时代得到），房价值四百万元，他只要没工作，没汽车，没存款，他就可以成功申请低保，一个月至少拿到大约 1500 元钱。
+
+价值四百万元的房并不会被视为大额财产，而是他的生活必需品。
+
+而另一个地方的低保户因为工作攒下了四万元就会被视为不再贫困，低保被取消。
+
+严格按照 “没资产才该领低保” 的标准，上海有关部门完全可以要求这类低保户卖房，给他安排公租房居住。等卖房款消耗到存款限额之下，才给低保。但现实中上海方面并没有这样做。
+
+** [2024-09-28 Sat] 软B开题报告
+
+*** 修改建议
+
+- 文章结构：无需进行变动，保持模板上的«国内外研究现状»和«主要研究内容»和«研究方案»
+- 建议加入对前人的贡献的总结
+- 在主要研究内容和研究方案之中加入更多实在的内容
+- 参考文献可以加入学长的毕业论文，其次需要更多最新的论文，至少是20年代的
 
 ** [2024-09-27 Fri] 如何评价 B 站刘宇在石家庄打击隐藏摄像头后在派出所里被围堵的视频？
 8902 人赞同了该回答
@@ -205,7 +1152,7 @@ Some how I can get it.
 
  现行的学校制度，中学六年，大学四年，一般毕业生耗废了金钱，经过了长时期的学校生活，用去无数的精力脑力，好容易拧得一张文凭，谁都希望出其所学，效力社会，不幸而生在供过于求的年头，政府机关人浮于事且没有援引不易进身，社会方面，又受经济恐慌的影响，工商业衰落不振，对此莘莘学子，也是无法容纳。因此毕业生俞多，失业人数也愈众。结果，因无颜同乡，自杀的也有。或因思想激变，走入邪途的也有。大有作为的青年竟在“毕业即失业的状态下做了时代的牺牲者！
 
-但是好在这里是新社会，8 月数据青年失业率比较高的数据，这说明社会在向高科技转型中高端人才需求旺盛，各高校因此加大培养力度，人才红利不断增加
+但是好在这里是新社会，8月数据青年失业率比较高的数据，这说明社会在向高科技转型中高端人才需求旺盛，各高校因此加大培养力度，人才红利不断增加
 
 ** [2024-09-24 Tue] 简中、圈子 建议 archived
 

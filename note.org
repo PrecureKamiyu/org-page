@@ -3,270 +3,17 @@
 #+archive: ~/org/archive.org::* head
 #+latex_header: \usepackage{amsmath}
 #+latex_header: \usepackage{amssymb}
+#+latex_header: \usepackage{tikz}\usetikzlibrary{cd}
 #+latex_header: \usepackage{bussproofs}
 #+latex_header: \usepackage{prftree}
-
-
-* DONE visa relatively
-
-Anyway, this is the only note.
-
-** part one
-
-*** TODO translation
-
-*** many scan
-
-*** DONE photo requirements
-
-https://www.immigration.govt.nz/new-zealand-visas/preparing-a-visa-application/character-and-identity/acceptable-photos
-
-I spent 180 for this shit?
-
-*** things to prepare for vistor visa
-
-- a photo of one self
-- a credit card for the fee, the thing is that
-- a scan for passport
-- a document
-
-*** English translation has requirements
-
-https://www.immigration.govt.nz/new-zealand-visas/preparing-a-visa-application/english-language/translating-supporting-documents-into-english
-
-** part two: documents
-
-*** DONE list of document
-
-- 护照信息页
-- 身份证正反面（以及翻译）
-- 户口本正本（以及翻译）
-- 旅行计划（英文）
-- 多次入境说明（英文）
-- 银行流水（以及翻译）
-
-*** DONE the problem for 交易明细
-
-There are no English version available.
-
-** part 3rd: more document
-
-https://www.xiaohongshu.com/explore/665adbb60000000015013dd8?xsec_token=ABF2THlGG0x2Df1IYIRZZ-ZzMgdHvrDJLwn3grLoHVGjA=&xsec_source=pc_search
-
-*** letter documentclass
-
-https://en.wikibooks.org/wiki/LaTeX/Letters
-
-use \LaTeX to write a cover letter
-
-[[file:~/tex/main.tex][link to tex file]]
-
-*** cover letter content
-**** front
-
-#+name: front
-#+begin_src latex
-   \documentclass[11pt]{letter}
-   \usepackage{newtxtext}
-   \usepackage{hyperref}
-
-   \signature{Mao, Hanxiang \\
-     +86~13823043183 \\
-     \href{mailto:maojun464@gmail.com}{maojun464@gmail.com}}
-
-   \address{Mao, Hanxiang}
-   \begin{document}
-   \begin{letter}{}
-#+end_src
-
-**** content
-
-#+begin_src latex
-  \ldots
-  \closing{Yours Faithfully,}
-  \ps
-  \url{http://www.gnu.org/copyleft/fdl.html}.
-  \encl{Copyright permission form}
-#+end_src
-
-**** open
-
-这个部分我们写明自己的身份，就读学校和联系方式。
-
-#+name: open
-#+begin_src latex
-  \opening{Dear Sir or Madam:}
-
-  My name is Mao, Hanxiang (my passport number: \texttt{EN3809338} and my date of birth: 11~MAY~2003). I am writing to express my sincere intention to apply for a New Zealand Visa to visit New Zealand. I am currently an undergraduate student, pursuing my studies in computer science in Harbin Institute of Technology Shenzhen.
-#+end_src
-
-**** p1
-
-解释自己的 financial support
-
-#+name: p1
-#+begin_src latex
-  I would like to bring to your attention that my financial support for this trip is primarily provided by my parents---my father is jewelry crafter, and my mother mainly works as an assistant for my father, mainly helping with jewelry design. They have graciously agreed to fund the major expenses related to my New Zealand travle, covering transportation fee and accommodation. Additionally, I have accumulated funds with my acadamic scholarships and part-time employment. The bank saving evidence is the proof of the fund that is prepared for this trip. And the kinship can be proved from the household document I attached, this document can prove that we are indeed a family.
-#+end_src
-
-**** p2
-
-这个自然段用于说明以往的出境经历。但是我没有就算了。所以用于说明一下动机吧。
-
-#+name: p2
-#+begin_src latex
-  I am planning to a travel to New Zealand at the beginning of next year. I seldom have chances for trips, regardless a trip abroad. I have always wanted to have a trip abroad, and always been fascinated by the natural scenery and landscape that I occasionally read on travel magazines and travel websites. Recently, I have my parents' support for such a travel to New Zealand and moreover my friend would join me for this trip, who spent years during her childhood. As I am approaching graduation, and after securing a job in China mainland, with things getting settled, I feel like it is a great chance to slow down and spend time on enjoying life. So, I want to apply for New Zealand Vistor Visa.
-#+end_src
-
-**** p3
-
-简要说明一下旅行计划？
-
-#+name: p3
-#+begin_src latex
-For this upcoming trip, I would go with my friend I mentioned in the above paragraph. We are planning to stay in New Zealan for up to 2 weeks. We would visit various cultural and stunning beautiful landmarks in New Zealand. I assure that I will return to my home country before visa expiration. The future plan after graduation is to working in China. I have provided the Undergraduate Enrollment Verification in order to prove my identify.
-#+end_src
-
-**** back
-
-#+name: back
-#+begin_src latex
-
-  \bigskip
-
-  Highly appreciated if you consider my application favorably and grant me New Zealand Vissa. I am looking forward to the opportunity to explore natural landscapes in New Zealand and create a lasting memory during my visit. I am more than willing to provide any additional information or docuemntation if required. Please do contact me with my phone number or via email.
-
-  \closing{Sincerely,}
-  \end{letter}
-  \end{document}
-#+end_src
-
-*** description letter
-
-**** dp1
-
-#+name: dp1
-#+begin_src latex
-  \opening{Dear Sir or Madam:}
-
-  My name Mao, Hanxiang (passport number: \texttt{EN3809338} date of birth 11~MAY~2003). I am writing apply for multiple vistor visa to New Zealand. I wish to provide addtional evidence of my intention to visit New Zealand for future trips. These visits are primarily for the purpose of spending quality time for vacation. I have outlined below the specific dates and times of my ipcoming visits:
-
-  The first upcoming visit: Dates of Travel 06.01.2025--15.01.2025 (winter break in China)
-
-  The second upcoming visit: Dates of Travel 10.06-2024--25.06.2025 (summer break in China)
-#+end_src
-
-**** dp2
-
-#+name: dp2
-#+begin_src latex
-  New Zealand has so many stunning wonderful natural sceneries. I really want to fully enjoy the the beauty of New Zealand. I am not sure if 2 weeks to visti the South Island and North Island both, so I write this letter to apply for Multiple Vistor Visa. Secondly, I would like to also enjoy a trip during my Summer break but I am not quite whether I still have time for traveling since I am facing graduation. So I am planning to visit New Zealand once more if I have any chance. I think I need to spend more time experiencing the beauty and culture of New Zealand. And I believe that my intention to make these future visits
-#+end_src
-
-**** dback
-
-#+name: dback
-#+begin_src latex
-  If any further information or document is required, please do contact me at +86~13823043183 or via email \href{mailto:maojun464@gmail.com}{maojun464@gmail.com}.
-
-  \closing{Sincerely,}
-  \end{letter}
-  \end{document}
-#+end_src
-
-*** COMMENT cover letter generator
-
-#+begin_src latex :tangle "~/tex/main.tex" :noweb yes
-  <<front>>
-
-  <<open>>
-
-  <<p1>>
-
-  <<p2>>
-
-  <<p3>>
-
-  <<back>>
-#+end_src
-
-*** COMMENT description letter generator
-
-#+begin_src latex :tangle "~/tex/main.tex" :noweb yes
-  <<front>>
-
-  <<dp1>>
-
-  <<dp2>>
-
-  <<dback>>
-#+end_src
-
-*** COMMENT about trip itinerary
-
-#+begin_src latex :tangle "~/tex/main.tex"
-  \documentclass[12pt]{article}
-  \usepackage[left=1in,right=1in,top=1in,bottom=1in]{geometry}
-  \usepackage{graphicx}
-
-  \graphicspath{ {./images/} }
-
-  \setlength{\parindent}{0pt}
-  \title{Trip Itinerary}
-  \author{Mao, Hanxiang}
-  \date{\today}
-
-  \begin{document}
-
-  \maketitle
-
-  Here is my Trip Itinerary. Firstly I would like to present some preliminary information about where I prepare to visit, and there would be a figure to explain the my rough schedule.
-
-
-  I would liek to take plane from China (Guangzhou) to Auckland, and take bus (maybe InterCity Bus) to get anohter city. I would like to see Auckland Art Gallery, Sky Tower and harbour area. After Auckland, I will go to Rotorua, to go to the Museum and Redwook Forest for hiking and natureexploration. Next is Lkate Taupo, which is known in social media that I highly want to visit. And next maybe Tongariro, and Wellington.
-
-  \bigskip\bigskip
-  \begin{figure}[h]
-  \centering
-  \includegraphics[width=13cm]{trip itinerary.png}
-  \caption{A very rough sketch for the route}
-  \end{figure}
-
-  \end{document}
-#+end_src
-
-** info
-
-*** [#A] genuine intentions
-
-https://www.immigration.govt.nz/new-zealand-visas/preparing-a-visa-application/character-and-identity/bona-fide
-
-*** mislead info
-
-https://www.immigration.govt.nz/new-zealand-visas/preparing-a-visa-application/character-and-identity/false-and-misleading-information
-
-*** the waiting time is 3 weeks for visitor visa
-:PROPERTIES:
-:ARCHIVE_TIME: 2024-09-18 Wed 13:44
-:ARCHIVE_FILE: ~/org/note.org
-:ARCHIVE_OLPATH: this is the note
-:ARCHIVE_CATEGORY: note
-:END:
-
-https://www.immigration.govt.nz/new-zealand-visas/waiting-for-a-visa/how-long-it-takes-to-process-your-visa-application/visitor-visa-wait-times
-*** safe question for nz when I apply for visa
-
-When asked about the name, I answered CC for the name.
-
-When asked about the city and street that I live in, I answered chinese, faithfully.
-
-** ONGOING waiting for reply
+#+latex_header: \newcommand{\semicolon}{\mathbin{;}}
 
 * little logic
 
 ** chapter 3: LK
 
 *** part 1: starting up, rules and more
+
 **** the problem with Modus Ponens
 
 There are actually problems with Modus Ponens. Modus Ponens is actually very like cut rule.  Why?  Because in the view of proof finding, we start from nothing: if we want to proof \(B\), then probably we have to image such \(A\),
@@ -834,7 +581,418 @@ Let us say the proof of \(A\) use hypothesis \(\Gamma_{1}\), and the proof of \(
 
 ** chapter 5: function interpretation
 
+*** TODO
+
+** chapter 6: system F
+** chapter 7: CCC
+*** pole and polar
+**** def
+
+Given a binary operation \(+\colon A \times B \to C\), and a subset of \(C\), namely \(P\) (the pole), we can give the polar set \(X^{p}\) with the respect to a subset of \(A\), namely \(X\):
+
+\[
+X^{p} := \{y \in B \semicolon \forall x \in X, x + y \in P\}
+\]
+
+**** some properties
+
+We write \(\langle a, b\rangle\) as \(a * b\). Don't want to bother to type langle and rangle.
+
+***** 1. \(X \subset X^{pp}\)
+
+Proof. if \(x \in X\) we need to prove that \(\forall y \in X^{p}\), \(x * y \in P\).
+
+Let us look at \(y \in X^{p}\), \(\forall x' \in X, x' * y \in P\). So of course \(x * y \in P\) is valid.
+
+***** 2. \(X^{pp}\) is the smallest polar set that containing \(X\).
+
+Proof. we need to prove that if \(Z\) is polar set that containing \(X\), then \(Z\) also containing a polar set \(X^{pp}\).
+
+Let us say that \(Z = (Z^{-p})^{p}\), here \(Z^{-p}\subset B\). All we have is that if \(x \in X\) then \(x \in Z\), which is \(X \subset Z\). We need to prove that if \(x \in X ^{pp}\) then \(x \in Z\). Or we can prove that if \(x \notin Z\) then \(x \notin X^{pp}\). Let us go with the latter:
+
+If \(x \notin Z\), then \(\exists z \in Z^{-p}\), that \(x * z \notin P\).
+
+How can we prove that \(x \notin X ^{pp}\)? Let us say that if \(x \in X^{pp}\), then therefore \(\forall y \in X^{p}\), \(x * y \in P\). So we know that \(z\) in \(Z^{-p}\) is =not= in \(X^{p}\).
+
+Consequently, \(z\) suited that there is a \(\exists x' \in X\), \(x' * z \notin P\). However, at the same time, \(z \in Z^{-p}\), then for  \(\forall x'' \in Z\) also include those \(\forall x'' \in X\), that \(x'' * z \in P\). A contradiction is derived from \(x \in X^{pp}\).
+
+The formula is that if \(x \notin Z\) and if \(x\in X^{pp}\) there would be a contradiction.
+
+So \(x\in X^{pp}\Rightarrow x\in Z\) which implies \(X^{pp}\subset Z\). And because we don't have pre-set condition of \(Z\), \(\forall Z \supset X, Z \supset X^{pp}\)
+
+The smallest polar set is \(\bigcap Z = X^{pp}\). The equation holds because \(X\) is finite, the number of \(Z\) is limited.
+
+***** 3. \(X^{p} = X^{ppp}\)
+
+Proof. \(X\subset X^{pp}\) is enough to prove \(X^{p}\subset X^{ppp}\). And then we need \(X^{ppp}\subset X^{p}\).
+
+We say like this \(X\) is a polar set, then \(X^{pp} \subset X\).
+
+Let us say \(x \in X^{pp}\) we need \(x \in X\). Or we can say \(x \notin X\), then we need \(x\notin X^{pp}\).
+
+\(x\notin X\), then \(\exists y \in X^{-p}, x * y \notin P\), thus (because \(X^{-p} \subset X^{p}\)) \(\exists y \in X^{p}, x * y \notin P\), which \(x \notin X^{pp}\).
+
+**** connection
+
+- \(A \Rightarrow \neg\neg A\)
+- \(A \Rightarrow \neg B \vdash \neg\neg A \Rightarrow \neg B\)
+- \(\neg A \Leftrightarrow \neg\neg\neg A\)
+
+
+1. \(A \vdash \neg\neg A\)
+\begin{prooftree}
+\AxiomC{ }
+\UnaryInfC{\(A\vdash A\)}
+  \AxiomC{ }
+  \UnaryInfC{\(0 \vdash 0\)}
+\BinaryInfC{\(A, \neg A \vdash 0\)}
+\UnaryInfC{\(A\vdash \neg\neg A\)}
+\end{prooftree}
+2. \(A \Rightarrow \neg B \vdash \neg\neg A \Rightarrow \neg B\)
+\begin{prooftree}
+\AxiomC{\(A \vdash A\)}
+  \AxiomC{\(B \vdash B\)}  \AxiomC{\(0 \vdash 0\)}
+  \BinaryInfC{\(\neg B, B \vdash 0\)}
+\BinaryInfC{\(A\Rightarrow \neg B, A, B \vdash 0\)}
+\doubleLine
+\UnaryInfC{\(A\Rightarrow \neg B, \neg\neg A, B \vdash 0\)}
+\UnaryInfC{\(A\Rightarrow \neg B, \neg\neg A \vdash \neg B\)}
+\UnaryInfC{\(A\Rightarrow \neg B \vdash \neg\neg A\Rightarrow\neg B\)}
+\end{prooftree}
+3. \(\vdash \neg A \Leftrightarrow \neg\neg\neg A\)
+\begin{prooftree}
+  \AxiomC{ }
+  \UnaryInfC{\(\neg A\vdash\neg A\)}
+    \AxiomC{ }
+    \UnaryInfC{\(0 \vdash 0\)}
+  \BinaryInfC{\(\neg A, \neg \neg A \vdash 0\)}
+  \UnaryInfC{\(\neg A\vdash \neg \neg\neg A\)}
+  \UnaryInfC{\(\vdash \neg A \Rightarrow \neg\neg\neg A\)}
+
+\AxiomC{ }
+\UnaryInfC{\(A\vdash A\)}
+  \AxiomC{ }
+  \UnaryInfC{\(0 \vdash 0\)}
+\BinaryInfC{\(A, \neg A \vdash 0\)}
+\UnaryInfC{\(A\vdash \neg\neg A\)}
+\doubleLine
+\UnaryInfC{\(A, \neg\neg\neg A \vdash 0\)}
+\UnaryInfC{\(\neg\neg\neg A\vdash \neg A\)}
+\UnaryInfC{\(\vdash \neg\neg\neg A \Rightarrow \neg A\)}
+
+\BinaryInfC{\(\vdash \neg A \Leftrightarrow \neg \neg \neg A\)}
+\end{prooftree}
+
+**** translation!
+
+- \(A\) is \(X\)
+- \(\neg A\) is \(X^{p}\)
+- \(0\) is \(P\)
+- \(\vdash\) is "we can find a way to use the left hand side variable to get one right hand side variable"
+
+Examples of translation
+
+- \(A \vdash A\) to \(x \in X \vdash x' \in X\)
+
+We can find a way to use \(x \in X\) to get a \(x' \in X\): we just use identity function.
+
+- \(A, \neg A \vdash 0\) to \(x \in X, y \in X^{p} \vdash c \in P\)
+
+We can find a way to use \(x\) and \(y\) to get a \(c \in P\): we just use \(x * y\)
+
+- \(\neg A:= A \Rightarrow 0\) to \(X^{p}\) defined as set of all function that maps \(X\) to \(P\)
+
+The element \(f_{y}\) in \(X^{p}\) is a way to map \(x\in X\) to \(P\), by
+
+\[
+f_{y}\colon X \to P, f_{y}(x):= x * y
+\]
+*** TODO three layers
+
+what the hell is this?
+
+**** first layer of truth
+**** second layer of algebric semantic or modeling
+**** category layer
+*** category
+**** Ł
+*** CC
+**** categories
+
+\(\mathsf{C}\) is a cat.
+
+- Obj: \(\text{Obj}_{\mathsf C}\) or \(|\mathbf{C}|\) (we prefer the former)
+- Hom: \(\text{Hom}_{\mathsf C}(A, B)\) or \(\mathbf{C} (A, B)\)
+- composition: \(f \in \text{Hom}_{\mathsf C}(A, B)\) and \(g\in \text{Hom}_{\mathsf C}(B ,C)\), then \(g \cdot f\) in \(\text{Hom}_{\mathsf C}(A, C)\).
+- associativity \(f (g h) = (fg)h\)
+- id: there is always \(\mathrm{id}\) in \(\text{Hom}_{\mathsf C}(A,A)\).
+
+**** Functor
+
+A functor \(F\) from \(\mathsf C\) to \(\mathsf D\) is two collections of mapping
+
+- From \(\text{Obj}_{\mathsf C}\) to \(\text{Obj}_{\mathsf D}\)
+  - satisfy that \(\text{id}\) is mapped to \(\text{id}\) in \(\mathsf D\)
+
+- From \(\text{Hom}_{\mathsf C}(A , B)\) to \(\text{Hom}_{\mathsf D}(FA, FB)\)
+  - satisfy that \(F (g h) = F g F h\)
+
+Also the diagram commutes:
+
+\[\begin{tikzcd}
+A \arrow[r, "f"]
+  \arrow[d, "F"]   & B \arrow[d, "F"] \\
+FA\arrow[r, "Ff"]  & FB
+\end{tikzcd}\]
+
+**** natural transformation
+
+Functors naturally forms a category where \(\text{Obj}\) are all the functors, and the morphisms are called natural transformation.
+
+natural transformation is a transformation between functors. Here a natural transformation \(\theta\) from \(F\) \(G\).
+
+For every \(\text{Obj}\) in \(\mathsf C\), say \(A\), there is morphism \(T(A)\) in \(\text{Hom}_{\mathsf D}(FA, GA)\), that makes the diagram commutes:
+
+\begin{displaymath}
+\begin{tikzcd}
+FA \arrow[r, "F(f)"]
+   \arrow[d, "T(A)"] & F B \arrow[d, "T(B)"]\\
+GA \arrow[r, "G(f)"] & GB
+\end{tikzcd}
+\end{displaymath}
+
+**** cartesian product
+
+First we need the definition of cartesian product. Here we use universal properties.
+
+A cartesian product \(A\times B\) is a terminal object in followingly constructed categories:
+
+First. Obj in this category is defined as an object \(C\) in \(\mathsf C\), and a pair of morphisms in \(\text{Hom}_{\mathsf C}(C, A)\) and \(\text{Hom}_{\mathsf C}(C, B)\):
+
+\begin{displaymath}
+\begin{tikzcd}
+C \arrow[r, "f_{1}"]
+  \arrow[d, "f_{2}"] & A\\
+B
+\end{tikzcd}
+\end{displaymath}
+
+Second. Morphism from \(C\) (with \(f_{1}\) and \(f_{2}\)) to \(D\) (with \(g_{1}\) and \(g_{2}\)) is defined as a morphism \(h\) from \(\text{Hom}_{\mathsf C}(C,D)\), such that the diagram commutes:
+
+\begin{displaymath}
+\begin{tikzcd}
+C \arrow[rrd, bend left, "f_{1}"]
+  \arrow[rdd, bend right,"f_{2}"]
+  \arrow[rd, "h"]                 & & \\
+                                  & D \arrow[r, "g_{1}"]
+                                      \arrow[d, "g_{2}"] & A\\
+                                  & B
+\end{tikzcd}
+\end{displaymath}
+Okay we can not define the cartesian product in the normal sense:
+
+ we can prove that \(A\times B\) (in the sense of set theory) together with \(\pi_{1}\) and \(\pi_{2}\) are the terminal object in the category above, that is for every obj \(C\), there is unique Hom \(h\) from \(C\) to \(A\times B\).
+
+**** cartesian and product
+
+In the sense of set theory, product is cartesian product. However, not every category is \(\mathsf{Set}\), so cartesian product as a concept in set theory does not apply in other thing.
+
+Product is sometimes called direct product. There is also direct sum. And there is also tensor product. They are all different things. One can check for sometime articles. In physicist call tensor product as «direct product», absolutely brain dead behavior.
+
+**** cartesian category
+
+A cartesian category is such category where the terminal obj described above has been given to us: for every pair of obj \(A, B\), there is \(A\times B\) in the category.
+
+**** before diving into CCC
+
+Why we need cartesian category. Because we treat the conjuction of formula \(A \land B\) as \(A \times B\) in the sense of set theory.
+
+We need a category where \(A\) \(B\) are "formula", \(A \land B\) should also be "formula".
+*** CCC
+
+**** before diving into CCC
+
+so in the section above, we need CC for such rule: \(A\), \(B\) in \(\text{Obj}_{\mathsf C}\) then \(A\times B\) in \(\text{Obj}_{\mathsf C}\).
+
+Here we have another one, we call exponential: \(A\), \(B\) in \(\text{Obj}_{\mathsf C}\), so \(A\Rightarrow B\) is in \(\text{Obj}_{\mathsf C}\), however, using the notation from set theory, \(A\Rightarrow B\) is written as \(B^{A}\).
+
+**** exponential
+
+We defined a cat:
+Obj: diagram:
+
+\begin{displaymath}
+\begin{tikzcd}
+C\times A \arrow[d, "f"]\\
+B
+\end{tikzcd}
+\end{displaymath}
+
+Hom: commutative diagram, where \(\lambda(f)\) is important:
+
+\begin{displaymath}
+\begin{tikzcd}
+C\times A \arrow[rr, "\lambda(f)\times \mathrm{id}"]
+          \arrow[rd, "f"]    & & D \times A
+                                   \arrow[ld, "g"] \\
+                             & B
+\end{tikzcd}
+\end{displaymath}
+
+As you can guess \(B^{A}\) together with (evaluation) \(\epsilon\) is the terminal (to be exact, the terminal is noted as \(B^{A}\) and \(\epsilon\) if they exist).
+*** examples of CCC
+
+1. \(\mathsf {Set}\). Duhhh, obviously.
+2. Scott Domain. We can use sequent calculus to define Scott domain instead of topological spaces.
+3. Scott Domain is crucial for understanding coherent space in the future section.
+
+*** scott domain described using logic
+
+A scott domain is a pair \((X, \mathcal F)\), where \(X\) is a set, \(\mathcal F\) is a set of axioms made of \(x _{1}, \dots x_{n} \vdash x\) and something like \(x_{1}\dots x_{n}\vdash\) (notice this one is empty). Also these axioms are consistent, that is with the logical rules, structural rules and cut rule, one can not prove \(\vdash\).
+
+A =coherent= subset of \(X\) is such subset \(A\), that \(\mathcal F \cup \{ \vdash x\semicolon x \in A\}\) is consistent.
+
+A =saturated= subset is such =coherent= subset \(A\), that can not be «expanded», that is the corresponding axioms \(\mathcal F \cup \{ \vdash x \semicolon x \in A\}\) can not prove a \(\vdash y\) where \(y\) is outside of \(A\).
+
+As a result, for every coherent set \(A\), there can be a «closure», noted as \(\bar A\). And here we use a new notation \(A \sqsubset_{\mathcal F} X\) which means \(A\) is a saturated subset of \((X,\mathcal F)\).
+
+A morphism \(\varphi\) from \((X, \mathcal F)\) to \((Y, \mathcal G)\) suits that:
+
+1. \(A \sqsubset X\) then \(\varphi(A)\sqsubset Y\)
+2. \(A = \uparrow\bigcup_{i}A_{i}\) then \(\varphi(A) = \uparrow\bigcup_{i}\varphi(A_{i})\)
+*** logic in a CCC
+
+A syllogistic's view: view \(\text{Hom}_{\mathsf C}(A, B)\) as the sequent \(A \vdash B\). A proof that proves the sequent is a morphism in \(\text{Hom}_{\mathsf C}(A, b)\). And to generalise the idea of \(\Gamma \vdash A\), we introduce product.
+
+Left rules:
+what?
+
+*** \(\eta\)-conversion
+
+We want find something unique in exponential. Given \(B^{A}\) and an object \(C\), we want to find a morphism from \(C\) to \(B^{A}\). Let us say it is \(g\), we can have an equation for \(g\), provided with the diagram:
+
+\begin{displaymath}
+\begin{tikzcd}
+C\times A
+\arrow[rr, "g\times \mathrm{id}"]
+\arrow[rd, "\epsilon (g \times \mathrm{id})"]
+                &   & B ^{A} \times A
+                      \arrow[ld, "\epsilon"]  \\
+                & B
+\end{tikzcd}
+\end{displaymath}
+the equation:
+\begin{displaymath}
+g = \lambda (\epsilon \cdot (g \times \mathrm{id}))
+\end{displaymath}
+
+if we now treat \(\lambda\) as something we are more familiar with, we have this immediate reduction or \(\eta\)-conversion
+
+\[
+g = \lambda x (g)x
+\]
+
+Remind me of what \(\lambda\) means in the first place. When given a function \(f\) from \(C\times A\) to \(B\), we have a \(\lambda(f)\) from \(C\) to \(B^{A}\), which means that we can factor a function \(f\) to a \(\lambda(f)\) and an evaluation function \(\epsilon\). How does that transfer from \(\lambda\) to this \(\lambda\)?
+
+So a \(g\) here is function from \(C\) to \(B^{A}\). We can use \(g\) to construct a \(C\times A\) to \(B\). And then we use this constructed result, we can then use \(\lambda\) to find a \(C\to B^{A}\). Who is exactly \(g\) itself, since we know this is a CCC.
+
+Okay I don' know what the hell I am say.
+
+*** surjective pairing in category
+
+the surjective pairing is below equation:
+
+\begin{equation}
+(\pi_{1}a, \pi_{2}a) = a
+\end{equation}
+
+where \(a\) is a variable of type \(A\land B\), of form \((x, y)\), where \(x\) and \(y\) are of type \(A\) and \(B\) respectively.
+
+here we use the idea of unicity above, we consider the unique Hom as an unknown variable, we can have an equation, provided by the commutative diagram:
+
+\begin{displaymath}
+\begin{tikzcd}
+C \arrow[rrd, bend left, "\pi_{1}\cdot h"]
+  \arrow[rdd, bend right,"\pi_{2}\cdot h"]
+  \arrow[rd, "h"]                 & & \\
+                                  & A\times B \arrow[r, "\pi_{1}"]
+                                              \arrow[d, "\pi_{2}"] & A\\
+                                  & B
+\end{tikzcd}
+\end{displaymath}
+the equation is:
+\begin{equation}
+(\pi_{1} \cdot h, \pi_{2} \cdot h) = h
+\end{equation}
+
+here we can learn about the corresponce a little bit more, where a formula in is represented as a hom from \(\text{Hom}_{\mathsf C}(C, A)\), where \(C\) is a random object, and \(A\) is the respective formula. And very true that a \(h\) which is hom in \(\mathrm{Hom}_{\mathsf C}(C , A\times B)\), is treated as an variable for the type \(A \times B\).
+
+Here \(\pi_{1}\cdot h\) is an obvious variable for formula \(A\), which is constructed via projecting from \(A \land B\).
+
+** chapter 8: coherent spaces
+
+*** the definition of coherent spaces
+
+A coherent space has some components:
+
+1. web: a underlying set namely \(X\).
+2. coherence: a reflexive and symmetric relation. I don't know how to typeset the symbol yet.
+3. clique: a clique \(a\sqsubset X\), is a subset of \(X\), made of pair-wise coherent points.
+
+*** the coding of scott domains
+
+An example here is the cartesian product, namely \(\mathbf{bool}\times \mathbf{bool}\).
+
+And we treat the space as a space with four point, namly: \(v\), \(f\) and \(v'\) and \(f'\). The points are pointwise coherent besides \((v, f)\) and \((v', f')\), and we consider a mapping \(F\) from the coherent space where the objects are cliques---the set whose elements are point-wise coherent.
+
+\begin{align}
+F(a)         &= v, \text{if } a \text{ has } v\\
+F(\{f, f'\}) &= f\\
+F(b)         &= \emptyset, \text{otherwise}
+\end{align}
+
+the coding is about representing the \(F\). We need some redundancy. we need to list all the \(a\) in the first equation above. Because in the definition of coherent space, if \(b \subset a\) then something is true also for \(b\). So it becomes
+
+\begin{displaymath}
+\begin{aligned}
+F(\{v\}) = v\\
+F(\{v'\}) = v\\
+F(\{v, f'\}) = v\\
+F(\{v', f\}) = v
+\end{aligned}
+\end{displaymath}
+
+This is the coding of \(F\). The redundancy is need. I don't really know what is section is talking about.
+
+*** stable function and stability
+
+here \(X\) and \(Y\) are two coherent spaces, a stable function from \(X\) to \(Y\) satisfies:
+
+Cliques: if \(a \sqsubset X\) then \(F(a)\sqsubset Y\)
+Monotonicity: if \(a \subset b \sqsubset X\) then \(F(a)\subset F(b)\)
+Continuity: \(F(\uparrow \bigcup_{i}a_{i}) = \uparrow \bigcup_{i}F(a_{i})\)
+Stability: if \(a \cup b \sqsubset X\) then \(F(a \cap b ) = F(a) \cap F(b)\)
+
+Stable order between the stable functions is defined:
+Berry order: \(F\sqsubset G\) iff for all \(a \subset b \sqsubset X\), \(F(a) = F(b) \cap G(a)\).
+
+What the hell is this one?
+
+** chapter 9: linear logic
+
+*** linearity
+
+the definition of linearity is stable function that preserves coherent unions:
+
+For instance \((C\cup D) a = (C)a \cup (D)a\).
+
 ** supplements
+
+*** directed sets
+
+A collection of sets is said to be directed, if the sets are indexed by a partially ordered set.
+
+For example \(\{x_{i}\}\), \(i \in I\), where\(I\) is a partial order set.
 
 *** logic complexity, first order
 
@@ -1021,15 +1179,34 @@ Herbrand’s Theorem: This theorem provides a way to transform a first-order log
 
 It states that if a first-order formula is universally valid, then there is a finite set of ground instances (instances with no variables) of its clauses that are propositionally valid.
 
-
 How they are related is that they both transfer something undecidable to decidable.
 
-* some cnn
+* some books
 
-** convolution
+** hott
 
-Convolution is used for smoothing a noised function sometimes.
-Say \(x(t)\) is the noised function where \(t\) is time and \(x\) is distance of a airplane. And then we use a weighting function \(w(a)\), where\(a\) is the age of a measurement(?). The convolution is defined as
+*** the intuition of dependent type theory and hott
+
+A path of two point in topology is \(f\colon [0,1] \to X\), a "path" for a path to another path is homotopy, which is of type
+
+\[
+H \colon [0,1] \times [0,1] \to X
+\]
+
+\(H\) can be called a two-dimensional path, and \(f\) is a one-dimensional path. We can say a point is a zero-dimensional path.
+
+This formulate a simple kinds of dependent type theory, we say \(x, y\) are equal if and only if there is a path from \(x\) to \(y\). This kind of "equal" can be equated with another "equal".
+
+First we have \(x =_{A} y\), if there is a path from \(x\) to \(y\), where they are point in \(A\). And then we say \(p = _{(x = _{A} y)} q\) if we have a homotopy \(H\), where \(p, q\) are "points" in \(x =_{A} y\).
+
+** some reviews
+
+* little bishe
+** some cnn
+
+*** convolution
+
+Convolution is used for smoothing a noised function sometimes. Say \(x(t)\) is the noised function where \(t\) is time and \(x\) is distance of a airplane. And then we use a weighting function \(w(a)\), where\(a\) is the age of a measurement(?). The convolution is defined as
 
 \[
 s(t) = \int x(a)w(t-a) \mathrm{d}a
@@ -1040,17 +1217,17 @@ s(t) = (x * w) (t)
 \]
 https://www.deeplearningbook.org/contents/convnets.html
 
-** input and kernel
+*** input and kernel
 
 in \(s(t) = (x * w)(t)\), \(x\) is *input* and \(w\) is *kernel*. The output is called feature map.
 
 both input and kernel can be expressed with multi-dimensional matrix.
 
-** sparse interactions
+*** sparse interactions
 
 A covolution is matrix manipulation. It allows sparse interactions by making kernel smaller than input, as oppose to traditional ways where an interaction is made by matrix multiplication.
 
-** pooling
+*** pooling
 
 The pooling layer is used for smoothing the result. In max pooling, the output \(s\sb{i}\) is the \(\max\) of the vicinity of input \(x\sb{i}\), for example
 
@@ -1060,7 +1237,82 @@ s\sb{i} = \max\{x\sb{i-1},x\sb{i},x\sb{i+1}\}
 
 It is said that the pooling enable a resist for a small amount of translation. Damn bitch, why use the word translation?
 
+** EdgeSimCloud
+
 * diary
+
+** [2024-10-08 Tue] 对于人的态度的察觉
+
+以前是在高中，在那里，其实每个人都是没有什么坏的倾向的。我是一个老师，那么我的职责就是教好你。我是你的同学，那我们就共同进步，或者至少不相互干扰。
+
+一种勉强、一种敷衍、一种自己没有察觉的沉醉，都是极度让人敏感的……我们亲爱的学长，仿佛是自己也不怎么想干这种事情的样子……真是令人无语……尤其对于我来说。
+
+也就是这种事情最能打击人的积极性……
+
+
+** [2024-10-07 Mon] 双重身
+
+“我觉得我说很多事情都被当放屁了”，我当时是怎么想的？
+
+说实话我完全记不得了……
+
+这其实是有问题的啊
+
+** [2024-10-06 Sun] being a women
+
+基于一种刻板印象，在老友记之中，joey 说“不是你说的内容，而是你如何说的的”，随后惊呼“OMG，我是个女人”。但现实果真如此？
+
+非也。我就是会被人的态度强烈地影响的人。其实这就是所谓的下头之一。当然下头更像是 [[*\[2024-10-06 Sun\] 重叠的经验][[2024-10-06 Sun] 重叠的经验]] 所提及的，矛盾的体验之间带来的一种 bewilderedness。
+
+感性的人吗？但事实上不是如此……每个人都有感性的功能在其大脑内运作着。
+
+** [2024-10-06 Sun] 重叠的经验
+
+在话语形成之前，一般是先有体验，这是经验的一种，一种还没能成形的经验。我说，我一般先体会重叠的经验带来的感觉，然后才能用嘴说出话来。
+
+比如说，我今日看到一个抱着玩偶的女孩。很不自然地、很可耻地，一种 sexualize 的行为就在这里产生了。一种重叠而且矛盾的经验让我有一种违和感。何者？对于“漫画”之中的这种形象的情感，放在现实之中就成为恶心的事情了，一种现实和虚构之中一个桥梁就搭了起来，现实和虚构相互渗透。
+
+这种违和感仿佛是在对我说，“你个比差点成变态了”。
+
+错位的经验带了一种还难以言表的震撼。仿佛是一个无形的链条的断裂。我是先有感觉才有解释，这倒是一种很麻烦的事情，因为我的解释是基于“感觉”而非事实。
+
+** [2024-10-02 Wed] 对于“精神营养”
+
+对于“精神营养”的追求，仿佛是一种幻觉，妄想在“精神”上赋予自己文化产品以高层次的意义。
+
+面向一个男性向的作品，“男性向”一个评价似乎已经足够，但是在这里展现的是如此的言语：
+“我仿佛没有感觉到你的作画的意图
+“仿佛是为了画而画
+“没有对精神营养的追求
+“女性的身体作为一种客体被呈现在画之中
+“能够感觉到创作的污浊的眼神”
+……
+
+幻想一般的对自己的消费的拔高，还加之这种无耻的性别叙事的应用。
+
+其实是一种混用、以及这种混用导致的对于自己行为的合法化，也就是说，当我的需求是 mental 的时候，我却认为，我的需求是一种 spiritual 的。占据了前者的合法性，同时后者还让其占据了所谓的“意义”的高点。
+
+他们的观点在事实上是一种滥觞。当有些人开始讨论消费者和创作者之间的关系、这种彼此相互渗透的两个全体之间的关系的语境之下，性别叙事作为一种50年前的老古董就很少的出现在这里，并且文化创作也不区分同人创作以及商业创作，所谓的“男性向”作品也并非以所谓的“色图”的形式出现。作为50年前的"先进"理论也是理所当然地有着市场，但只不过是作为一种最没有“营养”的评价而存在。
+
+lead you astray
+
+** [2024-09-30 Mon] nlab
+
+nlab 让人恼火，虽然 nlab 对于很多人来说是不错的资源。但还是令人恼火。
+
+比如说 coherent space 这个部分，事实上来说，我们抛弃掉拓扑的语言反而方便我们的理解。
+
+damn
+
+** [2024-09-29 Sun] 建议抬走
+
+我看到 EdgecloudSim 其实是一个 Java 的玩意，货不对版啊！
+
+其实应该报告一下。
+
+** [2024-09-28 Sat] 不存在后悔
+
+没有后悔，在那里只是为了弥补认知的不足所付出的代价。如果你的后悔只是“如果当初不用支付那种代价就好了”，那你还不如许个更实际的愿望，比如说“如果我家里当初拆迁然后突然多了200万就好了”。
 
 ** [2024-09-25 Wed] 装置的大小
 
@@ -1070,7 +1322,8 @@ It is said that the pooling enable a resist for a small amount of translation. D
 
 对于长篇小说就不必然，装置可以和玩具一样。但是说它的大小变得如此之小，而玩弄的意味是如此的足，让人觉得其仅仅是玩具，像是 margin 上的涂鸦，像是道具而不是装置，像是一个超链接，给你导到不知哪里去了。
 
-乔伊斯的«芬尼根的守灵夜»，我只看过第一句话，其首字母没有大写，明显是半句。“不会吧”，心里想着，翻到全书最后一句话上，“shit”，确实是和第一句能接上……这似乎是最大的装置，贯穿了整部小说！但果真如此吗？
+乔伊斯的«芬尼根的守灵夜»，我只看过第一句话，其首字母没有大写，明显是半句。“不会吧”，心里想着，翻到全书最后一句话上，“居然真的是”，确实是和第一句能接上……这似乎是最大的装置，贯穿了整部小说！但果真如此吗？
+
 ** [2024-09-24 Tue] 脆弱的“好看”
 
 看到了一个reddit的帖子：有哪部电视剧是如此烂尾以至于你一直记恨它。我立刻就想起了我曾经看过的那些。
@@ -1089,10 +1342,6 @@ It is said that the pooling enable a resist for a small amount of translation. D
 举个例子，人曾说自己因为犯了某一个错误，小说订阅数崩了几万。这似乎能说明对于人来说，小说只是随意替换的道具，就如同你的飞机杯坏了就买个新的。替换小说就如同关掉这个黄片然后打开另一个黄片一样简单。
 
 在这里不仅是对话゠阅读，而且还是对于好看的质疑。若是以一种脆弱的形式享受，潜在的风险让人觉得不值当。这是某种抽离、自己的理智给出的警告——一种对下降的警告。
-
-** [2024-09-24 Tue] 其实是失败的，因为还是什么都没有做
-
-至少得设置一个TODO。
 
 ** [2024-09-22 Sun]
 
@@ -1123,10 +1372,60 @@ Preparing for shit.
 
 * entries
 
-** TODO <2024-09-26 Thu> 上午上课
-** TODO send a pdf at least...
-<2024-09-23 Mon>
+#+BEGIN: columnview :hlines 1 :id local :format "%item %todo"
+| item                 | todo |
+|----------------------+------|
+| entries              |      |
+| 书评 of east of eden | DONE |
+| bishe                | TODO |
+| visa 咨询            | TODO |
+| 那个问题的描述       |      |
+#+END:
+
+** DONE 书评 of east of eden
+<2024-10-08 Tue>
+
+John Steinbeck 的 east of eden。首先是让人惋惜，其次是让人骂出，“其实获普利策奖的作家也只不过是一个二流作家”。
+
+一开始最引人瞩目的就是简洁轻快的语言。以及之中完全在把握之中的叙事。
+
+但是这种把握却让人觉得二流。因为……
+
+对于角色的描写，仿佛是为了剧情而服务的。在这里原本两者一体的，却变为两个分离的个体了。主人公母亲的性格仿佛就是用来打破的---她不被允许发表自己的意见---在某一章节的最后，仿佛是理所当然的，她破天荒说出了自己的心里话。仿佛她的存在就是为了这一刻，作为一个死板的家庭里面的、无法表示自己观点的母亲，以这个身份在章节的末尾营造一种戏剧性。
+
+又一章的末尾，主人公和自己的哥讲点心里话。但这却让人疑惑，“他果真是如此讲话的吗？”。主人公难得有一段长一些的对话，但却感觉和他的性格对不上？但其实是“他的性格”本身居然没有定形下来。
+
+小说里面最难写的就是对话。至此我已经放弃这本书了，因为对话让人发觉作者水平不咋的。不会写对话建议像百年孤独一样别写。
+
+** TODO bishe
+<2024-10-08 Tue>
+
+** TODO visa 咨询                                                     :visa:
+
+- [ ] 询问消息。1. 对后面的影响 2. 前人申诉的经历、自己是否应该进行申诉 3. 询问材料的缺失
+- [ ] 是再次申请还是等别的？
+
+*** 那个问题的描述
+
+
 * archive
+
+#+BEGIN: columnview :hlines 1 :id local :format "%item %todo %tags"
+| item             | todo | tags |
+|------------------+------+------|
+| archive          |      |      |
+| [2024-09-27 Fri] |      |      |
+| 写作的步骤       |      |      |
+| 2-3 核心论文     |      |      |
+| 实现的工作       |      |      |
+| 做实验           |      |      |
+| 写论文           |      |      |
+#+END:
+
+** [2024-09-27 Fri]
+
+- EdgeCloudSim 代码重构
+- 从别人的方法复现
 
 ** 写作的步骤
 
@@ -1143,7 +1442,7 @@ Preparing for shit.
   - 怎么布局、怎么画图
   - 框架图
   - 技术细节
-- 复现？
+- =复现=
 
 *** 做实验
 
@@ -1154,37 +1453,3 @@ Preparing for shit.
 *** 写论文
 
 - 文字衔接、润色
-** some useless math
-*** goal directed proof search
-
-In the concept of proof search, things can be simplified as
-\[
-\Delta \to G
-\]
-here \(\Delta\) is a set or multi-set, anyway a collection of formulas, called =proof clauses=, while \(G\) is called the =goal=.  And this is why we called this goal-directed.
-
-We can have a basic duality here: proof clauses vs. goals
-
-*** reduction and backchaining                                    :ARCHIVE:
-
-The term is sus.
-
-The constant in formulas can be divided into two groups:
-1. logical constants (connectives), including \(\forall\) \(\exists\) and \(\Rightarrow\) and so on.
-2. non-logical one, including \(f\) function symbols, and predicative.
-
-And I honestly don't know what is reduction and backchaining. I do know that for the former, it is all about logical inference, but I don't know what backchain means at all.
-
-*** Prolog                                                        :ARCHIVE:
-
-The book mentions about Prolog, which indicates that the book is actually kinda outdated.
-
-*** logic programming languages building                          :ARCHIVE:
-
-**** constants
-
-First the constants include: \(v\), \(\land\), \(\lor\), \(\to\), \(\forall\), \(\exists\).
-
-**** Horn clauses
-
-what the fuck is this fucking article!
