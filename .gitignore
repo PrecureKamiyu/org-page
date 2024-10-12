@@ -1,0 +1,6 @@
+# we only include html file and svg files
+
+# texinfo file
+*.texi
+# org file
+*.org
