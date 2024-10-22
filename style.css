@@ -84,16 +84,16 @@
 @font-face {
     font-display: swap;
     font-family: Source Han;
-    src: url(https://jdh8.github.io/source-han-serif/SourceHanSerifCN-Regular.woff);
+    src: url(https://jdh8.github.io/source-han-serif/SourceHanSerifCN-Light.woff);
     font-weight: normal;
 }
 
-@font-face {
-    font-display: swap;
-    font-family: Source Han;
-    src: url(https://jdh8.github.io/source-han-serif/SourceHanSerifCN-Regular.woff);
-    font-weight: normal;
-}
+/* @font-face { */
+/*     font-display: swap; */
+/*     font-family: Source Han; */
+/*     src: url(https://jdh8.github.io/source-han-serif/SourceHanSerifCN-Regular.woff); */
+/*     font-weight: normal; */
+/* } */
 
 
 article,
