@@ -1,8 +1,5 @@
 #+title:Archive
 #+author:MAO
-# -*- olivetti-body-width: 70; -*-
-# -*- org-tags-column: -60; -*-
-
 #+startup: overview noindent margin
 #+options: toc:3
 
@@ -263,6 +260,27 @@ ps. reddit is so powerful because I can literally see the ratio. Damn.
 :PROPERTIES:
 :CUSTOM_ID: archive
 :END:
+
+** 读史书时有没有让你笑出声的段落？
+
+大汉魏王曹孟德 等 2571 人赞同了该回答
+
+1958 年，中国人民大学出版了一本书，《高等学校右派言论选编》。试举一例如下：
+
+#+begin_quote
+“在我們社会里有一个阶層，处处享受特权。建筑工人盖了那么多楼房，可是他們自己只能任茅屋，享受特权的都是些干部。高級知识分子吃得很好，与一般人民相差太远。現在没有人敢大胆地来写反映这些現象的詩，因此我产生感慨和怀疑。我也知道党照顧高級知識分子是为了長远利益，但在感情上却接受不了。……‘谈’的文章‘阶级社会里的等级制度’，我觉得很有道理，说出了我不敢说的话。当然我在本質上是和他不同的。”
+
+（北京大学 左言东）
+#+end_quote
+
+#+begin_quote
+“在育才小学学习的都是党员高级干部的子女，他们父亲是党员，母亲是党员，将来自己也必定是党员，这是草成一个新的贵族阶级。”
+
+（中山大学 董每戡）
+#+end_quote
+
+PS: 评论依旧是系统关掉的。
+[2024-10-23 Wed]
 
 ** iroha tenga
 
@@ -3111,520 +3129,46 @@ rocefactor
 
 ** Hotel California
 
-On a dark desert highway, cool wind in my hair
-Warm smell of colitas rising up through the air
-Up ahead in the distance, I saw a shimmering light
-My head grew heavy and my sight grew dim, I had to stop for the night
-There she stood in the doorway, I heard the mission bell
-And I was thinkin' to myself, "This could be heaven or this could be hell"
-Then she lit up a candle and she showed me the way
-There were voices down the corridor, I thought I heard them say
-
-"Welcome to the Hotel California
-Such a lovely place (such a lovely place)
-Such a lovely face
-Plenty of room at the Hotel California
-Any time of year (any time of year)
-You can find it here"
-
-Her mind is Tiffany-twisted, she got the Mercedes-Benz, uh
-She got a lot of pretty, pretty boys that she calls friends
-How they dance in the courtyard, sweet summer sweat
-Some dance to remember, some dance to forget
-So I called up the Captain, "Please bring me my wine"
-He said, "We haven't had that spirit here since 1969"
-And still, those voices are calling from far away
-Wake you up in the middle of the night just to hear them say
-
-"Welcome to the Hotel California
-Such a lovely place (such a lovely place)
-Such a lovely face
-They're livin' it up at the Hotel California
-What a nice surprise (what a nice surprise)
-Bring your alibis"
-
-Mirrors on the ceiling, the pink champagne on ice
-And she said, "We are all just prisoners here of our own device"
-And in the master's chambers, they gathered for the feast
-They stab it with their steely knives, but they just can't kill the beast
-
-Last thing I remember, I was running for the door
-I had to find the passage back to the place I was before
-"Relax, " said the night man, "We are programmed to receive
-You can check out any time you like, but you can never leave"
-
-** ハーフムーン・セレナーデ                                        :noexport:
-
-  あなたのもとへ　届くなら
-  水面（みなも）に散（ち）った　琥珀（きん）の枯（か）れ葉を
-  風つまびく音符 （おんぶ） にして　想い伝える
-
-  月の雫（つく）を　左手に
-  涙でそっと　ひとつにつなぐ
-  好きな人と結（むす）ばれたい…… 深く祈るわ
-
-  青春の雲が切れる　年頃（きせつ）抱きしめ
-
-  誰もみんな　ひとりぼっちだから
-  優しさを　愛（いど）おしむのね
-  抱きしめて永遠（とお）く　あなたの胸の
-  生命の響きに　満（み）ちる夢
-
-  ふたりでいても　切なくて
-  あなたの指を　ぎゅっとかんだの
-  恋をしても男の人　迷わないのね
-
-  流れて落ちた　星（ほし）の輪（ま）が \\
-  胸の泉（いつみ）に　波（なみ）を立てれば \\
-  欠（か）けた月は淋しさに似て　心痛むの
-
-  美しい瞳（ひとみ）のまま　どうぞ愛して
-
-  幸福（しあわせ）をさがす　幸福（しあわせ）ふたり \\
-  抱きしめて生きてゆけたら \\
-  離さないで　ああ　時の銀河に \\
-  流され　大人になろうとも
-
-  青春の雲が切れる　年頃（きせつ）抱きしめ
-
-  誰もみんな　ひとりぼっちだから \\
-  優しさを　愛おしむのね \\
-  抱きしめて永遠（とお）く　あなたの胸の \\
-  生命の響きに　満ちる夢
-
-* COMMENT head                                    :noexport:
-
-** DONE try to fix vscode <2024-09-23 Mon>
-:PROPERTIES:
-:ARCHIVE_TIME: 2024-09-23 Mon 17:54
-:ARCHIVE_FILE: ~/org/note.org
-:ARCHIVE_OLPATH: archived
-:ARCHIVE_CATEGORY: note
-:ARCHIVE_TODO: DONE
-:END:
-[2024-09-23 Mon 13:55]
-
-** DONE ask for gitee
-:PROPERTIES:
-:ARCHIVE_TIME: 2024-09-24 Tue 18:49
-:ARCHIVE_FILE: ~/org/note.org
-:ARCHIVE_OLPATH: entries
-:ARCHIVE_CATEGORY: note
-:ARCHIVE_TODO: DONE
-:END:
-<2024-09-24 Tue>
-
-** CANCELED gitee code
-:PROPERTIES:
-:ARCHIVE_TIME: 2024-09-24 Tue 18:49
-:ARCHIVE_FILE: ~/org/note.org
-:ARCHIVE_OLPATH: entries
-:ARCHIVE_CATEGORY: note
-:ARCHIVE_TODO: CANCELED
-:END:
-<2024-09-24 Tue>
-
-Some how I can get it.
-
-** DONE wait for gitee
-:PROPERTIES:
-:ARCHIVE_TIME: 2024-09-24 Tue 19:55
-:ARCHIVE_FILE: ~/org/note.org
-:ARCHIVE_OLPATH: entries
-:ARCHIVE_CATEGORY: note
-:ARCHIVE_TODO: DONE
-:END:
-<2024-09-24 Tue>
-
-** DONE file the document
-:PROPERTIES:
-:ARCHIVE_TIME: 2024-09-25 Wed 00:48
-:ARCHIVE_FILE: ~/org/note.org
-:ARCHIVE_OLPATH: entries
-:ARCHIVE_CATEGORY: note
-:ARCHIVE_TODO: DONE
-:END:
-<2024-09-24 Tue>
-
-** DONE csl for chinese paper citation
-:PROPERTIES:
-:ARCHIVE_TIME: 2024-09-25 Wed 00:48
-:ARCHIVE_FILE: ~/org/note.org
-:ARCHIVE_OLPATH: entries
-:ARCHIVE_CATEGORY: note
-:ARCHIVE_TODO: DONE
-:END:
-<2024-09-24 Tue>
-
-** DONE define convolution
-:PROPERTIES:
-:ARCHIVE_TIME: 2024-09-25 Wed 01:04
-:ARCHIVE_FILE: ~/org/note.org
-:ARCHIVE_OLPATH: entries
-:ARCHIVE_CATEGORY: note
-:ARCHIVE_TODO: DONE
-:END:
-<2024-09-24 Tue>
-
-** DONE visa relatively
-:PROPERTIES:
-:ARCHIVE_TIME: 2024-09-27 Fri 19:49
-:ARCHIVE_FILE: ~/org/note.org
-:ARCHIVE_CATEGORY: note
-:ARCHIVE_TODO: DONE
-:END:
-
-Anyway, this is the only note.
-
-*** part one
-
-**** TODO translation
-
-**** many scan
-
-**** DONE photo requirements
-
-https://www.immigration.govt.nz/new-zealand-visas/preparing-a-visa-application/character-and-identity/acceptable-photos
-
-I spent 180 for this shit?
-
-**** things to prepare for vistor visa
-
-- a photo of one self
-- a credit card for the fee, the thing is that
-- a scan for passport
-- a document
-
-**** English translation has requirements
-
-https://www.immigration.govt.nz/new-zealand-visas/preparing-a-visa-application/english-language/translating-supporting-documents-into-english
-
-*** part two: documents
-
-**** DONE list of document
-
-- 护照信息页
-- 身份证正反面（以及翻译）
-- 户口本正本（以及翻译）
-- 旅行计划（英文）
-- 多次入境说明（英文）
-- 银行流水（以及翻译）
-
-**** DONE the problem for 交易明细
-
-There are no English version available.
-
-*** part 3rd: more document
-
-https://www.xiaohongshu.com/explore/665adbb60000000015013dd8?xsec_token=ABF2THlGG0x2Df1IYIRZZ-ZzMgdHvrDJLwn3grLoHVGjA=&xsec_source=pc_search
-
-**** letter documentclass
-
-https://en.wikibooks.org/wiki/LaTeX/Letters
-
-use \LaTeX to write a cover letter
-
-[[file:~/tex/main.tex][link to tex file]]
-
-**** cover letter content
-***** front
-
-#+name: front
-#+begin_src latex
-   \documentclass[11pt]{letter}
-   \usepackage{newtxtext}
-   \usepackage{hyperref}
-
-   \signature{Mao, Hanxiang
-     +86~13823043183  \\
-     \href{mailto:maojun464@gmail.com}{maojun464@gmail.com}}
-
-   \address{Mao, Hanxiang}
-   \begin{document}
-   \begin{letter}{}
-#+end_src
-
-***** content
-
-#+begin_src latex
-  \ldots
-  \closing{Yours Faithfully,}
-  \ps
-  \url{http://www.gnu.org/copyleft/fdl.html}.
-  \encl{Copyright permission form}
-#+end_src
-
-***** open
-
-这个部分我们写明自己的身份，就读学校和联系方式。
-
-#+name: open
-#+begin_src latex
-  \opening{Dear Sir or Madam:}
-
-  My name is Mao, Hanxiang (my passport number: \texttt{EN3809338} and my date of birth: 11~MAY~2003). I am writing to express my sincere intention to apply for a New Zealand Visa to visit New Zealand. I am currently an undergraduate student, pursuing my studies in computer science in Harbin Institute of Technology Shenzhen.
-#+end_src
-
-***** p1
-
-解释自己的 financial support
-
-#+name: p1
-#+begin_src latex
-  I would like to bring to your attention that my financial support for this trip is primarily provided by my parents---my father is jewelry crafter, and my mother mainly works as an assistant for my father, mainly helping with jewelry design. They have graciously agreed to fund the major expenses related to my New Zealand travle, covering transportation fee and accommodation. Additionally, I have accumulated funds with my acadamic scholarships and part-time employment. The bank saving evidence is the proof of the fund that is prepared for this trip. And the kinship can be proved from the household document I attached, this document can prove that we are indeed a family.
-#+end_src
-
-***** p2
-
-这个自然段用于说明以往的出境经历。但是我没有就算了。所以用于说明一下动机吧。
-
-#+name: p2
-#+begin_src latex
-  I am planning to a travel to New Zealand at the beginning of next year. I seldom have chances for trips, regardless a trip abroad. I have always wanted to have a trip abroad, and always been fascinated by the natural scenery and landscape that I occasionally read on travel magazines and travel websites. Recently, I have my parents' support for such a travel to New Zealand and moreover my friend would join me for this trip, who spent years during her childhood. As I am approaching graduation, and after securing a job in China mainland, with things getting settled, I feel like it is a great chance to slow down and spend time on enjoying life. So, I want to apply for New Zealand Vistor Visa.
-#+end_src
-
-***** p3
-
-简要说明一下旅行计划？
-
-#+name: p3
-#+begin_src latex
-For this upcoming trip, I would go with my friend I mentioned in the above paragraph. We are planning to stay in New Zealan for up to 2 weeks. We would visit various cultural and stunning beautiful landmarks in New Zealand. I assure that I will return to my home country before visa expiration. The future plan after graduation is to working in China. I have provided the Undergraduate Enrollment Verification in order to prove my identify.
-#+end_src
-
-***** back
-
-#+name: back
-#+begin_src latex
-
-  \bigskip
-
-  Highly appreciated if you consider my application favorably and grant me New Zealand Vissa. I am looking forward to the opportunity to explore natural landscapes in New Zealand and create a lasting memory during my visit. I am more than willing to provide any additional information or docuemntation if required. Please do contact me with my phone number or via email.
-
-  \closing{Sincerely,}
-  \end{letter}
-  \end{document}
-#+end_src
-
-**** description letter
-
-***** dp1
-
-#+name: dp1
-#+begin_src latex
-  \opening{Dear Sir or Madam:}
-
-  My name Mao, Hanxiang (passport number: \texttt{EN3809338} date of birth 11~MAY~2003). I am writing apply for multiple vistor visa to New Zealand. I wish to provide addtional evidence of my intention to visit New Zealand for future trips. These visits are primarily for the purpose of spending quality time for vacation. I have outlined below the specific dates and times of my ipcoming visits:
-
-  The first upcoming visit: Dates of Travel 06.01.2025--15.01.2025 (winter break in China)
-
-  The second upcoming visit: Dates of Travel 10.06-2024--25.06.2025 (summer break in China)
-#+end_src
-
-***** dp2
-
-#+name: dp2
-#+begin_src latex
-  New Zealand has so many stunning wonderful natural sceneries. I really want to fully enjoy the the beauty of New Zealand. I am not sure if 2 weeks to visti the South Island and North Island both, so I write this letter to apply for Multiple Vistor Visa. Secondly, I would like to also enjoy a trip during my Summer break but I am not quite whether I still have time for traveling since I am facing graduation. So I am planning to visit New Zealand once more if I have any chance. I think I need to spend more time experiencing the beauty and culture of New Zealand. And I believe that my intention to make these future visits
-#+end_src
-
-***** dback
-
-#+name: dback
-#+begin_src latex
-  If any further information or document is required, please do contact me at +86~13823043183 or via email \href{mailto:maojun464@gmail.com}{maojun464@gmail.com}.
-
-  \closing{Sincerely,}
-  \end{letter}
-  \end{document}
-#+end_src
-
-**** COMMENT cover letter generator
-
-#+begin_src latex :tangle "~/tex/main.tex" :noweb yes
-  <<front>>
-
-  <<open>>
-
-  <<p1>>
-
-  <<p2>>
-
-  <<p3>>
-
-  <<back>>
-#+end_src
-
-**** COMMENT description letter generator
-
-#+begin_src latex :tangle "~/tex/main.tex" :noweb yes
-  <<front>>
-
-  <<dp1>>
-
-  <<dp2>>
-
-  <<dback>>
-#+end_src
-
-**** COMMENT about trip itinerary
-
-#+begin_src latex :tangle "~/tex/main.tex"
-  \documentclass[12pt]{article}
-  \usepackage[left=1in,right=1in,top=1in,bottom=1in]{geometry}
-  \usepackage{graphicx}
-
-  \graphicspath{ {./images/} }
-
-  \setlength{\parindent}{0pt}
-  \title{Trip Itinerary}
-  \author{Mao, Hanxiang}
-  \date{\today}
-
-  \begin{document}
-
-  \maketitle
-
-  Here is my Trip Itinerary. Firstly I would like to present some preliminary information about where I prepare to visit, and there would be a figure to explain the my rough schedule.
-
-
-  I would liek to take plane from China (Guangzhou) to Auckland, and take bus (maybe InterCity Bus) to get anohter city. I would like to see Auckland Art Gallery, Sky Tower and harbour area. After Auckland, I will go to Rotorua, to go to the Museum and Redwook Forest for hiking and natureexploration. Next is Lkate Taupo, which is known in social media that I highly want to visit. And next maybe Tongariro, and Wellington.
-
-  \bigskip\bigskip
-  \begin{figure}[h]
-  \centering
-  \includegraphics[width=13cm]{trip itinerary.png}
-  \caption{A very rough sketch for the route}
-  \end{figure}
-
-  \end{document}
-#+end_src
-
-*** info
-
-**** [#A] genuine intentions
-
-https://www.immigration.govt.nz/new-zealand-visas/preparing-a-visa-application/character-and-identity/bona-fide
-
-**** mislead info
-
-https://www.immigration.govt.nz/new-zealand-visas/preparing-a-visa-application/character-and-identity/false-and-misleading-information
-
-**** the waiting time is 3 weeks for visitor visa
-:PROPERTIES:
-:ARCHIVE_TIME: 2024-09-18 Wed 13:44
-:ARCHIVE_FILE: ~/org/note.org
-:ARCHIVE_OLPATH: this is the note
-:ARCHIVE_CATEGORY: note
-:END:
-
-https://www.immigration.govt.nz/new-zealand-visas/waiting-for-a-visa/how-long-it-takes-to-process-your-visa-application/visitor-visa-wait-times
-**** safe question for nz when I apply for visa
-
-When asked about the name, I answered CC for the name.
-
-When asked about the city and street that I live in, I answered chinese, faithfully.
-
-*** ONGOING waiting for reply
-
-** DONE use column view to do something
-:PROPERTIES:
-:ARCHIVE_TIME: 2024-10-05 Sat 23:34
-:ARCHIVE_FILE: ~/org/note.org
-:ARCHIVE_OLPATH: entries
-:ARCHIVE_CATEGORY: note
-:ARCHIVE_TODO: DONE
-:END:
-<2024-09-29 Sun>
-
-http://blog.lujun9972.win/blog/2020/05/08/使用-org-mode-columnview-生成任务列表/index.html
-
-** DONE 买个洗面奶
-:PROPERTIES:
-:ARCHIVE_TIME: 2024-10-08 Tue 08:42
-:ARCHIVE_FILE: ~/org/note.org
-:ARCHIVE_OLPATH: entries
-:ARCHIVE_CATEGORY: note
-:ARCHIVE_TODO: DONE
-:END:
-<2024-10-08 Tue>
-
-** CANCELED X 账号
-:PROPERTIES:
-:ARCHIVE_TIME: 2024-10-08 Tue 08:49
-:ARCHIVE_FILE: ~/org/note.org
-:ARCHIVE_OLPATH: entries
-:ARCHIVE_CATEGORY: note
-:ARCHIVE_TODO: CANCELED
-:END:
-<2024-10-08 Tue>
-
-** CANCELED 洗衣服
-:PROPERTIES:
-:ARCHIVE_TIME: 2024-10-08 Tue 08:49
-:ARCHIVE_FILE: ~/org/note.org
-:ARCHIVE_OLPATH: entries
-:ARCHIVE_CATEGORY: note
-:ARCHIVE_TODO: CANCELED
-:END:
-<2024-10-08 Tue>
-
-** 旧书店
-:PROPERTIES:
-:ARCHIVE_TIME: 2024-10-08 Tue 09:16
-:ARCHIVE_FILE: ~/org/note.org
-:ARCHIVE_OLPATH: entries
-:ARCHIVE_CATEGORY: note
-:END:
-
-看过旧书店了，感觉没啥可去的。
-
-** 面包店
-:PROPERTIES:
-:ARCHIVE_TIME: 2024-10-08 Tue 09:16
-:ARCHIVE_FILE: ~/org/note.org
-:ARCHIVE_OLPATH: entries
-:ARCHIVE_CATEGORY: note
-:END:
-
-🈚️
-
-** DONE 吃饭
-:PROPERTIES:
-:ARCHIVE_TIME: 2024-10-08 Tue 09:51
-:ARCHIVE_FILE: ~/org/note.org
-:ARCHIVE_OLPATH: entries
-:ARCHIVE_CATEGORY: note
-:ARCHIVE_TODO: DONE
-:END:
-<2024-10-08 Tue>
-
-** DONE 汉书选
-:PROPERTIES:
-:ARCHIVE_TIME: 2024-10-08 Tue 10:50
-:ARCHIVE_FILE: ~/org/note.org
-:ARCHIVE_OLPATH: entries
-:ARCHIVE_CATEGORY: note
-:ARCHIVE_TODO: DONE
-:END:
-<2024-10-08 Tue>
-
-** DONE 吃饭
-:PROPERTIES:
-:ARCHIVE_TIME: 2024-10-08 Tue 14:14
-:ARCHIVE_FILE: ~/org/note.org
-:ARCHIVE_OLPATH: entries
-:ARCHIVE_CATEGORY: note
-:ARCHIVE_TODO: DONE
-:END:
-<2024-10-08 Tue>
-
-** DONE 发个信息
-:PROPERTIES:
-:ARCHIVE_TIME: 2024-10-08 Tue 21:08
-:ARCHIVE_FILE: ~/org/note.org
-:ARCHIVE_OLPATH: entries
-:ARCHIVE_CATEGORY: note
-:ARCHIVE_TODO: DONE
-:END:
-<2024-10-08 Tue>
+#+begin_verse
+  On a dark desert highway, cool wind in my hair
+  Warm smell of colitas rising up through the air
+  Up ahead in the distance, I saw a shimmering light
+  My head grew heavy and my sight grew dim, I had to stop for the night
+  There she stood in the doorway, I heard the mission bell
+  And I was thinkin' to myself, "This could be heaven or this could be hell"
+  Then she lit up a candle and she showed me the way
+  There were voices down the corridor, I thought I heard them say
+
+  "Welcome to the Hotel California
+  Such a lovely place (such a lovely place)
+  Such a lovely face
+  Plenty of room at the Hotel California
+  Any time of year (any time of year)
+  You can find it here"
+
+  Her mind is Tiffany-twisted, she got the Mercedes-Benz, uh
+  She got a lot of pretty, pretty boys that she calls friends
+  How they dance in the courtyard, sweet summer sweat
+  Some dance to remember, some dance to forget
+  So I called up the Captain, "Please bring me my wine"
+  He said, "We haven't had that spirit here since 1969"
+  And still, those voices are calling from far away
+  Wake you up in the middle of the night just to hear them say
+
+  "Welcome to the Hotel California
+  Such a lovely place (such a lovely place)
+  Such a lovely face
+  They're livin' it up at the Hotel California
+  What a nice surprise (what a nice surprise)
+  Bring your alibis"
+
+  Mirrors on the ceiling, the pink champagne on ice
+  And she said, "We are all just prisoners here of our own device"
+  And in the master's chambers, they gathered for the feast
+  They stab it with their steely knives, but they just can't kill the beast
+
+  Last thing I remember, I was running for the door
+  I had to find the passage back to the place I was before
+  "Relax, " said the night man, "We are programmed to receive
+  You can check out any time you like, but you can never leave"
+#+end_verse
