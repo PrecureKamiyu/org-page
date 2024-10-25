@@ -8,8 +8,6 @@
 #+infojs_opt: view:info toc:3
 #+HTML_LINK_HOME: index.html
 
-
-
 * 2024
 ** 2024-10 October
 *** 2024-10-8 Tuesday
@@ -256,6 +254,54 @@ ps. reddit is so powerful because I can literally see the ratio. Damn.
 
 有点 Panic Attack，现在感觉更像是咖啡导致的。
 
+*** 2024-10-24 Thursday
+
+**** 很严重的发现！
+
+草婴的《安娜》的译本的前言，居然有借鉴的痕迹！
+
+真是可耻啊。
+
+**** 答辩了
+
+作为第一个上去的，感觉担忧的事物其实在人眼中是那么无关紧要的事情。伤心
+
+**** 又想看 Ulysses 了
+
+但是我和 War and Peace 对比了一下，结果还是后者好看得多。
+
+所以看个毛线的 Ulysses。
+
+*** 2024-10-25 Friday
+
+**** 又整了一些 Emacs
+
+得不偿失！但事实果真如此？
+
+究竟到底，只是消遣时间……
+
+[2024-10-25 Fri 12:54]
+
+**** today I learn how to modify the frame parameter
+
+#+begin_src emacs-lisp
+  (modify-all-frames-parameters
+   '((right-divider-width . 20)
+     (internal-border-width . 10)))
+#+end_src
+
+And also I install ~org-modern~, and other things. I have learn a lot. And also
+I know that ~window-divider~ is the name of the face line/border between
+windows. Customizing that face helps a lot.
+
+#+begin_src emacs-lisp
+  (dolist (face '(window-divider
+                  window-divider-first-pixel
+                  window-divider-last-pixel))
+    (face-spec-reset-face face)
+    (set-face-foreground face (face-attribute 'default :background)))
+#+end_src
+
 * archive
 :PROPERTIES:
 :CUSTOM_ID: archive
@@ -264,8 +310,11 @@ ps. reddit is so powerful because I can literally see the ratio. Damn.
 ** 中国当代文坛能否出一位像卡夫卡一样的作家？
 
 Zpuzzle
+
 大学等 4 个话题下的优秀答主
+
 1351 人赞同了该回答
+
 这个问题算是我今年以来看过的最好笑的问题之一了。哪怕你拿海明威、福克纳、马尔克斯等人举例子，然后再得出个 “不可能” 的结论，无论这中间的论证过程多么荒唐，但总归可以证明 “我们为什么发掘不出海明威、马尔克斯”。而卡夫卡呢？
 
 因为只要稍微了解一点卡夫卡的生平就知道，卡夫卡是一个死后才得到普遍认可的作家。卡夫卡生前也是发表过作品的，也得到过一定的好评，但是这与卡夫卡死后才获得名气根本不可同日而语。也就是说，卡夫卡是一个生前并未得到广泛认可的顶级作家，这与梵高在美术界的遭遇如出一辙。
