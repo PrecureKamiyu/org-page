@@ -3346,3 +3346,18 @@ rocefactor
   "Relax, " said the night man, "We are programmed to receive
   You can check out any time you like, but you can never leave"
 #+end_verse
+
+* head
+
+** TODO 论文、数据集
+:PROPERTIES:
+:ARCHIVE_TIME: 2024-10-26 Sat 12:47
+:ARCHIVE_FILE: ~/org/note.org
+:ARCHIVE_OLPATH: entries
+:ARCHIVE_CATEGORY: note
+:ARCHIVE_TODO: TODO
+:END:
+<2024-10-25 Fri>
+
+  + [ ] 论文，follow 的论文。感觉也没啥可行性，难道说直接 follow 学长的工作吗？
+  + [ ] 数据集？这个还得讨论一下才能得出方案
