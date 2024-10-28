@@ -1,4 +1,4 @@
-/* @import url('https://fonts.googleapis.com/css?family=Nunito|Quicksand|Roboto+Mono'); */
+@import url('https://fonts.googleapis.com/css?family=Lobster|EB+Garamond');
 
 /* Quicksand typefaces */
 @font-face {
@@ -95,6 +95,13 @@
 /*     font-weight: normal; */
 /* } */
 
+@font-face {
+    font-display: swap;
+    font-family: EB;
+    src: local('EB Garamond');
+    unicode-range: U+61-7a, U+41-5a, U+30-39;
+}
+
 
 article,
 aside,
@@ -122,9 +129,6 @@ audio:not([controls]) {
     display: none;
 }
 html {
-    font-family: Georgia, serif, "宋体";
-    -webkit-text-size-adjust: 100%;
-    -ms-text-size-adjust: 100%;
 }
 body p, body ul, body ol{
     font-size: 1.2rem;
@@ -188,6 +192,7 @@ img {
     border: 0;
     margin: auto;
     /* max-width: 100%; */
+    /* remove max width for the sake of math formulas */
     max-height: 100%;
 }
 .figure p {
@@ -210,10 +215,8 @@ legend {
     border: 0;
     padding: 0;
 }
-button,
-input,
-select,
-textarea {
+
+button,input,select,textarea {
     font-family: inherit;
     font-size: 100%;
     margin: 0;
@@ -263,8 +266,10 @@ table {
     margin: auto;
 }
 html {
-    font-family: "Georgia", serif, 'Nunito', sans-serif;
+    font-family: EB, "Source Han", serif, "宋体";
     line-height: 1.5;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
 }
 
 pre,
@@ -305,14 +310,9 @@ p#subtitle{
     font-weight: normal;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+h1,h2,h4,h5,h6 {
     padding-top: 0.6em;
-    font-family: serif, 'Quicksand', sans-serif;
+    font-family: Lobster, serif;
     font-weight: normal;
 }
 html {
@@ -323,7 +323,7 @@ html {
 body {
     font-size: 13pt;
     margin: 0 auto;
-    max-width: 765px;
+    max-width: 1000px;
     padding: 1em;
 }
 
@@ -367,6 +367,8 @@ pre {
 pre code {
     background-color: #fdf6e3;
 }
+
+/* font size for headline */
 h1 {
     font-size: 2rem;
 }
@@ -385,10 +387,9 @@ h5 {
 h6 {
     font-size: 1rem;
 }
+
 p, h1, h2, h3, h4, h5, h6, ul  {
-    /* max-width: 700px; */
-    /* margin: 0 auto; */
-    -moz-hyphens: auto;
+     -moz-hyphens: auto;
 }
 .figure {
     max-width: 765px;
