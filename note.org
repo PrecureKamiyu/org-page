@@ -1,0 +1,3066 @@
+#+title:Note
+#+author:MAO
+# #+html_head: <link rel="stylesheet" type="text/css" href="https://orgmode.org/worg/style/worg.css"/>
+#+html_head: <link rel="stylesheet" type="text/css" href="style.css" />
+#+html_link_home: index.html
+#+infojs_opt: view:info
+#+startup: overview latexpreview num
+#+options: tex:dvisvgm toc:2
+#+archive: ~/org/archive.org::* head
+#+latex_header: \usepackage{amsmath}
+#+latex_header: \usepackage{amssymb}
+#+latex_header: \usepackage{tikz}\usetikzlibrary{cd}
+#+latex_header: \usepackage{bussproofs}
+#+latex_header: \usepackage{prftree}
+#+latex_header: \usepackage{cmll}
+#+latex_header: \newcommand{\semicolon}{\mathbin{;}}
+#+latex_header: \newcommand{\N}{\mathbb{N}}
+#+latex_header: \newcommand{\R}{\mathbb{R}}
+#+latex_header: \newcommand{\C}{\mathbb{C}}
+#+latex_header: \newcommand{\B}{\mathbb{B}}
+#+latex_header: \newcommand{\DoubleSlash}{/ \kern-3pt /}
+#+latex_header: \renewcommand{\succ}{\texttt{succ}}
+#+latex_header: \newcommand{\Prop}{\mathsf{Prop}}
+#+latex_header: \newcommand{\Type}{\mathsf{Type}}
+#+latex_header: \newcommand{\Hom}{\mathrm{Hom}}
+#+latex_header: \newcommand{\Fam}{\mathrm{Fam}}
+#+latex_header: \newcommand{\Sets}{\mathbf{Sets}}
+#+latex_header: \newcommand{\Pred}{\mathbf{Pred}}
+#+latex_header: \newcommand{\Fibre}[2]{%
+#+latex_header:   \begin{gathered}\scriptstyle #1\\[-7pt]
+#+latex_header:   \scriptstyle \downarrow\\[-7pt]
+#+latex_header:   \scriptstyle #2
+#+latex_header: \end{gathered}}
+#+latex_header: \newcommand{\netarrow}[2]{\ifnum #2>0 \ar[to=#1, to path={ -- ([yshift=#2ex]\tikztostart.north) -| (\tikztotarget)}] \else \ar[to=#1, to path={ -- ([yshift=#2ex]\tikztostart.south) -| (\tikztotarget)}] \fi}
+#+latex_header: \newcommand{\zerohbox}[1]{\makebox[0pt]{$#1$}}
+
+* some books
+
+** The Blind Spot by Girard
+
+*** chapter 3: LK
+
+**** part 1: starting up, rules and more
+
+***** the problem with Modus Ponens
+
+There are actually problems with Modus Ponens. Modus Ponens is actually very like cut rule.  Why?  Because in the view of proof finding, we start from nothing: if we want to proof \(B\), then probably we have to image such \(A\),
+
+\[
+A \to B,
+\]
+
+holds.  "We have to imagine such \(A\)".  And this is the problem.
+
+***** generalization
+
+From \(A[x]\) to \(\forall xA[x]\). And this is called *generalization*.  What is wrong with it?
+
+***** problems with hilbert's formalism and system
+
+Anyway, the two rules make the Hilbert's logic system non-usable, because it has no good structural property.
+And thus even the slightest automated deduction is impossible.
+
+It is said that hilbert's system is a garbage, in the sense of equivalence, it does no more than other system but hinder our understanding.
+
+***** deduction theorem
+
+if \(B\) is provable in system \(\mathcal F + A\), with \(A\) closed, then \(A \Rightarrow B\) is provable in \(\mathcal F\).
+
+The proof is not provided somehow.
+
+***** sequent and hypothesis
+
+I don't really know the intuition behind the idea that LK is better than Hilbert's, but it seems that it is because of the introduction of hypothesis.
+
+Anyway, the problem of "let us imagine such a premise \(A\)" can be solved with two tools:
+
+  1. LK
+  2. cut-elimination.
+
+Actually LK is no better than Hilbert's system. It just because that Hilbert's system is so bad for proving.
+
+***** sequents
+
+A sequent is expression of \(\Gamma \vdash \Delta\), where \(\Gamma\) and \(\Delta\) are all finite sequences of formulas.
+
+***** the notion of context
+
+We use more notion of context, in order to make a difference from other stuff.  The reason we are doing this?  I don't know.
+
+But anyway, \(\Gamma \vdash A, \Delta\) for example, the context of it is \(\Gamma, \Delta\), one can write as \(\Gamma \vdash {-}, \Delta\)
+
+***** the intuitive "semantic" of LK
+
+\[
+\Gamma \vdash \Delta
+\]
+for this expression, it means "if all the formulas in \(\Gamma\) are correct", then "one of the formula in \(\Delta\) is correct". By the way, the symbol \(\vdash\) is called "turnsile".
+
+The symbols used in LK are:
+1. left commas: means «and»
+2. right commas: «or»
+3. turnsiles: «implies»
+
+***** special sequent in LK
+
+\begin{gather}
+A \vdash\\
+\vdash \\
+\vdash A
+\end{gather}
+the first one means \(A\) leads to nothing, which means \(A\) is contradictory, and 2 means an expression like \(v \to f\), which is bad, 3 means \(A\) is true without hypothesis, which is to say \(A\) is tautology.
+
+The proof of second is important, given by Gentzen, saying that LK is *consistent*.
+
+***** negate of \(A\)
+
+I think we have this \(A \vdash\) then \(\vdash \neg A\). The precise definition is not here tho.
+
+***** rules for LK
+
+The content of LK is the rules. The rules are divided into three groups, we can actually only introduce those important ones, because introducing those about the connectives is always not necessary.
+
+****** the identity group
+
+There are two rules in this group they are called identity and cut rule
+\[
+\frac{}{A \vdash A}\ (\mathrm{id}) \quad \quad \quad
+\frac{\Gamma \vdash A, \Delta \quad \Lambda, A \vdash \Pi}{\Gamma, \Lambda\vdash \Delta, \Pi}\ (\mathrm{cut})
+\]
+There are special cases for cut rules, because of the context. They are 1. modus ponens 2. transitivity
+\[
+\frac{\vdash A\quad A \vdash B}{\vdash B}\ (\mathrm{modus ponens})
+\]
+\[
+\frac{A\vdash B\quad B\vdash C}{A\vdash C} \ (\mathrm{transitivity})
+\]
+cut rule is most important one.
+
+****** Hauptsatz of Gentzen
+
+Hauptsatz is called the cut-elimination. So basically it says that cut rule is redundant. Hauptsatz means big in Germany. So it can be called the main theorem.
+
+****** structural group
+
+\begin{align}
+&&\frac{\Gamma\vdash\Delta}{\sigma(\Gamma)\vdash\tau(\Delta)}\tag{exchange}\\
+&\frac{\Gamma \vdash \Delta}{\Gamma, A \vdash \Delta}
+&&\frac{\Gamma \vdash \Delta}{\Gamma \vdash A, \Delta}\tag{weak} \\
+&{\Gamma \vdash A, A, \Delta \over \Gamma \vdash A, \Delta}
+&&{\Gamma, A, A \vdash \Delta \over \Gamma, A \vdash \Delta}\tag{contract}
+\end{align}
+
+****** contraction and weakening
+
+The rules seem intuitive at first, but there are spaces for we to discuss.
+
+See page 61.
+
+****** logical group
+
+The logical group is about those connectives like \(\forall\) \(\exists\) and so on. Here is the deal
+
+\[
+\frac{\Gamma\vdash A, \Delta}{\Gamma \vdash \forall x A, \Delta}(\vdash \forall) \quad \quad
+\frac{\Gamma, A[t/x]\vdash \Delta}{\Gamma, \forall x A\vdash \Delta}
+(\forall\vdash)
+\]
+
+there are important constrains for the rules:
+
+1. for \(\forall \vdash\) and \(\vdash \exists\), \(t\) should not use \(x\).
+2. \(\vdash \forall\) and \(\exists\vdash\), as \(x\) is introduced, there should be no appearance of \(x\) in context of \(A\), that is \(\Gamma \vdash {-}, \Delta\).
+
+And of course, there are some other rules for \(\Rightarrow\)
+
+\[
+\frac{\Gamma, A \vdash B, \Delta}{\Gamma \vdash A\Rightarrow B, \Delta}\quad\quad
+\frac{\Gamma \vdash A, \Delta\quad\Lambda, B \vdash \Pi}{\Gamma,\Lambda, A\Rightarrow B\vdash\Delta,\Pi}
+\]
+
+You may need some time to process this one.
+
+\[
+\frac{\Gamma \vdash A[t], \Delta}{\Gamma \vdash \exists xA[x], \Delta}\ (\vdash \exists)
+\quad\quad
+\frac{\Gamma, A\vdash \Delta}{\Gamma, \exists x A\vdash \Delta}\ (\exists\vdash)
+\]
+
+here \(A[t]\) is the same as \(A[t/x]\), the latter is more precise. Why are there two symbols because those are symbols used separately in book « proof theory and logic complexity » and « The Blind Spot ».
+
+****** eigenvariable
+
+The notion eigenvariable is not unambiguous.
+
+Since we introduce a variable \(x\) in \(\vdash \forall\), we don't want the premise has \(x\) in it. Thus the premise is written as \(\Gamma \vdash A[v/x],\Delta\).
+
+The thing is to avoid the notion of "bound variable".
+
+****** laxist notation of eigenvariable
+
+Here we have the laxist notation when confronting the variable \(x\) in the rule \(\vdash \forall\). This is because "bound variable" is sometimes confusing.
+
+We say that when introducing \(x\), the premise has no occurrence of \(x\) in it. \(A\) becomes \(A[v/x]\) using a placeholder variable \(v\) that does not appear anywhere.
+
+Significant details really.
+
+***** right hand calculus of LK
+
+The symmetry of LK makes it possible to decrease the size of rules significantly.
+
+\[\begin{aligned}
+&\frac{}{\vdash \neg A, A}\ (\mathrm{id})
+& %
+& \frac{\vdash \Delta, A\quad \vdash \neg A, \Pi}{\vdash \Delta, \Pi} (\mathrm{cut})
+\\
+\\
+& \frac{\vdash \Delta}{\vdash \tau (\Delta)}\ (X)
+& \frac{\vdash \Delta}{\vdash A, \Delta}\ (W)\quad\quad
+& \frac{\vdash A,A,\Delta}{\vdash A, \Delta}\ (\mathrm{con}) %
+\\
+\\
+& \frac{\vdash A, \Delta}{\vdash A \lor B, \Delta}\ (\vdash \lor)
+& %
+& \frac{\vdash A, \Delta\quad \vdash B, \Delta}{\vdash A\land B, \Delta}\ (\vdash \land)
+\\
+\\
+& \frac{\vdash A, \Delta}{\vdash \forall x A, \Delta}
+&
+& \frac{\vdash A[t/x], \Delta}{\vdash \exists x A, \Delta}
+\end{aligned}\]
+
+**** part 1.5: some exercises
+
+***** some basic
+
+Check for [[*logical group]]
+
+****** \(A \to (B \to A)\)
+
+\begin{prooftree}
+\AxiomC{\(A\vdash A\)}
+\UnaryInfC{\(A, B\vdash A\)}
+\UnaryInfC{\(A\vdash B \to A\)}
+\UnaryInfC{\(\vdash A\to (B \to A)\)}
+\end{prooftree}
+
+****** \((A\to (B \to C)) \to (A\to B) \to A \to C\)
+
+\begin{prooftree}
+\AxiomC{\(A \vdash A\)}
+   \AxiomC{\(A \vdash A\)}  \AxiomC{\(B \vdash B\)}
+   \BinaryInfC{\(A \to B, A \vdash B\)}
+                                    \AxiomC{\(C\vdash C\)}
+                    \BinaryInfC{\(B \to C, A\to B, A \vdash C\)}
+\BinaryInfC{\(A\to (B \to C), A, A\to B \vdash C\)}
+\end{prooftree}
+
+****** \(A \to A\lor B\)
+
+apparent
+
+****** \((\neg A\to\neg B) \to (\neg A\to B)\to A\)
+
+I don't want to prove it.
+
+****** \(\forall xA[x] \to A[t/x]\)
+
+\begin{prooftree}
+\AxiomC{\(A[t]\vdash A[t]\)}
+\UnaryInfC{\(\forall xA[x]\vdash A[t]\)}
+\UnaryInfC{\(\vdash \forall x A[x]\to A[t]\)}
+\end{prooftree}
+
+****** \(A[t/x]\to \exists xA[x]\)
+
+\begin{prooftree}
+\AxiomC{\(A[t]\vdash A[t]\)}
+\UnaryInfC{\(A[t]\vdash \exists xA[x]\)}
+\UnaryInfC{\(\vdash A[t]\to \exists xA[x]\)}
+\end{prooftree}
+
+***** prove that it is legit to restrict the id axiom on atom formula
+
+that is, if axioms \(\dfrac{}{A \vdash A}\) holds only when \(A\) is atomic, the system is still legit.
+
+Proof is simple. We use induction on formula \(A\)
+
+****** if \(A\) is of form \(B \to C\)
+
+\begin{prooftree}
+\AxiomC{\(C\vdash C\)}
+\AxiomC{\(B\vdash B\)}
+\BinaryInfC{\(B\to C, B \vdash C\)}
+\UnaryInfC{\(B\to C\vdash B\to C\)}
+\end{prooftree}
+
+****** if \(A\) is of form \(\neg B\)
+
+\begin{prooftree}
+\AxiomC{\(B \vdash B\)}
+\UnaryInfC{\(\vdash B, \neg B\)}
+\UnaryInfC{\(\neg B \vdash \neg B\)}
+\end{prooftree}
+
+****** if \(A\) is of form \(B \lor C\)
+
+\begin{prooftree}
+\AxiomC{\(B\vdash B\)}
+\UnaryInfC{\(B \vdash B \lor C\)}
+  \AxiomC{\(C\vdash C\)}
+  \UnaryInfC{\(C\vdash B \lor C\)}
+\BinaryInfC{\(B\lor C\vdash B \lor C\)}
+\end{prooftree}
+
+****** if \(A\) is of form \(B\land C\)
+
+\begin{prooftree}
+\AxiomC{\(B\vdash B\)}
+\UnaryInfC{\(B\land C \vdash B\)}
+  \AxiomC{\(C\vdash C\)}
+  \UnaryInfC{\(B\land C\vdash C\)}
+\BinaryInfC{\(B\land C\vdash B\land C\)}
+\end{prooftree}
+
+****** if \(A\) is of form \(\forall x B\)
+
+****** if \(A\) is of form \(\exists xB\)
+
+***** without structural rules, set-based sequent calculus
+
+Structural rules are exchange, weakening and contraction. See [[*structural group]]
+
+If we exclude those rules, we have set-based sequent calculus, where we treat \(\Gamma\) as set! This can be viewed as a variation of sequent calculus.
+
+How can I prove this?
+
+***** signature
+
+Here is the def of signature of an occurrence of formula \(P\) in \(A\). \(\pi\) is an occurrence of \(P\).
+
+1. if \(A\) is atomic, \(P\) is pos.
+2. if \(\pi\) is pos in \(A\), then it is so in \(A\lor B\), \(A\land B\), \(B\to A\), \(\forall xA\), \(\exists xA\).
+3. if \(\pi\) is pos in \(A\), then it is neg in \(A \to B\) and \(\neg A\).
+
+We need also def signature of \(\pi\) of \(P\) in a sequent \(\Gamma \vdash \Delta\). as one can imagine, if \(\pi\) is pos in \(\Gamma\), then \(\pi\) is neg in sequent. if \(\pi\) is pos in \(\Delta\), then \(\pi\) is still pos in the sequent.
+
+Prove that cut-free proofs preserve the signature.
+
+Proof. Obvious.
+
+***** \(A\sb{1}\dots A\sb{n}\vdash B\sb{1}\dots B\sb{m}\) leads to \(A\sb{1}\land,\dots,\land,A\sb{n}\vdash B\sb{1}\lor,\dots,\lor B\sb{m}\)
+
+The proof is actually obvious. I think.
+
+**** part 2: cut free and subformulas properties
+
+***** Hauptsatz of Gentzen
+
+The theorem can be stated as follow:
+
+Every theorem in *LK* or *LJ* has a cut-free proof.
+
+***** the proof given by Gentzen
+
+The proof of Hauptsatz is not worth trusting. It is tedious and hard to follow. The idea is that there are many key cases he can list, where the cut can be push upward. In this process of pushing and potentially expanding the proof size, we can prove that the process is decisive.
+
+And thus we can conclude that we can construct a cut-free proof.
+
+***** DONE subformula properties
+
+****** subformulas
+
+if \(A\) is atomic, then the subformula of \(A\) is \(A\) itself and nothing else.
+
+if \(A\) is of form \(B * C\), then the subformula of \(A\) is \(A\) itself and subformulas of \(B\) and \(C\).
+
+if \(A\) is of form \(\forall x B\) or \(\exists x B\), then the subformula of \(A\) is \(A\) itself and the subformulas of \(B[t]\) for some term \(t\).
+
+****** the theorem
+
+The cut-free proofs of a sequent \(\Gamma \vdash \Delta\) are consisted of sequents made out of the subformulas in \(\Gamma\) and \(\Delta\).
+
+It is obvious that if there is quantifiers (\(\forall\), \(\exists\)) in the \(\Gamma\vdash \Delta\), there are infinite number of subformulas. The proof searching seems to be indecisive. However.
+
+****** description subformulas in Proofs and Types
+
+Let \(\delta\) be a /normal/ deduction in the (\(\land \Rightarrow \forall\)) fragment. Then
+
+1 every formula in \(\delta\) is subformual of a conclusion or a hypothesis of \(\delta\);
+
+2 if \(\delta\) ends in an elimination, it has a /principal branch/, i.e., a sequence of formulas \(A _{0}, \dots, A_{n}\) such that
+
+   - \(A_{0}\) is an (undischarged) hypothesis;
+   - \(A_{n}\) is the conclusion;
+   - \(A_{i}\) is the principal premise of an elimination of which the
+     conclusion is \(A_{i+1}\) for \(i = 0, \dots , n - 1\).
+
+In particular \(A_{n}\) is a subformula of \(A_{0}\).
+
+**** part 3: more
+
+***** second order
+
+****** the notation
+
+We use \(X\) as variable for predicate. But we have some different notations.
+
+- If \(X\) is arity 1, then it is supposed to be \(X(t)\) for term \(t\). But we wrote \(t \in X\), just like \(X\) is a set.
+- If \(A\) is a formula, and we use it to create a predicate \(\{x; A\}\) (arity 1). Just like a set, whose elements are all \(x\) that satisfied \(A\).
+
+I don't really know why we do this. I think this implies an relation with another expression of second order predicate logic. That is we treat \(X\) like a set. For example, we say that \(\mathbf{N}\) is the set of natural number, and thus we have:
+\[
+x \in \mathbf{N} := \mathsf{N}(x)
+\]
+where we say \(\mathsf{N}\) is a 1 arity predicate, and \(\mathsf{N}(x)\) means «\(x\) is natural number».
+
+****** rules in second order
+
+\[
+\frac{\Gamma\vdash A,\Delta}{\Gamma\vdash\forall XA,\Delta}\ (\vdash \forall\sb{2})\quad\quad
+\frac{\Gamma, A[T/X]\vdash\Delta}{\Gamma, \forall XA\vdash\Delta}\ %
+(\forall\sb{2}\vdash)
+\]
+
+\[
+\frac{\Gamma\vdash A[T/X],\Delta}{\Gamma\vdash \exists XA,\Delta}
+\ (\vdash \exists\sb{2})
+\quad\quad
+\frac{\Gamma, A\vdash\Delta}{\Gamma,\exists A\vdash\Delta}
+\ (\exists\sb{2}\vdash)
+\]
+
+where \(T\) should have the same arity of \(X\), in \(A[T/X]\).
+
+***** \(\mathrm{PA}\sb{2}\) second order peano arithmetic
+
+We write a Dedekind integers for example:
+\[
+N := \{x ; \forall X(0 \in X \land \forall z(z \in X \Rightarrow Sz \in X) \Rightarrow x \in X) \}
+\]
+How to understand this one, we treat \(X\) as a simple propostion for example \(A\). \(x \in X\) is \(A\), and \(z\in X\) is \(A[z/x]\).
+Then we may have
+\[
+x \in N \vdash A[0] \land \forall z(A[z/x]\Rightarrow A[Sz / x]) \Rightarrow A[x/x]
+\]
+
+***** comprehension schema in second order
+
+This is something that I don't understand, about the terms that Girard was using.
+
+We start with \(\vdash \forall x (A \Leftrightarrow A)\), how can we get
+\[
+\vdash \exists X \forall x ( x \in X \Leftrightarrow A)
+\]
+What he said is we use a rule \(\vdash \exists\sb{2}\), on the abstract term \(T := \{x ; A\}\)
+
+Okay, if \(T\) is \(\{x; A\}\) then \(x\in T\) means actually \(A\). And here we should look at \(\forall x  A\). We assume that there is a \(x\) in \(A\). Then \(\forall x A \equiv \forall x (x \in T)\) seems very legit.
+The overall process is \(\vdash \forall x (A \Leftrightarrow A)\) rewrite as \(\vdash\forall x (x \in T \Leftrightarrow A)\), and then we apply \(\vdash \exists\sb{2}\), with result \(\vdash \exists X \forall x(x \in X \Leftrightarrow A)\).
+
+Okay, what the fuck is this schema used for?
+
+***** LJ is a subsystem of LK
+
+LJ, where all the sequent \(\Gamma\vdash\Delta\) where \(\Delta\) consists of at most one formula, is a subsystem of LK.
+
+LJ actually enjoys Hauptsatz and subformula properties.
+
+***** decisiveness of LJ
+
+The introduction of LJ is owing to an obvious reason, the LJ is relatively less expressive (where law of middle excluded can be derived), but LJ is fucking decisive.
+
+*** chapter 4: LJ
+
+**** intuitionistic sequent
+
+A intuitionistic sequent is of form \(\Gamma \vdash A\), where \(A\) is a formula.
+
+That is LJ is a subset of LK, with the restriction of there is one and only one formula one the right hand side.
+
+**** 0 in the LJ
+
+The right hand side can not be empty but can be \(0\). There is rule of the introduction \(0\):
+
+\[
+\frac{}{\Gamma, 0 \vdash A}\ (0\vdash)
+\]
+
+**** rules
+
+id
+
+\[
+\frac{}{A\vdash A}
+\quad\quad
+\frac{\Gamma \vdash A \quad \Lambda, A \vdash B}{\Gamma, \Lambda \vdash B}
+\]
+
+structural
+
+\[
+\frac{\Gamma\vdash A}{\sigma(\Gamma)\vdash A}
+\]
+
+\[
+\frac{\Gamma\vdash B}{\Gamma, A\vdash B}
+\]
+
+\[
+\frac{\Gamma, A, A\vdash B}{\Gamma, A\vdash B}
+\]
+logical group is 略
+
+\[
+\frac{\Gamma \vdash A}{\Gamma \vdash \forall x A}\ (\vdash \forall)
+\quad\quad
+\frac{\Gamma, A\vdash B}{\Gamma, \forall xA\vdash B}\ (\forall\vdash)
+\]
+
+\[
+\frac{\Gamma \vdash A[t/x]}{\Gamma\vdash \exists x A}\ (\vdash \exists)
+\quad\quad
+\frac{\Gamma, A\vdash B}{\Gamma, \exists x A\vdash B}\ (\exists\vdash)
+\]
+\[
+\frac{}{\Gamma, \mathbf{0}\vdash A}
+\]
+
+**** main formulas of the rule
+
+We intuitively know there is a main character for a rule, for example, in NJ:
+
+\[\prftree[r]{$\Rightarrow I$} {\prfsummary{[A]}{B}} {A \Rightarrow B}\]
+
+Of course this rule has a main premise which is the most special formula here, that is \(A\). \(A\) is put into \(A \Rightarrow B\), and \(\Rightarrow\) is introduced.
+
+And also sometimes we may want to number the formula and also number the connectives. For example, for the reduction of the proof in NJ, the redex (the proofs that need to be reduced) is such procedural with the same connective is introduced and eliminated immediately afterward.
+The same connective means literally the same one after numbered!
+
+**** Gödel's translation
+
+***** use \(A \to B\) induce \(\neg B \to \neg A\)
+
+This is trivial in LK, but not in LJ.
+
+\begin{prooftree}
+\AxiomC{\(A \vdash B\)}
+   \AxiomC{ }
+   \UnaryInfC{\(\textbf{0} \vdash \textbf{0}\)}
+\BinaryInfC{\(A, \neg B \vdash \textbf{0}\)}
+\UnaryInfC{\(\neg B \vdash \neg A\)}
+\end{prooftree}
+
+***** the intuition of «hole» in LJ
+
+in the introduction of \(\neg B \vdash \neg A\), we notice that when migrating \(B\) to the left side, we leave a «hole» one right side that is \(\textbf{0}\). And respectively, when migrating \(A\) to the right side, it occupies the «hole».
+
+***** double migration to prove \(A \to \neg\neg A\)
+
+A migration of a formula \(A\) will add a \(\neg\) to it. So a double migration on right hand side of \(A \vdash A\) will naturally lead to \(A \vdash \neg \neg A\).
+
+\begin{prooftree}
+\AxiomC{ }
+\UnaryInfC{\(A\vdash A\)}
+  \AxiomC{ }
+  \UnaryInfC{\(0 \vdash 0\)}
+\BinaryInfC{\(A, \neg A \vdash 0\)}
+\UnaryInfC{\(A\vdash \neg\neg A\)}
+\end{prooftree}
+
+in the classic logic we can prove \(\neg\neg A \vdash A\), this is because we can do a double migration on the left hand side of \(A\vdash A\).
+
+Although it is not possible to prove \(\neg\neg A \vdash A\), \(\neg\neg\neg A \Leftrightarrow \neg A\) is provable.
+
+***** the Gödel's theorem
+
+\(A\) is classically provable (provable in LK) iff \(A^{g}\) is intuitionistically provable (provable in LJ).
+
+where we get \(A^{g}\) by adding \(\neg\neg\) to the front of every atomic formulas, quantifiers and connectives:
+
+- \(A^{g} := \neg\neg A\),
+- \((A \land B)^{g} := \neg\neg(A^{g} \land B^{g})\)
+- \((\forall x A)^{g} := \neg\neg \forall x A^{g}\)
+
+Proof is simple. And a sort of completeness is achieved in LJ.
+
+**** Hauptsatz in LJ
+
+***** the decidability of LJ
+
+there is a remark that I don't understand in page 74.
+
+***** intuitionistic existence and disjunction
+
+LJ has a remarkable property:
+
+\textsc{Theorem} if \(\vdash A\lor B\) is provable, then either \(\vdash A\) or \(\vdash B\) is provable.
+
+\textsc{Theorem} if \(\vdash \exists xA\) is provable, then there is an appropriate \(t\), such that \(\vdash A[t/x]\) is provable.
+
+***** the myth around the fine property of LJ
+
+there is some misunderstanding about the fine property above: if we can \(\vdash A\) is provable, why bother to prove \(A\lor B\)?
+
+From \(A \lor B\) to either \(A\) or \(B\), this is explicit only if you use cut-free proof system, but a cut-free proof is so tedious and something unnecessary. We may implicitly prove (with cut) \(A\lor B\) without knowing which one is true. We know only after cut-elimination!
+
+Keep in mind that the propery is the corollary of Hauptsatz.
+
+***** explicitable logic
+
+LJ is not an explicit logic (it is if cut-free), but we can say it is explicitable.
+
+**** NJ
+
+***** conclusion and hypothesis
+
+The begin of structure like
+\[
+\prfsummary{\Gamma}{A}
+\]
+The structure needs more clarification. It is more like a tree but upside down. The root is \(A\), and there are multiple leaves. The leaves are called hypothesis. The \(\Gamma\) here is the set of leaves in the proof tree.
+
+\[
+A
+\]
+
+is the proof of \(A\vdash A\), where the hypothesis \(A\) and the conclusion \(A\) itself.
+
+***** introduction of \(\Rightarrow\)
+
+\[\prftree[r]{$(I \Rightarrow)$}
+{\prfsummary{[A]}{B}}
+{A\Rightarrow B}\]
+
+The introduction of \(\Rightarrow\) introduce \([A]\) means the \(A\) is marked as discarded. So one of the subproof (whose conclusion is \(A\)) is marked as used.
+
+Let us say the proof of \(A\) use hypothesis \(\Gamma_{1}\), and the proof of \(B\) use hypothesis \(\Gamma_{1} * \Gamma_{2}\), here the proof of \(A\Rightarrow B\) use hypothesis \(\Gamma_{2}\), because the proof of \(A\) is abandoned. This becomes clear when you translate NJ to LJ.
+
+*** chapter 5: functional interpretation
+
+**** Proofs as functions
+
+For example, conjunction: \(\theta\) is a proof of \(A \land B\) iff \(\theta  = (\theta _{1}, \theta_{2})\) where \( \theta_{1}\) is proof of \(A\) and \(\theta_{2}\) is the proof of \(B\).
+
+*Implication*: \(\theta\) is a proof of \(A \Rightarrow B\) iff \(\theta\) is a function that maps proofs of \(A\) \(\theta_{1}\) to proof of \(B\).
+
+*Universal quantification*: \(\theta\) is a proof of \(\forall x A\) iff \(\theta\) is a collection of proof \(\theta(n)\) of \(A [\bar n / x]\).
+
+I think here the atom formulas here are \(\bf 0\) and \(t = u\) and \(t < u\).
+
+*Existential quantification*: \(\theta\) is a proof of \(\exists x A\) iff \(\theta\) is a pair \((n, \theta_{1})\) where \(\theta_{1}\)is the proof of formula \(A[\bar n/x]\).
+
+**** remarks
+
+A few remarks:
+
+  - It is not a matter of formal proofs. A formal proof is a sequence of
+    symbols, by no way an application; it is rather an /interpretation/ of
+    formal proofs, or again the attempt at /explaining/ logic out of a primitive
+    material external to formalism.
+
+  - However this approach could, in disguise, be an alternative definition of
+    formal proofs. This is tenable for all operations, except implication and
+    universal quantification which refer to applications whose domain is not
+    finite (neither definite in the case of implication). Kreisel’s attempt to
+    overcome this mismatch foundered into /sectarianism/ (Section 5.A).
+
+  - The cases of existence and disjunction (which are reminiscent of the
+    wellknown properties of system LJ) show that one has in mind cut-free,
+    explicit proofs: one is quite far from the /deductive/ world.
+
+  - The disjunctive clause does not only mean « a proof of \(A\) or a proof of \(B\)
+    », it also says /which/ one. This immediately induces, even in the finite
+    case, an immense difference with semantics. Indeed, anything is a proof of
+    \(0 = 0\);but a proof of \(0 = 0 \lor 0 =0\) is not a proof of one or the other (in
+    this case it would not matter); it is a pair (i, \(\theta\))where \(\theta\) does not
+    matter, but where \(i\) is a bit making a left/right choice. This is a radical
+    novelty w.r.t. semantics; for instance, the not quite exciting Kripke
+    models. The functional interpretation is not concerned with the raw fact
+    of knowing that A is true, it says /how/: here, leftwise or rightwise.
+
+*** interlude: sum type
+
+From Proofs and Types
+
+**** Empty type
+
+\textsf{Emp} is considered to tbe the empty type. For this reason, there will be a canoical function \(\varepsilon_{U}\) from \textsf{Emp} to any type \(U\): if \(t\) is of type \textsf{Emp}, then \(\varepsilon_{U}t\) is of type \(U\). The commutation for \(\varepsilon_{U}\) is set out in fives cases:
+\[\pi _{1} (\varepsilon _{U \times V} t)\leadsto \varepsilon_{U}t,\qquad
+\pi_{2} (\varepsilon _{U \times V} t) \leadsto \varepsilon _{V}t,\]
+\[(\varepsilon _{U \to V} t)u \leadsto \varepsilon _{V}t\]
+\[\varepsilon _{U}(\varepsilon_{\textsf{Emp}}t)\leadsto \varepsilon _{U}t\]
+\[\delta x . u  y .  v ( \varepsilon _{R + S}t) \leadsto \varepsilon _{U}t\]
+The last case is called the pattern matching: it means that it will maps a value of type \(R + S\) to either \(u\) or \(v\) where \(U\) is the common type of \(u\) and \(v\).
+\[\delta x. u  y . v (\iota _{1} r) \leadsto u[r/x],\qquad \delta x. u y . v (\iota _{2} s)\leadsto v[s/y]\]
+
+Here we introduce the sum type, that is \(R + S\), which is a datetype that is often seen in functional programming languages like ML and Haskell.
+
+**** Sum type
+
+\(U\) and \(V\) are two types, and then \(U +V\) is called the sum type. Sum type is the dual of product type \(U \times V\). For more you can check out the definition of Cartesian product and coproduct in category theory.
+
+  - If \(u\) is of type \(U\), then \(\iota_{1}u\) is of type \(U + V\).
+  - If \(v\) is of type \(V\), then \(\iota_{2} v\)  is of type \(U + V\).
+  - If \(x, y \) are variables of respective types \(R\) and \(S\), and \(u, v\), \(t\) are of respective types \(U\),\(U\), \(R + S\), then
+    \[\delta x . u  y . v t\]
+    is a term of type \(U\). Furthermore, the occurrences of \(x\) in \(u\) are bound by this construction, as are those of \(y\) in \(v\). This corresponds to the pattern matching in ML.
+
+Schemes like \(\iota_{1}\), \(\iota_{2}\) correspond to rules like \(\vdash \lor\) and \(E \lor\):
+
+\[\prftree[r]{$I_{1}\lor$}{A}{A\lor B}\quad
+\prftree[r]{$I_{2}\lor$}{B}{A \lor B}\qquad
+\prftree[r]{$E \lor$}{A \lor B}{\prfsummary{[A]}{C}}{\prfsummary{[B]}{C}}{C}\]
+
+As you can see, a term \(u\) where a variable \(x\) occurs can be interpreted as a proof of
+\[\prfsummary{[A]}{C}\]
+How fascinating! For the commuting conversion in the form of NJ. Check section 4 Commuting conversions.
+
+*** chapter 6: system F
+
+**** generalities
+
+system F is the first work of Girard in logic. And the same phenomenon is discovered at the same time by a computer scientist. We are always discovering things that are identical but with different faces.
+
+System F, contray to simply typed \(\lambda\)-calculus, is constructed around Curry--Howard, as the isomorphic image of inituitionistic second-order propositional calculus. Where we say system F, there is an ambiguity as to the basic connectives: one can choose either a minmal system (based on \(\Rightarrow\), \(\forall\)) or richer systems, involving the connectives \(\lor\), \(\land\), \(0\), \(\exists\). We shall opt for the minimal choice, this for two reasons:
+
+- As usual, these other connectives induce bureaucratic complications. (!?)
+- System F is so expressive that the missing connectives casn be translated in the basic version,provided one reliquished commutative conversions; remember that the existence and disjunction properties hold without commutative conversions.
+
+The types of system F are bult from type variables \(X\), \(Y\), \(Z\), \(\dots\) by means of implication and universal quantificatin: thus \(\forall X(X\Rightarrow X)\). The rules of term formation are those of the ~ply typed calculus (Section 5.3.1) to which have been added:
+
+*Generalisation*: if \(t\) is a term of type \(A\) and if the type variable \(X\) is not free in the type of a free variable of \(t\), then \(\Lambda X t\) is a term of type \(\forall X A\).
+
+*Extraction*: if \(t\) is a term of type \(\forall X A\) and if \(B\) is a type, then \(\{t \} B\) is a term of type \(A [B / X]\).
+
+(ps. *Generalisation* is like abstraction, and *extraction* is like application. The notation has this relation \(\lambda \Leftrightarrow \Lambda\), \((\cdot) \Leftrightarrow \{\cdot\}\))
+
+About the free variable in this situation, we list a special case: \(\Lambda X  x ^{X}\). Is this term a legit term?
+**** application in system F
+
+
+System \textbf{F} is like the second order lambda calculus. We introduce another set of notation \(\Lambda\) and \(\{\}\).
+
+\[\lambda x. t,\]
+
+is read as \((\lambda x .t )y \Rightarrow t[y / x]\). So in system F, the notation is
+- \(\lambda \Rightarrow \Lambda\)
+- \(()\Rightarrow \{\}\)
+
+So an term in system F could be
+
+\[\Lambda X.t,\]
+and is read as \(\{\Lambda X. t\} A \Rightarrow t[A / X]\).
+
+**** immediate reduction
+
+There is an immediate reduction in system F, which is like that in lambda calculus
+
+\[\{\Lambda X t\} B \leadsto t [B / X],\]
+
+where \(\leadsto\) means reduction. Church Rosser theorem holds of course.
+**** forgetful functor
+
+There is a forgetful functor from system F to simply-typed lamda calculus. And that is obvious.
+
+**** the expressive ability of system F
+
+The ability of system \(F\) is stunning. Let us see how Girard uses system F to express all the connectives like \(\Rightarrow\) and \(\lor\).
+
+*Conjunction*: Define \(A \land B := \forall X((A \Rightarrow (B \Rightarrow X))\Rightarrow X)\). The corresponding operations become
+
+\[
+\begin{aligned}
+  \langle t, u\rangle  &:= \Lambda X \lambda x ^{( A \Rightarrow (B \Rightarrow X))} ((x)t)u,\\
+  \pi_{l} t & := (\{t\} A)\lambda x ^{A} \lambda y ^{B}x,\\
+  \pi_{r} t & := (\{t\} B)\lambda x ^{A} \lambda y ^{B}y.
+\end{aligned}\]
+
+And we see how system F construct a type easily.
+
+*Disjunction*: Define \(A \lor B:= \forall X((A \Rightarrow X) \Rightarrow ((B \Rightarrow X) \Rightarrow X))\). The corresponding operations become
+
+\[
+\begin{aligned}
+  \iota_{l} t                 & := \Lambda X \lambda x ^{A \Rightarrow X} \lambda y ^{B \Rightarrow X} (x)t, \\
+  \iota_{r} t                 & := \Lambda X \lambda x ^{A \Rightarrow X} \lambda y ^{B \Rightarrow X} (y)t, \\
+  \delta(x ^{A} u)(y ^{B} v)t & := ((\{t\}C)\lambda x^{A} u)\lambda y ^{B} v.
+\end{aligned}\]
+
+*Absurdity*: Define \(0 := \forall XX.\) And
+
+\[\emptyset ^{A} t := \{t\} A.\]
+
+This translation verifies nothing (there are only commutative rules); its only virtue is to exist!
+
+*Existence*: Define \(\exists X A := \forall Y(\forall X(A \Rightarrow Y)\Rightarrow Y)\). Existential types are not attractive enough to spend much time with them; one can toy with writing schemas of term construction corresponding to the rules
+
+\[
+\prftree[r]{$(\exists _{2} I)$}
+        {\prfsummary{}{A[B / X]}}
+        {\exists X A}
+        \qquad
+\prftree[r]{$(\exists _{2} E)$}
+        {\prfsummary{}{\exists X A}}
+        {\prfsummary{[A]}{B}}
+        {B}\]
+
+and the reduction corresponding to
+
+\[
+\prftree[r]{$(\exists _{2} E)$}
+        {
+          \prftree[r]{$(\exists _{2} I)$}
+                  {\prfsummary{}{A[B/X]}}
+                  {\exists X A}
+        }
+        {\prfsummary{[A]}{C}}
+        {\prfsummary{C}{}}
+        \qquad
+        \raisebox{40pt}{$\leadsto$}
+        \qquad
+        %%
+\prfsummary{\prfsummary{}{A[B/X]}}
+           {\prfsummary{C}{}}\]
+
+**** TODO free structure using system F
+
+We can use system F to create some type (structure). I still don't really know why they are called free structure.
+
+*** chapter 7: CCC
+**** pole and polar
+***** def
+
+Given a binary operation \(+\colon A \times B \to C\), and a subset of \(C\), namely \(P\) (the pole), we can give the polar set \(X^{p}\) with the respect to a subset of \(A\), namely \(X\):
+
+\[
+X^{p} := \{y \in B \semicolon \forall x \in X, x + y \in P\}
+\]
+
+***** some properties
+
+We write \(\langle a, b\rangle\) as \(a * b\). Don't want to bother to type langle and rangle.
+
+****** 1. \(X \subset X^{pp}\)
+
+Proof. if \(x \in X\) we need to prove that \(\forall y \in X^{p}\), \(x * y \in P\).
+
+Let us look at \(y \in X^{p}\), \(\forall x' \in X, x' * y \in P\). So of course \(x * y \in P\) is valid.
+
+****** 2. \(X^{pp}\) is the smallest polar set that containing \(X\).
+
+Proof. we need to prove that if \(Z\) is polar set that containing \(X\), then \(Z\) also containing a polar set \(X^{pp}\).
+
+Let us say that \(Z = (Z^{-p})^{p}\), here \(Z^{-p}\subset B\). All we have is that if \(x \in X\) then \(x \in Z\), which is \(X \subset Z\). We need to prove that if \(x \in X ^{pp}\) then \(x \in Z\). Or we can prove that if \(x \notin Z\) then \(x \notin X^{pp}\). Let us go with the latter:
+
+If \(x \notin Z\), then \(\exists z \in Z^{-p}\), that \(x * z \notin P\).
+
+How can we prove that \(x \notin X ^{pp}\)? Let us say that if \(x \in X^{pp}\), then therefore \(\forall y \in X^{p}\), \(x * y \in P\). So we know that \(z\) in \(Z^{-p}\) is =not= in \(X^{p}\).
+
+Consequently, \(z\) suited that there is a \(\exists x' \in X\), \(x' * z \notin P\). However, at the same time, \(z \in Z^{-p}\), then for  \(\forall x'' \in Z\) also include those \(\forall x'' \in X\), that \(x'' * z \in P\). A contradiction is derived from \(x \in X^{pp}\).
+
+The formula is that if \(x \notin Z\) and if \(x\in X^{pp}\) there would be a contradiction.
+
+So \(x\in X^{pp}\Rightarrow x\in Z\) which implies \(X^{pp}\subset Z\). And because we don't have pre-set condition of \(Z\), \(\forall Z \supset X, Z \supset X^{pp}\)
+
+The smallest polar set is \(\bigcap Z = X^{pp}\). The equation holds because \(X\) is finite, the number of \(Z\) is limited.
+
+****** 3. \(X^{p} = X^{ppp}\)
+
+Proof. \(X\subset X^{pp}\) is enough to prove \(X^{p}\subset X^{ppp}\). And then we need \(X^{ppp}\subset X^{p}\).
+
+We say like this \(X\) is a polar set, then \(X^{pp} \subset X\).
+
+Let us say \(x \in X^{pp}\) we need \(x \in X\). Or we can say \(x \notin X\), then we need \(x\notin X^{pp}\).
+
+\(x\notin X\), then \(\exists y \in X^{-p}, x * y \notin P\), thus (because \(X^{-p} \subset X^{p}\)) \(\exists y \in X^{p}, x * y \notin P\), which \(x \notin X^{pp}\).
+
+***** connection
+
+- \(A \Rightarrow \neg\neg A\)
+- \(A \Rightarrow \neg B \vdash \neg\neg A \Rightarrow \neg B\)
+- \(\neg A \Leftrightarrow \neg\neg\neg A\)
+
+
+First one: \(A \vdash \neg\neg A\)
+
+\begin{prooftree}
+\AxiomC{ }
+\UnaryInfC{\(A\vdash A\)}
+  \AxiomC{ }
+  \UnaryInfC{\(0 \vdash 0\)}
+\BinaryInfC{\(A, \neg A \vdash 0\)}
+\UnaryInfC{\(A\vdash \neg\neg A\)}
+\end{prooftree}
+
+Second one: \(A \Rightarrow \neg B \vdash \neg\neg A \Rightarrow \neg B\)
+
+\begin{prooftree}
+\AxiomC{\(A \vdash A\)}
+  \AxiomC{\(B \vdash B\)}  \AxiomC{\(0 \vdash 0\)}
+  \BinaryInfC{\(\neg B, B \vdash 0\)}
+\BinaryInfC{\(A\Rightarrow \neg B, A, B \vdash 0\)}
+\doubleLine
+\UnaryInfC{\(A\Rightarrow \neg B, \neg\neg A, B \vdash 0\)}
+\UnaryInfC{\(A\Rightarrow \neg B, \neg\neg A \vdash \neg B\)}
+\UnaryInfC{\(A\Rightarrow \neg B \vdash \neg\neg A\Rightarrow\neg B\)}
+\end{prooftree}
+
+Third one: \(\vdash \neg A \Leftrightarrow \neg\neg\neg A\)
+
+\begin{prooftree}
+  \AxiomC{ }
+  \UnaryInfC{\(\neg A\vdash\neg A\)}
+    \AxiomC{ }
+    \UnaryInfC{\(0 \vdash 0\)}
+  \BinaryInfC{\(\neg A, \neg \neg A \vdash 0\)}
+  \UnaryInfC{\(\neg A\vdash \neg \neg\neg A\)}
+  \UnaryInfC{\(\vdash \neg A \Rightarrow \neg\neg\neg A\)}
+
+\AxiomC{ }
+\UnaryInfC{\(A\vdash A\)}
+  \AxiomC{ }
+  \UnaryInfC{\(0 \vdash 0\)}
+\BinaryInfC{\(A, \neg A \vdash 0\)}
+\UnaryInfC{\(A\vdash \neg\neg A\)}
+\doubleLine
+\UnaryInfC{\(A, \neg\neg\neg A \vdash 0\)}
+\UnaryInfC{\(\neg\neg\neg A\vdash \neg A\)}
+\UnaryInfC{\(\vdash \neg\neg\neg A \Rightarrow \neg A\)}
+
+\BinaryInfC{\(\vdash \neg A \Leftrightarrow \neg \neg \neg A\)}
+\end{prooftree}
+
+***** translation!
+
+- \(A\) is \(X\)
+- \(\neg A\) is \(X^{p}\)
+- \(0\) is \(P\)
+- \(\vdash\) is "we can find a way to use the left hand side variable to get one right hand side variable"
+
+Examples of translation
+
+- \(A \vdash A\) to \(x \in X \vdash x' \in X\)
+
+  We can find a way to use \(x \in X\) to get a \(x' \in X\): we just use identity function.
+
+- \(A, \neg A \vdash 0\) to \(x \in X, y \in X^{p} \vdash c \in P\)
+
+  We can find a way to use \(x\) and \(y\) to get a \(c \in P\): we just use \(x * y\)
+
+- \(\neg A:= A \Rightarrow 0\) to \(X^{p}\) defined as set of all function that maps \(X\) to \(P\)
+
+  The element \(f_{y}\) in \(X^{p}\) is a way to map \(x\in X\) to \(P\), by
+
+  \[f_{y}\colon X \to P, f_{y}(x):= x * y\]
+**** [#A] three layers
+
+Instead of the usual explanation of logic with its infinity (transfinite, but /predicative/, they say: see Section 7.B.4) of /matrioshka/-turtles, one will modestly content oneself with three foundational layers, three undergrounds not at all (meta-)isomorphic. Layer--1 will be the level of truth, layer--2 the level of /functions/, layer--3 the level of actions.
+
+**** the first underground
+
+*Sense and denotation*
+
+Frege, the founder of modern logic, was surely a damned essentialist: witness his contempt for the geometrical ideas of Riemann – whose /Habilitationschrift/ anticipated, in the middle of the XIXth century, the theory of general relativity.
+
+His opposition between /sense/ (implicit) and /denotation/ (explicit) is typical of a not too hot approach to logic. For instance, the two expressions « the morning star » and « the evening star » have different senses, but the same /denotation/, Venus. In this line of thought, logic appears as a sort of « calculus of denotations »: a theorem (whose sense is anything except « true ») has the same denotation as « true »: the proof is a way to make this denotation explicit.
+
+In the same way, one can say that the equality \(t=u\) is interesting only because it is not an /identity/, that \(t\) and \(u\) are distinct /at the level of sense/.
+
+This thought quickly finds its limitations which are those of the dichotomy subject/object. Everything takes place in a universe where the subject (which will become a formal system) and the object (a model, therefore a set) answer to each other without ever meeting. Completeness/soundness establishes a sort of duality, between proofs of \(A\) and models of \(\neg A\)
+
+*Soundness*: if one has both a proof of \(A\) and a model of \(\neg A\), then... contradiction.
+
+*Completeness*: proofs and models are polar in this duality.
+
+**** layer -1
+
+Layer--1 is conceptually very poor: truth, consistency. With a big effort, one arrives at admissible rules: « if A is provable, B is provable ». The $1000 question: find the relation between admissible rules and logical implication... how bleak!
+# what are you even talking about
+
+I have a propensity to believe that an interpretation confined to the « first underground », the layer « true/provable », is quite sufficient in that case. Indeed, classical logic rests upon a duality with an empty pole, which only recognises provable/consistent and succeeds in this way in justifying biased principles such as the excluded middle. It is therefore likely that the search for fine grain interpretation of classical proofs belongs to the realm of /methodological/ mistakes... A non-dogmatic viewpoint, subject to contradictory discussion: I didn’t say « technical baloney » or « triviality », since the works on classical proofs are anyway worthy of interest.
+
+**** the second underground: covenant
+
+*The covenant*. In the same order of thought, I think that it is a methodological mistake (!?) to seek /semantics/ for intuitionistic or linear logics.
+
+It is however technically possible: Kripke or topological models in the intuitionistic case (Section 4.E); phase models in the linear case (Section 10.1). In the latter case, models /even/ turned out to be technically useful, witness for instance certain results of Lafont [70]. This being said, technical usefulness is not a /guarantee/ of sense: one should then take seriously the paraconsistent system used by Rosser in his symmetrisation of Gödel’s theorem (Section 2.D.3) (ps. Rosser's variant). The question is not whether one has the right to use models outside classical logic, the answer being obviously « yes »; it is whether this kind of explanation is /appropriate/: the answer is clearly « no ».
+
+Indeed, if we stay within the opposition true/provable, there is little, except consistency, to satisfy our hunger. But what is a consistent intuitionistic theory, which however admits a Kripke model? A nothing, a meaningless doohickey: for instance classical logic is a consistent extension of intuitionistic logic, so what? It is the place to introduce the idea of a /covenant/ – which will eventually lead us to refine the duality sense/denotation.
+
+The /covenant/ of a formal system can be /plausibility/. It is a judiciary version of logic – « what I say is not false » – this is the one prevailing in front of a tribunal, every defendant being supposedly innocent; one should rather say /not-guilty/, since, among all those lifetime senators that escape jail to the benefit of doubt, there must surely be a couple of criminals...
+
+*Plausibility* is the existence of a model, or, in an equivalent way, consistency: it is the /classical/ covenant, but it is not the only possible one. Think for instance of a bank; if the bank says: « you have got $1000 », we don’t only want it to be plausible, we also want to know that we can get these $1000. By the way, everybody knows people who are expert at promising without paying: those are adepts of classical logic, since it is exactly what happens with the excluded middle:
+
+*System*: \(A \lor \neg A\)
+
+*I*: I don't believe in this.
+
+*System*: If both are false, \(A\) is false, hence \(\neg A\) is true.
+
+*I*: Yes indeed!
+
+*System*: But you told me that \(\neg A\) is false.
+
+*I*: I give up, you are too smart.
+
+This discussion with an expert in sophisms leaves an unpleasant after-taste: indeed the contradictor gets mixed up, but the system does not argue earnestly.
+
+A /covenant/ better adapted to banking style realities is therefore the following: if one announces an existence, one must be able to find a witness. For instance, if one says that « there are weapons of mass destruction », one must be able to exhibit them, since one cannot be happy with the first underground, with the classical version: « he who says the contrary is part of the Axis of Evil ». The exigency of /testimony/ must not be confused with a professed /explicit deduction/, of which we already exposed the oxymoronic character (Section 4.2.3) (ps. the discussion about the fine property of intuitionistic logic about disjunction and conjunction). A bank is not supposed to keep money: it should make it circulate; otherwise it is styled differently: it is called a miser. If one asks a bank for one’s money, it should yield it, even if it takes some time; the failure to do this is known as /bankruptcy/, the financial form of inconsistency.
+
+One therefore arrives at the following covenant: if I prove a disjunction \(A \lor B\), I must be able to justify one of the two sides. This is why the only /methodologically sound/ notion of intuitionistic consistency is that of a theory consistent in the usual sense, but also satisfying the properties of existence and disjunction.
+
+Let us come back to the /fregean/ paradigm – to divert it from its setting subject/object to a setting that would rather be subject/subject. A proof has a /sense/ and a /denotation/; the denotation makes explicit the data linked to existence and disjunction. Logical operations should therefore be interpretable as operations on this implicit contents.
+
+(ps. for sense and denotation, see Proofs and Types Chapter 01)
+
+**** category-theoretic reading
+
+It is what is done by the functional interpretation of Chapter 5, of which we shall restrict the scope. Logic now belongs in a /category/ whose « objects » are the formulas and whose /morphisms/ are the proofs; the details will follow later. For the moment, we content ourselves with the observation that the pair morphism/object is clearly more interesting than the pair proof/model subject/object – of the classical world. The rule of /Modus Ponens/, or rather the transivity of implication, the /syllogism/, becomes the /composition/ of morphisms:
+
+\[
+\begin{tikzcd}
+  A \arrow[rr, "g \circ f"]
+    \arrow[rd, "f"]
+    && C \\
+  & B \arrow[ru, "g"]
+\end{tikzcd}\]
+Let us compare this to the « first underground » reading. In the years around 1920, Łukasiewicz expalined the transitivity of implication by the transitivity of inclusion: \(A \subset B \subset C\), then \(A \subset C\). The height of derision: it is the transivity of implication explains the transitivity of inclusion, not the other way around!
+
+**** Commutations
+
+If classical logic, i.e., the interpretation by provability/consistency, were really satisfactory, we would have a general completeness theorem, not only for predicate calculus. Now, there is nothing of the like; the stumbling block being the incompleteness theorem, more precisely the fact that:
+
+#+begin_quote
+  Provability does not commute with negation.
+#+end_quote
+
+To make provability and negation commute is obviously a procedural, cognitive idea, since opposes a strct dichotomy subject/object. It is ven a good idea, provided one changed everything, from the cellar to the attic, only retaining a lax setting: we witnessed the ruination of epistemic, non-monotonic logics -- not to speak of the procedural negation PROLOG (Section 4.D.4) --, all based upon an uncouth commutation.
+
+In general, the idea of making proofs and locial connectives commute is excellent and if one sticks to operations less « loaded » than negation, plausible. In this way, intuitionism realises -- at the second underground -- a commutation between /proof/ and /disjucntion/. To prove \(A \lor B\) is to prove \(A\) or to prove \(B\). W.r.t. Tarski, one has replaced truth with proof. The « or » of « or prove » is a /procedural/ disjunction, operating one the proof itself. Starting with this idea, one can write deductive logical rules (the system NJ) and discover that these logical rules actually enjoy the disjuction property. in other terms, one has an equivalence between the /rules of logic/ and the /logic of rules/.
+
+This equivalence is not the result of a discretionary action: for instance one could not have declared (see /supra/) that « to prove \(\neg A\) is not to prove \(A\) ». It results from a deep /equilibrium/ expressed by the theorem of normalisation of system NJ.
+
+**** The third underground
+
+**** CC
+
+***** categories
+
+\(\mathsf{C}\) is a cat.
+
+- Obj: \(\text{Obj}_{\mathsf C}\) or \(|\mathbf{C}|\) (we prefer the former)
+- Hom: \(\text{Hom}_{\mathsf C}(A, B)\) or \(\mathbf{C} (A, B)\)
+- composition: \(f \in \text{Hom}_{\mathsf C}(A, B)\) and \(g\in \text{Hom}_{\mathsf C}(B ,C)\), then \(g \cdot f\) in \(\text{Hom}_{\mathsf C}(A, C)\).
+- associativity \(f (g h) = (fg)h\)
+- id: there is always \(\mathrm{id}\) in \(\text{Hom}_{\mathsf C}(A,A)\).
+
+***** Functor
+
+A functor \(F\) from \(\mathsf C\) to \(\mathsf D\) is two collections of mapping
+
+- From \(\text{Obj}_{\mathsf C}\) to \(\text{Obj}_{\mathsf D}\)
+  - satisfy that \(\text{id}\) is mapped to \(\text{id}\) in \(\mathsf D\)
+
+- From \(\text{Hom}_{\mathsf C}(A , B)\) to \(\text{Hom}_{\mathsf D}(FA, FB)\)
+  - satisfy that \(F (g h) = F g F h\)
+
+Also the diagram commutes:
+
+\[\begin{tikzcd}
+A \arrow[r, "f"]
+  \arrow[d, "F"]   & B \arrow[d, "F"] \\
+FA\arrow[r, "Ff"]  & FB
+\end{tikzcd}\]
+
+***** natural transformation
+
+Functors naturally forms a category where \(\text{Obj}\) are all the functors, and the morphisms are called natural transformation.
+
+natural transformation is a transformation between functors. Here a natural transformation \(\theta\) from \(F\) \(G\).
+
+For every \(\text{Obj}\) in \(\mathsf C\), say \(A\), there is morphism \(T(A)\) in \(\text{Hom}_{\mathsf D}(FA, GA)\), that makes the diagram commutes:
+
+\begin{displaymath}
+\begin{tikzcd}
+FA \arrow[r, "F(f)"]
+   \arrow[d, "T(A)"] & F B \arrow[d, "T(B)"]\\
+GA \arrow[r, "G(f)"] & GB
+\end{tikzcd}
+\end{displaymath}
+
+***** cartesian product
+
+First we need the definition of cartesian product. Here we use universal properties.
+
+A cartesian product \(A\times B\) is a terminal object in followingly constructed categories:
+
+First. Obj in this category is defined as an object \(C\) in \(\mathsf C\), and a pair of morphisms in \(\text{Hom}_{\mathsf C}(C, A)\) and \(\text{Hom}_{\mathsf C}(C, B)\):
+
+\begin{displaymath}
+\begin{tikzcd}
+C \arrow[r, "f_{1}"]
+  \arrow[d, "f_{2}"] & A\\
+B
+\end{tikzcd}
+\end{displaymath}
+
+Second. Morphism from \(C\) (with \(f_{1}\) and \(f_{2}\)) to \(D\) (with \(g_{1}\) and \(g_{2}\)) is defined as a morphism \(h\) from \(\text{Hom}_{\mathsf C}(C,D)\), such that the diagram commutes:
+
+\begin{displaymath}
+\begin{tikzcd}
+C \arrow[rrd, bend left, "f_{1}"]
+  \arrow[rdd, bend right,"f_{2}"]
+  \arrow[rd, "h"]                 & & \\
+                                  & D \arrow[r, "g_{1}"]
+                                      \arrow[d, "g_{2}"] & A\\
+                                  & B
+\end{tikzcd}
+\end{displaymath}
+Okay we can not define the cartesian product in the normal sense:
+
+ we can prove that \(A\times B\) (in the sense of set theory) together with \(\pi_{1}\) and \(\pi_{2}\) are the terminal object in the category above, that is for every obj \(C\), there is unique Hom \(h\) from \(C\) to \(A\times B\).
+
+***** cartesian and product
+
+In the sense of set theory, product is cartesian product. However, not every category is \(\mathsf{Set}\), so cartesian product as a concept in set theory does not apply in other thing.
+
+Product is sometimes called direct product. There is also direct sum. And there is also tensor product. They are all different things. One can check for sometime articles. In physicist call tensor product as «direct product», absolutely brain dead behavior.
+
+***** cartesian category
+
+A cartesian category is such category where the terminal obj described above has been given to us: for every pair of obj \(A, B\), there is \(A\times B\) in the category.
+
+***** before diving into CCC
+
+Why we need cartesian category. Because we treat the conjuction of formula \(A \land B\) as \(A \times B\) in the sense of set theory.
+
+We need a category where \(A\) \(B\) are "formula", \(A \land B\) should also be "formula".
+
+**** CCC
+
+***** before diving into CCC
+
+so in the section above, we need CC for such rule: \(A\), \(B\) in \(\text{Obj}_{\mathsf C}\) then \(A\times B\) in \(\text{Obj}_{\mathsf C}\).
+
+Here we have another one, we call exponential: \(A\), \(B\) in \(\text{Obj}_{\mathsf C}\), so \(A\Rightarrow B\) is in \(\text{Obj}_{\mathsf C}\), however, using the notation from set theory, \(A\Rightarrow B\) is written as \(B^{A}\).
+
+***** exponential
+
+We defined a category.
+*Obj*: an object is a diagram:
+
+\begin{displaymath}
+\begin{tikzcd}
+C\times A \arrow[d, "f"]\\
+B
+\end{tikzcd}
+\end{displaymath}
+
+*Hom*: a hom is a commutative diagram, where \(\lambda(f)\) is important:
+
+\begin{displaymath}
+\begin{tikzcd}
+C\times A \arrow[rr, "\lambda(f)\times \mathrm{id}"]
+          \arrow[rd, "f"]    & & D \times A
+                                   \arrow[ld, "g"] \\
+                             & B
+\end{tikzcd}
+\end{displaymath}
+
+As you can guess \(B^{A}\) together with (evaluation) \(\epsilon\) is the terminal (to be exact, the terminal is noted as \(B^{A}\) and \(\epsilon\) if they exist).
+
+**** examples of CCC
+
+  1. \(\mathsf {Set}\). Duhhh, obviously.
+  2. Scott Domain. We can use sequent calculus to define Scott domain instead
+     of topological spaces.
+  3. Scott Domain is crucial for understanding coherent space in the future
+      section.
+
+**** scott domain described using logic
+
+A scott domain is a pair \((X, \mathcal F)\), where \(X\) is a set, \(\mathcal F\) is a set of axioms made of \(x _{1}, \dots x_{n} \vdash x\) and something like \(x_{1}\dots x_{n}\vdash\) (notice this one is empty). Also these axioms are consistent, that is with the logical rules, structural rules and cut rule, one can not prove \(\vdash\).
+
+A =coherent= subset of \(X\) is such subset \(A\), that \(\mathcal F \cup \{ \vdash x\semicolon x \in A\}\) is consistent.
+
+A =saturated= subset is such =coherent= subset \(A\), that can not be «expanded», that is the corresponding axioms \(\mathcal F \cup \{ \vdash x \semicolon x \in A\}\) can not prove a \(\vdash y\) where \(y\) is outside of \(A\).
+
+As a result, for every coherent set \(A\), there can be a «closure», noted as \(\bar A\). And here we use a new notation \(A \sqsubset_{\mathcal F} X\) which means \(A\) is a saturated subset of \((X,\mathcal F)\).
+
+A morphism \(\varphi\) from \((X, \mathcal F)\) to \((Y, \mathcal G)\) suits that:
+
+1. \(A \sqsubset X\) then \(\varphi(A)\sqsubset Y\)
+2. \(A = \uparrow\bigcup_{i}A_{i}\) then \(\varphi(A) = \uparrow\bigcup_{i}\varphi(A_{i})\)
+**** logic in a CCC
+
+A syllogistic's view: view \(\text{Hom}_{\mathsf C}(A, B)\) as the sequent \(A \vdash B\). A proof that proves the sequent is a morphism in \(\text{Hom}_{\mathsf C}(A, b)\). And to generalise the idea of \(\Gamma \vdash A\), we introduce product.
+
+Left rules:
+what?
+
+**** \(\eta\)-conversion
+
+We want find something unique in exponential. Given \(B^{A}\) and an object \(C\), we want to find a morphism from \(C\) to \(B^{A}\). Let us say it is \(g\), we can have an equation for \(g\), provided with the diagram:
+
+\[\begin{tikzcd}
+C\times A
+\arrow[rr, "g\times \mathrm{id}"]
+\arrow[rd, "\epsilon (g \times \mathrm{id})"]
+                &   & B ^{A} \times A
+                      \arrow[ld, "\epsilon"]  \\
+                & B
+\end{tikzcd}\]
+the equation:
+\[
+g = \lambda (\epsilon \cdot (g \times \mathrm{id}))
+\]
+
+if we now treat \(\lambda\) as something we are more familiar with, we have this immediate reduction or \(\eta\)-conversion
+
+\[
+g = \lambda x (g)x
+\]
+
+Remind me of what \(\lambda\) means in the first place. When given a function \(f\) from \(C\times A\) to \(B\), we have a \(\lambda(f)\) from \(C\) to \(B^{A}\), which means that we can factor a function \(f\) to a \(\lambda(f)\) and an evaluation function \(\epsilon\). How does that transfer from \(\lambda\) to this \(\lambda\)?
+
+So a \(g\) here is function from \(C\) to \(B^{A}\). We can use \(g\) to construct a \(C\times A\) to \(B\). And then we use this constructed result, we can then use \(\lambda\) to find a \(C\to B^{A}\). Who is exactly \(g\) itself, since we know this is a CCC.
+
+Okay I don' know what the hell I am say.
+
+**** surjective pairing in category
+
+the surjective pairing is below equation:
+
+\begin{equation}
+(\pi_{1}a, \pi_{2}a) = a
+\end{equation}
+
+where \(a\) is a variable of type \(A\land B\), of form \((x, y)\), where \(x\) and \(y\) are of type \(A\) and \(B\) respectively.
+
+here we use the idea of unicity above, we consider the unique Hom as an unknown variable, we can have an equation, provided by the commutative diagram:
+
+\begin{displaymath}
+\begin{tikzcd}
+C \arrow[rrd, bend left, "\pi_{1}\cdot h"]
+  \arrow[rdd, bend right,"\pi_{2}\cdot h"]
+  \arrow[rd, "h"]                 & & \\
+                                  & A\times B \arrow[r, "\pi_{1}"]
+                                              \arrow[d, "\pi_{2}"] & A\\
+                                  & B
+\end{tikzcd}
+\end{displaymath}
+the equation is:
+\begin{equation}
+(\pi_{1} \cdot h, \pi_{2} \cdot h) = h
+\end{equation}
+
+here we can learn about the corresponce a little bit more, where a formula in is represented as a hom from \(\text{Hom}_{\mathsf C}(C, A)\), where \(C\) is a random object, and \(A\) is the respective formula. And very true that a \(h\) which is hom in \(\mathrm{Hom}_{\mathsf C}(C , A\times B)\), is treated as an variable for the type \(A \times B\).
+
+Here \(\pi_{1}\cdot h\) is an obvious variable for formula \(A\), which is constructed via projecting from \(A \land B\).
+
+*** chapter 8: coherent spaces
+
+**** interpretation of logic from Proofs and Types
+:PROPERTIES:
+:ID:       91e6b93f-7da1-44f0-9c2a-548d2eb54c5d
+:END:
+
+The interpretation are something that is very useless. The first idea of interpretation (semantics) is like this one:
+
+  + type = set.
+  + \(U \to V\) is the set of all functions (i nthe se-theoretic sense) from \(U\) to \(V\).
+
+This interpretation is all very well, but it does no explain anything. The computationally interesting objects just get drowned in a sea of set-theoretic functions. The function spaces also quicly become enormous.
+
+Kreisel had the follwoing idea (hereditarily effective operations):
+
+  + type = partial equivalence relation on \(N\)
+  + \(U \to V\) is the set of (codes of) partial recursive functions \(f\) such that, if \(x U y\), then \(f(x) V f (y)\), subject to the equivalence relation:
+    \[f(U \to V) g \Leftrightarrow \forall x , y (x U y \Rightarrow f(x) V g(y))\]
+
+This sticks more closely to the computational paradigm which we seek to model --- a bit too closely, it seems, for in fact it hardly does more than interpret the syntax by itself, modulo some unexciting coding.
+
+Scott's idea is much better
+
+  + type = topological space.
+  + \(U \to V\) = continuous functions from \(U\) to \(V\)
+
+Now it is well known that topology does not lend itself well to the construction of function spaces. When should we say that a sequence of functions converges pointwise, or uniformly in some way?
+
+To resolve these problems, Scott was led to imposing drastic restrictions on his toplogical spaces which are far removed from the traditional geometrical spirit of topology (if I remember clearly, scott domain as a topological space is hardly Hausdorff). In fact his spaces are really only partially ordered sets with directed joins: the topology in an incidentalfeature. So it is natural to ask oneself whether perhaps the topological intuition is itself false, and look for something else.
+
+**** the definition of coherent spaces
+
+A coherent space has some components:
+
+  + *Web*: a underlying set namely \(X\).
+  + *Coherence*: a reflexive and symmetric relation. I don't know how to typeset
+    the symbol yet.
+  + *Clique*: a clique \(a\sqsubset X\), is a subset of \(X\), made of pair-wise
+    coherent points.
+
+**** the coding of Scott domains
+
+An example here is the cartesian product, namely \(\mathbf{bool}\times \mathbf{bool}\).
+
+And we treat the space as a space with four point, namly: \(v\), \(f\) and \(v'\) and \(f'\). The points are pointwise coherent besides \((v, f)\) and \((v', f')\), and we consider a mapping \(F\) from the coherent space where the objects are cliques---the set whose elements are point-wise coherent.
+
+\begin{align}
+F(a)         &= v, \text{if } a \text{ has } v\\
+F(\{f, f'\}) &= f\\
+F(b)         &= \emptyset, \text{otherwise}
+\end{align}
+
+the coding is about representing the \(F\). We need some redundancy. we need to list all the \(a\) in the first equation above. Because in the definition of coherent space, if \(b \subset a\) then something is true also for \(b\). So it becomes
+
+\begin{displaymath}
+\begin{aligned}
+F(\{v\}) = v\\
+F(\{v'\}) = v\\
+F(\{v, f'\}) = v\\
+F(\{v', f\}) = v
+\end{aligned}
+\end{displaymath}
+
+This is the coding of \(F\). The redundancy is need. I don't really know what is section is talking about.
+
+**** stable function and stability
+
+here \(X\) and \(Y\) are two coherent spaces, a stable function \(F\) from \(X\) to \(Y\) satisfies:
+
+  + Cliques: if \(a \sqsubset X\) then \(F(a)\sqsubset Y\)
+  + Monotonicity: if \(a \subset b \sqsubset X\) then \(F(a)\subset F(b)\)
+  + Continuity: \(F(\uparrow \bigcup_{i}a_{i}) = \uparrow \bigcup_{i}F(a_{i})\)
+  + Stability: if \(a \cup b \sqsubset X\) then \(F(a \cap b ) = F(a) \cap F(b)\)
+
+Stable order between the stable functions is defined:
+
+Berry order: \(F\sqsubset G\) iff for all \(a \subset b \sqsubset X\), \(F(a) = F(b) \cap G(a)\).
+
+There is a trick here for the stability and berry order. Stability is about two subsets of \(X\), which satisfy \(a \cup b \sqsubset X\), while in Berry order, it is about \(a \subset b \sqsubset X\).
+It is clear that these two sets of objects are some how something identical.
+\(a \cap b\) in former should be \(a\) in the latter. So we rewrite the latter
+
+\[F(a \cap b) = F(b) \cap G(a \cap b).\]
+
+Why we are talking about this? It is because we want to find out if \(F \sqsubset F\) holds. If \(F \sqsubset F\) holds, then we would have
+
+\[F(a \cap b) = F(b) \cap F(a \cap b) = F(a) \cap F(b)\]
+
+Because for \(F\), \(F(a \cap b) = F(a) \cap F(b)\) holds, the equation above holds.
+
+**** Interlude: the coding of stable function, trace and skeleton
+
+We can define the trace (the old name), or the skeleton of a stable function \(F\). The Trace is significant because it is the coding of a stable function:
+
+Skeletons and stable functions have a /one-one/ correspondence!
+
+And [[*Berry Order][Berry Order]] and [[*linearity][linearity]] can be expressed using skeleton!
+
+**** Berry Order
+
+Berry order: \(F\sqsubset G\) iff for all \(a \subset b \sqsubset X\), \(F(a) = F(b) \cap G(a)\).
+
+**** TODO Stable function and determinism
+
+Stability corresponds to a determinism of computation (not only of its result): when performing a computation, a /well-defined/ part of the data is actually used.
+Which is not the case for the « parallel or », since there is an ambiguity as to the information actually needed: the answer is « true » when one of the two arguments is true, which yields two possible ways of acting when both are true.
+
+The stable order appears as the necessary technical companion of stability, in view of the adjunction which defines the function space. Indeed, a stable function from \(X \times Y\) to \(Z\) must appear as a stable function from \(X\) to \(Z ^{Y}\). In (8.4)–(8.6) (PS. [[*the coding of Scott domains][the coding of scott domains]]), compare the unary functions \(F_{\emptyset}(\{v'\}) = \{v\}\), \(F_{\emptyset}(a)= \emptyset\) \((a \neq \{v'\})\), and \(F_{\{v\}}(a) = \{v\}\): since \(F_{ \emptyset} (\emptyset)= \emptyset \neq \{v\}= F_{\emptyset} (\{v '\})\cap F_{\{v\}}(\emptyset)\), \(F_{\emptyset} \sqsubset F_{\{v\}}\) fails. Indeed, these two stable maps are such that \(F_{\emptyset} \subset F_{\{v\}}\), but the minimal data for \(F_{\emptyset}\) are no longer minimal for \(F_{\{v\}}\).
+
+# what the heck
+
+**** Coherent space as CC
+
+And we add product and terminal for CC.
+
+It seems that we can add some structure to make a coherent space a CC.
+
+We add cartesian product in the coherent space.
+
+*Web*:
+\[|X\ \& \ Y| := |X| + |Y|\]
+*Coherence*:
+\[
+\begin{aligned}
+&(x, 1) \coh _{X \& Y} (x', 1) \Leftrightarrow x \coh_{X} x'\\
+&(y, 2) \coh _{X \& Y} (y', 2) \Leftrightarrow y \coh_{Y} y'\\
+&(x, 1) \coh _{X \& Y} (y, 2)
+\end{aligned}\]
+
+The last line means the relation does /hold/ in any condition.
+
+Proposition: if \(a \sqsubset X\) and \(b \sqsubset Y\) then obviously \(a + b \sqsubset X \ \& \ Y\)
+
+Two projections:
+
+\[
+\begin{aligned}
+  \pi _{ l} (a + b) = a,\\
+  \pi _{r} (a + b ) = b.
+\end{aligned}\]
+
+It is obvious that projections are stable (and even linear, see Chapter \(9\)).
+Let us proceed with our studious checking: if \(F, G\) are stable functions from \(Z\) into \(X, Y\), then one can define \(F, G\) from \(Z\) into \(X \ \& \ Y\) by
+
+\[(F, G)(c) := F(c) + G(c)\quad (c \sqsubset Z),\]
+
+is immediate that \(\pi _{l} \cdot (F, G) = F , \pi _{r} \cdot (F, G) = G\). Unicity is so obvious that one does not even dare to justify it (!?)
+
+**** TODO Coherent space as CCC
+**** proposition 10
+
+Let \(F\), \(G\) be stable functions from \(X\) into \(Y\), let \(A \sqsubset X\) and \(y \in F(A)\). Then:
+
+  * There exists \(a \subset A\), with \(a\) finite, such that \(y \in F(a)\).
+  * If \(a\) is chosen minimal, it is minimum, i.e., unique.
+  * If \(F \sqsubset G\), then \(y \in G(a)\) and \(a\) remains the minimum choices.
+
+Proof. Write \(A\) as directed union of its finite subsets. Then
+
+\[F(A) = \uparrow \bigcup \{ F(a) \semicolon a \subset A, a\ \text{finite}\}.\]
+
+Which proves (i).
+
+Another choice \(b\subset A\) would yield by stability, since \(a \cup b \sqsubset A\) (?), \(y \in F(a) \cap F(b) = F(a \cap b)\): if \(a\) is minimal, then \(a = a \cap b\), hence \(a \subset b\). Which proves (ii).
+# ok, this is weird. Because we choose such b that also has y ∈ F(b), so y ∈
+# F(a) ∩ F(b) would be true. While the latter is equal to F(a ∩ b). How to
+# interpret a is chosen minimal? Doesn't this is gibberish?
+
+Finally, if \(b \subset a\) and \(y \in G(b)\), then \(y\in G(b) \cap F(a) = F(b)\) hence \(a = b\). Which proves (iii).
+# Okay stable function is weird. How is this theorem even related?
+
+**** Skeleton
+
+If \(F\) is a stable map from \(X\) into \(Y\), one defines its skeleton \(\mathrm{Sk}(F)\):
+
+\[\mathrm{Sk}(F):= \{ (a, y) \semicolon y \in F(a) \land \forall b \subsetneq a \ \ y \notin F(b)\}.\]
+
+This is not a matter of graphs. For instance, take the most trivial stable function, the identity function \(\iota_{X}\) from \(X\) into \(X\): its graph is made of the pairs \((a, a)\), where \(a \sqsubset X\); while its skeleton corresponds to hte minimal solutions to \(y \in F(a) = a\): this yields \(\mathrm{Sk}(\iota _{X}) = \{(\{x \}, x) \semicolon x \in |X| \}\).
+
+One now defines the coherent space \(X \Rightarrow Y\). Let us introduce the notation \(x \scoh x'\) for strict coherence, i.e., for \(x \coh x ' \land x \neq x'\).
+
+**** TODO Berry Order and Skeleton
+**** Exponential for coherent spaces
+
+We can define \(X \Rightarrow Y\) for two coherent spaces \(X\), \(Y\).
+
+*Webs*: \(| X \Rightarrow Y| := X_{\mathrm{fin}} \times |Y|\), where \(X_{\mathrm{fin}}\) is the set of /finite/ cliques of \(X\).
+
+*Coherence*:
+
+\[\begin{aligned}
+  (a , y) \coh _{X \Rightarrow Y} (a' , y') \iff & (a \cup a' \sqsubset X \Rightarrow y \coh _{Y} y')\\
+                                                 & \land (a \cup a' \sqsubset X \land a \neq a ' \Rightarrow y \scoh _{Y} y')
+\end{aligned}\]
+
+**** Representation, from clique in X ⇒ Y to a stable function from X → Y
+
+Sk defines a bijection between the stable functions from \(X\) into \(Y\) and the clique of \(X \Rightarrow Y\). The reciprocal bijection associates to a clique \(C \sqsubset X \Rightarrow Y\) the stable function \((C) \cdot \) defined by
+
+\[(C) A := \{ y \semicolon \exists a \subset A\ (a, y)\in C \}.\]
+
+Moreover the bijection exchanges the Berry Order and inclusion.
+
+**** Coherent spaces do form a CCC
+
+The proof is in the book.
+
+**** WTF
+
+#+begin_quote
+Personally, I find this sort of result /illegible/. One must write it, but not read it, under the penalty of becoming a /bureaucrat/. The real result is the theorem, which does establish the right correspondence. Since this correspondence is natural in the natural sense of the term, it is also natural in the category-theoretic sense.
+
+--Girard
+#+end_quote
+
+Girard always has his way with his words.
+
+**** Use Coherent space to interpret system F
+**** Embedding
+
+An embedding of \(X\) into \(Y\) is an injective function from \(|X|\) into \(|Y|\) such that \(x \scoh x'\) iff \(f (x) \scoh f(x')\).
+
+**** TODO Contravariant and covariant
+
+Indeed, \(X \Rightarrow Y\) is covariant in \(Y\), cotravariant in \(X\): from stable functions \(f\) from \(X'\) into \(X\) and \(g\) from \(Y\) into \(Y'\), one can pass from \(X \Rightarrow Y\) to \(X' \Rightarrow Y'\) by composition:
+
+\[C \leadsto \mathrm{Sk}(g \circ (C) \cdot \circ f ).\]
+
+*** chapter 9: linear logic
+
+**** before linearity
+
+If we consider the elimination rules as functions from the main premise to the conclusion: \(\pi _{l}\colon X\ \&\ Y \mapsto X\), \(\pi_{r} \colon X \ \& \ Y \mapsto Y\), \((\cdot) a \colon (X \Rightarrow Y) \mapsto Y\), it turns out that they enjoy an additional property, linearity.
+
+**** linearity
+
+The definition of linearity is stable function that preserves coherent unions:
+
+For instance \((C\cup D) a = (C)a \cup (D)a\).
+
+What the hell is this?
+
+**** COH
+
+Defnition 21 (COH). One defines the category *COH* by:
+
+*Objects*: coherent spaces.
+
+*Morphisms*: \(\mathbf{COH}(X, Y)\) consists of the linear functions from \(X\) to \(Y\).
+
+This category satisfies almost everything expected from a category. It is not a CCC, but it is a closed *monoidal* category; moreover, one can reconstitute a structure of CCC in it.
+
+**** linear implication
+
+We use symbol ~\multimap~, which looks like a lolipop, which sounds a little bit erotic.
+
+\[A \multimap B\]
+
+\(F\) from \(X\) to \(Y\) is linear iff its sk is made of pairs \((\{x\}, y)\)
+
+Def 22 If \(X\), \(Y\) are coherent spaces, we define \(X \multimap Y\) by:
+
+*Web*: \(| X \multimap Y | = |X | \times | Y |\)
+
+*Coherence*:
+
+\[
+\begin{aligned}
+  (x, y) \coh_{X \multimap Y}(x', y')\Leftrightarrow & (x \coh _{X} x' \Rightarrow y \coh _{Y}y') \\
+                                                     &   \land (x \scoh _{X} x' \Rightarrow y \scoh _{Y} y').
+\end{aligned}\]
+
+**** linear negation
+
+**** duality
+
+**** TODO perfect linear connectives
+[2024-10-26 Sat]
+
+Perfect linear connectives are those connectives like linear implication \(\multimap\), and \(\with\) \(\parr\) and so on. As oppose to imperfect linear connectives including \(!\) and \(?\) that is mainly aimed at weakening and contraction rule.
+
+**** multiplicatives
+
+Using the De Morgan laws, we define a conjuction (times, or tensor) \(X \otimes Y := {\sim} (X \multimap {\sim} Y)\) and a disjunction \(X \parr Y := {\sim} X \multimap Y\) (par, or cotensor). These connectives (as well as implication) are called multiplicative, sicne they are based upon the cartesian product of the webs.
+
+Definition 25 (Multiplicatives). If \(X\), \(Y\) are coherent spaces, we define the coherent spaces \(X \otimes Y\), \(X \parr Y\):
+
+\[
+\begin{aligned}
+{} | X \otimes Y | = | X \parr Y | & := |X| \times |Y|,\\
+(x, y) \coh _{X \otimes Y} (x', y') & : \Leftrightarrow x \coh_{X} x' \lor y \coh_{Y} y', \\
+(x, y) \scoh_{X \parr Y}(x', y') & : \Leftrightarrow x \scoh _{X} x' \lor y \scoh _{Y} y'.
+\end{aligned}\]
+
+The two defnitions are related /modulo/ De Morgan:
+
+\[
+\begin{aligned}
+{\sim}(X \otimes Y) & = {\sim} X \parr {\sim} Y.\\
+{\sim}(X \parr   Y) & = {\sim} X \otimes {\sim} Y, \\
+X \multimap Y & = {\sim} X \parr Y = {\sim} (X \otimes {\sim} Y).
+\end{aligned}\]
+
+which exchanges conjunction and disjunction, \(\coh\) and \(\scoh\).
+
+One verifies certain canonical isomorphisms:
+
+*Commutativity*: \(X \otimes Y \simeq Y \otimes X\), \(X \parr Y \simeq Y \parr X\), to which one can relate \(X \multimap Y\simeq {\sim} Y \multimap {\sim} X\).
+
+*Ass*: \(X \otimes (Y \otimes Z) \simeq (X \otimes Y) \otimes Z\), \(X \parr (Y \parr Z) \simeq (X \parr Y)\parr Z\), to which one can relate \(X \multimap (Y \multimap Z) \simeq (X \otimes Y) \multimap Z\), \(X \multimap (Y \parr Z) \simeq (X \multimap Y)\parr Z\).
+
+*Neu*: the one-point sapce, denoted by, depending on the context, \(1\) or \(\simperp\), is neutral, i.e., \(X \otimes 1 \simeq X\), \(X \parr \simperp \simeq X\), to which one relates \(1 \multimap X \simeq X\) and \(X \multimap {\simperp} \simeq {\sim} X\).
+
+In relation to our considerations about the second undergound (or layer), note that two isorphic coherent spaces (\(1\) and \(\simperp\)) have a very different status at layer \(-1\). At the categorical layer, the distinction between them is only a preciosity. The same problem of /unfaithfulness/ will be found again with the adtive neutrals; more dramatically, since hte identification between \(0\) and \(\top\) would produce a logical inconsistency.
+
+**** TODO imperfect connectives
+[2024-10-26 Sat]
+
+Stability strikes back. We could try to give a categorical interpretation of intuitionistic logic in the linear world, thus reading a proof of \(A_{1},\dots A_{n}\) \(\vdash B\) as a multilinear function. Since we shall soon do it in earnest, let us forget the details and observe that everything would work well, if not for the /structural/ rules of weakening and contraction. In what follows, A and B are supposedly interpreted by coherent spaces \(X\) and \(Y\):
+
+*Weakening*: reduced to its simplest expression, weakening corresponds to « material implication »: if I have \(B\), then I still have \(B\) under hypothesis \(A\). If a proof of \(B\) has been interpreted by a clique \(b \sqsubset Y\), then « \(B\) under hypothesis \(A\) » will be the constant function \(F(a) = b\). Such a function is stable, but not linear: indeed \(F(\emptyset)\neq \emptyset\).
+
+*Contraction*: reduced to its simplest expression, contraction corresponds to the reuse of hypotheses: if I got \(B\) under the hypotheses \(A\) and \(A\), then I can get \(B\) under hypothesis \(A\). In other terms if \(f(x, y)\) is a bilinear function from \(X\), \(X\) into \(Y\), then \(f(x, x)\) should be linear ... Baloney! Everybody knows that it is /quadratic/.
+# what?
+
+At the level of the skeleton, constant functions induce elements of the form \((\emptyset , y)\) and quadratic functions induce elements of the form \((\{x, x'\}, y)\); more generally, the unbridled use of structural rules produces elements of the form \((a, y)\), where \(a\) is a finite clique of \(X\). A stable function is a sort of polynomial of unknown degree, this is why one easily reaches /analytic/ functions (Sections 8.A.2 and 15.A).
+
+**** TODO Pons Asinorum
+[2024-10-28 Mon 17:37]
+
+The *Pons Asinorum*, the « bridge of asses » (!?), is a rhetorical figure of medieval pedagogy: the student (the ass) is brought to the middle of the bridge of knowledge with the help of a simple, but striking, example.
+
+Linear logic, whose main value rests in its /perfect fragment/ – whose category theoretical structure we just described –, would be no more than another /paralogic/ – not as hateful as paraconsistent, epistemic, non-monotonic or fuzzy logics, but a paralogic anyway – if it were reduced to its perfective, perfect, part. The absence of relation to usual logic, classical or intuitionistic, fatally leads to /sectarianism/ and /marginalisation/: witness the fate of the aforementioned paralogics.
+
+The climacteric remark is that usual (i.e., intuitionistic) implication is a /particular case/ of linear implication.
+
+Def 27 (Of course!). If \(X\) is a coherent space, we define \(!X\) as follows:
+
+\[\begin{gathered}
+  {} |! X| = X_{\mathrm{fin}}, \\
+  a \coh_{! X} a' \Leftrightarrow a \cup a ' \sqsubset X.
+\end{gathered}\]
+
+Def 28 (Why not?). If \(X\) is a coherent space, we define \(?X\) as follows:
+
+\[
+\begin{gathered} |?X| = ({\sim} X)_{\mathrm{fin}},\\ a \scoh _{?X} a ' \Leftrightarrow a \cup a ' \not\sqsubset {\sim} X,
+\end{gathered}\]
+
+which is not a legible definition (!?); I only fabricated a dua;:
+
+\[
+\begin{aligned}
+  {\sim} ! X & = {?} {\sim} X, \\
+  {\sim} ? X & = {!} {\sim} X.
+\end{aligned}\]
+
+**** Isomorphism for imperfect connectives
+
+There is an isomorphism. It explain why « ! » and « ? » are styled exponentials:
+
+\[
+\begin{gathered}
+  ! (X \with Y) \simeq {!} X \otimes {!} Y, \\
+  ? (X \otimes Y) \simeq {?} X \parr {?} Y.
+\end{gathered}\]
+
+# what the hell is this?
+Since a (finte) clique of \(X \with Y\) decomposes as \(a + b\) where \(a, b\) are (finte) cliques of \(X\) and \(Y\). To these isomorphisms we can relate the 0-ary case:
+
+\[
+\begin{gathered}
+  ! \top \simeq 1 , \\
+  ? 0 \simeq {\simperp}.
+\end{gathered}\]
+Indee, I know no other canonical isomorphism in COH (except mistakes of logic like \(\top \simeq 0\)). Thus, the adjunction \(\with\) / \(\Rightarrow\) is a consequence of our list of isomorphisms:
+
+\[
+\begin{aligned}
+  X \Rightarrow ( Y \Rightarrow Z) & = {!} X \multimap (! Y \multimap Z)\\
+                                   & \simeq {!} X \otimes {!} Y \multimap Z \\
+                                   & \simeq {!} (X \with Y) \multimap Z \\
+                                   & \simeq (X \with Y) \Rightarrow Z.
+\end{aligned}\]
+# what the hell is this?
+
+**** LL systems generalities
+
+Contrary to classical logic, linear logic admits a non-degenerate category-theoretic interpretation. But, due to the left/right symmetry expressed by linear negation, it cannot be written in « natural deduction » style. We are therefore led to express linear logic in the setting of sequent calculus, which appears, at least at first sight, as a regression.
+# Left/right symmetry is very interesting. NJ is not symmetric for sure, but
+# what about NK?
+
+Constructive linear negation – i.e., the symmetry left/right recovered – enables one to understand differently intuitionistic logic. Before linear logic, one thought that the restriction one formula on the right was the cause of phenomena of the style « disjunction property ». There is now a much better explanation: the absence of structural rules, especially contraction. A prohibition ensured by the intuitionistic maintenance: one must be two to contract. This is why linear logic, with its calculus « everything on the right », will still enjoy the existence and disjunction (\(\oplus\)) properties. We also better understand the reduction at absurdity, /contraposition/: it is wrong in the intuitionistic regime, because of the left contractions/weakenings which produce stable functions which are non-linear, hence with no adjoint. In other words, what is « reprehensible » in the reduction at absurdity is not the fact of assuming \(\neg B\) to get \(\neg A\), it is assuming it twice or more.
+
+Linear Logic is truly issued from the category-theoretic interpretation in coherent spaces. This interpretation, wholly in the second underground, yields no logical indication in the usual sense; for instance, it does not distinguish between the empty space and its negation, while, logically speaking, their identification causes an inconsistency. In other words, the sequent calculus which follows is only approximately founded upon coherent spaces.
+# What the hell are you talking about?
+
+**** LL languauges
+
+Since there are twice more connectives that usual, we will choose a right version. Concretely: formulas are built from literals \(p\), \(q\), \(r\), \({\sim }p\), \({\sim} q\), \({\sim}r\), …, i.e., of atomic formulas and their negations and the constants \(1\), \(\bot\), \(\top\), \(0\), by means of the connectives \(!\) and \(?\) (unary) and \(\otimes\), \(\parr\), \(\oplus\), \(\with\) (binary) and the quantifiers \(\forall x A\) and \(\exists x A\). We can also consider, mutatis mutandis, second-order quantifications. We shall not insist too much on the aspect « quantifiers », which is the less innovative aspect of linear logic.
+
+Linear negation is defined by Me Morgan style equations:
+
+\[
+\begin{aligned}
+  {\sim} 1             & := {\simperp}, \\
+  {\sim} 0             & := \top, \\
+  {\sim}(p)            & := {\sim} p, \\
+  {\sim} (A \otimes B) &  := {\sim} A \parr {\sim} B, \\
+  {\sim} (A \oplus B)  & := {\sim} A \with {\sim} B, \\
+  {\sim}(! A)          & := {?} {\sim} A, \\
+  {\sim}(\exists x A)  & := \forall x {\sim} A,
+\end{aligned} \qquad \begin{aligned}
+  \sim \simperp      & := 1, \\
+  \sim \top          & := 0, \\
+  \sim (\sim p)      & := p, \\
+  \sim (A \parr B)   & := \sim A \otimes \sim B, \\
+  \sim (A \with B)   & := \sim A \oplus \sim B, \\
+  \sim (? A)         & := ! \sim A, \\
+  \sim (\forall x A) & := \exists x \sim A.
+\end{aligned}\]
+
+# what the heck!
+
+Linear implication is defined as
+
+\[A \multimap B := \sim A \parr B.\]
+
+The sequents are of the form \(\vdash \Delta\); bilateral sequents \(\Gamma \vdash \Delta\) can be translated as \(\vdash \sim \Gamma, \Delta\).
+
+**** Question: How linear logic is special
+
+If you are clueless as I am right now, how about trying to find the answer of this question.
+
+**** Some of the rules in LL
+
+identity:
+
+\[
+\prftree[r]{\quad(\textit{identity})}
+        {}
+        {\vdash {\sim} A, A}
+\qquad
+\prftree[r]{\quad(\textit{cut})}
+        {\vdash \Gamma, A}
+        {\vdash {{\sim} A}, \Delta}
+        {\vdash \Gamma, \Delta}
+        \]
+
+structure:
+
+\[
+\prftree[r]{\quad(\textit{exchange})}
+        {\vdash \Gamma}
+        {\vdash \Gamma'}\]
+Logic:
+
+\[\prftree[r]{\quad(\textit{one})}
+          {}
+          {\vdash 1}\]
+
+还有很多就不列了，累死。
+
+**** symmetric monoidal categories
+
+*** supplements
+
+**** directed sets
+
+A collection of sets is said to be directed, if the sets are indexed by a partially ordered set.
+
+For example \(\{x_{i}\}\), \(i \in I\), where\(I\) is a partial order set.
+
+**** logic complexity, first order
+
+Logic complexity is about something like first order, second order; about the logic hierarchy, logic classification.
+
+***** unbound quantifiers
+
+Unbound quantifiers refer to quantifiers whose domain is not specified. But I think we can understand it as quantifiers whose domain is unbound, which is infinite.
+
+***** prenex
+
+prenex form is of form
+\[
+Q\sb{1}x\sb{1}\dots Q\sb{n}x\sb{n} A
+\]
+where \(A\) is quantifier free. /prenex/ is not that useful.
+
+***** \(\Sigma\sp{0}\sb{1}\) and \(\Pi \sb{1}\sp{0}\)
+
+The sb of the above notations is about the alternation of unbound quantifiers. I don't really know what is an unbound quantifiers. But zero alternation means no quantifier.
+
+One alternation means the quantifiers are the same. For \(\Sigma\), the quantifer can only be \(\forall\), and for \(\Pi\) \(\exists\). Thus all formulas in \(\Sigma\sb{1}\sp{0}\) and \(\Pi\sb{1}\sp{0}\) are respectively of form:
+\[
+\exists x\sb{1}\dots\exists x\sb{n}A,\quad\quad
+\forall x\sb{1}\dots\forall x\sb{n}A
+\]
+where \(A\) is \(Q\)-free. So you know alternation \(2\) means something like \(\forall\forall\forall\exists\exists\exists\exists\exists\exists\)
+
+***** \(\Sigma\sp{0}\sb{1}\) sets
+
+Here we understand \(\Sigma\sp{0}\sb{1}\) as a collection of sets. A \(\Sigma\sp{0}\sb{1}\) set is a set \(A\) that satify:
+\[
+x \in A \Leftrightarrow \exists y R(x,y)
+\]
+where \(R\) is a \(Q\)-free quantifier and can not be arbitrary.
+
+***** \(\Delta\sb{1}\sp{0}\)
+
+\(\Sigma_{1}^{0}\) and \(\Pi\sb{1}\sp{0}\) sets are respectively semi-decidable and co-semi-decidable.
+
+semi-decidable means \(x \in A\) is decidable if \(x \in A\).
+co-semi-decidable means \(x \in A\) is decidable if \(x \notin A\).
+
+So a \(\Delta^{0}_{1}\) set is decidable, since \(\Delta^{0}_{1}:= \Sigma^{0}_{1}\cap \Pi _{1}^{0}\).
+
+***** a classic example of \(\Delta\sp{0}\sb{1}\) set
+(given by Copilot)
+
+Sure! A classic example of a \(\Delta_1\sp{0}\) set is the set of even numbers.
+
+- The set of even numbers can be defined by the formula: \( x \in \text{Even} \iff \exists y \, (x = 2y) \). This shows that the set of even numbers is in \(\Sigma_1\).
+
+- The set of even numbers can also be defined by the formula: \(x \in \text{Even} \iff \forall y \, (x \neq 2y + 1) \). This shows that the set of even numbers is in \(\Pi_1\).
+
+Since the set of even numbers can be characterized by both an existential and a universal quantifier, it is in the intersection of \(\Sigma_1\) and \(\Pi_1\), making it a \(\Delta_1\) set.
+
+**** arithmetic RR
+
+RR is the child of formalism. And we introduce \(=\) \(<\) and some constant \(0\) \(S\) \(\times\) \(+\).
+
+Arithmetic system right now is boring because it is merely formalism shit.
+
+***** group: equality
+
+- \(x = x\)
+- \(x = y \Rightarrow y = x\)
+- \(x = y \land y = z \Rightarrow x = z\)
+- \(x = y \land z =t \land x < z \Rightarrow y < t\)
+- \(x  = y \Rightarrow S x = Sy\)
+- \(x = y \land z = t \Rightarrow x + z = y + t\)
+- \(x = y \land z = t \Rightarrow x \times z = y \times t\)
+
+There rules are used to prove \(x = y \land A[x] \Rightarrow A[y]\).
+
+***** group: definitions
+
+- \(x + 0 = x\)
+- \(x + S y = S(x+y)\)
+- \(x \times 0 = 0\)
+- \(x \times S(y) = (x\times y) + x\)
+
+These can prove that if two terms \(x,y\) are the same number, then \(x = y\) is provable.
+
+the 3rd and 4th peano axioms
+
+- \(Sx \ne 0\)
+- \(S x = S y \Rightarrow x = y\)
+
+These group can be used to prove that if \(x, y\) are different number, then \(x \ne y\) is provable.
+Also, these two things shamelessly assume an infinite domain, otherwise \(\overline{10} = \bar{0}\) could be proved.
+
+***** group three: a last axiom
+\[
+x < y  \lor x = y \lor x > y
+\]
+what is this one used for? Let us check what Girard says:
+
+#+begin_quote
+  the last axiom of a slightly different nature from the rest, since it is not needed for /incompleteness/: the representation of expansive properties is handled by the definition axioms. It is used in the representation of recursive functions and therefore in the algorithmic undecidability of RR and all its consistent extensions. It is also used in the Rosser variant.
+#+end_quote
+
+**** PA
+
+***** induction schema
+
+Let us check how to express induction schema:
+\[
+A[0] \land \forall y (A[y] \Rightarrow A[Sy]) \Rightarrow \forall x A[x]
+\]
+here [[*\(\mathrm{PA}\sb{2}\) second order peano arithmetic][\(\mathrm{PA}\sb{2}\) second order peano arithmetic]], we have relative description for induction schema, where we have that if \(x\) is a nat number, then
+\[
+A[0]\land \forall y(A[y] \Rightarrow A[Sy]) \Rightarrow A[x]
+\]
+is provable.
+
+***** the definition of PA
+
+Peano's Arithmetic is derived from \textbf{RR}, added with induction schema.
+\[
+A[0] \land \forall y (A[y] \Rightarrow A[Sy]) \Rightarrow \forall x A[x]
+\]
+Here \(A\) is not arbitrary.
+
+**** satisfiable
+
+A formula is satisfiable if there is an assignment that makes it true.
+
+An assignment for a formula is a set of assignments (the process of give value, some people use validate) for variables in the formula. After giving value to variables, we can now decide the true/false of the formula (by writing down the truth table).
+
+A (propositional) formula is unsatisfiable means that there is no way for it to be true.
+
+Remark: The definition of satisfiable can be extended to predicate logic, where instead of assignment, we say /model/. I just don't remember the terminology.
+
+**** there is an assignment makes it true
+
+There is an entry in truth table that is true.
+
+**** ground terms
+
+Ground terms are terms that have no variable.
+
+**** ground instances
+
+A ground instance of a formula \(S\) is a formula derived from \(S\), where all the variables are replaced with ground terms.
+
+**** alternative explain for Herbrand's theorem
+
+An formula \(S\) has a Herbrand's model means that there are a set of ground terms that makes \(S\) true.
+
+**** simultaneous substitution \(\theta\)
+
+A \(\theta\) can be applied to a formula or expression \(E\), but anyway I prefer \(A\) for a formula, \(\Gamma\) for a set of formulas.
+
+\(\Gamma\theta\) means carry the substitution to every formulas in \(\Gamma\). We can compose those \(\theta\). For example, \(\theta\sigma\) means carrying \(\theta\) first and then \(\sigma\).
+
+**** unifier \(\theta\)
+
+A unifer \(\theta\) for a set of expressions \(S:=\{E\sb{i}\}\), is such \(\theta\), that
+
+\[
+E\sb{1}\theta = \dots = E\sb{n}\theta
+\]
+
+**** most general unifier
+
+The most general unifier, a.k.a., m.g.u. is like the smallest unifier. A m.g.u. noted as \(\theta\), suit that \(\forall \sigma\) which is a unifier, there is a \(\rho\) such that
+\[
+\sigma = \theta \rho
+\]
+
+**** unification algorithm
+
+unification algorithm is an effective algorithm used for search m.g.u.
+
+Using the algorithm, we will find a mgu \(\sigma\) satisfies that for all unifier \(\theta\)
+\[
+\sigma \theta = \theta
+\]
+holds.
+
+**** herbrand's theorem and cut-elimination
+
+Herbrand’s Theorem: This theorem provides a way to transform a first-order logic formula into a purely propositional form.
+
+It states that if a first-order formula is universally valid, then there is a finite set of ground instances (instances with no variables) of its clauses that are propositionally valid.
+
+How they are related is that they both transfer something undecidable to decidable.
+
+**** Logic Programming
+:PROPERTIES:
+:ID:       579422fc-12f1-4d6c-9ba6-7de991f0ec61
+:END:
+
+Logic programming is based on the idea of seeking the atomic theorems of a theory whose axioms are /Horn clauses/. Those are sequents \(\mathcal S\) of the form \(P_{1}\dots P_{n} \vdash Q\) hwere \(P_{1}\dots P_{n},Q\) are atomic. To each axiom \(\mathcal S\) one cannaturally associate introduction rules:
+
+\[
+\prftree[r]{$(\mathcal S \theta \ I)$}
+{\prfsummary{}{P_{1} \theta\quad \dots\quad P_{n} \theta}}
+{Q \theta}\]
+
+where \(\theta\) is a subsitution. One easily shows:
+
+  - cut-elimination (immediate, there is no \(\mathcal S\)-elimination).
+  - For formulas of the shape \(\exists x_{1}\dots\exists x_{p} (R _{1} \land \dots \land R_{q})\), \(R_{1}\) \(\dots\) \(R_{q}\) atomic, classical provability matches intuitionistic provability.
+
+Thus the follwoing idea: in such an axiomatic system, try to prove formulas of the form \(\exists _{1} \dots \exists x_{p}\) \((R_{1} \land \dots \land R_{q})\). A cut-free proof will provide one with explicti values (existence property). The search for cut-free proofs is done by means of an algorithm, the /resolution method/, based on unification.
+
+4.D.2 PROLOG, its /grandeur/. The idea is to consider a Horn theory as a program. one will make queries of the form « find the solutions \(x_{1}\dots x_{p}\) to the conjunction \(R_{1} \land \dots \land R_{q}\) », which amounts to finding proofs of \(\exists x_{1},\dots , \exists x_{p}\) \((R_{1} \land \dots \land R_{q})\), indeed cut-free. The search is done by unification: one seeks to prove \(R\) by finding a clause \(\Gamma \vdash \mathcal S\) (axiom written as a sequent) whose /head/ (right formula) unifies with \(R\), by means of \(\theta\); then one is led back to similar problems for the formulas \(\Gamma \theta\) of the /tail/ where \(\theta\) has been performed. One stops in case one steps on empty tails (success); on the other hand, when no unifier can be found, this is failure. But by far the most likely possibility is that of a search that neither succeeds nor fails, since it does not terminate. The culture of incompleteness is here to inform us as to the pregnancy of this unpleasant eventuality.
+
+Whatsoever, what we just described is the paradigm of logic programming, which was so glamourous in the years around 1980, mainly because of the Japanese enthusiasm for « the fifth generation ».
+# ?
+
+4.D.3 PROLOG, its misery.
+
+Logic programming was bound to failure, not because of a want of quality, but because of its exaggerations. Indeed, the slogan was something like « pose the question, PROLOG will do the rest ». This paradigm of /declarative/ programming, based on a « generic » algorithmics, is a sort of /all-terrain/ vehicle, capable of doing everything and therefore doing everything badly. It would have been more reasonable to confine PROLOG to tasks for which it is well-adapted, e.g., the maintenance of data bases.
+
+On the contrary, attempts were made to improve its efficiency. Thus, as systematic search was too costly, « control » primitives, of the style « don’t try this possibility if... » were introduced. And this slogan « logic + control », which forgets that the starting point was the logical soundness of the deduction. What can be said of this control which plays /against/ logic14? One recognises the sectarian attitude that we exposed several times: the logic of the idea kills the idea.
+
+The result is the most inefficient language ever designed; thus, PROLOG is very sensitive to the order in which the clauses (axioms) have been written.
+**** tensor product according to Bourbaki.
+
+#+begin_quote
+My advice is to work with multilinear functions in an appropriate setting, without trying to delve into the category-theoretic framework. This may become necessary in certain cases, but one should not forget that ideas are not to be found in diagrams. (true)
+#+end_quote
+
+We seek a space \(A \otimes B\) and bilinear function \(\otimes \colon A, B \mapsto A \otimes B\), with the following universal property: if \(G\colon A, B \mapsto C\) is another solution (bilinear function), then there is a unique linear \(H \colon A \otimes B \mapsto C\) such that \(G(a, b) = H(a \otimes b)\) for all \(a \in A, b  \in B\). We see by the way that the tensor product is of « inductive », positive, style.
+
+ps. the def provided above is a bit vague. We use the def that everyone is using.
+
+A tensor product of two spaces \(A\), \(B\), we find the tensor product of \(A\) and \(B\) \(A \otimes B\), together with a bilinear map \(\varphi\colon A \times B \to A \otimes B\). The object is the initial object.
+
+\[
+\begin{tikzcd}
+  V \times W \arrow[r, "\varphi"] \arrow[rd, "h"]
+    & V \otimes W \arrow[d, dashed, "\bar h"]\\
+    & Z
+\end{tikzcd}\]
+
+It serves as « the biggest possible » image of a bilinear map.
+
+How to prove the dimension of the tensor product is equal to the product of the dimensions of \(V\) and \(W\), that \(\dim V \times \dim W\). What is a bilinear map actually?
+
+There is a vector in \(V \times W\), namely \((\sum a_{i} v_{i}, \sum b_{i} w_{i})\). It should be that
+
+\[h(\sum a_{i} v_{i}, w) = \sum a_{i}h(v_{i}, w),\]
+
+and also
+
+\[h(v, \sum b_{i} w_{i} ) = \sum b_{i} h(v, w_{i}),\]
+
+We should start from the basis. Let us say that the basis of \(V\) and \(W\) are respectively \(\alpha _{1}\dots \alpha _{n}\) and \(\beta _{1} \dots \beta _{m}\). When fix \(w = \beta _{j}\), \(v = \sum a_{i}\alpha _{i}\)
+
+\[h(v, w) = \sum a_{i}h(\alpha _{i}, \beta _{j})\]
+
+A linear combination of \(\big(h(\alpha _{i}, \beta _{j})\big)_{i \in I}\) with \(j\) fixated. Okay I think we can show that \(h(\alpha_{i} , \beta_{j}) _{i\in I _{n}, j \in I _{m}}\) are linear independent (at most). And that is the set of basis of \(\mathrm{Im}\, Z\), and thus using the fact that
+
+\[h(v, w) = \bar h \cdot \varphi(v, w)\]
+
+We may conclude that the basis of \(V \otimes W\) is of the same number as \(\dim V \times \dim W\).
+
+I don't really know the definition of \(V \otimes W\).
+
+**** quotient universal property
+
+Let there be a morphism \(f\colon X \to Y\), the quotient can be expressed with this diagram
+
+\[
+\begin{tikzcd}
+  X \arrow[r, "\bar f"] \arrow[rd, "f"]
+    & Y / \ker f \arrow[d, dashed, "h"]\\
+    & Y
+\end{tikzcd}\]
+
+**** topology
+:PROPERTIES:
+:ID:       ea16267b-93d3-4fda-b0b4-1731b483b0a6
+:END:
+
+We can view a linear map as a functor, which preserving two kinds of computations. What about continuous map?
+
+An open set in topological space suits that
+1. if \(A\) and \(B\) is open, then \(A \cup B\) and \(A \cap B\) is open
+2. \(X\) is open and \(\emptyset\) is open
+
+*** Supplement: Coherent Semantics
+:PROPERTIES:
+:ID:       b2b2438c-1269-4f20-9fad-1ee9dab934be
+:END:
+
+Before reading this chapter, we should know that is coherent space.
+
+\textsf{Emp} is naturally interpreted as the coherence space \(Emp\) wheore web is empty, and the interpretation of \(\varepsilon_{U}\) follows immediately.
+
+The sum, on the other hand, poses some delicate problems. When \(\cal A\) and \(\cal B\)  aare tow coherent space, there is jut one obvious of sum, namely the direct sum introduced below. Unfortunately, the \(\delta\) scheme is not interpreted. This objection also holds for other kinds of semantics, for example /Scott domains/.
+
+After examining and rejecting a certain number of fudged alternatives, we are led back to the original solution, which would work with /linear/ functions (i.e., preserving unions), and we arrive at a representation of the sum type as:
+
+\[{!}\mathcal A \oplus {!} \mathcal B\]
+
+It is this decomposition which is the origin of linear logic: the operation \(\oplus\) (direct sum) and \({!}\) (linearilisation) are in fact logical operations in their own right.
+
+[[id:bf8931a1-dd75-4a68-8a7c-ce74b6fe4a2b][new connectives in LL]].
+
+We defining *direct sum* as something that we already seen: The web is the disjoint union \(| X \oplus Y | = |X| + |Y|\), and the two point in the web are coherent iff they are in the same coherent space and are coherent. To be honest, I am a little bit of confused, because this is the same definition as tensor product \(\with\).
+
+We have stable function \(\mathcal Inj^{1}\) and \(\mathcal Inj^{2}\), from \(\cal A\) to \(\mathcal A \oplus \mathcal B\), and from \(\mathcal B\) to \(\mathcal A \oplus \mathcal B\):
+\[\mathcal I nj ^{1} (a) = \{ 1 \} \times a,\qquad \mathcal I nj ^{2}(b) = \{ 2 \} \times b\]
+but this definition coincide on emptyset. Domain-theoretically, this amounts to taking the disjoint union with the ∅ element identified, so it is sometimes called an /amalgamated/ sum.
+
+A first solution is given by adding two tags \(1\) and \(2\) to \(| \mathcal A \oplus \mathcal B|\) to form \(\mathcal A \amalg \mathcal B\): \(1\) is coherent with the \((1, \alpha)\) but not with the \((2, \beta)\) and likewise \(2\) with \((2, \beta)\) but not with the \((1, \alpha)\). What the hell?
+
+We can then define:
+\[\amalg ^{1} (A) = \{ 1 \} \cup \mathcal I nj ^{1}(a), \qquad \amalg ^{2}(b) = \{ 2 \} \cup \mathcal I nj ^{2}(b)\]
+What is this \(H\) here?
+Now, from \(F\) and \(G\), the casewise definition is possible:
+\[H(\amalg ^{1}(a)) = F(a),\qquad H(\amalg ^{2}(b)) = G(b)\]
+\[H(c) = \emptyset, \quad \text{if } c \cap \{1,2\}= \emptyset\]
+In other words, in order to know whether \(\gamma \in H (c)\), we look inside \(c\) for a tage \(1\) or \(2\), the nif we find one (say \(1\)), we werite \(c = H ^{1}(a)\) and ask whether \(\gamma \in (G)\).
+
+This solution interprets the standard conversion schemes:
+\[\delta x. u y. v(\iota ^{1} r) \leadsto v [r / x] ,\qquad \delta x . u y . v(\iota _{2} s) \leadsto v[s / y]\]
+What?
+However the interpretation \(H\) of the term \(\delta x . (\iota ^{1} x) y. (\iota ^{2} y) z\), which is defined by
+\[H (\amalg ^{1}(a)) = \amalg ^{1}(a),\qquad H (\amalg ^{2}(b)) = \amalg ^{2}(b)\]
+\[H(c) = \emptyset, \quad \text{if } c \cap \{1,2\} = \emptyset\]
+does not always satisfy \(H(c) = c\). In fact tis equation is satisfied only for \(c\) of the form \(\amalg ^{1}(a)\) , \(\amalg ^{2}(b)\) or \(\emptyset\).
+
+*** Supplement: What is linear logic
+
+Proofs and Types
+author: Yves Lafont
+**** forewords
+
+Linear logic was originally discovered in coherence semantics (see chapter 12). It appears now as a promising approach to fundamental questions arising in proof theory and in computer science.
+
+In ordinary (classical or intuitionistic) logic, you can use an hypothesis as many times as you want: this feature is expressed by the rules of weakening and contraction of Sequent Calculus. There are good reasons for considering a logic without those rules:
+
+  - From the viewpoint of proof theory, it removes pathological situations
+    from classical logic (see next section) and introduces a new kind of
+    invariant (proof nets).
+
+  - From the viewpoint of computer science, it gives a new approach to
+    questions of /laziness/, side effects and memory allocation [GirLaf, Laf87,
+    Laf88] with promising applications to parallelism.
+
+**** classical logic is not constructive
+
+Intuitionistic logic is called constructive because of the correspondence between proofs and algorithms (the Curry-Howard isomorphism, chapter 3). So, for example, if we prove a formula \(\exists n \in \N. P(n)\), we can exhibit an integer \(n\) which satisfies the property \(P\).
+
+**** new connectives in LL
+:PROPERTIES:
+:ID:       bf8931a1-dd75-4a68-8a7c-ce74b6fe4a2b
+:END:
+
+We use two connectives \(\otimes\) and \(\with\). The former is called tensor product and the latter is called direct product. And we have a dual version of these two (the notation is dual as well): \(\parr\) the tensor sum, or the cotensor product, and \(\oplus\) the direct sum.
+
+  - \(\otimes\): *tensor* product
+  - \(\with\): *direct* product
+  - \(\parr\): tensor sum
+  - \(\oplus\): direct sum
+
+Tensor product can be called cumulative conjuction and direct product can be called alternative conjuction.
+
+A linear negation is introduced in order to utilize symmetric:
+
+The linear negation of \(A\) is denoted as \(A ^{\bot}\)
+
+And we have using de Morgans:
+
+\((A \otimes B) ^{\bot} = A ^{\bot} \parr B ^{\bot}\) and \((A \with B) ^{\bot} = A ^{\bot} \oplus B^{\bot}\)
+\((A \parr B) ^{\bot} = A ^{\bot} \otimes B ^{\bot}\) and \((A \oplus B) ^{\bot} = A ^{\bot} \with B^{\bot}\)
+
+**** of course! why not?
+
+\[{\sim}(! A) = ? ({\sim} A),\qquad {\sim}(?A) = ! {\sim} A\]
+
+or you can say
+
+\[(! A)^{\bot} = ? A ^{\bot}, \qquad (? A)^{\bot} = ! A ^{\bot}\]
+
+Note that we use right hand rules:
+
+\[
+\prftree[r]{!}{\vdash A , ? \Gamma}{\vdash ! A, ? \Gamma}
+\quad
+\prftree[r]{\sf W?}{\vdash \Gamma}{\vdash ? A , \Gamma}
+\quad
+\prftree[r]{\sf C?}{\vdash ?A , ?A , \Gamma}{\vdash ?A , \Gamma}
+\quad
+\prftree[r]{\sf D?}{\vdash A , \Gamma}{\vdash ? A , \Gamma}\]
+
+The last one is called /dereliction/. It is equivalent to the axiom \(B \multimap ? B\), or dually \(! B \multimap B\)
+
+**** representing NJ using linear logic
+
+We have
+
+\[A \land B := A \with B,
+\quad A \lor B := ! A \oplus ! B,
+\quad A \Rightarrow B := ! A \multimap B,
+\quad \neg A = ! A \multimap 0\]
+
+in such a way that an intuitionistic formula is valid iff its translation is porvable in linear logic (so, for example, derecliction expresses that \(B \Rightarrow B\)).
+This translation is in fact used for the coheretn semantics of typed lambda calculus.
+
+It is also possible to add (first and second order) quantifiers, but the main features of linear logic are already contained in the propostional fragment.
+
+Okay my question is that what the hell is this « of course! » and « why not? » used for? I do think that we need to tackle for the nature of indecibility that is brought by weakening and contraction rule.
+
+But can you explain more on that?
+
+**** proof nets, multiplicative linear logic
+
+Here the proof nets are drawn with something I don't know in the book. But anyway, I am drawing the way like /The Blind Spot/ does.
+
+Multiplicative Linear Logic (MLL) is about the proof nets.
+
+Here we shall concentrate on the so-called multiplicative fragment of linear logic, /i.e./, the connectors \(\otimes\), \(1\), \(\parr\), \(\with\) and \(\bot\). In this fragment, rules are consercative over contexts: the context in the conclusion is the disjoin union of those of the premises. The rules for \(\withh\) and \(\top\) are not, and if we renouce these connectors, we must renounce their duals \(\oplus\) and \(0\).
+
+From an algorithmic viewpoint, this fragment is very /unexpressive/, but this restriction is necessary if we wawnt to tackle porblem progressively. Furthermore, multiplicative connectors and rules can be generalised to make a genuine programming language. (ps. I bet it suck egg) (ps. it somehow relates to the concurrency or parallel programming?)
+
+
+Sequent proofs contain a lot of redundancy: in a rule such as
+
+\[
+\prftree[r]{$\parr$}{\vdash A , B, \Gamma}{\vdash A \parr B , \Gamma}\]
+
+The context, namely \(\Gamma\), which plays a passive role, is rewritten without any change. By expelling all those boring contexts, we obtain the /substantifique moelle/ of the proof, called the proof net.
+
+For example, the proof
+
+\[
+\prftree[r]{$\parr$}{
+  \prftree[r]{}
+          {
+            \prftree[r]{$\otimes$}
+                    {
+                      \prftree[r]{$\otimes$}
+                              {\vdash A , A ^{\bot}}
+                              {\vdash B, B ^{\bot}}
+                              {\vdash A \otimes B, A ^{\bot}, B ^{\bot}}
+                    }
+                    {\vdash C , C ^{\bot}}
+                    {\vdash (A \otimes B) \otimes C , A^{\bot}, B^{\bot}, C^{\bot}}
+          }
+          {\vdash A ^{\bot}, B ^{\bot}, (A \otimes B) \otimes C,  C ^{\bot}}
+}
+{
+  \vdash A ^{\bot} \parr B ^{\bot}, (A \otimes B) \otimes C, C ^{\bot}
+}\]
+
+becomes
+
+\[
+\begin{tikzcd}[column sep=tiny, every arrow/.append style={dash, line width=1pt, rounded corners}]
+  A\ar[rd]\netarrow{negA}{2} & {} & B\ar[ld]\netarrow{negB}{5} \\
+  & \makebox[0pt]{$A \otimes B$}\ar[rd] & & C \ar[ld]\netarrow{negC}{2} &&&& |[alias=negA]|A ^{\bot}\ar[rd] && |[alias=negB]|B ^{\bot}\ar[ld]\\
+  && \makebox[0pt]{$(A \otimes B) \otimes C$} &&& |[alias=negC]|C^{\bot} &&& \makebox[0pt]{$ A ^{\bot} \parr B ^{\bot}$}
+\end{tikzcd}\]
+
+while also comes from form
+
+\begin{center}
+\begin{prooftree}
+\AxiomC{\(\vdash A, A^{\bot}\)}
+\AxiomC{\(\vdash B , B ^\bot\)}
+\BinaryInfC{\(\vdash A \otimes B, A ^{\bot}, B ^{\bot}\)}
+\UnaryInfC{\(\vdash A ^{\bot}, B ^{\bot}, A \otimes B\)}
+\UnaryInfC{\(\vdash A ^{\bot} \parr B ^{\bot} , A \otimes B\)}
+\UnaryInfC{\(\vdash A \otimes B, A ^{\bot} \parr B ^{\bot}\)}
+\AxiomC{\(\vdash C, C^{\bot}\)}
+\BinaryInfC{\(\vdash (A \otimes B) \otimes C, A ^{\bot} \parr B ^{\bot}, C ^{\bot}\)}
+\end{prooftree}
+\end{center}
+
+**** others
+
+Essentially, we lose the (inessential)appplications order of rules.
+
+At this point precise definitoins are needed. A /proof/ structure is just a graph biult from the follwing components:
+
+Link
+
+\[
+\begin{tikzcd}[every arrow/.append style={dash, line width=1pt, rounded corners}]
+ A \netarrow{1-2}{2} & A^{\bot}
+\end{tikzcd}\]
+
+Cut
+
+\[
+\begin{tikzcd}[every arrow/.append style={dash, line width=1pt, rounded corners}]
+A \netarrow{1-2}{-2} & A^{\bot}
+\end{tikzcd}\]
+
+logical rules
+
+\[
+\begin{tikzcd}[column sep=tiny, every arrow/.append style={dash, line width=1pt, rounded corners}]
+A \ar[rd] & & B \ar[ld]\\
+& \makebox[0pt]{$A \otimes B$}
+\end{tikzcd}\]
+
+\[
+\begin{tikzcd}[column sep=tiny, every arrow/.append style={dash, line width=1pt, rounded corners}]
+A \ar[rd] & & B \ar[ld]\\
+& \makebox[0pt]{$A \parr B$}
+\end{tikzcd}\]
+
+
+\[
+\begin{tikzcd}[column sep=tiny, every arrow/.append style={dash, line width=1pt, rounded corners}]
+&& A\netarrow{2-1}{2}\ar[rd] && B \netarrow{2-7}{2}\ar[ld]\\
+A^{\bot} &&& \zerohbox{A \parr B} &&& B^{\bot}
+\end{tikzcd}\]
+
+\[
+\begin{tikzcd}[column sep=tiny, every arrow/.append style={dash, line width=1pt, rounded corners}]
+  A\ar[rd]\netarrow{2-7}{2} && B\ar[ld]\netarrow{2-9}{4}\\
+  & \zerohbox{A \otimes B} \ar[rd] && C\ar[ld]\netarrow{3-5}{2} &&& A^{\bot}\ar[rd] && B ^{\bot}\ar[ld]
+  & A\ar[rd]\netarrow{3-15}{4} && B\ar[ld]\netarrow{3-13}{2}\\
+  && \zerohbox{A \otimes B \otimes C} && C^{\bot} &&& \zerohbox{A ^{\bot} \parr B^{\bot}} \netarrow{3-11}{-2}
+  &&& \zerohbox{A \otimes B} && B ^{\bot} && A ^{\bot}
+\end{tikzcd}\]
+
+To prove the proposition, it is enough
+
+** Categorical Logic and Type Theory
+:PROPERTIES:
+:CUSTOM_ID: categoricallogic
+:END:
+
+*** -1 preliminaries
+
+**** Recursion theory
+
+The categories of PERs and of \(\omega\)-sets (and also the effective topos) will occur in many examples. They involve some basic recusion theory. We assume some coding \(( \varphi _{n})_{n \in \N}\) of the partial recursive functions, and use it to describe what is called Kleene application on natural numbers:
+
+\[n \cdot m =
+\begin{cases}
+  \varphi _{n}(m ),\quad & \mathrm{if}\ \varphi_{n}(m) \downarrow \\
+  \uparrow,\quad         & \mathrm{otherwise}
+\end{cases}\]
+here \(\varphi_{n}(m)\downarrow\) means \(\varphi_{n}(m)\) is defined.
+
+For a partial recusive function \(f\colon \N ^{n}\times \N \to \N\) we let \(\vec x \mapsto \Lambda y. f(\vec x , y)\) be the partial recursive function \(s_{1}^{n}( e, -)\colon \N ^{n} \to \N\) that is obtained from the "\(s\)-\(m\)-\(n\)-theorem" by writing
+
+\[f( \vec x , y ) = \varphi _{e} (\vec x , y) = \varphi _{s ^{n}_{1}} (e, \vec x )(y).\]
+
+Then \((\Lambda y . f(\vec x , y)) \cdot z \sim f(\vec x, z)\), where \(\sim\) is Kleen equality; it expresses that the left hand side is defined if and only if the right hand side is defined, and in that case both sides are equal. We furthere use a recursive bijection \(\langle - , - \rangle\colon \N \times \N \to \N\) with recursive projection functions \(\mathbf{p}, \mathbf{p'}\colon \N \rightrightarrows \N\). See /e.g./ [66. 294, 236] for more information.
+
+**** Category theory
+
+*Terminal object*
+
+We generally use \(1\) for a terminal object (also called final object or *empty product*) in a category.
+
+*Cartesian*
+
+Binary Cartesian productes are written as \(X \times Y\) with porjections \(\pi \colon X \times Y \to X\), \(\pi '\colon X \times Y \to Y\) and tuples \(\langle f, g \rangle\colon X \to X\times Y\) for \(f\colon X \to X\) and \(g\colon Z \to Y\).
+
+*Diagonals*
+
+As sepcial case of tupleing, we often write \(\delta\) or \(\delta (X)\) for the diagonal \(\langle \mathrm{id} , \mathrm{id} \rangle \colon X \to X \times X\) on \(X\), and \(\delta\) or \(\delta (I, X)\) for the "parametrised" diagonal \(\langle \mathrm{id}, \pi' \rangle \colon I \times X \to (I \times X) \times X\), which duplicates \(X\), with parameter \(I\).
+
+*Evaluation in CCC*
+
+Associated with the abovementioned exponent object \(Y ^{X}\) in a CCC there are evaluation and abstraction maps, which will be written as \(\mathrm{ev}\colon Y ^{X} \times X \to Y\) and \(\Lambda (f)\colon Z \to Y ^{X}\), for \(f \colon Z \times X \to Y\).
+
+(ps. In Girard's book, \(\mathrm{ev}\) is written as \(\epsilon\), and \(\Lambda(f)\) is written as \(\lambda (f)\). As you can see, the reason why we use \(\lambda\) as this unique homomorphism is that this \(\lambda\) is associated with the \(\lambda\) in \(\lambda\)-calculus.)
+
+*Initial object*
+
+An initial object (or emtpy coproduct) is usually written as \(0\). For binary coproduct we write \(X + Y\) with coprojections \(\kappa \colon X \to X + Y\), \(\kappa ' \colon Y \to X + Y\) and cotuples \([f, g] \colon X + Y \to Z\), where \(f\colon X \to Z\) and \(g \colon Y \to Z\). The codiagonal \(\nabla = [\mathrm{id}, \mathrm{id}] \colon X + X \to X\) is an example of a cotuple.
+
+*Adjoint*
+
+For functors \(F\colon \mathbb{A} \to \mathbb{B}\) and \(G \colon \mathbb{B} \to \mathbb{A}\) in an adjunction \(F \dashv G\) the homset isomorphism \(\B (F X , Y) \simeq \mathbb{A}(X, GY)\) is often written as a bijective correspondence between morphisms \(f\colon F X \to Y\) and \(g \colon X \to G Y\)via double lines:
+
+\[\frac{ F X \longrightarrow _{f} Y}{ X \longrightarrow _{g} GY},\quad \textit{e.g.}\text{ for exponents:}\quad \frac{Z \times X \longrightarrow Y}{{Z \longrightarrow Y ^{X} }= X \Rightarrow Y\hidewidth}\]
+
+In such a situation, transpostion is sometimes written as \((f: F X \to Y)\mapsto (f ^{\lor} \colon X \to GY)\) and \((g \colon X \to GY) \mapsto (g ^{\lor} \colon F X \to Y)\), or more ambiguoously, as \(f \mapsto \bar f\), \(g \mapsto \bar g\).
+
+\(\eta\) *and* \(\varepsilon\)
+
+We reserve the symbols \(\eta\) for the unit natural franformation \(\mathrm{id} \Rightarrow GF\), and \(\varepsilon\) for the counit natural tranformation \(FG \Rightarrow \mathrm{id}\) of an adjunction \((F \dashv G)\). We recall that these natural tranformations have componets \(\eta _{X} = (\mathrm{id}_{F X}) ^{\lor}\) and \(\varepsilon _{Y} = (\mathrm{id} _{ G Y})^{\land}\). In case both \(\eta\) and \(\varepsilon\) are (natural) isomorphisms, the categories \(\mathbb{A}\) and \(\mathbb B\) are called equivalent. This is written as \(\mathbb A \simeq \B\).
+
+For the rest, we generally follow usual categoriacal notation, \textit{e.g.} as in the standard reference [187] (ps. Mac Lane). Another (more recent) reference text is [36] (ps. Handbook of Categorical Algebra). And [186, 19, 61] may be used as introductions. (ps. [186]: S. Mac Lane and R. Pare. Coherence for bicategories and indexed categories. [19]: M. Barr and Ch. Wells. Category Theory for Computing Science. [61]: R.L. Crole. Categories for Types.)
+
+**** Type theory
+
+Mostly, standard type theoretical notation will be used. For example, exponent types are written as \(\sigma \to \tau\) and (dependent) product types as \(\Pi x \colon \sigma . \tau\).
+
+*Lambda*
+
+The associated introduction and elimination operations are lambda-abstraction \(\lambda x\colon \sigma. M\) (ps. i.e. variable \(x\) is typed) and application \(M  \cdot N\), or simply \(MN\). (Sometimes we also use "meta-lambda-abstraction" \(\lambda\kern-4.5pt \raisebox{1.3pt}{$ \lambda $} x . f(x)\) for the actual function \(x \mapsto f(x)\)), not in some formal calculus.
+
+Bonus: the meta-lambda is written as
+#+begin_example
+\(\lambda\kern-4.5pt \raisebox{1.3pt}{$ \lambda $} x . f(x)\)
+#+end_example
+
+*Limit and colimit*
+
+We standardly describe besides "limit types" also "colimit types" like coproduct (disjoint union) \(\sigma + \tau\), dependent sum \(\Sigma x \colon \sigma . \tau\), equality \(\mathrm{Eq}_{\sigma}(x , x ')\) and quotient \(\sigma / R\). There is no established notation for the introduction and elimination operations associated with these type formers. The notation that we shall use is given in Figure 0.1. The precise rules will be given later. For these "colimit" type formers there are typical "commutation conversions" (involving substitution of elimination terms) and "Frobenius properties" (describing commutation with products).
+
+*Substitution*
+
+We write (e,g. in the above table) \(M [ N / x]\) for the result of substituting \(N\) for all free occurrences of \(x\) in \(M\). This applies to terms, types or kinds \(M, N\).
+
+*Equality and "defined as"*
+
+In a type theoretic context, an equation \(M = N\) between terms usually describes convertibility. We shall use \(\equiv\) to denote syntactic equality (following [13]).
+
+*The rest*
+
+Familiarity with the propostions-as-types correspondence (between derivability in logic and inhabitation in type theory) will be convenient, but not necessary. For basic information on type theory we refer to [14, 98]. Also the standard textbook [13] on the untyped lambda calculus is relevant, since many of the typed nottions stem from the untyped setting.
+
+*** 0 Prospectus
+:PROPERTIES:
+:CUSTOM_ID: clog00
+:END:
+
+This introductory chapter is divided into two parts. It first discusses some generalities concerning logic, type theory and category theory, and describes some themes that will be developed in this book. It then continues with a description of the (standard) logic and type theory of ordinary sets, from the perspective of fibred category theory--typical of this book. This description focuses on the fundamental adjunctions that govern the various logical and type theoretic operations.
+
+*** 0.1 Logic, type theory, and fibred category theory
+:PROPERTIES:
+:CUSTOM_ID: clog001
+:END:
+
+**** part one: logic over a type theory
+
+A logic is always a logic over a type theory. This statement sums up our approach to logic and type theory, and forms an appropriate starting point. It describes a type theory as a “theory of sorts”, providing a domain of reason-ing for a logic. Roughly, types are used to classify values, so that one can distinguish between zero as a natural number \(0\colon \mathbb{N}\) and zero as a real number \(0\colon\mathbb{R}\), and between addition \(+ \colon \mathbb{N}\times\mathbb{N}\to\mathbb{N}\) on natural numbers and addition \( + \colon \mathbb{R}\times\mathbb{R}\to \mathbb{R}\) on real numbers. In these examples we use atomic types \(\mathbb{N}\) and \(\mathbb{R}\) and composite types \(\mathbb{N}\times\mathbb{N}\to\mathbb{N}\) and \(\R \times \R \to \R\) obtained with the type constructors \(\times\) for Cartesian product, and \(\to\) for exponent (or function space). The relation \(:\) as in \(0\colon \N\), is the inhabitation relation of type theory. It expresses that \(0\) is of type \(\mathbb{N}\), i.e. that \(0\) inhabits \(\mathbb{N}\). It is like membership \(\in\) in set theory, except that \(\in\) is untyped, since everything is a set. But a string is something which does not inhabit the type of natural numbers. Hence we shall have to deal with rules regulating inhabitation, like
+
+\[
+\prftree[r]{}
+        {}
+        {0 \colon \N}\quad
+\prftree[r]{}
+        {n \colon \N}
+        {\texttt{succ}(n)\colon \N}
+\]
+
+The first rule is unconditional: it has no premises and simply expresses that the term O inhabits the type \(\N\). The second rule tells that if we know that \(n\) inhabits \(\N\), then we may conclude that \(\texttt{succ}(n)\) also inhabits \(\N\), where \(\texttt{succ}(-)\) may be read as successor operation. In this way one can generate terms, like \(\succ(\succ(0)): \N\) inhabiting the type \(\N\).
+
+In predicate logic one reasons about such terms in a type theory, like in
+
+\[\forall x \colon \N. \exists y\colon \N . y > \succ(x)\]
+
+This gives an example of a proposition. The fact that this expression is a proposition may also be seen as an inhabitation statement, so we can write
+
+\[(\forall x \colon \N . \exists y \colon \N . y > \succ(x))\colon \mathsf{Prop}\]
+
+
+using a type Prop of propositions. In this particular proposition there are no free variables, but in predicate logic an arbitrary proposition \(y\colon \Prop\) may contain free variables. These variables range over types, like in:
+
+\[x > 5 \colon \mathsf{Prop}, \text{ where }x \colon \N \quad \text{or} \quad
+x > 5 \colon \mathsf{Prop}, \text{ where } x \colon \R\]
+
+We usually write these free variables in a “context", which is a sequence of variable declarations. In the examples the sequence is a singleton, so we write
+
+\[x \colon \N \vdash x > 5 \colon \mathsf{Prop}\quad \text{and} \quad
+x \colon \R \vdash x > 5 \colon \mathsf{Prop}\]
+
+The turnstile symbol \(\vdash\) separates the context from the conclusion: we read the sequent \(x\colon \N \vdash x > 5 \colon \mathsf{Prop}\) as: in the context where the variable \(x\) is of type \(\N\), the expression \(x > 5\) is a proposition. Well-typedness is of importance, since if \(x\) is a string, then the expression \(x > 5\) does not make sense (unless one has a different operation \(>\) on strings, and one reads '\(5\)' as a string).
+
+This explains what we mean with: a logic is always a logic over a type theory. Underlying a logic there is always a calculus of typed terms that one reasons about. But one may ask: what about single-sorted logic (i.e. single-typed, or untyped, logic) in which variables are thought of as ranging over a single domain, so that types do not really play a role? Then one still has a type theory, albeit a very primitive one with only one type (namely the type of the domain), and no type constructors. In such situations one often omits the (sole) type, since it has no role. But formally, it is there. And what about propositional logic? It is included as a border case: it can be seen as a degenerate predicate logic in which all predicates are closed (i.e. do not contain term variables), so one can see propositional logic as a logic over the empty type theory.
+
+**** part two: type theory
+
+We distinguish three basic kinds of type theory:
+
+- simple type theory (STT);
+- dependent type theory (DTT);
+- polymorphic type theory (PTT).
+
+In simple type theory there are types built up from atomic types (like \(\N\), above) using type constructors like exponent \(\to\), Cartesian product \(\times\) or coproduct (disjoint union) \(+\). Term variables \(x\colon \sigma\) are used to build up terms, using atomic terms and introduction and elimination operations associated with the type constructors (like tuples and projections for products \(\times\)). Types in simple type theory may be seen as sets, and (closed) terms inhabiting types as elements of these sets. In /dependent/ type theory, one allows a term variable \(x\colon \sigma\) to occur in another type \(\tau (x)\colon \mathsf{Type}\). This increases the expressive power, for example because one can use in DTT the type \(\mathsf{Matrix}(n, m)\) of \(n \times m\) matrices (say over some fixed field), for \(n\colon \N\) and \(m\colon \N\) terms of type \(\N\). If one thinks of types as sets, this type dependency is like having for each element \(i \in I\) of a set \(I\), another set \(X(i)\). One usually writes \(X_{i} = X(i)\) and sees \((X_{i})_{i \in I}\) as an \(I\)-indexed family of sets. Thus, in dependent type theory one allows type-indexed-types, in analogy with set-indexed-sets. Finally, in /polymorphic/ type theory, one may use additional type variables \(\alpha\) to build up types. So type variables \(\alpha\) may occur inside a type \(\sigma(\alpha)\), like in the type \(\mathsf{list}(\alpha)\) of lists of type \(\alpha\). This means that one has types, indexed by (or parametrised by) the universe \(\mathsf{Type}\) of all types. In a set theoretic picture this involves a set \(X_{A}=X(A)\) for each set \(A\). One gets indexed collections \((X_{A})_{A \in \mathbf{Sets}}\) of sets \(X_{A}\).
+
+These three type theories are thus distinguished by different forms of in-dexing of types: no indexing in simple type theory, indexing by term variables \(x\colon \sigma\) in dependent type theory, and indexing by type variables \(\alpha \colon \mathsf{Type}\) in polymorphic type theory. One can also combine dependent and polymorphic type theory, into more complicated type theories, for example, into what we call polymorphic dependent type theory (PDTT) or full higher order dependent type theory (FhoDTT).
+
+What we have sketched in the beginning of this section is predicate logic over simple type theory. We shall call this simple predicate logic (SPL). An obvious extension is to consider predicate logic over dependent type theory, so that one can reason about terms in a dependent type theory. Another extension is logic over polymorphic type theory. This leads to dependent predicate logic(DPL) and to polymorphic predicate logic (PPL). If one sees a typed calculus as a (rudimentary) programming language, then these logics may be used as program logics to reason about programs written in simple, dependent, or polymorphic type theory. This describes logic as a “module” that one can plug on to a type theory.
+
+**** part three: fibred category
+
+This book focuses on such structural aspects of logic and type theory. The Language and techniques of category theory will be essential. For example, we talked about a logic /over/ a type theory. Categorically this will correspond to one ("total") category, capturing the logic, being /fibred/ over another ("base") category, capturing the type theory. Indeed, we shall make special use of tools from fibred category theory. This is a special part of category theory, stemming from the work of Grothendieck in algebraic geometry, in which (continuous) indexing of categories is studied. As we already mentioned, the various forms of type theoretic indexing distinguish varieties of type theory. And also, putting a logic on top of some type theory (in order to reason about it) will be described by putting a fibration on top of the categorical structure corresponding to the type theory. In this way we can put together complicated structures in a modular way.
+
+Fibred category theory is ordinary category theory with respect to a base category. Also, one can say, it is ordinary category theory /over/ a base category. Such a base category is like a universe. For example, several concepts in category theory are defined in terms of sets. One says that a category \(\C\) has arbitrary products if for each /set/ I and each \(I\)-indexed collection \((X_{i})_{i\in I}\) of objects \(X_{i}\in \C\) there is a product object \(\prod_{i\in I}X_{i}\in \C\) together with projection morphisms \(\pi_{j} \colon (\prod _{i\in I}X_{i}) \to X_{j}\), which are suitably universal. In category theory one is not very happy with this privileged position of sets and so the question arises: is there a way to make sense of such products with respect to an object I of a ‘universe’ or ‘base category’ \(\mathbb{B}\), more general than the category \(\mathbf{Sets}\) of sets and functions? This kind of generality is needed to interpret logical products \(\forall x \colon \sigma . \varphi\) or type theoretic products \(\Pi x\colon \sigma . \tau\) when the domain of quantification \(\sigma\) is not interpreted as a set (but as some ordered set, or algebra, for example).
+
+Another example is local smallness. A category \(\C\) is locally small if for each pair of objects \(X,  Y \in \C\) the morphisms \(X\to Y\) in \(\C\) form a /set/ (as opposed to a proper class). That is, if one has homsets \(\C(X,Y) \in \mathbf{Sets}\) as objects in the category of sets. Again the question arises whether there is a way of saying that \(\C\) is locally small with respect to an arbitrary universe or base category \(\mathbb{B}\) and not just with respect to \(\mathbf{Sets}\).
+
+Fibred category theory provides answers to such questions. It tells what it means for a category \(\mathbb{E}\) to be “fibred over' a base category \(\mathbb{B}\). In that case we write \(
+\begin{gathered}
+  \scriptstyle \mathbb{E}\\[-8pt]
+  \scriptstyle\downarrow\\[-7pt]
+  \scriptstyle \mathbb{B}
+\end{gathered}\), where the arrow \(\mathbb{E}\to \mathbb{B}\) is a functor which has a certain property that makes it into a fibration. And in such a situation one can answer the above questions: one can define quantification with respect to objects \(I \in \mathbb{E}\) and say when one has appropriate hom-objects \(\underline{\Hom}(X, Y)\in \mathbb B\) for \(X, Y \in \mathbb{E}\). The ways of doing this will be explained in this book. And for a category \(\C\) there is always a ‘family fibration’ \(
+\begin{gathered}
+  \scriptstyle \mathrm{Fam}(\C)\\[-7pt]
+  \scriptstyle \downarrow \\[-7pt]
+  \scriptstyle \mathbf{Sets}
+\end{gathered}\) of set-indexed families in \(\C\).
+The fibred notions of quantification and local smallness, specialised to this family fibration, are the ordinary notions described above. Thus, in the family fibration we have our standard universe (or base category) of sets.
+
+**** part four: categorical phenomena
+
+There are many categorical notions arising naturally in logic and type theory (see the list below). And many arguments in category theory can be formulated conveniently using logic and type theory as “internal” language (sometimes called the “Mitchell-Benabou” language, in the context of topos theory). These fields however, have different origins: category theory arose in the work of Eilenberg and Mac Lane in the 1940s within mathematics, and was in the beginning chiefly used in algebra and topology. Later it found applications in almost all areas of mathematics (and computer science as well, more recently). Type theory is also from this century, but came up earlier in foundational work by Russell in logic (to avoid paradoxes). Recently, type theory has become important in various (notably functional) programming languages, and in computer mathematics: many type theories have been used during the last two decades as a basis for so-called(?) proof-assistants. These are special computer programs which assist in the verification of mathematical statements, expressed in the language of some (typed) logic. The use of types in these areas imposes certain restrictions on what can be expressed, but facilitates the detection of various errors. We think it is in a sense remarkable that two such fundamental fields (of category theory and of type theory)---with their apparent differences and different origins---are so closely related. This close relationship may be beneficial in the use and further development of both these fields.
+
+
+We shall be especially interested in categorical phenomena arising within logic and type theory. Among these we mention the following.
+
+- (i) Every context of variable declarations (in type theory) or of premises(in logic) is an index. It is an index for a ‘fibre’ category which captures the logic or type theory that takes place within that context--with the declared variables, or under the assumptions. The importance of this categorical role of contexts is our motivation for paying more than usual attention to contexts in our formulations of type theory and logic.
+
+- (ii) Appropriately typed sequences of terms give rise to morphisms be tween contexts. This is the canonical way to produce a category from types and terms. These context morphisms induce substitution functors between fibre categories. The structural operations of weakening (adding a dummy assumption) and contraction (replacing two assumptions of the same kind by a single one) appear as special cases of these substitution functors: weakening is substitution along a projection \(\pi\), and contraction is substitution along a diagonal \(\delta\). These \(\pi\) and \(\delta\) may be Cartesian projections and diagonals in simple and polymorphic type theories, or ‘dependent’ projections and diagonals in dependent type theory. (ps. a cartesian diagonal \(\delta\) is a functor \(\C \to \C \times \C\))
+
+- (iii) The basic operations of logic and type theory can be described as adjoints in category theory. Such operations standardly come with an intro-duction and an elimination operation, which are each other's inverses (via the so-called (\(\beta\))- and (\(\eta\))-conversions). Adjoint correspondences capture such situations. This may be familiar for the (simple) type theoretic constructors \(1\), \(\times\), \(0\), \(+\) and \(\to\) (and for their propositional counterparts \(\top\), \(\land\), \(\bot\), \(\lor\) and \(\supset\)), since these are the operations of bicartesian closed categories (which can be described via standard adjunctions). But also existential \(\exists x \colon\sigma .(-)\) and universal \(\forall x \colon \sigma.(-)\) quantification in predicate logic over a type \(\sigma\), dependent sum \(\Sigma x \colon \sigma . (-)\) and product \(\Pi \alpha\colon \sigma .(-)\) in dependent type theory over a type \(\sigma\), and polymorphic sum \(\Sigma \alpha \colon \mathsf{Type}.(-)\) and product \(\Pi \alpha \colon \mathsf{Type}.(-)\)in polymorphic type theory over the universe Type of types, are characterised as left and right adjoints, namely to the weakening functor which adds an extra dummy assumption \(x\colon\sigma\), or \(\alpha \colon \mathsf{Type}\). Moreover, equality \(=_{\alpha}\) on a type \(\sigma\) is characterised as left adjoint to the contraction functor which replaces two variables \(x, y \colon \sigma\) by a single one (by substituting \(x\) for \(y\)). By ‘being characterised’ we mean that the standard logical and type-theoretical rules for these operations are (equivalent to) the rules that come out by describing these operations as appropriate adjoints.
+
+  The most important adjunctions are:
+
+  \[\begin{aligned}\text{existential }  \exists , \text{ sum } \Sigma & \dashv \text{ weakening}\\ \text{weakening} & \dashv \text{ contraction}\\ \text{equality} & \dashv \text{ comprehension}\\ \text{(but also: equality} & \dashv \text{ comprehension, via a different functor)}\\ \text{quotients} & \dashv \text{ equality} \end{aligned}\]
+
+  The first four of these adjoints were recognised by Lawvere (and the last two are identified in this book). Lawvere first described the quantifiers \(\exists\), \(\forall\) as left and right adjoints to arbitrary substitution functors. The above picture with separate adjoints to weakening and to contraction functors is a refinement, since, as we mentioned in (ii), weakening and contraction functors are special cases of substitution functors. (These operations of weakening and contraction can be suitably organised as a certain comonad; we shall define quantification and equality abstractly with respect to such comonads.)
+
+- (iv) As we mentioned above, the characteristic aspect of dependent type theory is that types may depend on types, in the sense that term variables inhabiting types may occur in other types. And the characteristic aspect of polymorphic type theory is that type variables may occur in types. Later we shall express this as: types may depend on kinds. These dependencies amount to certain forms of indexing. They are described categorically by fibred (or indexed) categories. Thus, if one knows the dependencies in a type theory, then one knows its underlying categorical structure. The additional type theoretic structure may be described via certain adjunctions, as in the previous point.
+
+- (v) Models of logics and type theories are (structure preserving) functors. From a specific system in logic or type theory one can syntactically build a so-called ‘classifying’ (fibred) category, using a term model---or generalised Lindenbaum-Tarski---construction. A model of this system is then a (fibred) functor with this classifying (fibred) category as domain, preserving appropriate structure. We shall make systematic use of this /functorial semantics/. It was introduced by Lawvere for single-typed simple type theories. And it ex-tends to other logics and type theories, and thus gives a systematic description of models of (often complicated) logics and type theories.
+
+- (vi) If \(\sigma = \sigma (\alpha)\) is a type (in polymorphic type theory) in which a free type variable \(\alpha\) occurs,then,under reasonable assumptions about type formation, the operation \(\tau \mapsto \sigma [\tau / \alpha]\) of substituting a type \(\tau\) for \(\alpha\), is functorial. This functoriality is instrumental in describing the rules of (co-)inductively defined data types in terms of (co-)algebras of this functor. And the reasoning principles (or logic) associated with such data types can also be captured in terms of (co-)algebras (but for a different functor, obtained by lifting the original functor to the logical world of predicates and relations).
+
+- (vii) A logical framework is a type theory \(\mathcal T\) which is expressive enough so that one can formulate other systems \(S\) of logic or of type theory inside \(\mathcal T\). Categorically one may then describe (the term model of) \(S\) as an internal category in (the term model of) \(\cal T\). We briefy discuss dependent type theory as a logical framework in Section 10.2, but we refer to [87] for this connection with internal categories.
+
+**** part five: categorical structures
+
+This is not a book properly on logic or on type theory. Many logical and type theoretical calculi are described and some illustrations of their use are given, but there is nothing about specific proof-theoretic properties like cut-elimination, Church-Rosser or strong normalisation. Therefore, see [14]. The emphasis here lies on categorical semantics. This is understood as follows. Category theory provides means to say what a model of, say predicate logic, should look like. It gives a specification, or a hollow structure, which captures the essentials. A proper model is something else, namely an instance of such a structure. We shall describe both these hollow structures, and some instances of these. (But we do not investigate the local structure or theories of the example models, like for example in [197] or in [13, Chapter 19].)
+
+So what, then, is the advantage of knowing what the categorical structures are, corresponding to certain logics and type theories?
+
+Firstly, it enables us to easily and quickly recognise that certain mathematical structures are models of some logical or type theoretical calculus, without having to write out an interpretation in detail. The latter can be given for the ‘hollow categorical structure’, and need not be repeated for the particular instances. One only has to check that the particular structure is an instance of the general categorical structure. For example, knowing that a particular category (of domains, say) is Cartesian closed yields the information that we can interpret simple type theory.
+
+Secondly, once this is realised, we can turn things around, and start using our calculus (suitably incorporating the constants in a signature) to reason directly and conveniently about a (concrete or abstract categorical) model. This is the logician's view of the mathematician's use of language: when reasoning about a particular mathematical structure (say a group \(G\)), one formally adds the elements \(a \in G\) as constants \(\underline{a}\) to the language, and one uses the resulting “internal” language to reason directly about \(G\). The same approach applies to more complex mathematical structures, like a fibred category of domains: one then needs a suitable type theoretic language to reason about such a complex (indexed) structure.
+
+The third advantage is what a clear (categorical) semantics provides a certain syntactic hygiene, and deepens the understanding of the various logical and type theoretical systems. For example, the principle that a (possibly new) operation in logic or type theory should correspond to an adjoint gives certain canonical introduction, elimination and conversion rules for the constructor. Fourthly, models can be used to obtain new results about one's logical or type theoretical system. Consistency, conservativity and independence results are often obtained in this manner. Finally, and maybe most importantly, models provide meaning to one's logical or type theoretical language, resulting in a better understanding of the syntax.
+
+There are so many systems of logic and type theory because there are certain"production rules" which generate new systems from given ones.
+
+- (i) There are three basic type theories: simple type theory (STT), depen-dent type theory (DTT) and polymorphic type theory (PTT).
+
+- (ii) Given a certain type theory, one can construct a logic over this type theory with predicates \(\varphi (\vec x) \colon \Prop\) containing free variables \(\vec x\) inhabiting types. This allows us to reason about (terms in) the given type theory.
+
+- (ili) Given a logic (over some type theory), one can construct a new type theory (extending the given one) by a propositions-as-types upgrade: one considers the propositions \(\varphi\) in the logic as types in the new type theory, and derivations in the logic as terms in the new type theory.
+
+This modularity is reflected categorically in the following three points.
+
+- (i) There are three basic categorical structures: for STT (Cartesian closed categories), for DTT (what we call closed comprehension categories) and for PTT (certain fibred Cartesian closed categories).
+
+- (ii) Putting a logic on a type theory corresponds to putting a preorder fbration on top of the structure describing the type theory. For logic one uses preorder structures, since in logic one is interested in provability and not in explicit proofs (or proof-terms, as in type theory), which are described as non-trivial morphisms.
+
+- (ii) Under a propositions-as-types upgrade one replaces a preorder fibra-tion by an ordinary fibration (with proper fibre categories), thus making room for proof-terms as proper morphisms.
+
+(Both second points are not as unproblematic as they may seem, because one may have complicated type theories, say with two syntactic universes of types and of kinds, in which there are many ways of putting a logic on top of such a type theory: one may wish to reason about types, or about kinds, or about both in the same logic. Categorically, there are similarly different ways in which a preorder fibration can be imposed.)
+
+By the very nature of its contents, this book is rather descriptive. It contains few theorems with deep mathematical content. The influence of computer science may be felt here, in which much emphasis is put on the description of various languages and formalisms.
+
+**** part six: what this book is not
+
+Also, it is important to stress that this is not a book properly on fibred category theory. And it is not intended as such. It does contain the basic concepts and results from fibred category theory, but only as far as they are directly useful in logic or type theory (and not in topology, for example). Some of these basic results have not been published previously, but have been folklore for some time already. They have been discovered and rediscovered by various people, and the precise fow of ideas is hard to track in detail. What we present in this book is not a detailed historical account, and we therefore apologise in advance for any misrepresentation of history.
+
+We sketch what we see as the main lines. In the development of fibred category and categorical logic one can distinguish an initial French period starting in the 1960s with Grothendieck's definition of a fibration (i.e. a fibred category), published in [107]. It was introduced in order to study descent. The ensuing theory was further developed by Grothendieck and (among others) Giraud [100] and Benabou. The latter's work is more logical and foundational in spirit than Grothendieck's (involving for example suitable fibred notions of local smallness and definability), and is thus closest to the current work. Many of the basic notions and results stem from this period.
+
+In the late 1960s Lawvere first applied indexed categories in the study of logic. Especially, he described quantification and equality in terms of adjoints to substitution functors,and showed that also comprehension involves an adjunction. This may be seen as the start of categorical logic (explicitly, in his influential “Perugia Lecture Notes” and also in [192, 193]). At about the same time, the notion of elementary topos was formulated, by Lawvere and Tierney. This resulted in renewed attention for indexed (and internal) categories, to study phenomena over (and inside) toposes. See for example [173, 169] and the references there.
+
+Then, in the 1980s there is the start of a type theoretic boom, in which indexed and fibred categories are used in the semantics of polymorphic and dependent type theories, see the basic papers 306, 307, 148] and the series of PhD theses [45,330,75,185,318,252,260,7,154,89,217,86,60,289, 125, 4, 198, 133]. This book collects much material from this third phase. Explicitly, the connection between simple type theory and Cartesian closed categories was first established by Lawvere and Lambek. Later, dependent type theory was related to locally Cartesian closed categories by Seely, and to the more general “display map categories” by Taylor. The relation between polymorphic type theory and certain fibred (or indexed, or internal) Cartesian closed categories is due to Seely, Lamarche and Moggi. Finally, more compli-cated systems combining polymorphic and dependent systems (like the calcu-lus of constructions) were described categorically by Hyland, Pitts, Streicher, Ehrhard, Curien, Pavlovic, Jacobs and Dybjer. This led to the (surprising) discovery of complete internal categories by Moggi and Hyland (and to the subsequent development of ‘synthetic’ domain theory in abstract universes).
+
+Interestingly, fibred categories are becoming more and more important in various other areas of (theoretical) computer science, precisely because the aspects of indexing and substitution (also called renaming, or relabelling) are so fundamental.Among these areas we mention(without pretension to be in any sense complete): database theory [295, 151, 9], rewriting [12], automata theory [175, 10], abstract environments [279], data flow networks [310], constraint programming [219], concurrency theory [345, 131], program analysis [230, 25], abstract domain theory [146] and specification [152, 327, 48, 159].
+
+Many topics in the field of categorical logic and type theory are not discussed in this book. Sometimes because the available material is too recent (and un-settled), sometimes because the topic deviates too much from the main line, but mostly simply because of lack of space. Among these topics we mention(with a few references): inductively and co-inductively defined types in depen-dent type theory [70, 71], categorical combinators [63, 290, 116], categorical normalisation proofs [147, 238, 5], fixed points [16], rewriting and 2-categorical] structure [308, 278], modal logic [93], μ-calculi [313], synthetic domain theory [144, 331, 264], a fibred Giraud theorem [229], a fibred adjoint functor theorem [47, 246], descent theory [168] (especially with its links to Beth de-finability [208]], fbrations in bi-categories [315, 317], 2-fbrations [127], and the theory of stacks [100].
+
+The choice has been made to present details of interpretation functions for simple type theory in full detail in Chapter 2, together with the equivalent functorial interpretation. In later chapters interpretations will occur mostly in the more convenient functorial form. For detailed information about interpre-tation functions in polymorphic and (higher order) dependent type theories we refer to [319, 61]. As we proceed we will be increasingly blurring the distinction between certain type theories and certain fibred categories, thus decreasing the need for explicit interpretations
+
+*** 0.2 The logic and type theory of sets
+:PROPERTIES:
+:CUSTOM_ID: clog002
+:END:
+
+This section is manually partitioned by editor (me). This section is highly focused on the fibration over sets and family of sets using the language of adjoint. If you don't know about adjoint, don't worry---me neither.
+
+**** Describing a fibred category: Pred
+
+We shall now try to make the fibred perspective more concrete by describing the (familiar) logic and type theory of ordinary sets in fibred form. Therefore we shall use the fibrations of predicates over sets and of families of sets over sets, without assuming knowledge of what precisely constitutes a fibration. In a well-known situation we thus describe some of the structures that will be investigated in more abstract form in the course of this book. We shall write \(\Sets\) for the category of (small) sets and ordinary functions between them
+
+Predicates on sets can be organised in a category, that will be called \(\mathbf{Pred}\), as follows.
+
+\textbf{Objects}: pairs \(I, X\) where \(X \subset I\) is a subset of a set \(I\); in this situation we consider \(X\) as a predicate on a type \(I\), write \(X(i)\) for \(i \in X\) emphasise that an element \(i \in I\) may be understood as a free variable in \(X\). When \(I\) is clear from the context, we sometimes write \(X\) for the object \(X \subset I\).
+
+\textbf{Morphisms}: \((I, X)\to (J, Y)\) are functions \(u\colon I \to J\) between the underlying sets satisfying
+
+\[X(i) \Rightarrow Y(u (i)), \quad \text{for each } i \in I\]
+
+Diagrammatically, this condition on such a function \(u\colon I \to J\) amounts to the existence of a necessarily unique (dashed) map:
+
+\[
+\begin{tikzcd}
+  X \arrow[rr, dashed]
+    \arrow[d, hook]    && Y \arrow[d, hook] \\
+  I \arrow[rr, "u"]    && J
+\end{tikzcd}\]
+
+indicating that \(u\) restricts appropriately.
+
+There is an obvious forgetful functor \(\mathbf{Pred}\to \mathbf{Sets}\) sending a predicate to its underlying set (or type): \((I, X)\mapsto I\). This functor is a "fibration". And although it plays a crucial role in this situation, we do not give it a name, but simply write it vertically as \(\begin{gathered} \scriptstyle\mathbf{Pred}\\[-7pt] \scriptstyle\downarrow\\[-7pt] \scriptstyle\mathbf{Sets} \end{gathered}\) to emphasise that it describes predicates as living over sets. (ps. from one: Is this fibration? Isn't that fibration need that a \(\Hom\) should be an object in \(\B\)? Anyway, here the fibration is presented as a forgetful functor)
+
+For a specific set \(I\), the “fibre” category \(\mathbf{Pred}_{I}\) is defined as the subcategory of \(\mathbf{Pred}\) of predicates \((X\subset I)\) on \(I\) and of morphisms that are mapped to the identity function on \(I\). This category \(\mathbf{Pred}_{I}\) may be identified with the poset category \(\langle P(I),\subset\rangle\) of subsets of \(I\), ordered by inclusion. For a function \(u\colon I \to J\) there is “substitution” functor \(u^{*}\colon P(J)\to P(I)\) in the reverse direction, by
+
+\[(Y\subset J)\mapsto (\{i \mid u (i)\in Y\}\subset I)\]
+
+Clearly we have \(Y\subset Y' \Rightarrow u^{ * }(Y)\subset u^{ * }(Y')\), so that \(u^{*}\) is indeed a functor.
+
+ps. Here we need to draw a commutative diagram for you to show the relation between \(u\) and \(u^{ * }\):
+
+\[\begin{tikzcd} \C _{I} & \C_{J} \arrow[l, "u^{ * }"] \\ I \arrow[r, "u"] & J \end{tikzcd}\]
+In the context, \(\C _{I}\) should be \(\Pred _{I}\). And for example, \(P(I)\) means the power sets of \(I\).
+
+\[\begin{tikzcd} P(I) & P(J) \arrow[l, "u^{ * }"] \\ I \arrow[r, "u"] & J \end{tikzcd}\]
+
+**** Weakening and contraction
+
+Two special cases of substitution are _weakening_ and _contraction_. Weakening is substitution along a Cartesian projection \(\pi \colon I \times J \to I\). It consists of a functor
+
+\[P(I)\longrightarrow_{\pi^{ * }} P(I\times J)\qquad \text{sending}\qquad X\mapsto \{(i,j)\mid i \in X \land j \in J\}\]
+
+by adding a dummy variable \(j \in J\) to a predicate \(X\). Contraction is substitution along a Cartesian diagonal \(\delta \colon I \to I \times I\). It is a functor
+
+\[P(I\times I) \longrightarrow _{\delta ^{ * }} P(I), \quad \text{given by}\quad Y \mapsto \{i\in I \mid (i, i )\in Y\}\]
+
+It replaces two variables of type \(I\) by a single variable.
+
+ps. The (right handside) weakening rule and contraction rule in (classic) sequent calculus are respectively
+\[\prftree[r]{$(\vdash W)$}
+          {\Gamma \vdash \Delta}
+          {\Gamma \vdash A, \Delta},\quad
+  \prftree[r]{$(\vdash C)$}
+          {\Gamma \vdash A, A, \Delta}
+          {\Gamma \vdash A, \Delta}\]
+
+**** Forall and Exists
+
+Each fibre category \(P(I)\) is a *Boolean algebra*, with the usual set theoretic operations of intersection \(\cap\), top element \((I \subset I)\), union \(\cup\), bottom element \((\emptyset \subset I)\), and complement \(I\, \char`\\ (-)\) These operations correspond to the propositional connectives \(\land, \top, \lor, \bot, \neg\) in (Boolean) logic. They are *preserved* by substitution functors \(u^{ * }\) between fibre categories.
+
+The categorical description of the quantifiers \(\exists\), \(\forall\) is less standard (than the propositional structure of subsets). These quantifiers are given by operations between the fibres—and not inside the fibres, like the propositional connectives—since they bind free variables in predicates (and thus change the underlying types). They turn out to be *adjoints* to weakening, as expressed by the fundamental formula:
+
+\[\exists \dashv \pi ^{*} \dashv \forall.\]
+(ps. remember \(\pi ^{ * }\) is weakening substitution, and \(\pi\) is projection \(I \times J \to I\). And \(\dashv\) is notation for adjoint.)
+
+In more detail, we define for a predicate \(T \subset I \times J\),
+(ps. remember a substitution \(u^{ * }\) is respective to a function \(u \colon X \to Y\))
+
+\[\exists ( Y) = \{ i\in I\mid \exists j \in J.(i,j) \in Y \}\]
+\[\forall(Y) = \{ i \in I \mid \forall j \in J. (i, j )\in Y \}\]
+
+These assignments \(Y\mapsto \exists(Y)\) and \(Y\mapsto \forall(Y)\) are functorial \(P(I \times J) \rightrightarrows P(I)\). And they are left and right adjoints to the above weakening functor \(\pi ^{ * }\colon P(I) \to P(I\times J)\) because there are the following basic adjoint correspondences.
+
+\[\frac{Y \subset \pi ^{ * }(X) \quad \mathrm{over} \quad I \times J}{\exists (Y)\subset X \quad \mathrm{over} \quad I},\quad \text{and}\quad \frac{\pi^{ * }(X) \subset Y \quad \mathrm{over}\quad I \times J}{X \subset \forall (Y) \quad \mathrm{over} \quad I}\]
+(ps. here the line should be double line but I don't know how to typeset that, and double line means if and only if. Because of that a \(\Hom\) in poset category is presented as a relation, the original definition of adjoint that "there is a one-one correspondence between \(\Hom(FX , Y)\) and \(\Hom( X, GY)\)" becomes "if and only if". For the definition of adjointing see the preliminary of this book.)
+
+\[
+\begin{tikzcd}
+  \Pred_{I \times J}
+  \arrow[rr, bend left, "\exists"]
+  \arrow[rr, bend right, "\forall"]
+    && \Pred_{I}
+       \arrow[ll, "\pi ^{*}"]\\
+  I \times J \arrow[rr, "\pi"]
+    && I
+\end{tikzcd}\]
+
+**** Equality Functor
+
+For a set (or type) \(I\), euqality \(i = i '\) for elements \(i, i' \in I\) forms a predicate on \(I \times I\). Such equality can also be captured categorially, namely as left adjoint to the contraction functor \(\delta ^{ * }\colon P(I \times I )\to P(I)\) . One defines for a predciate \(X \subset I \) the predicate \(\mathrm{Eq}(X)\) on \(I\times I\) by
+
+\[\mathrm{Eq}(X)= \{ (i , i') \in I\times I \mid i = i ', i \in X \}\]
+(ps. It seems that equality can be captured well with relation. Why then did Girard in his book say that "equality" is something that is always in-perfect?)
+
+Then there are adjoint correspondence
+
+\[\frac{\mathrm{Eq}(X) \subset Y \quad \mathrm{over}\quad I \times I}{X \subset \delta ^{ * } (Y) \quad \mathrm{\over} \quad I}\]
+(ps. again it should be double line here.)
+
+Notice that the predicate \(\mathrm{Eq}(X)\) is equality on \(I\) for the special case where \(X\) is the top element \(I\). See also Exercise 0.2.2 below for a description of a right adjoint to contraction, in terms of inequality.
+
+The operations of predicate logic can thus be identified as certain structure in this fibration \(\begin{gathered} \scriptstyle \mathbf{Pred}\\[-7pt] \scriptstyle \downarrow \\[-7pt] \scriptstyle \mathbf{Sets} \end{gathered}\), namely as structure in and between its fibres. Moreover, it is a property of the fibration that this logical structure exists, since it can be characterised in a universal way --- via adjoints --- and is thus given uniquely up-to-isomorphism. The same holds for the other logical and type theoratical operations that we identify below.\\
+(ps. unique up-to-isomorphism means that there is only one such object, and if there are others, they are isomorphic. This term is used widely when talking about universal properties.)\\
+(ps. What is “fibration” in your opinion now?)
+
+**** Comprehension: The adjointing between Pred and Sets
+
+Comprehension is the assignment of a set to a predicate, or, as we shall say more generally later on, of a type to a predicate.
+This assignment takes a prediate to the set of elements for which the predicate holds. It also has a universal property. Thererfore we first need the "truth" functor \(1 \colon \mathbf{Sets}\to \mathbf{Pred}\), which assigns to a set \(I\) the truth predicate \(1(I) = (I \subset I)\) on \(I\); it is the terminal object in the fibre over \(I\) (ps. Can you write out the definition of Fibration Category?). Comprehension (or subset types, as we shall also say) is then given by a functor \(\{ - \}\colon \mathbf{Pred}\to \mathbf{Sets}\), namely
+
+\[\{(Y \subset J)\} = \{ j \in J \mid Y(j) \} = Y.\]
+
+Hence \(\{ - \}\colon \mathbf{Pred}\to\mathbf{Sets}\) is simply \(( Y \subset J) \mapsto Y\). It is right adjoint to the truth functor \(1\colon \mathbf{Sets} \to \mathbf{Pred}\) since there is a bijective correspondence between functions \(u\) and \(v\) in a situation:
+
+\[\frac{1 (I) \longrightarrow _{u} (Y \subset J)\quad \mathrm{in}\ \mathbf{Pred}}{I \longrightarrow _{v} \{ (Y\subset J) \}\quad \mathrm{in}\ \mathbf{Sets}}\]
+(ps. Here also it should be double line. And also, \(u\) and \(v\) are morphism from \(\Hom(1 (I) , (Y \subset J))\) and \(\Hom(I , \{ (Y \subset J)\})\). The correspondence here means the two homsets are isomorphic. So \(u \in \Hom((I \subset I ) , (Y \subset J))\), and \(v \in \Hom (I , Y)\). Remember that \(u\colon X \subset I \to Y \subset J\) is such function \(u\) that if \(i \in X\) then \(u(i) \in Y\). For \(u\) when \(X \equiv I\), such \(u\) is absolutely identical to function \(I \to Y\), where \(Y \subset J\))
+
+In essence this correspondence tells us that \(Y(j)\) holds if and only if \(j \in \{ (Y \subset J)\}\).
+(ps. the purpose is that we formulate \(\{-\}\) as a functor, and also use it as an example.)
+
+**** Quotient and Relation
+
+Quotient sets can also be described using the firbation of predicates over sets. We first form the category \(\mathbf{Rel}\) of (binary) relations on sets by pullback.
+
+\[
+\begin{tikzcd}
+  \mathbf{Rel} \arrow[rr] \arrow[d] \arrow[drr, phantom, "\lrcorner", very near start]
+    && \mathbf{Pred} \arrow[d]\\
+  \mathbf{Sets} \arrow[rr, "I \mapsto I \times I"]
+    && \mathbf{Sets}
+\end{tikzcd}\]
+(the pullback is hard to draw)
+
+Via this pullback we restrict ourselves to predicates with underlying sets of the form \(I \times I\). Explicitly, the category \(\mathbf{Rel}\) has
+
+\textbf{Objects}: pairs \((I, R)\) where \(R \subset I \times I\) is a (binary) relation on \(I \in \mathbf{Sets}\). \\
+(ps. We can write \(R\) for an object in \(\mathbf{Rel}\) if the context is clear.)
+
+\textbf{Morphisms}: \((I, R)\to (J , S)\) are functions \(u\colon I\to J\) between the underlying sets with the proeperty: \(R(i, i')\) implies \(S(u(i), u (i'))\), for all \(i, i' \in I\).
+
+The functor \(\mathbf{Rel}\to \mathbf{Sets}\) in the diagram is then \((I, R) \mapsto I\). It will turn out to be a fibration by construction. The above-mentioned equality predicate yields an equality functor \(\mathrm{Eq}\colon \mathbf{Sets}\to \mathbf{Rel}\) , namely
+
+\[J \mapsto \mathrm{Eq}(J) = \{ (j, j) \mid j \in J\}.\]
+(ps. Read the previous section if you forget what \(\mathrm{Eq}\) is.)
+
+Quotients in set theory can then be described in terms of a left adjoint \(\cal Q\) to this equality functor \(\mathrm{Eq}\): a relation \(R \subset I \times I\) is mapped to the quotient set \(I / \bar R\) where \(\bar R \subset I \times I \) is the least equivalence relation containing \(R\). Indeed there is an adjoint correspondence between functions \(v\) and \(u\) in:
+
+\[\frac{ \mathcal Q (I , R) = I / \bar R \longrightarrow _{v} J \quad \mathrm{in}\ \mathbf{Sets}}{R\longrightarrow _{u} \mathrm{Eq}(J)\quad \mathrm{in}\ \mathbf{Rel}}\]
+
+This correspondence can be reformulated as: for each function \(u \colon I \to J\) with \(u (i) = u (i')\) for all \(i, i ' \in I\) for withc \(R(i, i')\) holds, there is a unique function \(v\colon I / \bar R \to J\) in a commuting triangle
+
+\[\begin{tikzcd}
+  I \arrow[rr, "\mathrm{quotient}"] \arrow [drr, "u"]
+    && I / \bar R \arrow[d, dashed, "v"]  \\
+    && J
+\end{tikzcd}\]
+
+**** Fibration of Fam(Sets) over Sets
+
+Finally we mention that predicates over sets give us higher order logic. There is a distinguished set \(2 = \{ 0,1 \}\) of propositions, with special predicate \( (\{1\} \subset 2 )\) for truth: for every preciate \((X \subset I)\) on a set \(I\), there is a unique function char\((X \subset I)\colon I \to 2\) with
+
+\[(X \subset I ) = \mathrm{char} (X \subset I )^{ * }(\{1\} \subset 2 ).\]
+
+This existence of "characteristic morphisms" (ps. \textit{i.e.} \(\mathrm{char}\)) is what makes the category of sets a topos. It allows us to quantify via this set \(2\) over propostions.
+
+This completes our first glance at the fibred structure of the logic of sets. In the remainder of this section we sketch some of the type theoretic structure of sets, agian in terms of fibration, namely interms of the "family" fibration \(\Fibre{\Fam(\Sets)}{\Sets}\) of set-indexed-sets. It captures the dependent type theory (with type-indexed-types) of sets.
+
+The category \(\Fam(\Sets)\) of families of sets has:
+
+\textbf{Objects}: pairs \((I, X)\) consisting of an index set \(I\) and a family \(X = (X _{i}) _{i \in I}\) of \(I\)-indexed sets \(X_{i}\).
+
+\textbf{Morphisms}: \((I, X) \to (J, Y)\) are pairs \((u, f)\) consisting of functions
+
+\[I \longrightarrow _{u} J \quad \mathrm{and} \quad f = (X_{i} \longrightarrow _{f_{i}} Y_{u(i)}) _{i \in I}\]
+(ps. it is better written as a set function \(u \colon I \to J\), and a family of morphisms, indexed by \(I\), \(f = (f_{i})_{i \in I}\), where \(f_{i}\colon X_{i} \to Y_{u(i)}\))
+
+There is a projection functor \(\Fam(\Sets) \to \Sets\) sending an indexed family to its underlying set index set: \((I , X) \mapsto I\). It will turn out to be a fibration. Essentially this will mean that there are (appropriate) substitution or reindexing functors: for a function \(u\colon I \to J\) between index sets, we can map a family \(Y = (Y_{j})_{j \in J}\) over \(J\) to a family over \(I\) via:
+
+\[(Y _{j})_{j \in J} \mapsto (Y_{u(i)})_{i\in I}\]
+
+We shall write \(u^{ * }\) for this operation. It extends to a functor between "fibre" categories: for an arbitrary set \(K\), let \(\Fam(\Sets)_{K}\) be the "fibre" subcategory of \(\Fam(\Sets)\) of those families \((K ,X)\) with \(K\) as index set, and with morphisms \((\mathrm{id}_{K}, K)\) with the identity on \(K\) as underlying function. Then \(u\colon I \to J\) yields a substitution functor \(u ^{ * } \colon \Fam(\Sets)_{J}\to \Fam(\Sets)_{I}\).
+
+Notice that there is an inclusion functor \(\Pred \to \Fam(\Sets)\) (it should be inclusion \(\to\) with hook) of predicates into families, since every predicate \((X \subset I)\) yields an \(I\)-indexed family \((X_{i})_{i \in I}\) with
+
+\[X_{i} = \begin{cases} \{ * \},   & i \in X\\ \emptyset, & \mathrm{otherwise} \end{cases}\]
+
+It is not hard to see that this yields a full and faithful functor \(\Pred \to \Fam(\Sets)\), which commutes with substitution. It is a 'morphism of fibrations'. \\
+(ps. I don't really know what a faithful functor is.)
+
+Our aim is to describe the dependent coproduct \(\coprod\) and product \(\prod\) of families of sets as adjoints to weakening functors, in analogy with the situation for existential \(\exists\) and universal \(\forall\) quantification in the logic of sets. But in this situation of families of sets we have weakening functors \(\pi ^{ * }\) induced not by Cartesian projections \(\pi\): \(I \times J \to I\), but by "dependent" projections \(\pi \colon \) \(\{ I \mid X \} \to I\), with domain \(\{ I \mid X\}\) given by the disjoint union
+
+\[\{ I \mid X \} = \{ (i, x ) \mid i \in I , x \in X_{i}\}\]
+
+which generalises the Cartesian product. The weakening functor \(\pi ^{ * }\) associated with this dependent projection \(\pi \colon \) \(\{ I \mid X\} \to I\) sends a family \(Y = (Y_{i})_{i \in I}\) over \(I\) to a family \(\pi ^{ * }(Y)\) over \(\{ I \mid X \}\) by vacuously adding an extra index \(x\), as in:
+
+\[\pi ^{ * }(Y) = (Y_{i}) _{(i\in I , x \in X_{i})}.\]
+
+(As we shall see later, the projection \(\pi\colon \{ I \mid X\} \to I
+\) arises in a canonical way, since the assignment \((I, X)\mapsto \) \(\{ I \mid X\}\) yields a functor \(\mathrm{Fam}(\mathbf{Sets})\) \(\to\) \(\mathbf{Sets}\), which is right adjoint to the terminal object functor \(1\colon \mathbf{Sets} \to \mathrm{Fam}(\mathbf{Sets})\), sending a set \(J\) to the \(J\)-indexed collection \((\{ * \})_{j \in J}\) of singletons. The count of this adjunction has the projection \(\pi\) as underlying map. Thus, the operation \((I,X)\)\(\mapsto \{ I \mid X\}\) is like comprehension for predicates, as described above.)
+
+(ps. Have you read the chapter 8: Coherent Space in \textit{The Blind Spot}, where a \textit{Directed System} in category \(\C\) is defined as a category where all the objects are indexed by directed partially ordered set \(I\)? If we use the notation here, it should be \(\Fam(\C)_{I}\) where \(I\) is directed.)
+
+**** Coproduct and Product in Fam(Sets)
+
+The claim is that the dependent coproduct \(\coprod\) and product \(\prod\) for set-indexed sets are left and right adjoints to the weakening functor \(\pi^{ * }\) . Therefore we have to define coproduct and product as functors
+
+\[
+\begin{tikzcd}
+  \mathrm{Fam}(\mathbf{Sets}) _{\{I \mid X\}}
+  \arrow[rr, bend left, "\coprod"]
+  \arrow[rr, bend right, "\prod"]
+    && \mathrm{Fam}(\mathbf{Sets})_{I}
+    \arrow[ll, "\pi ^{*}"]\\
+  \{I \mid X\} \arrow[rr, "\pi"]
+    && I
+\end{tikzcd}\]
+
+
+acting on an \(\{I \mid X\}\) indexed family \(Z = (Z _{(i , x)}) _{i \in I , x \in X}\), and producing an indexed family. These functors are given by
+
+\[\coprod (Z)_{i} = \{ (x , z) \mid x \in X_{i} , z \in Z_{(i , x)} \}\]
+\[\prod (Z)_{i} = \{ \varphi \colon X_{i} \to \bigcup _{x \in X _{i}} (Z_{(i,x)}) \mid \forall x \in X_{i}, \varphi (x) \in Z_{(i , x)}\}.\]
+
+We then get the fundamental relation
+
+\[\coprod \dashv \pi ^{ * } \dashv \prod\]
+
+Since there are bijective adjoint correspondences between families of functions \(f\) and \(g\) in:
+
+\[\frac{Z \longrightarrow_{f} \pi ^{*} (Y)\quad \mathrm{over}\ \{ I \mid X\}}{ \coprod (Z) \longrightarrow _{g} Y \quad \mathrm{over}\ I}\]
+
+\[\frac{\pi ^{ * } (Y) \longrightarrow _{f} Z \quad \mathrm{over}\ \{ I \mid X \}}{Y \longrightarrow _{g} \prod (X)\quad \mathrm{over}\ I}\]
+
+Also in this situation, there are adjoints to contraction functors \(S^{ * }\) (induced by dependent diagonals), given by equality and inequality. But we do not further pursue this matter, and conclude our introduction at this point.
+
+**** Conclusion
+
+What we have sketched is that families of sets behave like dependent types, and that subsets behave like predicates, yielding a logic over (dependent) type theory. We have shown that the basic operations of this logic and of this type theory can be described by adjunctions, in a fibred setting. In the course of this book we shall (among many other things) be more precise about what it means to have such a logic over a type theory and we shall axiomatise all of the structure found above, and identify it in many other situations.
+
+Finally, the next few exercises may help the reader to become more familiar with the structure described above.
+
+*** 0.2 Exercises
+**** 0.2.1
+
+Define a left adjoint \(F\colon \Fam (\Sets) \to \Pred\) to the inclusion functor
+
+\[
+\begin{tikzcd}
+  \Pred \arrow[rr, hook] \arrow[rd]
+    && \Fam(\Sets) \arrow[ll, bend right, "F"] \arrow[ld] \\
+    & \Sets
+\end{tikzcd}\]
+Such that (1) \(F\) makes the triangle commute (so it does not change t he index set), and (2) \(F\) commutes with substitution.
+
+**** 0.2.2 not equal
+
+Define for a subset \(X \subset J\) the relation \(\mathrm{nEq}(X) \subset I \times I\) by
+
+\[\mathrm{nEq}(X) = \{(i, i') \mid i \ne i', \text{ or } i \in X\}\]
+
+and show that the assignment \(X \mapsto \mathrm{nEq}(X)\) is right adjoint to contraction \(\delta ^{ * } \colon P ( I \times I) \to P(I)\). Notice that \(\mathrm{nEq}(X)\) at the bottom element \(X = \emptyset\) is inequality on \(I\).
+
+**** 0.2.3: the right adjoint of Eq
+
+Show that the equality functor \(\mathrm{Eq}\colon \Sets \to \mathbf{Rel}\) also has a right adjoint.
+
+**** 0.2.4 Comprehension
+
+Check that the operation \((I , X) \mapsto \{I \mid X\}\) yields a functor \(\Fam(\Sets)\to \Sets\), and show that it is right adjoint to the terminal object functor \(\Sets \to \Fam(\Sets)\), mapping a set \(J\) to the family of singletons \((\{ * \})_{j \in J}\). Describe the unit and counit of the adjunction explicitly.
+
+*** 1 Introduction to fibred category theory
+
+This first proper chapter starts with the basics of fibred category theory; it provides the foundation for much of the rest of this book. A fibration, or fibred category, is designed to capture collections \((\C _{I})_{I\in \B}\) of categories \(\C_{I}\) varying over a base category \(\B\), generalising for example collections of sets \((X_{i})_{i\in I}\) varying over a base, or index, set \(I\). The main categorical examples are the indexed collections of categories
+
+\[(\B / I)_{I \in \B}, \quad (\text{Sub} (I))_{I\in \B}, \quad (\B  /\kern-3pt / I )_{I\in \B}\]
+
+consisting of slice categories \(\B / I\) over, posets \(\text{Sub}(I)\) of subobjects of \(I\), and what we call 'simple slice categories' \(\B \DoubleSlash I\) over \(I\) The ordinary slice categories will be used for dependent type theory, the posets of subobjects for predicate logic, and the simple slice categories for simple type theory (whence the name). The slice categories \(\B / I\) will be used as leading example in the first section when we introduce fibrations. The other examples \(\mathrm{Sub}(I)\) and \(\B \DoubleSlash I\)will be introduced soon afterwards, in Section 1.3.
+
+In all of these cases, a morphism \(u\colon I \to J\) in the base category \(\B\) induces a substitution functor, commonly written as \(u^{*}\), acting in the reverse direction. That is, there are substitution functors:
+
+\[\B / J \to_{u^{ * }} \B / I,\quad \mathrm{Sub}(J)\to_{u^{ * }} \mathrm{Sub}(I),\quad \B \DoubleSlash J \to_{u^{ * }} \B \DoubleSlash I\]
+
+Weakening functors and contraction functors arise as special cases of substitution functors \(u^{*}\), namely (respectively) as \(\pi^{ * }\), where \(\pi\) is a projection morphism in \(\B\), and as \(\delta^{ * }\) where \(\delta\) is a diagonal morphism in \(\B\).
+
+These two aspects—indexing and substitution—will be studied systematically in this first chapter, in terms of fibrations. The notion of'fibred category', or 'fibration', is due to Grothendieck [107].
+
+This chapter develops the basic theory of fibrations and shows how various notions from ordinary category theory—such as adjunctions, products and coproducts—make sense for fibred categories as well. In the last section 1.10 we describe the notion of 'indexed category', a common alternative formulation of variable category, and explain why an indexed category should be regarded as simply a particular kind of fibrations (namely as a 'cloven' one). Chapter 7 describes internal categories, which also correspond to certain fibrations, namely to so-called 'small' fibrations.
+
+The ten sections which together form this chapter contain the essentially standard, first part of the theory of fibrations, geared towards use in categorical logic and type theory. The main notions are: Cartesian morphism, substitution functor, change-of-base, fibred adjunction, fibred (co)product and indexed category. These will be introduced together with many examples. Sometimes the theory is further developed in exercises, but mostly, the exercises of a section serve to familiarise the reader with the new material in that section. There is a later chapter (Chapter 9) which continues the study of fibrations.
+
+(ps. [107] A. Grothendieck. Categories fibrees et descente (Expose VI). In A. Grothendieck, editor, Revetement Etales et Groupe Fondamental (SGA 1), number 224 in Lect. Notes Math., pages 145-194. Springer, Berlin, 1970.)
+
+*** 1.1 Fibrations
+
+Basically, a fibration is a categorical structure which captures \textit{indexing} and substitution. Since the formal definition of a fibration is a bit technical—see Definition 1.1.3 below—we start with the following introductory observations. These focus on the special case of a codomain fibration, and will lead to the general definition of fibration towards the end of this section. The exercises contain many elementary results about fibrations, which should help the reader to get acquainted with the concepts involved.
+
+* note on coherent space and linearity
+:PROPERTIES:
+:CUSTOM_ID: coherence-and-linearity
+:END:
+
+** The definition of coherent space: web and coherence
+
+An "element" in a coherent space \(X\), is called a clique, which is a term in graph theory. The description contains two part for the coherent space \(X\): web and coherence
+
+  - web: /web/ is a set, noted as \(|X|\). All the cliques are subsets of \(|X|\).
+  - coherence: there is a reflexive and symmetric relation called /coherent/,
+    denoted as \(\coh_{X}\) in coherent space \(X\).
+
+A clique in a coherent space \(X\), is a subset of web, whose points are all coherent pair-wise. In space \(X\), \(a\) is a clique is noted as \(a \sqsubset X\).
+
+And we obviously have that if \(a _{0} \subset a \sqsubset X\), then \(a_{0} \sqsubset X\).
+
+** Stable Functions: Definition
+
+A stable function \(F\) from \(X\) to \(Y\) is such function that
+
+  1. \(a \sqsubset X\) \(\Rightarrow\) \(F(a) \sqsubset Y\)
+  2. \(a \subset b \sqsubset X\) \(\Rightarrow\) \(F(a) \subset F(b)\)
+  3. \(F(\uparrow \bigcup _{i}a_{i}) = {\uparrow} \bigcup _{i}F(a_{i})\)
+  4. \(a \cup b \sqsubset X\) \(\Rightarrow\) \(F(a \cap b) = F(a) \cap F(b)\)
+
+** Stable Functions: A categorical intuition
+
+The (1)-(2) is actually saying that a stable function should be a functor. We can define a coherent space as a category where cliques are objects, and morphisms are inclusions. We can say "\(\Hom\)(\(a\), \(b\)) is not empty iff \(a\subset b\)"
+
+There are more than one name for \({\uparrow}\bigcup_{i}a_{i}\), in proofs and types, this is called /filtered colimit/, and it is also called directed union. Stable function preserves this thing.
+
+And also stable function preserves pullback in the coherent space. The pullback is defined given two morphism: one from \(\Hom(a, c)\), the other from \(\Hom(b, c)\). the pull back is defined by such diagram:
+\[
+\begin{tikzcd}
+a \cap b \ar[r] \ar[d] \arrow[dr, phantom, "\lrcorner", very near start]
+& a \ar[d]\\
+b \ar[r] & a\cup b
+\end{tikzcd}\]
+The pullback of \(a \subset a \cup b\) and \(b \subset a \cup b\) is \(a \cap b\). The stable function preserves it.
+
+** Coherent Space: A relation with topological space
+
+Coherent space is originally described with topological space. Although coherent space as topology has no good property in general, we can use an idea of basis.
+
+Okay, the idea is that all open sets can be expressed as the union of topological basis where all the basis are finite
+\[O = \bigcup _{i} \alpha_{i}\]
+The same is almost true for coherent space: a clique can be expressed by the union of finite cliques.
+
+** Coherent Space: Minimal Approximant and Coding of Stable Function
+
+The term approximant is used in proofs and types. Anyway, the general idea can be expressed as:
+
+Let \(X\), \(Y\) be two coherent space, and \(F\) is a stable function from \(X\) to \(Y\). Let \(A \sqsubset X\) and \(y \in F(A)\). Then we have
+
+  1. There exists a finite subset \(a \subset A\), such that \(y \in F(a)\)
+  2. If \(a\) is chosen minimal, \(a\) is unique (that is for every \(a' \subsetneq  a\) \(y \notin F(a')\))
+
+This is the proposition \(10\) in The Blind Spot. Such \(a\) can be called minimal approximant. What is it used for?
+
+Well, the property is important, because it is firstly about finding the value of \(F(a)\). So I want to know if \(y\) is in \(F(a)\), we only need to check if the minimal approximant is in \(a\).
+
+Secondly, it is about the coding of a stable function. For a value \(y\) in \(F(A)\), there is a unique minimal approximant \(a\). If we list all the "minimal approximant, value" pair, then we have the coding of the stable function \(F\)!
+It is especially important because from now on, we can find a *one-one* correspondence between stable function space and \(X_{\mathrm{fin}} \times |Y|\) whose elements are composed of a finite clique in \(X\) and a point in \(Y\).
+
+** Stable Functions: Skeleton and Trace
+
+/Trace/ is the old name for upcoming concept. We use skeleton nowadays.
+
+Given a stable function \(F\) from \(X\) and \(Y\), we can define the skeleton \(\mathrm{Sk}(F)\) of \(F\).
+
+\[\mathrm{Sk}(F) := \{(a, y) \semicolon y \in F(a)\land \forall b\subsetneq a, y \notin F(b)\}.\]
+
+The condition \(\forall b \subsetneq a, y \notin F(b)\) is /exactly/ saying that \(a\) is the minimal choice. The Sk of \(F\) is important because it is the coding of a stable function \(F\).
+
+** Stable Functions: Skeleton and Berry Order
+
+There is a definition for Berry Order in The Blind Spot:
+
+\(F \sqsubset G\) iff for all \(a \subset b \sqsubset X\), \(F(a) = F(b) \cap G(a)\).
+
+But this is uncomprehensible. We can use use Sk for the definition of Berry Order. \(F \sqsubset G\) iff \(\mathrm{Sk}(F) \subset \mathrm{Sk}(G)\). The proof can be seen in Proofs and Types page 64.
+
+The Berry Order is said to preserve the pullback:
+
+\[
+\begin{tikzcd}
+ & (G,a) \\
+ (G ,a ') \ar[ru] && (F, a) \ar[lu] \\
+ & (F, a')\ar[lu] \ar[ru]
+\end{tikzcd}\]
+For evaluation on \(( A \to B) \with A\).
+
+** Coherent Space: Of CC and CCC
+
+We can use coherent space to construct a CC and further more CCC.
+
+What we need is two kinds of connectives: in this case, \(\with\) and \(\Rightarrow\). The former is called direct product (which supposed to be \(+\), but we use \(\with\) for notation in linear logic). The latter uses \(\mathrm{Sk}\).
+
+** Coherent Space: Direct Product \(\with\)
+
+This part can be checked on section 8.4 in Proofs and Types and section 8.2.7 in The Blind Spot. This part can be viewed as one step in constructing CC
+
+We use the definition in The Blind Spot:
+
+  - web: \(| X \with Y | := |X| + |Y|\)
+  - coherence: if two points are from the same space, then they coherent iff
+    they coherent in the original space. If two points are not from the same
+    space, then they are coherent.
+
+Proposition: cliques from \(X \with Y\) can be explained as the disjoint union of cliques from \(X\) and cliques from \(Y\). Note: a disjoint union of two sets.
+
+** Coherent Space: the well-definedness of direct product
+
+The well-definedness can be checked through a categorical view point.
+
+A direct product is defined as
+\[
+\begin{tikzcd}
+Z \ar[rrd, bend left, "F"] \ar[rdd, bend right, "G"] \ar[rd, "H"]\\
+& X \with Y \ar[r, "\pi_{1}"]
+             \ar[d, "\pi_{2}"]&  X \\
+& Y
+\end{tikzcd}\]
+So we have to give definition for \(H\) and \(\pi_{1}, \pi_{2}\). The construct of \(H\) is extremely obvious.
+
+** Coherent Space: As a CCC
+
+We already have \(\with\) as the cartesian product, what about exponential?
+
+We shall use \(\mathrm{Sk}\) for a stable map \(F\colon X \to Y\), since we already know that a Sk is a clique in space \(X _{\mathrm{fin}} \times |Y|\), we shall start from here to create coherent space \(X \Rightarrow Y\):
+
+  - web: \(|X \Rightarrow Y| := X_{\mathrm{fin}} \times |Y|\), \(X_{\mathrm{fin}}\) being he finite cliques of \(X\).
+  - coherence: for \((a,y)\) and \((a',y')\) if \(a \cup a' \sqsubset X\), then \(y  \coh y'\), if additionaly \(a \neq a'\), then \(y \scoh y'\).
+
+The idea that Sk has a one-one correspondence with stable function, gives the idea that a stable function can be represented with a clique in space \(X \Rightarrow Y\).
+
+** Stable Functions: Representation Theorem of Sk
+
+Sk defiens a bijection between the stable functions from \(X\) into \(Y\) and the cliques of \(X \Rightarrow Y\). The reciprocal bijection associates to a clique \(C \sqsubset X \Rightarrow Y\) the stable function \((C) \cdot\) defined by
+
+\[(C)A := \{ y \semicolon \exists a \subset A (a, y) \in C\}.\]
+
+Moreover the bijection exchanges the Berry Order and Inclusion (by exchange it means Berry Order \(F \sqsubset G\) iff Sk(\(F\)) \(\subset\) Sk(\(G\)), we use such way to define Berry Order, so it might seem weird here).
+
+After this we do admit that we can construct a CCC with coherent space.
+
+** Linearity: The Easy Definition
+
+Proofs and Types presents an easy definition of linearity that:
+
+A stable function \(F\) from \(X\) to \(Y\) is /linear/ iff \(\mathrm{Sk}(F)\) consists of pair \((a, y)\) where \(a\) \(\in\) \(X_{\mathrm{fin}}\), but \(a\) is a singleton, that is, of form \((\{x\}, y)\) where \(x \in |X|\).
+
+** Linearity: Linear implication
+
+A linear function \(F\) whose Sk consists of pair \((a, y)\) where \(a\) is a singleton. We know that the first argument in \(\mathrm{Sk}\) can be an element in \(|X|\) rather than \(X_{\mathrm{fin}}\) since \(a\) is always a singleton in \(X\).
+
+This notation is introduced in Proofs and Types as \(\mathcal T\kern-2pt\it rlin\), which remove the bracket of the singleton in Sk.
+
+\[{\mathcal T \kern-2pt \it rlin} (F) = \{ (a , y)\semicolon a \in |X|, y \in F(\{a\})\}\]
+
+With the similiar idea like \(X \Rightarrow Y\), we can now define a coherent space \(X \multimap Y\) for linear function:
+
+  - web: \(|X \multimap Y | = |X | \times |Y|\)
+  - coherence: \((x, y)\coh_{X \multimap Y} (x' , y')\) iff \(x \coh x' \Rightarrow y\coh y'\) and
+  - \(\beta \incoh \beta '\Rightarrow a \incoh a'\)
+
+Or alternatively, in The Blind Spot, we define the coherence as
+
+\[
+\begin{aligned}
+(x , y) \coh _{X \multimap Y} (x ' , y') \Leftrightarrow {} & ( x \coh x ' \Rightarrow y \coh y') \\
+& \land (x \scoh x' \Rightarrow y \scoh y').
+\end{aligned}\]
+It can also be written in single line:
+
+\[(x, y) \scoh _{X \multimap Y} (x',y') \Leftrightarrow (x \coh x'\Rightarrow y\scoh y').\]
+
+The \(\scoh\) is called strict coherent if you don't remember, \(x \scoh x'\) means that  \(x \coh x'\) and \(x \neq x'\).
+
+** Linearity: The Symmetry Provided by Linear Implication
+
+We first define linear negation as
+
+  - web: \({\sim} A = |A|\)
+  - coherence: \(a \coh _{{\sim} A} a'\) iff \(a \incoh _{A} a'\)
+
+After we have linear negation, we can find a symmetrical structure for linear implication:
+
+\[A \multimap B \simeq {\sim}B \multimap {\sim} A\]
+
+The isomorphism being \((a, b) \mapsto (b, a)\).
+
+** Linearity: Linearisation or Of Course!
+
+I have no idea why Girard would call this "Of Course". Anyway, of course is the linearisation of a space \(X\):
+
+  - web: \(|{!} X| := X_{\mathrm{fin}} = \{a \sqsubset X \semicolon a\ \text{finite}\}\)
+  - coherence: \(a \coh_{{!}X} a'\) iff \(a \cup a' \sqsubset X\)
+
+For a clique \(a \subset X\), we can define a mapping from \(X\) to \({!} X\):
+\[a \mapsto {!}a := \{a _{0} \semicolon a _{0} \subset a, a_{0}\ \text{finite}\}\]
+
+With linearisation we easily have
+\[X \to Y \simeq ({!}X)\multimap Y\]
+Thus we can know that every stable function can be linearised to a linear function.
+
+** Linearity: Why Not?
+
+/Why Not?/ is considered as the dual of /Of Course!/. Here is the definition of \(?X\)
+
+  - web: \(|{?} X |  = {!}({\sim} X)\)
+  - coherence: \(a \scoh a' \Leftrightarrow a \cup a' \not \sqsubset {\sim} X.\)
+
+The definition seems not so important. What matters is the dual:
+
+\[
+\begin{aligned}
+{\sim} {!} X & {} = {?} {\sim} X,\\
+{\sim} {?} X & {} = {!} {\sim} X.
+\end{aligned}\]
+
+the latter can written as \(? X = {\sim} {!} {\sim} X\). What is /Why Not?/ used for?
+
+* note on linear algebra
+
+** determinants and trace
+
+ps. lax defined determinants using multiple linear function from \(M\) to \(\R\). And also I am curious about the trace.
+
+In this chapter we shall use the intuitive properties of volume to define the determnant of a square matrix. According to the precepts of elementary geometry, the concept of volume depends on the notions of length and angle and, in particular perpendicularity, concepts that will be defined only Chapter 8. Nevertheless, it turns out that volume is independent of all these things, except for an arbitrary multiplicative constant that can be fixed by sepcifying that the unit cube have volume one.
+
+We start withe geometric motivation and meaning of determinants.
+
+Def a simplex in \(\R ^{n}\) is a polyhedron with \(n + 1\) vertices. We shall take one of the vertices to be the origin and denote the rest as \(a_{1}, \dots , a_{n}\). The order in which the vertices are taken matters, so we call \(0\), \(a_{1},\dots ,a _{n}\) the vertices of an ordered /simplex/.
+
+We shall be dealing with two geometrical attributes of ordered ~plices, their orientation and volume. An ordered sinplex \(S\) is called degenerate if it lies on a \((n - 1)\) dimensional subspace.
+
+An ordered simplex \((0, a_{1}, \dots , a_{n}) = S\) that is non-degenerate can have onfo two orientations: positive or negative. We call \(S\) positivel oriented if it can be defformed continuously and non-degenerately into the standard ordered simplex \((0, e_{1}, \dots , e_{n})\), where \(e_{j}\) is the \(j\)-th unit vecotr in the standard basis of \(\R ^{n}\). By such deformation we mean \(n\) vector-valued continuous functions \(a_{j}(t)\) of \(t,\) \(0 \le t \le1\), such that \((i)\)
+
+* test
+
+For function \(\det\) is a multi-linear function. If the column vectors in the \(\det\) are linear dependent, then we assume that
+\[M = \begin{bmatrix}
+v_{1}, \dots , v_{n},
+\end{bmatrix}\]
+where \(v_{j} = \sum _{i \neq j} a_{i} v_{i}\) where \(\exists k, a_{k} \neq 0\), then
+\[\det M = \sum _{i \neq j} a_{i} \det M_{i},\]
+where \(M_{i}\) is \(M\) with \(i\)-th column vector substitude with \(v_{j}\)

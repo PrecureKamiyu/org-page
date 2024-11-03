@@ -1,0 +1,1741 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2024-11-03 Sun 16:16 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Diary</title>
+<meta name="author" content="mhx" />
+<meta name="generator" content="Org Mode" />
+<style type="text/css">
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  pre.src-C\+\+:before { content: 'C++'; }
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+<link rel="stylesheet" type="text/css" href="style.css"/>
+</head>
+<body>
+<div id="org-div-home-and-up">
+ <a accesskey="h" href=""> UP </a>
+ |
+ <a accesskey="H" href="index.html"> HOME </a>
+</div><div id="content" class="content">
+<h1 class="title">Diary</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org6dfdc73">2024</a>
+<ul>
+<li><a href="#orgc27c9cc">2024-10 October</a>
+<ul>
+<li><a href="#orgaf9d875">2024-10-6 Sunday</a>
+<ul>
+<li><a href="#org55a2e3a">being a women</a></li>
+</ul>
+</li>
+<li><a href="#orgd16cd6e">2024-10-7 Monday</a>
+<ul>
+<li><a href="#org5159a18">双重身</a></li>
+</ul>
+</li>
+<li><a href="#org7bd0871">2024-10-8 Tuesday</a>
+<ul>
+<li><a href="#org0674e77">对于人的态度的察觉</a></li>
+<li><a href="#review-on-east-of-eden">书评 of east of eden</a></li>
+</ul>
+</li>
+<li><a href="#orgd4e2545">2024-10-13 Sunday</a>
+<ul>
+<li><a href="#org7c46a3a">AvPD</a></li>
+<li><a href="#orga027328">累</a></li>
+</ul>
+</li>
+<li><a href="#org085fef4">2024-10-14 Monday</a></li>
+<li><a href="#orgb482107">2024-10-15 Tuesday</a>
+<ul>
+<li><a href="#orged7e98a">耻辱！</a></li>
+<li><a href="#org956102f">现在的肩膀还是痛的</a></li>
+</ul>
+</li>
+<li><a href="#orgddad118">2024-10-16 Wednesday</a>
+<ul>
+<li><a href="#xueguo">AvPD 以及雪国</a></li>
+</ul>
+</li>
+<li><a href="#org4d287f6">2024-10-18 Friday</a>
+<ul>
+<li><a href="#org28a7e19">Nicorenka</a></li>
+</ul>
+</li>
+<li><a href="#orge5ea7d0">2024-10-19 Saturday</a>
+<ul>
+<li><a href="#org53c74f8">星期六，啥也不想干</a></li>
+<li><a href="#org4dcfd7f">meta</a></li>
+<li><a href="#org11dd7d5">dere 是买不来的！</a></li>
+</ul>
+</li>
+<li><a href="#orgc276cbe">2024-10-20 Sunday</a>
+<ul>
+<li><a href="#orgf46e212">味道</a></li>
+<li><a href="#org7f927f3">周日的图书馆</a></li>
+<li><a href="#orgff556c6">焦躁</a></li>
+</ul>
+</li>
+<li><a href="#20241021Monday">2024-10-21 Monday</a>
+<ul>
+<li><a href="#lesbianporn">君可知有些人只看 lesbian porn</a></li>
+<li><a href="#org50fb918">Textual Poacher</a></li>
+<li><a href="#org148c877">折腾</a></li>
+</ul>
+</li>
+<li><a href="#org09e5020">2024-10-22 Tuesday</a>
+<ul>
+<li><a href="#org4a2c5f9">debug for org</a></li>
+<li><a href="#orgbc4d365">today I make a post in <code>mildlypenis</code> subreddit</a></li>
+<li><a href="#org1d382b8">重复</a></li>
+<li><a href="#orgb144899">累了不想搞</a></li>
+<li><a href="#orga626c19">腰部</a></li>
+</ul>
+</li>
+<li><a href="#org7f1123c">2024-10-23 Wednesday</a>
+<ul>
+<li><a href="#org8533f1b">有关 R18 音声的思考</a></li>
+<li><a href="#org3af4595">咖啡吓人</a></li>
+</ul>
+</li>
+<li><a href="#orga1fbb5a">2024-10-24 Thursday</a>
+<ul>
+<li><a href="#orga8ff971">很严重的发现！</a></li>
+<li><a href="#org0a9337e">答辩了</a></li>
+<li><a href="#orge938407">又想看 Ulysses 了</a></li>
+</ul>
+</li>
+<li><a href="#orge972c39">2024-10-25 Friday</a>
+<ul>
+<li><a href="#org63b6571">又整了一些 Emacs</a></li>
+<li><a href="#orgb906e8b">today I learn how to modify the frame parameter</a></li>
+<li><a href="#org36d672a">Alternative</a></li>
+<li><a href="#org7b8c560">Bangledash</a></li>
+</ul>
+</li>
+<li><a href="#org3ca8286">2024-10-26 Saturday</a>
+<ul>
+<li><a href="#org519ec17">人还是得和人讲话</a></li>
+<li><a href="#orga7c0306">boki</a></li>
+</ul>
+</li>
+<li><a href="#org1eb2bde">2024-10-27 Sunday</a>
+<ul>
+<li><a href="#orge286441">VILE PH</a></li>
+<li><a href="#org65ed9e0">每个人的 Vices</a></li>
+<li><a href="#org02eed6c">Denote 好像找到一点感觉了</a></li>
+<li><a href="#org552fe5a">为了鸡汤掉书袋</a></li>
+</ul>
+</li>
+<li><a href="#20241028Monday">2024-10-28 Monday</a>
+<ul>
+<li><a href="#org77b854b">嘎人！</a></li>
+<li><a href="#diary-xili">犀利</a></li>
+<li><a href="#org87ba78a">微信读书</a></li>
+</ul>
+</li>
+<li><a href="#20241029Monday">2024-10-29 Tuesday</a>
+<ul>
+<li><a href="#org38e0ebf">不写不快</a></li>
+<li><a href="#orgf767de5">春雪</a></li>
+<li><a href="#orgb00c115">还不是因为你</a></li>
+</ul>
+</li>
+<li><a href="#20241030Wednesday">2024-10-30 Wednesday</a>
+<ul>
+<li><a href="#org74a8cec">结束啦</a></li>
+<li><a href="#org471aaf0">人在什么样的时候，会露出什么样的表情？</a></li>
+<li><a href="#orgc1da2dc">无题</a></li>
+</ul>
+</li>
+<li><a href="#20241031Thursday">2024-10-31 Thursday</a>
+<ul>
+<li><a href="#orge8b40d3">看完了奔马</a></li>
+<li><a href="#org003bfe4">看完了晓寺</a></li>
+<li><a href="#org4b2a144">一种思辨的张力（误）</a></li>
+<li><a href="#orgb8d4991">什么时候开了 TUN Mode</a></li>
+<li><a href="#diary-thehistoryofvisualnovels">The history and allure of interactive visual novels</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#orgd8647e3">2024-11 November</a>
+<ul>
+<li><a href="#org1fe83e8">2024-11-01 Friday</a>
+<ul>
+<li><a href="#org583801b">今日无事发生</a></li>
+</ul>
+</li>
+<li><a href="#orgab07339">2024-11-02 Saturday</a>
+<ul>
+<li><a href="#org834481d">建议删除</a></li>
+<li><a href="#org43f8738">建议删除</a></li>
+</ul>
+</li>
+<li><a href="#org8509498">2024-11-03 Sunday</a>
+<ul>
+<li><a href="#orgf529f6a">建议删除</a></li>
+<li><a href="#org1f163ac">钱锺书</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org6dfdc73" class="outline-2">
+<h2 id="org6dfdc73">2024</h2>
+<div class="outline-text-2" id="text-org6dfdc73">
+</div>
+<div id="outline-container-orgc27c9cc" class="outline-3">
+<h3 id="orgc27c9cc">2024-10 October</h3>
+<div class="outline-text-3" id="text-orgc27c9cc">
+</div>
+<div id="outline-container-orgaf9d875" class="outline-4">
+<h4 id="orgaf9d875">2024-10-6 Sunday</h4>
+<div class="outline-text-4" id="text-orgaf9d875">
+</div>
+<div id="outline-container-org55a2e3a" class="outline-5">
+<h5 id="org55a2e3a">being a women</h5>
+<div class="outline-text-5" id="text-org55a2e3a">
+<p>
+基于一种刻板印象，在老友记之中，joey 说“不是你说的内容，而是你如何说的的”，随后惊呼“OMG，我是个女人”。但现实果真如此？
+</p>
+
+<p>
+非也。我就是会被人的态度强烈地影响的人。其实这就是所谓的下头之一。当然下头更像是所提及的，矛盾的体验之间带来的一种 bewilderedness。
+</p>
+
+<p>
+感性的人吗？但事实上不是如此……每个人都有感性的功能在其大脑内运作着。
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgd16cd6e" class="outline-4">
+<h4 id="orgd16cd6e">2024-10-7 Monday</h4>
+<div class="outline-text-4" id="text-orgd16cd6e">
+</div>
+<div id="outline-container-org5159a18" class="outline-5">
+<h5 id="org5159a18">双重身</h5>
+<div class="outline-text-5" id="text-org5159a18">
+<p>
+“我觉得我说很多事情都被当放屁了”，我当时是怎么想的？
+</p>
+
+<p>
+说实话我完全记不得了……
+</p>
+
+<p>
+这其实是有问题的啊
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org7bd0871" class="outline-4">
+<h4 id="org7bd0871">2024-10-8 Tuesday</h4>
+<div class="outline-text-4" id="text-org7bd0871">
+</div>
+<div id="outline-container-org0674e77" class="outline-5">
+<h5 id="org0674e77">对于人的态度的察觉</h5>
+<div class="outline-text-5" id="text-org0674e77">
+<p>
+以前是在高中，在那里，其实每个人都是没有什么坏的倾向的。我是一个老师，那么我的职责就是教好你。我是你的同学，那我们就共同进步，或者至少不相互干扰。
+</p>
+
+<p>
+一种勉强、一种敷衍、一种自己没有察觉的沉醉，都是极度让人敏感的……我们亲爱的学长，仿佛是自己也不怎么想干这种事情的样子……真是令人无语……尤其对于我来说。
+</p>
+
+<p>
+也就是这种事情最能打击人的积极性……
+</p>
+</div>
+</div>
+<div id="outline-container-review-on-east-of-eden" class="outline-5">
+<h5 id="review-on-east-of-eden">书评 of east of eden</h5>
+<div class="outline-text-5" id="text-review-on-east-of-eden">
+<p>
+John Steinbeck 的 east of eden。首先是让人惋惜，其次是让人骂出，“其实获普利策奖的作家也只不过是一个二流作家”。
+</p>
+
+<p>
+一开始最引人瞩目的就是简洁轻快的语言。以及之中完全在把握之中的叙事。
+</p>
+
+<p>
+但是这种把握却让人觉得二流。因为……
+</p>
+
+<p>
+对于角色的描写，仿佛是为了剧情而服务的。在这里原本两者一体的，却变为两个分离的个体了。主人公母亲的性格仿佛就是用来打破的&#x2014;她不被允许发表自己的意见&#x2014;在某一章节的最后，仿佛是理所当然的，她破天荒说出了自己的心里话。仿佛她的存在就是为了这一刻，作为一个死板的家庭里面的、无法表示自己观点的母亲，以这个身份在章节的末尾营造一种戏剧性。
+</p>
+
+<p>
+又一章的末尾，主人公和自己的哥讲点心里话。但这却让人疑惑，“他果真是如此讲话的吗？”。主人公难得有一段长一些的对话，但却感觉和他的性格对不上？但其实是“他的性格”本身居然没有定形下来。
+</p>
+
+<p>
+小说里面最难写的就是对话。至此我已经放弃这本书了，因为对话让人发觉作者水平不咋的。不会写对话建议像百年孤独一样别写。
+</p>
+
+<p>
+<span class="timestamp-wrapper"><span class="timestamp">&lt;2024-10-08 Tue&gt;</span></span>
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgd4e2545" class="outline-4">
+<h4 id="orgd4e2545">2024-10-13 Sunday</h4>
+<div class="outline-text-4" id="text-orgd4e2545">
+</div>
+<div id="outline-container-org7c46a3a" class="outline-5">
+<h5 id="org7c46a3a">AvPD</h5>
+<div class="outline-text-5" id="text-org7c46a3a">
+<p>
+Avoidant personality disorder。也就是回避型人格。可以想象到的是，回避型依恋人格是一种简体中文的特供版本。
+</p>
+
+<p>
+即使如此，加上一个 Disorder 未免是有点没有良心了。
+</p>
+
+<p>
+这是一种巧合还是说？但总之两种 Disorder，都是完美地对上了。在这里我说，她为什么要提这个事情？也许是找了借口，想指出我当前的这种状态。
+</p>
+</div>
+</div>
+<div id="outline-container-orga027328" class="outline-5">
+<h5 id="orga027328">累</h5>
+<div class="outline-text-5" id="text-orga027328">
+<p>
+体测累人，也只有这种时候才会想着“Damn，我早该做点运动”。
+</p>
+
+<p>
+但今天让人想起那一年之前的事情啊，也就是酗酒而后体测之事。
+</p>
+
+<p>
+像是怀念又不像是怀念。为何人都是要变化的呢？难道时间带来的变化都是让人伤感的吗？
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org085fef4" class="outline-4">
+<h4 id="org085fef4">2024-10-14 Monday</h4>
+<div class="outline-text-4" id="text-org085fef4">
+<p>
+这里是测试
+</p>
+</div>
+</div>
+<div id="outline-container-orgb482107" class="outline-4">
+<h4 id="orgb482107">2024-10-15 Tuesday</h4>
+<div class="outline-text-4" id="text-orgb482107">
+</div>
+<div id="outline-container-orged7e98a" class="outline-5">
+<h5 id="orged7e98a">耻辱！</h5>
+<div class="outline-text-5" id="text-orged7e98a">
+<p>
+在写所谓的开题报告
+</p>
+
+<p>
+耻辱！
+</p>
+
+<p>
+当然只是因为不想写所以才那么别扭的
+</p>
+
+<p>
+但是耻辱！
+</p>
+
+<p>
+对于人的依赖，竟然到了这种程度
+</p>
+
+<p>
+说是“依赖型人格障碍”……以前竟然不知道这类事物
+</p>
+
+<p>
+即使是障碍也过于耻辱了！
+</p>
+</div>
+</div>
+<div id="outline-container-org956102f" class="outline-5">
+<h5 id="org956102f">现在的肩膀还是痛的</h5>
+<div class="outline-text-5" id="text-org956102f">
+<p>
+这是何等的强力！
+</p>
+
+<p>
+（这仅仅是因为体测而已）
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgddad118" class="outline-4">
+<h4 id="orgddad118">2024-10-16 Wednesday</h4>
+<div class="outline-text-4" id="text-orgddad118">
+</div>
+<div id="outline-container-xueguo" class="outline-5">
+<h5 id="xueguo">AvPD 以及雪国</h5>
+<div class="outline-text-5" id="text-xueguo">
+<p>
+在雪国里的那种描写
+</p>
+
+<p>
+徒劳作为关键词反复出现。
+</p>
+
+<p>
+一种矛盾的话语，一种重复的说辞。到底是哪边呢？到底是在乎还是不在乎？
+</p>
+
+<p>
+我想问清楚。但有什么在阻碍着……到底是作为人的能力下降了
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org4d287f6" class="outline-4">
+<h4 id="org4d287f6">2024-10-18 Friday</h4>
+<div class="outline-text-4" id="text-org4d287f6">
+</div>
+<div id="outline-container-org28a7e19" class="outline-5">
+<h5 id="org28a7e19">Nicorenka</h5>
+<div class="outline-text-5" id="text-org28a7e19">
+<p>
+尼古拉和尼古连卡。说到底人是难以意识到后者怎么就是爱称了。
+</p>
+
+<p>
+但假设用另一种思路来看，也就是考虑重音。
+</p>
+
+<p>
+前者的话，应该是 <code>ˈnɪkɚlaɪ</code> ，但是对于后者来说 <code>ˈnɪkɚˈrenka</code> 了。
+</p>
+
+<p>
+其实是差别很大的，后者确实更像爱称。尤其你尝试用日本人的读法的话。
+</p>
+
+<p>
+可是我说这话谁又懂呢？
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orge5ea7d0" class="outline-4">
+<h4 id="orge5ea7d0">2024-10-19 Saturday</h4>
+<div class="outline-text-4" id="text-orge5ea7d0">
+</div>
+<div id="outline-container-org53c74f8" class="outline-5">
+<h5 id="org53c74f8">星期六，啥也不想干</h5>
+<div class="outline-text-5" id="text-org53c74f8">
+<p>
+但是今天还是搞了一些 org 的玩意。
+</p>
+
+<p>
+到底是无聊的。
+</p>
+
+<p>
+说起来挺想打电话的。但是……
+</p>
+
+<p>
+在犹豫什么呢？
+</p>
+</div>
+</div>
+<div id="outline-container-org4dcfd7f" class="outline-5">
+<h5 id="org4dcfd7f">meta</h5>
+<div class="outline-text-5" id="text-org4dcfd7f">
+<p>
+今天还看见有人说为何要搞什么 meta-programming。真是愚蠢。不搞 meta 一点哪里来的 pattern matching 呢？
+</p>
+</div>
+</div>
+<div id="outline-container-org11dd7d5" class="outline-5">
+<h5 id="org11dd7d5">dere 是买不来的！</h5>
+<div class="outline-text-5" id="text-org11dd7d5">
+<p>
+这只是一句很无聊的台词。
+</p>
+
+<p>
+为什么突然想到呢？
+</p>
+
+<p>
+可能从来不是迟钝，而是更吃 dere 这一套。
+</p>
+
+<p>
+稍微想一下，如果说的是 せんぱい，且不是英语的那种重音，效果又会如何呢？
+</p>
+
+<p>
+难道说人的真情都是会在这种小事之中被忽视而消散吗？
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgc276cbe" class="outline-4">
+<h4 id="orgc276cbe">2024-10-20 Sunday</h4>
+<div class="outline-text-4" id="text-orgc276cbe">
+</div>
+<div id="outline-container-orgf46e212" class="outline-5">
+<h5 id="orgf46e212">味道</h5>
+<div class="outline-text-5" id="text-orgf46e212">
+<p>
+人身上的味道……
+</p>
+
+<p>
+一股药味，这倒是正当的理由，人总不能不治病
+</p>
+
+<p>
+但还是很影响人……
+</p>
+</div>
+</div>
+<div id="outline-container-org7f927f3" class="outline-5">
+<h5 id="org7f927f3">周日的图书馆</h5>
+<div class="outline-text-5" id="text-org7f927f3">
+<p>
+周日人多了，难不成来这里消遣的？
+</p>
+
+<p>
+何必来这里做消遣，
+</p>
+
+<p>
+把我的位置都占了。
+</p>
+</div>
+</div>
+<div id="outline-container-orgff556c6" class="outline-5">
+<h5 id="orgff556c6">焦躁</h5>
+<div class="outline-text-5" id="text-orgff556c6">
+<p>
+一种焦躁，仿佛是那种说法，在什么上空的幽灵。说到底是什么……
+</p>
+
+<p>
+……
+</p>
+
+<p>
+到底是……
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-20241021Monday" class="outline-4">
+<h4 id="20241021Monday">2024-10-21 Monday</h4>
+<div class="outline-text-4" id="text-20241021Monday">
+</div>
+<div id="outline-container-lesbianporn" class="outline-5">
+<h5 id="lesbianporn">君可知有些人只看 lesbian porn</h5>
+<div class="outline-text-5" id="text-lesbianporn">
+<p>
+我称这种现象为“和现实的短路”，和现实的短路连接，经验的重叠。
+</p>
+
+<p>
+当人说出“I am not an actor”的时候，似乎能够预见其为什么只会看 lesbian porn：porn 里面演员们的演技，短路到现实之中，而现实是“I am not an actor”，于是一种重叠的、矛盾的经验让人产生了厌恶。而为什么 lesbian porn 会被人中意？为的就是消解“矛盾的”这一特征：lesbian 在取悦女人这方面自然地超过几乎所有男性。
+</p>
+
+<p>
+从另一个角度，可以消解掉“短路”这一现象：如果我消费的产品不会让人联想到现实即可。仅仅从这个角度来说，似乎是可以解释的了。
+</p>
+</div>
+</div>
+<div id="outline-container-org50fb918" class="outline-5">
+<h5 id="org50fb918">Textual Poacher</h5>
+<div class="outline-text-5" id="text-org50fb918">
+<p>
+中文翻译出版的时候有对原作者的采访，采访之中有提及耽美……
+</p>
+
+<p>
+等会儿，说到底这个词究竟是如何诞生的？00 年代的时候就有这个词吗……
+</p>
+
+<p>
+你们这些人真实罪孽不浅啊……
+</p>
+
+<p>
+既然有男性和男性在性交，为什么不直接叫 BL！
+</p>
+
+<p>
+ps. from <span class="timestamp-wrapper"><span class="timestamp">[2024-10-29 Tue 15:52] </span></span> 想起来了，是因为审查。所以罪在审查。
+</p>
+</div>
+</div>
+<div id="outline-container-org148c877" class="outline-5">
+<h5 id="org148c877">折腾</h5>
+<div class="outline-text-5" id="text-org148c877">
+<p>
+搞了一下午的问题，解决起来确实如此的简单。
+</p>
+
+<p>
+只要将 <code>init-org</code> 放在最后就行了。
+</p>
+
+<p>
+真是胡闹……
+</p>
+
+<p>
+但这也说明了作日志是很重要的，因为我想起来说，就是从用了新的 org 开始，emacs 变得贼卡。
+</p>
+
+<p>
+见鬼了
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org09e5020" class="outline-4">
+<h4 id="org09e5020">2024-10-22 Tuesday</h4>
+<div class="outline-text-4" id="text-org09e5020">
+</div>
+<div id="outline-container-org4a2c5f9" class="outline-5">
+<h5 id="org4a2c5f9">debug for org</h5>
+<div class="outline-text-5" id="text-org4a2c5f9">
+<p>
+Today I figure out why the inline math formulae looked very small in the exported html.
+</p>
+
+<p>
+This is because that the width of the svg is not right. And then the css resize the width. Thus the formulae looked very small.
+</p>
+
+<p>
+The problem can be solved after specifying the <code>:page-width</code> in
+<code>org-html-latex-image-options</code>.
+</p>
+</div>
+</div>
+<div id="outline-container-orgbc4d365" class="outline-5">
+<h5 id="orgbc4d365">today I make a post in <code>mildlypenis</code> subreddit</h5>
+<div class="outline-text-5" id="text-orgbc4d365">
+<p>
+And then maybe the "mildlypenis" is not mildly at all. It is just penis symbol but with a LaTeX symbol package.
+</p>
+
+<p>
+I deleted the post (after I saw a fucking downvote).
+</p>
+
+<p>
+ps. reddit is so powerful because I can literally see the ratio. Damn.
+</p>
+</div>
+</div>
+<div id="outline-container-org1d382b8" class="outline-5">
+<h5 id="org1d382b8">重复</h5>
+<div class="outline-text-5" id="text-org1d382b8">
+<p>
+<a href="#xueguo">AvPD 以及雪国</a>
+</p>
+
+<p>
+一种常常说出口的话语就在这里。令人怀念的感觉……
+</p>
+
+<p>
+就好像雪国里面那样，驹子的一本本厚厚的日记……
+</p>
+
+<p>
+岛村看到了，“徒劳”二字浮现出来。倒不是日记真的徒劳，而是……
+</p>
+
+<p>
+是不是偶尔会想到雪国是不是就是这个原因呢？
+</p>
+
+<p>
+这种反复到底意味着什么？这虚幻的，倒不是那种让人心生怜爱的事物，反而是搅动了什么，让人感到了什么
+</p>
+
+<p>
+一种 detachment，又或者说 bewilderedness？为什么说是“令人怀念”，就如同许久以前的那样。原来也有这一层的原因……
+</p>
+
+<p>
+人到底还是太贪心了
+</p>
+
+<p>
+<span class="timestamp-wrapper"><span class="timestamp">[2024-10-22 Tue 20:18]</span></span>
+</p>
+</div>
+</div>
+<div id="outline-container-orgb144899" class="outline-5">
+<h5 id="orgb144899">累了不想搞</h5>
+<div class="outline-text-5" id="text-orgb144899">
+<p>
+其实是很简单的事情，具体来说就是写 PPT 这种程度的事情。直接复制上去就可以了。但是……想到要将这种其实没什么价值的事物念出来……真是丢人！
+</p>
+
+<p>
+<span class="timestamp-wrapper"><span class="timestamp">[2024-10-22 Tue 20:22]</span></span>
+</p>
+</div>
+</div>
+<div id="outline-container-orga626c19" class="outline-5">
+<h5 id="orga626c19">腰部</h5>
+<div class="outline-text-5" id="text-orga626c19">
+<p>
+一个人的手，应该放在哪里呢？
+</p>
+
+<p>
+在腰部上的这个部分，也就是硬的和石头一样的这个部分，手放在这个地方上非常适合
+</p>
+
+<p>
+非常适合……
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org7f1123c" class="outline-4">
+<h4 id="org7f1123c">2024-10-23 Wednesday</h4>
+<div class="outline-text-4" id="text-org7f1123c">
+</div>
+<div id="outline-container-org8533f1b" class="outline-5">
+<h5 id="org8533f1b">有关 R18 音声的思考</h5>
+<div class="outline-text-5" id="text-org8533f1b">
+<p>
+说到底就是两个字：官能。如果要用别的字眼的话，那就是感官。
+</p>
+
+<p>
+对于音声来说，要达成的就是一种共感：如何要用听觉传达出别的感官上的刺激？
+</p>
+
+<p>
+人都是精神的生物。要做到这点，只能说靠大脑欺骗自己。让精神接受那听觉的官能之中的暗示，作为其他官能的媒介。
+</p>
+
+<p>
+人的感受力就是关于接受这种暗示的能力。
+</p>
+
+<p>
+这样的话似乎能够解释这种现象：音声之中出现的体液的声音、“stimulator”的震动声，几乎是最让人 turn on 的声音。
+</p>
+
+<p>
+这里说得太直接了，过于羞耻，于是言尽于此。
+</p>
+</div>
+</div>
+<div id="outline-container-org3af4595" class="outline-5">
+<h5 id="org3af4595">咖啡吓人</h5>
+<div class="outline-text-5" id="text-org3af4595">
+<p>
+有点 Panic Attack，现在感觉更像是咖啡导致的。
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orga1fbb5a" class="outline-4">
+<h4 id="orga1fbb5a">2024-10-24 Thursday</h4>
+<div class="outline-text-4" id="text-orga1fbb5a">
+</div>
+<div id="outline-container-orga8ff971" class="outline-5">
+<h5 id="orga8ff971">很严重的发现！</h5>
+<div class="outline-text-5" id="text-orga8ff971">
+<p>
+草婴的《安娜》的译本的前言，居然有借鉴的痕迹！
+</p>
+
+<p>
+真是可耻啊。
+</p>
+</div>
+</div>
+<div id="outline-container-org0a9337e" class="outline-5">
+<h5 id="org0a9337e">答辩了</h5>
+<div class="outline-text-5" id="text-org0a9337e">
+<p>
+作为第一个上去的，感觉担忧的事物其实在人眼中是那么无关紧要的事情。伤心
+</p>
+</div>
+</div>
+<div id="outline-container-orge938407" class="outline-5">
+<h5 id="orge938407">又想看 Ulysses 了</h5>
+<div class="outline-text-5" id="text-orge938407">
+<p>
+但是我和 War and Peace 对比了一下，结果还是后者好看得多。
+</p>
+
+<p>
+所以看个毛线的 Ulysses。
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orge972c39" class="outline-4">
+<h4 id="orge972c39">2024-10-25 Friday</h4>
+<div class="outline-text-4" id="text-orge972c39">
+</div>
+<div id="outline-container-org63b6571" class="outline-5">
+<h5 id="org63b6571">又整了一些 Emacs</h5>
+<div class="outline-text-5" id="text-org63b6571">
+<p>
+得不偿失！但事实果真如此？
+</p>
+
+<p>
+究竟到底，只是消遣时间……
+</p>
+
+<p>
+<span class="timestamp-wrapper"><span class="timestamp">[2024-10-25 Fri 12:54]</span></span>
+</p>
+</div>
+</div>
+<div id="outline-container-orgb906e8b" class="outline-5">
+<h5 id="orgb906e8b">today I learn how to modify the frame parameter</h5>
+<div class="outline-text-5" id="text-orgb906e8b">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(modify-all-frames-parameters
+ '((right-divider-width . 20)
+   (internal-border-width . 10)))
+</pre>
+</div>
+
+<p>
+And also I install <code>org-modern</code>, and other things. I have learn a lot. And also
+I know that <code>window-divider</code> is the name of the face line/border between
+windows. Customizing that face helps a lot.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(<span style="color: #859900; font-weight: bold;">dolist</span> (face '(window-divider
+                window-divider-first-pixel
+                window-divider-last-pixel))
+  (face-spec-reset-face face)
+  (set-face-foreground face (face-attribute 'default <span style="color: #d33682; font-style: italic;">:background</span>)))
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org36d672a" class="outline-5">
+<h5 id="org36d672a">Alternative</h5>
+<div class="outline-text-5" id="text-org36d672a">
+<p>
+看到了吉成钢的作画
+</p>
+
+<p>
+COOL~~~~~~~~~~~~~~
+</p>
+
+<p>
+着实好看
+</p>
+
+<p>
+但感觉 Muv Luv 像是变成超级系机器人动画了，就像是 Gurren Lagann 里面的剧情一样了，“接下来是准备让谁牺牲呢？”，竟然能让人怀着这种心情……
+</p>
+
+<p>
+感觉能把这种有点右翼的情结写得和机器人动画一样，有点别扭地好笑
+</p>
+
+<p>
+欸！
+</p>
+
+<p>
+<span class="timestamp-wrapper"><span class="timestamp">[2024-10-25 Fri 19:52]</span></span>
+</p>
+</div>
+</div>
+<div id="outline-container-org7b8c560" class="outline-5">
+<h5 id="org7b8c560">Bangledash</h5>
+<div class="outline-text-5" id="text-org7b8c560">
+<p>
+人也是被逼的，家庭产业吗？
+</p>
+
+<p>
+可能是我见识少了还是如何，但确实少见
+</p>
+
+<p>
+人都是有苦衷的啊
+</p>
+
+<p>
+只不过我可没有闲工夫来帮你
+</p>
+
+<p>
+<span class="timestamp-wrapper"><span class="timestamp">[2024-10-25 Fri 22:29]</span></span>
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org3ca8286" class="outline-4">
+<h4 id="org3ca8286">2024-10-26 Saturday</h4>
+<div class="outline-text-4" id="text-org3ca8286">
+</div>
+<div id="outline-container-org519ec17" class="outline-5">
+<h5 id="org519ec17">人还是得和人讲话</h5>
+<div class="outline-text-5" id="text-org519ec17">
+<p>
+受不了……确实受不了
+</p>
+</div>
+</div>
+<div id="outline-container-orga7c0306" class="outline-5">
+<h5 id="orga7c0306">boki</h5>
+<div class="outline-text-5" id="text-orga7c0306">
+<p>
+王朔的《动物凶猛》，倒不是作品本身有什么可说的
+</p>
+
+<p>
+而是一个对于勃起的描写
+</p>
+
+<p>
+就是小伙伴们脱光了衣服去泳池玩，有男有女的，还不是精虫上脑的年龄，甚至恰恰相反
+</p>
+
+<p>
+直言，“在那里，却看见了骇人的勃起”
+</p>
+
+<p>
+主人公就怒斥这个勃起的家伙，叫他滚，然后他就滚了
+</p>
+
+<p>
+骇人吗……确实骇人，丑陋！
+</p>
+
+<p>
+PS. 找了一下原文
+</p>
+
+<blockquote>
+<p>
+“直了直了！”大家忽然一起指了半大的孩子。
+</p>
+
+<p>
+在倥偬悠高的手电光中，我看到一个骇人的勃起。
+</p>
+
+<p>
+犹如肚子被撞了一肘，我感到一阵恶心。就像人脑袋上突然长出一枝梅花鹿的角杈令我无法忍受，简直是活见鬼！
+</p>
+</blockquote>
+
+<p>
+<span class="timestamp-wrapper"><span class="timestamp">[2024-10-26 Sat]</span></span>
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org1eb2bde" class="outline-4">
+<h4 id="org1eb2bde">2024-10-27 Sunday</h4>
+<div class="outline-text-4" id="text-org1eb2bde">
+</div>
+<div id="outline-container-orge286441" class="outline-5">
+<h5 id="orge286441">VILE PH</h5>
+<div class="outline-text-5" id="text-orge286441">
+<p>
+这个组织可以使用 vile 来形容！
+</p>
+
+<p>
+简直是 society of control 之下的典范
+</p>
+
+<p>
+在这里，用户没有被当作人来看待，而是数据，是 database 里的一条 entity
+</p>
+
+<p>
+作为感性的 fetish 被 algorithms 揣测
+</p>
+</div>
+</div>
+<div id="outline-container-org65ed9e0" class="outline-5">
+<h5 id="org65ed9e0">每个人的 Vices</h5>
+<div class="outline-text-5" id="text-org65ed9e0">
+<p>
+每个人都有的 Vices
+</p>
+
+<p>
+都是等待偿还的债
+</p>
+</div>
+</div>
+<div id="outline-container-org02eed6c" class="outline-5">
+<h5 id="org02eed6c">Denote 好像找到一点感觉了</h5>
+<div class="outline-text-5" id="text-org02eed6c">
+<blockquote>
+<p>
+"好像找到一点感觉了"
+</p>
+</blockquote>
+
+<p>
+怎么感觉有些色情
+</p>
+
+<p>
+总之 denote 将 query 的职责完全推卸了，file tag 全部体现在文件名上面，于是 query 就交给用户了
+</p>
+
+<p>
+有点卑鄙
+</p>
+</div>
+</div>
+<div id="outline-container-org552fe5a" class="outline-5">
+<h5 id="org552fe5a">为了鸡汤掉书袋</h5>
+<div class="outline-text-5" id="text-org552fe5a">
+<p>
+看到越来越多的人在扯什么鸡巴王阳明
+</p>
+
+<p>
+其实连掉书袋都算不上，就如同国外就已经有的，拿着斯多葛主义的名声，写一些垃圾至极的鸡汤
+</p>
+
+<p>
+在简中也渐渐流行了起来吗……
+</p>
+
+<p>
+其实不如读一读圣经来的好，虽然所有人都瞧不起圣经，但谁又瞧得起你那些东西呢？
+</p>
+
+<p>
+想起了谷崎润一郎的《少将滋干之母》，又想起了京阿尼火灾纪录片里的一位。
+看到了自己女儿烧焦的死尸，受到了冲击，转向圣经以寻慰藉……
+</p>
+
+<p>
+到底是人生的启示，还是面对灾难的应激反应？
+</p>
+
+<p>
+那么对于今天这些人，到底是哪里来的蛊惑的力量，又满足了什么需求呢？
+</p>
+
+<p>
+<span class="timestamp-wrapper"><span class="timestamp">[2024-10-27 Sun 18:41]</span></span>
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-20241028Monday" class="outline-4">
+<h4 id="20241028Monday">2024-10-28 Monday</h4>
+<div class="outline-text-4" id="text-20241028Monday">
+</div>
+<div id="outline-container-org77b854b" class="outline-5">
+<h5 id="org77b854b">嘎人！</h5>
+<div class="outline-text-5" id="text-org77b854b">
+<p>
+到底是世道的问题……
+</p>
+
+<p>
+嘎人！早该嘎嘎了
+</p>
+
+<blockquote>
+<p>
+警情通报
+</p>
+
+<p>
+2024年10月28日15时20分许，海淀区万泉庄路和万柳中路交叉口附近，发生一起持刀伤人案件，导致5名路人受伤，其中3名未成年人。犯罪嫌疑人唐某某（男，50岁）被当场控制，伤者及时送医治疗，无生命危险。目前，案件正在进一步调查中。
+</p>
+</blockquote>
+
+<p>
+人常说，“自杀者懦弱，有勇气自杀，却没勇气拖几个人下水，哪怕是拉个垫背的”，现在好了！自杀者不懦弱了，甚至有勇气到不自杀了，就专杀别人来泄愤！
+</p>
+
+<blockquote>
+<p>
+说说遇到突发情况该怎么办。
+</p>
+
+<p>
+先声明京城被隐藏了。针对噶人总结一下经验教训，咱们有些网 u 玩甲，但是不可能指望所有人都穿防刺服，那玩意也不便宜，所以买甲胄直接图一乐。
+</p>
+
+<p>
+我建议有娃的家长，尽量自己接送，或者至少有个成年人接送。其二，遇到突发情况，比如刀战，要求各个见义勇为不现实，但是冷静下来先保全自己再视情况应该没啥问题。其三，现场摇人，我看了几次伤亡小的都是好几个路人一拥而上，平心而论上年纪的老登没刀后战力很一般。切记，别撒丫子乱跑（踩踏），别单独当勇士要抱团。
+</p>
+</blockquote>
+
+<p>
+<span class="timestamp-wrapper"><span class="timestamp">[2024-10-28 Mon 19:04]</span></span>
+</p>
+</div>
+</div>
+<div id="outline-container-diary-xili" class="outline-5">
+<h5 id="diary-xili">犀利</h5>
+<div class="outline-text-5" id="text-diary-xili">
+<p>
+君可知《文学回忆录》，可谓是垃圾！当然啦，受不受欢迎、受不受喜爱，和这个东西是不是垃圾之间没有任何关系
+</p>
+
+<p>
+人喜欢的就是一种犀利，这种犀利感用在批评里面倒还好——人就是想看锐评！
+</p>
+
+<p>
+今天……我们手头上的这部书吕思勉《中国通史》，用这些滑稽的暴论博人眼球，若是放在什么评论、散文之中就算了，竟然敢放在“通史”之中，着实无耻！
+</p>
+
+<p>
+在声称“立太子，君行周公之事”为“捏造”之后，接下来的论述之中，竟然没有任何的一丝文献支持，全然和伪史论者一个论述模式！做学问这种态度！
+</p>
+
+<p>
+事实其实也是明确了的，人就是喜欢看犀利的，谁在乎你的治学态度呢？谁在乎你是不是严谨的呢？反正我读一读历史，也是消遣罢了
+</p>
+
+<p>
+无耻！
+</p>
+
+<p>
+<span class="timestamp-wrapper"><span class="timestamp">[2024-10-28 Mon 20:15]</span></span>
+</p>
+</div>
+</div>
+<div id="outline-container-org87ba78a" class="outline-5">
+<h5 id="org87ba78a">微信读书</h5>
+<div class="outline-text-5" id="text-org87ba78a">
+<p>
+下流的软件，滚一边去！
+</p>
+
+<p>
+<span class="timestamp-wrapper"><span class="timestamp">[2024-10-28 Mon 23:58]</span></span>
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-20241029Monday" class="outline-4">
+<h4 id="20241029Monday">2024-10-29 Tuesday</h4>
+<div class="outline-text-4" id="text-20241029Monday">
+</div>
+<div id="outline-container-org38e0ebf" class="outline-5">
+<h5 id="org38e0ebf">不写不快</h5>
+<div class="outline-text-5" id="text-org38e0ebf">
+<p>
+事实 1：怀孕作为一种身体的形变、作为幻想会让人兴奋
+</p>
+
+<p>
+事实 2：女性怀孕会让人联想到现实之中的妊娠，但后者基本等同于痛苦，于是联想的链条上面就自然有痛苦这一节
+</p>
+
+<p>
+事实 3：作为一种幻想，男性怀孕同样让人兴奋（again, 作为一种幻想），但是难以让人联想到现实，因为男的无法怀孕
+</p>
+
+<p>
+事实 4：事实 2 和事实 3 合情合理，却让人恶心：我们当一视同仁
+</p>
+
+<p>
+事实 5：于是我打算消除自己的偏见，拥抱女性妊娠作为一种性癖
+</p>
+
+<p>
+<span class="timestamp-wrapper"><span class="timestamp">[2024-10-29 Tue 13:37]</span></span>
+</p>
+</div>
+</div>
+<div id="outline-container-orgf767de5" class="outline-5">
+<h5 id="orgf767de5">春雪</h5>
+<div class="outline-text-5" id="text-orgf767de5">
+<p>
+大失所望！
+</p>
+
+<p>
+完全没有想象之中的那样畸形！
+</p>
+
+<p>
+你以为我是来看什么高级玩意的？就等着看你写自杀殉情乱伦来着
+</p>
+
+<p>
+现在好了，女人和男人做完爱，知道悔改了！剃发出家了，男人也死了，那我去哪里寻刺激？！
+</p>
+
+<p>
+现在我还能在哪看到性描写？！
+</p>
+
+<p>
+<span class="timestamp-wrapper"><span class="timestamp">[2024-10-29 Tue 15:27]</span></span>
+</p>
+</div>
+</div>
+<div id="outline-container-orgb00c115" class="outline-5">
+<h5 id="orgb00c115">还不是因为你</h5>
+<div class="outline-text-5" id="text-orgb00c115">
+<p>
+我很久之前推荐，就比如说我推荐了 A 和 B 和 C
+</p>
+
+<p>
+然后前两个被忽视了，这实际上是很正常的事情。随后人看了 C
+</p>
+
+<p>
+但是这人突然跑过来说，你看你给我推荐了些什么，这么重的（或者说这么锋利的）
+</p>
+
+<p>
+我反而比较无语：欸，A 和 B 不是这样的呀，你没去看那些，只看了这些，却说我推荐的有问题，可我不是在多尝试吗……
+</p>
+
+<p>
+<span class="timestamp-wrapper"><span class="timestamp">[2024-10-29 Tue 17:32]</span></span>
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-20241030Wednesday" class="outline-4">
+<h4 id="20241030Wednesday">2024-10-30 Wednesday</h4>
+<div class="outline-text-4" id="text-20241030Wednesday">
+</div>
+<div id="outline-container-org74a8cec" class="outline-5">
+<h5 id="org74a8cec">结束啦</h5>
+<div class="outline-text-5" id="text-org74a8cec">
+<p>
+没有，其实没有结束，只是一件事情要开始了，而其他事情还没有动静
+</p>
+
+<p>
+<span class="timestamp-wrapper"><span class="timestamp">[2024-10-30 Wed 17:17]</span></span>
+</p>
+</div>
+</div>
+<div id="outline-container-org471aaf0" class="outline-5">
+<h5 id="org471aaf0">人在什么样的时候，会露出什么样的表情？</h5>
+<div class="outline-text-5" id="text-org471aaf0">
+<p>
+难道最让人陶醉的不就是观察高潮的时候她们的表情吗？
+</p>
+
+<p>
+<span class="timestamp-wrapper"><span class="timestamp">[2024-10-30 Wed 20:50]</span></span>
+</p>
+</div>
+</div>
+<div id="outline-container-orgc1da2dc" class="outline-5">
+<h5 id="orgc1da2dc">无题</h5>
+<div class="outline-text-5" id="text-orgc1da2dc">
+<p>
+聊天，剩下的印象却是如此的浅
+</p>
+
+<p>
+“走肾”，我只记得对这个词语的厌恶
+</p>
+
+<p>
+当时是如何谈论到这种事情的呢？
+</p>
+
+<p>
+并且更重要的是，只有这种无关紧要的事情存留了下来吗？
+</p>
+
+<p>
+时常陷入的追忆之中的，那弥足珍贵的，难道就成了再也无法遇见的事物吗？
+</p>
+
+<p>
+<span class="timestamp-wrapper"><span class="timestamp">[2024-10-30 Wed 23:54]</span></span>
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-20241031Thursday" class="outline-4">
+<h4 id="20241031Thursday">2024-10-31 Thursday</h4>
+<div class="outline-text-4" id="text-20241031Thursday">
+</div>
+<div id="outline-container-orge8b40d3" class="outline-5">
+<h5 id="orge8b40d3">看完了奔马</h5>
+<div class="outline-text-5" id="text-orge8b40d3">
+<p>
+话不多说，赶紧看晓寺
+</p>
+
+<p>
+<span class="timestamp-wrapper"><span class="timestamp">[2024-10-31 Thu 00:30]</span></span>
+</p>
+</div>
+</div>
+<div id="outline-container-org003bfe4" class="outline-5">
+<h5 id="org003bfe4">看完了晓寺</h5>
+<div class="outline-text-5" id="text-org003bfe4">
+<p>
+经过爆裂的奔马，这回的晓寺又该选用什么形容词呢？
+</p>
+
+<p>
+Exotic!
+</p>
+
+<hr />
+
+<p>
+并不是那偷窥的行为本身，而是对于那种埋藏着的 delicacy 的玷污……
+</p>
+
+<p>
+让人羞愧
+</p>
+
+<p>
+我是想看到一些畸形的，但还是没想到有这般激进的，甚至到了让人羞愧的地步
+</p>
+
+<p>
+<span class="timestamp-wrapper"><span class="timestamp">[2024-10-31 Thu 09:38]</span></span>
+</p>
+</div>
+</div>
+<div id="outline-container-org4b2a144" class="outline-5">
+<h5 id="org4b2a144">一种思辨的张力（误）</h5>
+<div class="outline-text-5" id="text-org4b2a144">
+<p>
+如果说一位男性健身，其有着诱人的胸脯，这个时候对于胸脯的赞美倒是有着学问在里面
+</p>
+
+<p>
+曾经看到有位女性，问出“如何想男妈妈询问，能否让我摸一下他的胸肌”
+</p>
+
+<p>
+恕我直言，若是私底下问倒还好，放在公共论坛上，那就是令人作呕了
+</p>
+
+<p>
+我在这里的评判标准：性别互换之后，若是感到恶心，则原本的事情也是恶心的
+</p>
+
+<p>
+当然这个评判标准其实过于专断了，因为确实有很多事情无法这样判定，比如说：妊娠作为性癖，放在女性身上就会自然地让人联想到痛苦，因为现实中女性确实能够怀孕；但是放在男性身上，就变为单纯的幻想了，因为幻想之中的怀孕的男性，是不存在于现实之中的。
+</p>
+
+<p>
+对于幻想就能够消费得心安理得，这是很自然的事情
+</p>
+
+<p>
+尽管这是自然的事情，但依然是虚伪的
+</p>
+
+<p>
+随后，另一件事情发生了，假设只是部分的性别互换呢？比如说是一位男的询问另一个男的，“我能摸摸你的胸肌吗”，事情却变得没有异常了。何者？This is how straight people talk
+</p>
+
+<p>
+但是，事情又突入了另一个视角，如果说上面这种事情是出自一位女性的脑海之中呢？若是有着不纯的念想，整件事情又变得恶心了起来。是的，我上面这句话，其实也是“出自一个男性的视角”，也就是说我的妄想之中的女性的妄想令人生恶！事情好像没完没了了
+</p>
+
+<p>
+其实，面对这种似乎没完没了的推理的链条，似乎人的写作都是被身份给限制住了，由此考量，似乎一个专断的评判标准变得方便了起来。所以说，是的，在公共论坛问出“我该如何询问男妈妈，能否让我摸一下他的胸肌”其实就和“我该如何询问女菩萨……”是同等的恶心和油腻。所以说，是的，对于妊娠作为一种性癖，也只能是：女性应当心安理得地享用男性的妊娠作为性癖，男性也应当心安理得地享用女性的妊娠作为性癖，双方之间的指责和厌恶都是无理的；或者相反
+</p>
+
+<p>
+如果女性能够合法地妄想两个男性之间的互动，那男性也应该被允许妄想两个女性之间的互动
+</p>
+
+<p>
+或许还是免了，不必如此。不如给所有人打上标签：那令人厌恶的女性，就直接指责为是公开发情的下流的下体还在 dripping 的雌性吧；那令人厌恶的男性，就直接指责为脑子长在阳具里的咸湿猥琐缺爱阳痿又性饥渴的男子吧！
+</p>
+
+<p>
+本就应该如此！
+</p>
+
+<p>
+<span class="timestamp-wrapper"><span class="timestamp">[2024-10-31 Thu 12:33]</span></span>
+</p>
+</div>
+</div>
+<div id="outline-container-orgb8d4991" class="outline-5">
+<h5 id="orgb8d4991">什么时候开了 TUN Mode</h5>
+<div class="outline-text-5" id="text-orgb8d4991">
+<p>
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+</p>
+
+<p>
+烦躁！狂！
+</p>
+
+<p>
+就是你！就是你搞的！
+</p>
+
+<p>
+<span class="timestamp-wrapper"><span class="timestamp">[2024-10-31 Thu 22:50]</span></span>
+</p>
+</div>
+</div>
+<div id="outline-container-diary-thehistoryofvisualnovels" class="outline-5">
+<h5 id="diary-thehistoryofvisualnovels">The history and allure of interactive visual novels</h5>
+<div class="outline-text-5" id="text-diary-thehistoryofvisualnovels">
+<p>
+Underwhelming!
+</p>
+
+<p>
+美国人眼中的 eroge，可以预见的是，其理解也不过如此地肤浅
+</p>
+
+<p>
+Visual Novels 作为一种媒介，他好像主要讨论了在媒介这边的事情，以及媒介本身的事情，可是，在媒介那边呢？
+</p>
+
+<p>
+以及，他举的例子……这么多的空有名声的作品……很是无语
+</p>
+
+<p>
+比如说第 6 章之中的，对于 utsuge 的游戏的举例：沙耶之歌、DDLC、君与彼女与彼女之恋、壳之少女、恋狱~月狂病。好吧，除了 Innocent Grey 的恋狱这部没有玩过，其他的我都玩过……并不是很能 get 到作者在讲什么，尽管例子我基本都玩过
+</p>
+
+<p>
+让人觉得是梗小鬼：哼，若是你从 DDLC 入门的，可以说你这本书都不该写
+</p>
+
+<p>
+基本上没什么意思，英文还看得我头大，恼怒！言尽于此！
+</p>
+
+<p>
+<span class="timestamp-wrapper"><span class="timestamp">[2024-10-31 Thu 23:59]</span></span>
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgd8647e3" class="outline-3">
+<h3 id="orgd8647e3">2024-11 November</h3>
+<div class="outline-text-3" id="text-orgd8647e3">
+</div>
+<div id="outline-container-org1fe83e8" class="outline-4">
+<h4 id="org1fe83e8">2024-11-01 Friday</h4>
+<div class="outline-text-4" id="text-org1fe83e8">
+</div>
+<div id="outline-container-org583801b" class="outline-5">
+<h5 id="org583801b">今日无事发生</h5>
+</div>
+</div>
+<div id="outline-container-orgab07339" class="outline-4">
+<h4 id="orgab07339">2024-11-02 Saturday</h4>
+<div class="outline-text-4" id="text-orgab07339">
+</div>
+<div id="outline-container-org834481d" class="outline-5">
+<h5 id="org834481d">建议删除</h5>
+<div class="outline-text-5" id="text-org834481d">
+<p>
+<span class="timestamp-wrapper"><span class="timestamp">[2024-11-02 Sat 12:05]</span></span>
+</p>
+</div>
+</div>
+<div id="outline-container-org43f8738" class="outline-5">
+<h5 id="org43f8738">建议删除</h5>
+<div class="outline-text-5" id="text-org43f8738">
+<p>
+<span class="timestamp-wrapper"><span class="timestamp">[2024-11-02 Sat 22:56]</span></span>
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org8509498" class="outline-4">
+<h4 id="org8509498">2024-11-03 Sunday</h4>
+<div class="outline-text-4" id="text-org8509498">
+</div>
+<div id="outline-container-orgf529f6a" class="outline-5">
+<h5 id="orgf529f6a">建议删除</h5>
+<div class="outline-text-5" id="text-orgf529f6a">
+<p>
+<span class="timestamp-wrapper"><span class="timestamp">[2024-11-03 Sun 11:51]</span></span>
+</p>
+</div>
+</div>
+<div id="outline-container-org1f163ac" class="outline-5">
+<h5 id="org1f163ac">钱锺书</h5>
+<div class="outline-text-5" id="text-org1f163ac">
+<p>
+以前看钱锺书的散文，看到钱是如何评价自己的文章、作品
+</p>
+
+<p>
+说到《围城》，钱说《围城》写时年少不成熟，许多缺点想改却没机会改了（改稿遗失了）
+</p>
+
+<p>
+说到《宋诗选注》，又是遗憾，说有不少名篇没选上去
+</p>
+
+<p>
+有人说他谦虚，“钱锺书先生的《围城》那么好，还说它满是缺点，这难道不是谦虚吗？”
+</p>
+
+<p>
+没，因为《围城》确实写得不好。同一时期的散文集《写在人生边上》其实也不好：一个 20 多岁的青年能有什么深刻的人生感悟？
+</p>
+
+<p>
+既然作者本人都说不好了，还每次都在各种翻译版、再版前言里面提及，那我顺着他的意思，也觉得不好——确实不好！
+</p>
+
+<p>
+很久以前看到刘皓明批评钱，结果被“你太不尊重”“你又算个什么”之类的批评围攻……说到底是见不得自己的 idol 被批评罢了
+</p>
+
+<p>
+<span class="timestamp-wrapper"><span class="timestamp">[2024-11-03 Sun 15:07]</span></span>
+</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: mhx</p>
+<p class="date">Created: 2024-11-03 Sun 16:16</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

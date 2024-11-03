@@ -1,3 +1,4 @@
+
 @import url('https://fonts.googleapis.com/css?family=Lobster|EB+Garamond');
 
 /* Quicksand typefaces */
@@ -103,6 +104,9 @@
 }
 
 
+
+
+
 article,
 aside,
 details,
@@ -127,8 +131,6 @@ audio:not([controls]) {
 }
 [hidden] {
     display: none;
-}
-html {
 }
 body p, body ul, body ol{
     font-size: 1.2rem;
@@ -192,7 +194,6 @@ img {
     border: 0;
     margin: auto;
     /* max-width: 100%; */
-    /* remove max width for the sake of math formulas */
     max-height: 100%;
 }
 .figure p {
@@ -310,9 +311,15 @@ p#subtitle{
     font-weight: normal;
 }
 
-h1,h2,h4,h5,h6 {
+h1,h2,h3 {
     padding-top: 0.6em;
     font-family: Lobster, serif;
+    font-weight: normal;
+}
+
+h4,h5,h6 {
+    padding-top: 0.6em;
+    font-family: serif;
     font-weight: normal;
 }
 html {

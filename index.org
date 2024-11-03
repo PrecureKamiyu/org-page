@@ -1,0 +1,7 @@
+#+title:Index
+#+author:MAO
+#+options: toc:nil
+
+  - [[file:note.org][note]]
+  - [[file:archive.org][archive]]
+  - [[file:diary.org][diary]]
