@@ -4,7 +4,7 @@
 #+html_head: <link rel="stylesheet" type="text/css" href="style.css" />
 #+html_link_home: index.html
 #+infojs_opt: view:info
-#+startup: overview latexpreview num
+#+startup: overview num
 #+options: tex:dvisvgm toc:2
 #+archive: ~/org/archive.org::* head
 #+latex_header: \usepackage{amsmath}
@@ -2063,6 +2063,7 @@ does not always satisfy \(H(c) = c\). In fact tis equation is satisfied only for
 
 Proofs and Types
 author: Yves Lafont
+
 **** forewords
 
 Linear logic was originally discovered in coherence semantics (see chapter 12). It appears now as a promising approach to fundamental questions arising in proof theory and in computer science.
@@ -2130,9 +2131,9 @@ The last one is called /dereliction/. It is equivalent to the axiom \(B \multima
 We have
 
 \[A \land B := A \with B,
-\quad A \lor B := ! A \oplus ! B,
-\quad A \Rightarrow B := ! A \multimap B,
-\quad \neg A = ! A \multimap 0\]
+\quad A \lor B := {!} A \oplus {!} B,
+\quad A \Rightarrow B := {!} A \multimap B,
+\quad \neg A = {!} A \multimap 0\]
 
 in such a way that an intuitionistic formula is valid iff its translation is porvable in linear logic (so, for example, derecliction expresses that \(B \Rightarrow B\)).
 This translation is in fact used for the coheretn semantics of typed lambda calculus.
@@ -2209,18 +2210,18 @@ while also comes from form
 
 **** others
 
-Essentially, we lose the (inessential)appplications order of rules.
+Essentially, we lose the (inessential) appplications order of rules.
 
 At this point precise definitoins are needed. A /proof/ structure is just a graph biult from the follwing components:
 
-Link
+Link:
 
 \[
 \begin{tikzcd}[every arrow/.append style={dash, line width=1pt, rounded corners}]
  A \netarrow{1-2}{2} & A^{\bot}
 \end{tikzcd}\]
 
-Cut
+Cut:
 
 \[
 \begin{tikzcd}[every arrow/.append style={dash, line width=1pt, rounded corners}]
@@ -2241,7 +2242,6 @@ A \ar[rd] & & B \ar[ld]\\
 & \makebox[0pt]{$A \parr B$}
 \end{tikzcd}\]
 
-
 \[
 \begin{tikzcd}[column sep=tiny, every arrow/.append style={dash, line width=1pt, rounded corners}]
 && A\netarrow{2-1}{2}\ar[rd] && B \netarrow{2-7}{2}\ar[ld]\\
@@ -2256,8 +2256,6 @@ A^{\bot} &&& \zerohbox{A \parr B} &&& B^{\bot}
   && \zerohbox{A \otimes B \otimes C} && C^{\bot} &&& \zerohbox{A ^{\bot} \parr B^{\bot}} \netarrow{3-11}{-2}
   &&& \zerohbox{A \otimes B} && B ^{\bot} && A ^{\bot}
 \end{tikzcd}\]
-
-To prove the proposition, it is enough
 
 ** Categorical Logic and Type Theory
 :PROPERTIES:
@@ -2935,9 +2933,10 @@ A direct product is defined as
 \[
 \begin{tikzcd}
 Z \ar[rrd, bend left, "F"] \ar[rdd, bend right, "G"] \ar[rd, "H"]\\
-& X \with Y \ar[r, "\pi_{1}"]
-             \ar[d, "\pi_{2}"]&  X \\
-& Y
+  & X \with Y \ar[r, "\pi_{1}"]
+              \ar[d, "\pi_{2}"]
+      &  X \\
+  & Y
 \end{tikzcd}\]
 So we have to give definition for \(H\) and \(\pi_{1}, \pi_{2}\). The construct of \(H\) is extremely obvious.
 
@@ -3010,7 +3009,7 @@ The isomorphism being \((a, b) \mapsto (b, a)\).
 
 ** Linearity: Linearisation or Of Course!
 
-I have no idea why Girard would call this "Of Course". Anyway, of course is the linearisation of a space \(X\):
+I have no idea why Girard would call this "Of Course". Anyway, "Of Course!" is the linearisation of a space \(X\):
 
   - web: \(|{!} X| := X_{\mathrm{fin}} = \{a \sqsubset X \semicolon a\ \text{finite}\}\)
   - coherence: \(a \coh_{{!}X} a'\) iff \(a \cup a' \sqsubset X\)
@@ -3054,13 +3053,3 @@ Def a simplex in \(\R ^{n}\) is a polyhedron with \(n + 1\) vertices. We shall t
 We shall be dealing with two geometrical attributes of ordered ~plices, their orientation and volume. An ordered sinplex \(S\) is called degenerate if it lies on a \((n - 1)\) dimensional subspace.
 
 An ordered simplex \((0, a_{1}, \dots , a_{n}) = S\) that is non-degenerate can have onfo two orientations: positive or negative. We call \(S\) positivel oriented if it can be defformed continuously and non-degenerately into the standard ordered simplex \((0, e_{1}, \dots , e_{n})\), where \(e_{j}\) is the \(j\)-th unit vecotr in the standard basis of \(\R ^{n}\). By such deformation we mean \(n\) vector-valued continuous functions \(a_{j}(t)\) of \(t,\) \(0 \le t \le1\), such that \((i)\)
-
-* test
-
-For function \(\det\) is a multi-linear function. If the column vectors in the \(\det\) are linear dependent, then we assume that
-\[M = \begin{bmatrix}
-v_{1}, \dots , v_{n},
-\end{bmatrix}\]
-where \(v_{j} = \sum _{i \neq j} a_{i} v_{i}\) where \(\exists k, a_{k} \neq 0\), then
-\[\det M = \sum _{i \neq j} a_{i} \det M_{i},\]
-where \(M_{i}\) is \(M\) with \(i\)-th column vector substitude with \(v_{j}\)
