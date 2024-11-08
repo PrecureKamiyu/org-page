@@ -4,9 +4,8 @@
 #+html_head: <link rel="stylesheet" type="text/css" href="style.css" />
 #+html_link_home: index.html
 #+infojs_opt: view:info
-#+startup: overview num
+#+startup: overview
 #+options: tex:dvisvgm toc:2
-#+archive: ~/org/archive.org::* head
 #+latex_header: \usepackage{amsmath}
 #+latex_header: \usepackage{amssymb}
 #+latex_header: \usepackage{tikz}\usetikzlibrary{cd}
@@ -2813,10 +2812,17 @@ The ten sections which together form this chapter contain the essentially standa
 
 Basically, a fibration is a categorical structure which captures \textit{indexing} and substitution. Since the formal definition of a fibration is a bit technical—see Definition 1.1.3 below—we start with the following introductory observations. These focus on the special case of a codomain fibration, and will lead to the general definition of fibration towards the end of this section. The exercises contain many elementary results about fibrations, which should help the reader to get acquainted with the concepts involved.
 
-* note on coherent space and linearity
+* coherent space and linearity
 :PROPERTIES:
 :CUSTOM_ID: coherence-and-linearity
 :END:
+
+** Scott Domain using logic
+
+Scott Domain is initially postulate in the language of topology. However, Scott Domain is of no significance as a topological space. Also Scott Domain can be formulated with CPO (complete partially ordered set). The layer, in which topology or order set is used, is requiring not only a correct but proper language.
+
+Girard defines the Scott Domain using the language of logic, where the relation between elements is formulated with provability.
+This alternative definition is of course useful, but should be mentioned later after you know about the "standard" definition of Scott Domain.
 
 ** The definition of coherent space: web and coherence
 
@@ -3038,7 +3044,7 @@ The definition seems not so important. What matters is the dual:
 
 the latter can written as \(? X = {\sim} {!} {\sim} X\). What is /Why Not?/ used for?
 
-* note on linear algebra
+* linear
 
 ** determinants and trace
 
