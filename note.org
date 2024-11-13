@@ -2185,12 +2185,16 @@ For example, the proof
 
 becomes
 
+
+
 \[
 \begin{tikzcd}[column sep=tiny, every arrow/.append style={dash, line width=1pt, rounded corners}]
   A\ar[rd]\netarrow{negA}{2} & {} & B\ar[ld]\netarrow{negB}{5} \\
   & \makebox[0pt]{$A \otimes B$}\ar[rd] & & C \ar[ld]\netarrow{negC}{2} &&&& |[alias=negA]|A ^{\bot}\ar[rd] && |[alias=negB]|B ^{\bot}\ar[ld]\\
   && \makebox[0pt]{$(A \otimes B) \otimes C$} &&& |[alias=negC]|C^{\bot} &&& \makebox[0pt]{$ A ^{\bot} \parr B ^{\bot}$}
 \end{tikzcd}\]
+
+
 
 while also comes from form
 
@@ -2247,14 +2251,29 @@ A \ar[rd] & & B \ar[ld]\\
 A^{\bot} &&& \zerohbox{A \parr B} &&& B^{\bot}
 \end{tikzcd}\]
 
+
+
+
+
+
+
+
+
+
 \[
 \begin{tikzcd}[column sep=tiny, every arrow/.append style={dash, line width=1pt, rounded corners}]
-  A\ar[rd]\netarrow{2-7}{2} && B\ar[ld]\netarrow{2-9}{4}\\
-  & \zerohbox{A \otimes B} \ar[rd] && C\ar[ld]\netarrow{3-5}{2} &&& A^{\bot}\ar[rd] && B ^{\bot}\ar[ld]
+  A\ar[rd]\netarrow{2-9}{4} && B\ar[ld]\netarrow{2-7}{2}\\
+  & \zerohbox{A \otimes B} \ar[rd] && C\ar[ld]\netarrow{3-5}{2} &&& B^{\bot}\ar[rd] && A^{\bot}\ar[ld]
   & A\ar[rd]\netarrow{3-15}{4} && B\ar[ld]\netarrow{3-13}{2}\\
   && \zerohbox{A \otimes B \otimes C} && C^{\bot} &&& \zerohbox{A ^{\bot} \parr B^{\bot}} \netarrow{3-11}{-2}
   &&& \zerohbox{A \otimes B} && B ^{\bot} && A ^{\bot}
 \end{tikzcd}\]
+
+
+
+
+
+
 
 ** Categorical Logic and Type Theory
 :PROPERTIES:

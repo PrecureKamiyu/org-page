@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Lobster|EB+Garamond');
+@import url('https://fonts.googleapis.com/css?family=Lobster|EB+Garamond|Zen+Old+Mincho');
 
 /* Quicksand typefaces */
 @font-face {
@@ -272,7 +272,7 @@ table {
 }
 
 html {
-    font-family: EB, "Source Han", serif;
+    font-family: EB,  serif, "Source Han";
     line-height: 1.5;
     /* -webkit-text-size-adjust: 100%; */
     /* -ms-text-size-adjust: 100%; */
@@ -320,12 +320,12 @@ p#subtitle{
 /* Fonts for headline */
 h1,h2,h3 {
     padding-top: 0.6em;
-    font-family: Lobster, "Source Han";
+    font-family: Lobster, serif, "Source Han";
     font-weight: bold;
 }
 h4,h5,h6 {
     padding-top: 0.6em;
-    font-family: "Source Han", serif;
+    font-family: serif, "Source Han";
     font-weight: normal;
 }
 
