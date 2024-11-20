@@ -2274,7 +2274,6 @@ A^{\bot} &&& \zerohbox{A \parr B} &&& B^{\bot}
 
 
 
-
 ** Categorical Logic and Type Theory
 :PROPERTIES:
 :CUSTOM_ID: categoricallogic

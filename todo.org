@@ -14,6 +14,12 @@
 
 也就是说，在这里我们应当给出第一个部分
 
+* reading list
+
+  + call/cc 和 LEM（排中律）之间的关系
+  + https://pithlessly.github.io/callcc.html
+  + 中文 lean 文档
+  + https://www.leanprover.cn/
 * test                                                              :ARCHIVE:
 
 ** 第一步，给出问题建模
