@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2024-11-21 Thu 15:12 -->
+<!-- 2024-11-25 Mon 17:39 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>TODO(s)</title>
@@ -200,23 +200,13 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org264c330">1. <span class="todo TODO">TODO</span> <code>[0/2]</code></a></li>
-<li><a href="#orgab5bae2">2. reading list</a></li>
-<li><a href="#org43e7f97">3. test&#xa0;&#xa0;&#xa0;<span class="tag"><span class="ARCHIVE">ARCHIVE</span></span></a></li>
-<li><a href="#org095456f">4. CallCC: a classic operator that defies intuition — Christine's World Wide Web Site&#xa0;&#xa0;&#xa0;<span class="tag"><span class="website">website</span></span></a>
-<ul>
-<li><a href="#orga92023d">4.1. Article</a>
-<ul>
-<li><a href="#orgc6a2799">4.1.1. CallCC: a classic operator that defies intuition</a></li>
-</ul>
-</li>
-</ul>
-</li>
+<li><a href="#orgf5a3037">1. <span class="todo TODO">TODO</span> <code>[0/2]</code></a></li>
+<li><a href="#org0f07dfb">2. test&#xa0;&#xa0;&#xa0;<span class="tag"><span class="ARCHIVE">ARCHIVE</span></span></a></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org264c330" class="outline-2">
-<h2 id="org264c330"><span class="section-number-2">1.</span> <span class="todo TODO">TODO</span> <code>[0/2]</code></h2>
+<div id="outline-container-orgf5a3037" class="outline-2">
+<h2 id="orgf5a3037"><span class="section-number-2">1.</span> <span class="todo TODO">TODO</span> <code>[0/2]</code></h2>
 <div class="outline-text-2" id="text-1">
 <ul class="org-ul">
 <li class="off"><code>[&#xa0;]</code> 给出问题建模</li>
@@ -238,158 +228,12 @@
 </p>
 </div>
 </div>
-<div id="outline-container-orgab5bae2" class="outline-2">
-<h2 id="orgab5bae2"><span class="section-number-2">2.</span> reading list</h2>
-<div class="outline-text-2" id="text-2">
-<ul class="org-ul">
-<li>call/cc 和 LEM（排中律）之间的关系</li>
-<li><a href="https://pithlessly.github.io/callcc.html">https://pithlessly.github.io/callcc.html</a></li>
-<li>中文 lean 文档</li>
-<li><a href="https://www.leanprover.cn/">https://www.leanprover.cn/</a></li>
-</ul>
-</div>
-</div>
-<div id="outline-container-org43e7f97" class="outline-2">
-<h2 id="org43e7f97"><span class="section-number-2">3.</span> test&#xa0;&#xa0;&#xa0;<span class="tag"><span class="ARCHIVE">ARCHIVE</span></span></h2>
-</div>
-<div id="outline-container-org095456f" class="outline-2">
-<h2 id="org095456f"><span class="section-number-2">4.</span> <a href="https://pithlessly.github.io/callcc.html">CallCC: a classic operator that defies intuition — Christine's World Wide Web Site</a>&#xa0;&#xa0;&#xa0;<span class="tag"><span class="website">website</span></span></h2>
-<div class="outline-text-2" id="text-4">
-<p>
-<span class="timestamp-wrapper"><span class="timestamp">[2024-11-21 Thu 15:08]</span></span>
-</p>
-</div>
-<div id="outline-container-orga92023d" class="outline-3">
-<h3 id="orga92023d"><span class="section-number-3">4.1.</span> Article</h3>
-<div class="outline-text-3" id="text-4-1">
-</div>
-<div id="outline-container-orgc6a2799" class="outline-4">
-<h4 id="orgc6a2799"><span class="section-number-4">4.1.1.</span> CallCC: a classic operator that defies intuition</h4>
-<div class="outline-text-4" id="text-4-1-1">
-<p>
-<i>Epistemic status: essentially a personal note. Might have any number of misconceptions.</i>
-</p>
-
-<p>
-I've recently been thinking about the “call with current continuation” operator, a rather magical primitive operation which is included in some functional programming languages, most notably Scheme. <code>call-with-current-continuation</code> can be described as reifying the return operator: it provides a function with an additional argument, which, when called, will cause the function to immediately return. For example, these programs are equivalent:
-</p>
-
-<pre class="example" id="org8ab9d9b">
- (call-with-current-continuation
-  (lambda (return)
-    (+ 5 5)))
-
-(call-with-current-continuation
-  (lambda (return)
-    (return (+ 5 5))
-    (whatever))) ; this statement will never be evaluated
-</pre>
-
-<p>
-<code>return</code> here is called a <i>continuation</i> and more conventionally named <code>k</code>. Like <code>return</code> statements in imperative languages, execution of the function body stops once it is called. What I noticed is that this breaks referential transparency, which (broadly) means that the program's results shouldn't depend on the evaluation strategy. Consider this program:
-</p>
-
-<pre class="example" id="orgd43f22e">
-(call-with-current-continuation
- (lambda (k)
-   (define var (list (k 1)
-                     (k 2)))
-   3))
-</pre>
-
-<p>
-What does this return? The answer depends on the order of evaluation:
-</p>
-
-<ul class="org-ul">
-<li>If the first call to <code>k</code> is evaluated first, the function exits with return value 1.</li>
-<li>If the second call to <code>k</code> is evaluated first, the function exits with return value 2.</li>
-<li>If the compiler notices that <code>var</code> is never used, and decides not to evaluate it at all, then the function returns normally with return value 3. This transformation is generally not permissible in languages with side effects, but languages like Haskell do it.</li>
-</ul>
-
-<p>
-(The actual answer is that it could return either 1 or 2, but not 3. Scheme requires side effects to be handled but does not specify what order arguments can be evaluated in.)
-</p>
-
-<p>
-So having <code>call-with-current-continuation</code> (also known as <code>call/cc</code>) in the language breaks referential transparency. As a corollary, it cannot be implemented in a referentially transparent language. This is why I called it a <i>primitive operator</i> rather than simply an ordinary function. The presence or absence of <code>call/cc</code> makes a meaningful difference to a language's semantics which is worth investigation.
-</p>
-
-<p>
-Another thing I was thinking about at the time was an excerpt from an article I read in middle school. I don't remember the article's content, and most of it went over my head, but a comment that was somewhat independent from the article's main point stuck with me. To paraphrase:
-</p>
-
-<blockquote>
-<p>
-Implementing the law of the excluded middle requires writing a term <code>lem :: Either a (a -&gt; Void)</code>. This can be implemented by first returning <code>Right</code> with an opaque function <code>a -&gt; Void</code>. There is nothing the user could do with this function except pass in a value of type <code>a</code> to obtain a contradiction. At this point, the runtime has a value of type <code>a</code>, and can rewind the computation and return <code>Left a</code> with the provided value.
-</p>
-
-<p>
-<i><b>Edit (2022-09-29):</b> it may have been <a href="https://queuea9.wordpress.com/2018/10/17/why-i-no-longer-believe-in-computational-classical-type-theory">this article</a>, although that isn't consistent with the timing.</i>
-</p>
-</blockquote>
-
-<p>
-This idea of “rewinding the computation” seems an awful lot like <code>call/cc</code>, doesn't it? In fact, we can formalize this intuition by “proving” (defining) <code>lem</code> and <code>call/cc</code> in terms of each other in Haskell.
-</p>
-
-<pre class="example" id="org205ecac">
- data Void
-
-lem :: Either a (a -&gt; Void)
-lem = callCC (\k -&gt; Right (\a -&gt; k (Left a)))
-
-callCC :: ((a -&gt; Void) -&gt; a) -&gt; a
-callCC f = case lem of
-  Left (a :: a) -&gt; a
-  Right (na :: a -&gt; Void) -&gt; f na
-</pre>
-
-<p>
-Another axiom equivalent to the law of the excluded middle is double negation elimination: the conversion from a proof that something <i>cannot be false</i> to a proof that it <i>is true</i>. Double negation elimination and <code>call/cc</code> can be implemented in terms of each other.
-</p>
-
-<pre class="example" id="orgbd87c47">
- dne :: ((a -&gt; Void) -&gt; Void) -&gt; a
-dne na = callCC (\k -&gt; absurd (na k))
-  where absurd (v :: Void) = case v of {} -- from falsehood, anything follows
-
-callCC :: ((a -&gt; Void) -&gt; a) -&gt; a
-callCC f = dne (\not_a -&gt; not_a (f not_a))
-
--- I'm not going to implement `lem` and and `dne` in terms of each other,
--- since it's not quite relevant to this topic and can be derived from the
--- implementations given here.
-</pre>
-
-<p>
-This, to me, indicates a connection between having a <code>call/cc</code>-like operation and <i>proof-relevance</i>. Double negation elimination, the LEM, and Pierce's law (which is the analogue of <code>call/cc</code> in classical logic) &#x2014; these all seem intuitively correct in classical logic, and the reason is that we're okay with, for example, proving a disjunction (“either A or B is true”) without having an algorithm that determines which side of the disjunction it is.
-</p>
-
-<p>
-The reason these operations seem “weird” when interpreted as programs is that we do care about proofs &#x2014; we expect to be able to “pattern match” and determine which case of a sum type holds. Introducing <code>call-cc</code> as a primitive operator weakens this ability, because we lose agnosticism of evaluation order: we know <code>call/cc</code> returns a value of type <code>a</code>, but as the initial examples demonstrated, the types alone don't tell us enough to know which one exactly.
-</p>
-
-<p>
-I suspect that the computational structure of negation is related to the distinction between propositions and types in many dependently typed proof assistants: propositions are a subset of types whose proofs cannot be inspected or pattern matched, enabling the language to introduce classical axioms as propositions without breaking referential transparency.
-</p>
-
-<hr />
-
-<p>
-<a href="https://soupault.app/">[[./buttons/powered-by-soupault.png</a>]] <img src="./buttons/bookmark_this_page.gif" alt="bookmark_this_page.gif" /> <img src="./buttons/any-browser.gif" alt="any-browser.gif" /> <img src="./buttons/trans-flag.png" alt="trans-flag.png" /> <img src="./buttons/ace-flag.png" alt="ace-flag.png" /> <img src="./buttons/firefox.gif" alt="firefox.gif" /> <a href="https://roseiverse.com">[[https://roseiverse.com/buttons/roseiverse.png</a>]]
-</p>
-
-<p>
-<a href="https://tailscale.com/">[[./buttons/tailscale.png</a>]] <img src="./buttons/fediverse.gif" alt="fediverse.gif" /> <a href="https://bitwarden.com/">[[./buttons/bitwarden.gif</a>]] <a href="https://haskell.org">[[./buttons/haskell.png</a>]] <img src="./buttons/latex.gif" alt="latex.gif" /> <img src="./buttons/linux.gif" alt="linux.gif" /> <img src="./buttons/sun.gif" alt="sun.gif" /> <a href="https://archive.org/">[[./buttons/internetarchive.gif</a>]] <img src="./buttons/antinft.gif" alt="antinft.gif" /> <img src="./buttons/iso8601.png" alt="iso8601.png" />
-</p>
-</div>
-</div>
-</div>
+<div id="outline-container-org0f07dfb" class="outline-2">
+<h2 id="org0f07dfb"><span class="section-number-2">2.</span> test&#xa0;&#xa0;&#xa0;<span class="tag"><span class="ARCHIVE">ARCHIVE</span></span></h2>
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2024-11-21 Thu 15:12</p>
+<p class="date">Created: 2024-11-25 Mon 17:39</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

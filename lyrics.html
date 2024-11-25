@@ -1,0 +1,619 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2024-11-25 Mon 19:43 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Some lyrics</title>
+<meta name="generator" content="Org Mode" />
+<style type="text/css">
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  pre.src-C\+\+:before { content: 'C++'; }
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+<link rel="stylesheet" type="text/css" href="style.css"/>
+
+<script src="https://orgmode.org/org-info.js">
+// @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
+// @license-end
+</script>
+
+<script>
+// @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
+org_html_manager.set("TOC_DEPTH", "3");
+org_html_manager.set("LINK_HOME", "index.html");
+org_html_manager.set("LINK_UP", "");
+org_html_manager.set("LOCAL_TOC", "1");
+org_html_manager.set("VIEW_BUTTONS", "1");
+org_html_manager.set("MOUSE_HINT", "underline");
+org_html_manager.set("FIXED_TOC", "0");
+org_html_manager.set("TOC", "2");
+org_html_manager.set("VIEW", "info");
+org_html_manager.setup();  // activate after the parameters are set
+// @license-end
+</script>
+</head>
+<body>
+<div id="org-div-home-and-up">
+ <a accesskey="h" href=""> UP </a>
+ |
+ <a accesskey="H" href="index.html"> HOME </a>
+</div><div id="content" class="content">
+<h1 class="title">Some lyrics</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#songs">1. lyrics</a>
+<ul>
+<li><a href="#org55bf355">1.1. 砂塵の彼方へ…</a></li>
+<li><a href="#orgd1472e8">1.2. ハーフムーン・セレナーデ</a></li>
+<li><a href="#org9128e19">1.3. 僕らの手には何もないけど、</a></li>
+<li><a href="#orgdf6e214">1.4. 名もなき詩</a></li>
+<li><a href="#orgbbee2aa">1.5. はなび</a></li>
+<li><a href="#org4161b79">1.6. Hotel California</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-songs" class="outline-2">
+<h2 id="songs"><span class="section-number-2">1.</span> lyrics</h2>
+<div class="outline-text-2" id="text-songs">
+</div>
+<div id="outline-container-org55bf355" class="outline-3">
+<h3 id="org55bf355"><span class="section-number-3">1.1.</span> 砂塵の彼方へ…</h3>
+<div class="outline-text-3" id="text-1-1">
+<p class="verse">
+『Beyond the dust storm, an extended horizon,<br />
+within each wave, everlasting melody&#x2026;』<br />
+<br />
+旅人(たびびと)の季節(きせつ)は常(つね)に<br />
+過去(かこ)へと現在(いま)を奪(うば)うけど<br />
+あの日(ひ)重(かさ)ねた歌声(うたごえ)は<br />
+今(いま)もまだ響(ひび)いてる……<br />
+(Just for infinity)<br />
+<br />
+傷跡(きずあと)も癒(いや)せずに僕等(ぼくら)は<br />
+何(なに)を待(ま)つのだろう<br />
+Good times for blend<br />
+もう一度(いちど)と廻(めぐ)ると信(しん)じていたい<br />
+砂(すな)の海(うみ)で水(みず)に焦(こ)がれ<br />
+爪(つめ)を剥(は)いでも祈(いの)りは井戸(いど)の底(そこ)<br />
+キミの名(な)は幻想(ドリーム)<br />
+儚(はか)なき調べ(メロディー)<br />
+唇(くちびる)が触(ふ)れる程(ほど)に遠離(とおざか)る<br />
+鳴(な)り止(や)まない胸(むね)の鼓動(リズム)<br />
+あと一(ひと)つだけ丘(おか)を越(こ)え<br />
+砂(すな)に祈(いの)りを埋(うず)めても<br />
+この手(て)を伸(の)ばすから どうか<br />
+Fly me……<br />
+<br />
+『Dream port』<br />
+<br />
+足跡(あしあと)も残(のこ)さずに僕等(ぼくら)は<br />
+何処(どこ)へ行(ゆ)くのだろう<br />
+Good-bye dear friend<br />
+もう一度(いちど)会(あ)えると信(しん)じていたい<br />
+砂(すな)の海(うみ)が暮(く)れ行(ゆ)く頃(ごろ)<br />
+全(すべ)ての叫(さけ)びが目指(めざ)す輝(かがや)き<br />
+キミの名(な)は幻想(ドリーム)<br />
+遙(はる)かな調べ(メロディー)<br />
+唇(くちびる)に歌(うた)を一(ひと)つ灯(とも)して<br />
+震(ふる)えるのは夜(よる)の共鳴(ハーモニー)<br />
+孤独(こどく)は声(こえ)を凍(こお)らせる<br />
+月(つき)に叫(さけ)びが届(とど)くなら<br />
+この身(み)を捧(ささ)ぐから どうか<br />
+Fly me……<br />
+<br />
+<br />
+(Fly me and take me to the forgotten land<br />
+Take me there<br />
+Fly me&#x2026;)<br />
+<br />
+『Dream port』<br />
+<br />
+全(すべ)ての音(おと)がいつか<br />
+消(き)え失(う)せた静寂(せいじゃく)の中(なか)で<br />
+僕(ぼく)たちは震(ふる)えながら<br />
+愛(あい)の歌(うた)を歌(うた)い出(だ)す<br />
+風(かぜ)を超(こ)えて<br />
+遠(とお)い岸辺(きしべ)へ心(こころ)は行(ゆ)けるのだろう<br />
+遠(とお)くさざめく永遠(えいえん)の音楽(おんがく)が<br />
+僕等(ぼくら)を招(まね)くから……<br />
+<br />
+砂(すな)を超(こ)えて<br />
+遠(とお)い岸辺(きしべ)で僕等(ぼくら)は出会(であ)うだろう<br />
+あの日(ひ)重(かさ)ねた歌声(うたごえ)をこの胸(むね)に<br />
+砂塵(さじん)の彼方(かなた)へ……<br />
+</p>
+</div>
+</div>
+<div id="outline-container-orgd1472e8" class="outline-3">
+<h3 id="orgd1472e8"><span class="section-number-3">1.2.</span> ハーフムーン・セレナーデ</h3>
+<div class="outline-text-3" id="text-1-2">
+<p class="verse">
+あなたのもとへ　届くなら<br />
+水面（みなも）に散（ち）った　琥珀（きん）の枯（か）れ葉を<br />
+風つまびく音符 （おんぶ） にして　想い伝える<br />
+<br />
+月の雫（しずく）を　左手に<br />
+涙でそっと　ひとつにつなぐ<br />
+好きな人と結（むす）ばれたい…… 深く祈るわ<br />
+<br />
+青春の雲が切れる　年頃（きせつ）抱きしめ<br />
+<br />
+誰もみんな　ひとりぼっちだから<br />
+優しさを　愛（いど）おしむのね<br />
+抱きしめて永遠（とお）く　あなたの胸の<br />
+生命の響きに　満（み）ちる夢<br />
+<br />
+ふたりでいても　切なくて<br />
+あなたの指を　ぎゅっとかんだの<br />
+恋をしても男の人　迷わないのね<br />
+<br />
+流れて落ちた　星（ほし）の輪（ま）が<br />
+胸の泉（いつみ）に　波（なみ）を立てれば<br />
+欠（か）けた月は淋しさに似て　心痛むの<br />
+<br />
+美しい瞳（ひとみ）のまま　どうぞ愛して<br />
+<br />
+幸福（しあわせ）をさがす　幸福（しあわせ）ふたり<br />
+抱きしめて生きてゆけたら<br />
+離さないで　ああ　時の銀河に<br />
+流され　大人になろうとも<br />
+<br />
+青春の雲が切れる　年頃（きせつ）抱きしめ<br />
+<br />
+誰もみんな　ひとりぼっちだから<br />
+優しさを　愛おしむのね<br />
+抱きしめて永遠（とお）く　あなたの胸の<br />
+生命の響きに　満ちる夢<br />
+</p>
+</div>
+</div>
+<div id="outline-container-org9128e19" class="outline-3">
+<h3 id="org9128e19"><span class="section-number-3">1.3.</span> 僕らの手には何もないけど、</h3>
+<div class="outline-text-3" id="text-1-3">
+<p class="verse">
+君に見せたいものがあるんだ<br />
+孤独な夜にもきっと<br />
+遠くで輝き続ける<br />
+幾（いく）千（せん）の星を<br />
+<br />
+失うこと<br />
+割（わ）り切れぬこと<br />
+弾（はじ）かれること<br />
+叶わないこと<br />
+でも足（あ）掻（が）くこと<br />
+信じぬくこと<br />
+上を向いて<br />
+歩き出すこと<br />
+<br />
+僕らの手には何もないけど<br />
+かわりに　つなぎあえるから<br />
+一人きりで　迷わないで<br />
+どんな日もこの手を離さないから<br />
+<br />
+君にあげたいものがあるんだ<br />
+凍（こご）える夜にはいつも<br />
+もう何も心配等（なん）せず<br />
+眠れる毛布（おふ）を<br />
+<br />
+忘れられぬこと<br />
+耐（た）えきれぬこと<br />
+術（すべ）がないこと<br />
+奪われること<br />
+でも気付くこと<br />
+君がいること<br />
+守りたいものが<br />
+強くさせること<br />
+<br />
+自分の色を誇（ほこ）れるように<br />
+自由に色を足（た）せばいい<br />
+ぼやけていた　この世界を<br />
+この手が彩（いろ）ってゆくんだ<br />
+<br />
+認めてくれる人がいなくても<br />
+サマになる肩（かた）書（え）きがなくても<br />
+僕らの小さな手は明日きっと<br />
+誰かを笑顔にできるから<br />
+<br />
+僕らの手には何もないけど<br />
+かわりに　つなぎあえるから<br />
+一人きりで　迷わないで<br />
+どんな日もこの手を離さないから<br />
+<br />
+君に見せたいものがあるんだ<br />
+孤独な夜にもきっと<br />
+遠くで輝き続ける<br />
+幾千の星を<br />
+</p>
+</div>
+</div>
+<div id="outline-container-orgdf6e214" class="outline-3">
+<h3 id="orgdf6e214"><span class="section-number-3">1.4.</span> 名もなき詩</h3>
+<div class="outline-text-3" id="text-1-4">
+<p class="verse">
+ちょっとぐらいの汚れ（よごれ）物ならば<br />
+残さずに全部食べてやる<br />
+Wow darling 君は誰<br />
+真実を握（に）りしめる<br />
+君が僕を疑（うたがう）っているのなら<br />
+この喉（のど）を切ってくれてやる<br />
+Wow darling 僕はノータリン<br />
+大切な物をあげる wow-wow<br />
+<br />
+苛立（いらた）つような街並（な）みに立ったって<br />
+感情（かんじょう）さえもリアルに<br />
+持てなくなりそうだけど<br />
+<br />
+こんな不調和（じょうわ）な生活 (くらし) の中で<br />
+たまに情緒（じょじょ）不安定（あんて）になるだろう？<br />
+でも darlin 共（とも）に悩（なんや）んだり<br />
+生涯（しょうがい）を君に捧（ささ）ぐ<br />
+<br />
+あるがままの心で 生きられぬ弱さを<br />
+誰かのせいにして過（す）ごしている<br />
+知らぬ間に築（きつ）いていた<br />
+自分らしさの檻（おおび）の中で<br />
+もがいているなら<br />
+僕だってそうなんだ<br />
+<br />
+どれほど分り合える同志（とうし）でも<br />
+孤独な夜はやってくるんだよ<br />
+Wow darling このわだかまり<br />
+きっと消せはしないだろう oh-wow<br />
+<br />
+いろんな事を踏（ふ）み台（たい）にしてきたけど<br />
+失（いな）くしちゃいけない物が<br />
+やっと見つかった気がする<br />
+<br />
+君の仕草が滑稽（こっけえ）なほど<br />
+優しい気持ちになれるんだよ<br />
+Wow darling 夢物語<br />
+逢う度（たび）に聞かせてくれ<br />
+<br />
+愛はきっと奪うでも与（あた）えるでもなくて<br />
+気が付けばそこにある物<br />
+街の風に吹（ふ）かれて唄（うた）いながら<br />
+妙なプライドは捨（す）ててしまえばいい<br />
+そこからはじまるさ<br />
+<br />
+絶望（絶望）失望（失望 Down）<br />
+何をくすぶってんだ<br />
+愛（愛）自由（自由）希望（希望）夢（夢 勇気）<br />
+足元をごらんよきっと転（ころ）がってるさ<br />
+<br />
+成（な）り行きまかせの恋におち<br />
+時には誰かを傷つけたとしても<br />
+その度（たび）心いためる様（だめ）な時代じゃない<br />
+誰かを想いやりゃあだになり<br />
+自分の胸につきささる<br />
+<br />
+だけど<br />
+あるがままの心で生きようと願うから<br />
+人はまた傷つていてゆく<br />
+知らぬ間に築（きつ）いていた<br />
+自分らしさの檻（おおび）の中で<br />
+もがいているなら誰だってそう<br />
+僕だってそうなんだ<br />
+<br />
+愛情ってゆう形のないもの<br />
+伝えるのはいつも困難（こんなん）だね<br />
+だから darlin この「名もなき詩（うた）」を<br />
+いつまでも君に捧（ささ）ぐ<br />
+</p>
+</div>
+</div>
+<div id="outline-container-orgbbee2aa" class="outline-3">
+<h3 id="orgbbee2aa"><span class="section-number-3">1.5.</span> はなび</h3>
+<div class="outline-text-3" id="text-1-5">
+<p class="verse">
+どれくらいの値（めう）打（う）ちがあるだろう？<br />
+僕が今生きているこの世界 に<br />
+すべてが無意味だって思える<br />
+ちょっと疲れてんのかなぁ<br />
+<br />
+手に入（い）れたもんと引き換（か）えにして<br />
+切り捨（す）てたいくつもの輝き<br />
+いちいち憂（うめ）いていれるほど<br />
+平和な世（よ）の中じゃないし<br />
+<br />
+一体どんな理想を描いたらいい？<br />
+どんな希望を抱（た）き進んだらいい？<br />
+答えようもないその問（と）いかけは 日常に葬（ほうむ）られてく<br />
+<br />
+君がいたらなんていうかなぁ<br />
+「暗い」と茶（ちゃ）化（か）して笑うのかなぁ<br />
+その柔らかな笑顔に触れて<br />
+僕の憂鬱（いううつ）が吹き飛んだらいいのに<br />
+<br />
+決（け）して捕（つか）まえることの出来ない<br />
+花火のような光だとしたって<br />
+もう一回 もう一回<br />
+もう一回 もう一回<br />
+僕はこの手を伸ばしたい<br />
+<br />
+誰も皆 悲しみを抱いてる<br />
+だけど素敵な明日を願っている<br />
+臆病（おくびょ）風に吹かれて 波風がたった世界を<br />
+どれだけ愛することができるだろう？<br />
+<br />
+考えすぎで言葉に詰（つ）まる<br />
+自分の不（ぶ）器用（きよう）さが嫌い<br />
+でも妙に器用に立ち振（ふう）舞（ま）う<br />
+自分はそれ以上に嫌い<br />
+<br />
+笑っていても 泣いて過ごしても<br />
+平等（びょーどー）に時は流れる<br />
+未来が僕らを呼んでる<br />
+その声は今 君にも聞こえていますか？<br />
+<br />
+さよならが迎（むか）えに来ることを<br />
+最初からわかっていたとしたって<br />
+もう一回 もう一回<br />
+もう一回 もう一回<br />
+何度でも君に逢いたい<br />
+<br />
+めぐり逢えたことでこんなに<br />
+世界が美しく見えるなんて<br />
+想像（そうぞ）さえもしていない<br />
+単純（だんじゅん）だって笑うかい？<br />
+君に心からありがとうを言うよ<br />
+<br />
+滞（こどこ）らないように 揺（ゆ）れて流れて<br />
+透き通ってく水のような 心であれたら<br />
+<br />
+逢いたくなったときの分まで<br />
+寂しくなったときの分まで<br />
+もう一回 もう一回<br />
+もう一回 もう一回<br />
+君を強く焼（や）き付けたい<br />
+<br />
+誰も皆 問題を抱（かか）えている<br />
+だけど素敵な明日を願っている<br />
+臆病（おくびょ）風に吹（ふ）かれて 波風がたった世界を<br />
+どれだけ愛することができるだろう？<br />
+もう一回 もう一回<br />
+もう一回 もう一回<br />
+</p>
+</div>
+</div>
+<div id="outline-container-org4161b79" class="outline-3">
+<h3 id="org4161b79"><span class="section-number-3">1.6.</span> Hotel California</h3>
+<div class="outline-text-3" id="text-1-6">
+<p class="verse">
+On a dark desert highway, cool wind in my hair<br />
+Warm smell of colitas rising up through the air<br />
+Up ahead in the distance, I saw a shimmering light<br />
+My head grew heavy and my sight grew dim, I had to stop for the night<br />
+There she stood in the doorway, I heard the mission bell<br />
+And I was thinkin' to myself, "This could be heaven or this could be hell"<br />
+Then she lit up a candle and she showed me the way<br />
+There were voices down the corridor, I thought I heard them say<br />
+<br />
+"Welcome to the Hotel California<br />
+Such a lovely place (such a lovely place)<br />
+Such a lovely face<br />
+Plenty of room at the Hotel California<br />
+Any time of year (any time of year)<br />
+You can find it here"<br />
+<br />
+Her mind is Tiffany-twisted, she got the Mercedes-Benz, uh<br />
+She got a lot of pretty, pretty boys that she calls friends<br />
+How they dance in the courtyard, sweet summer sweat<br />
+Some dance to remember, some dance to forget<br />
+So I called up the Captain, "Please bring me my wine"<br />
+He said, "We haven't had that spirit here since 1969"<br />
+And still, those voices are calling from far away<br />
+Wake you up in the middle of the night just to hear them say<br />
+<br />
+"Welcome to the Hotel California<br />
+Such a lovely place (such a lovely place)<br />
+Such a lovely face<br />
+They're livin' it up at the Hotel California<br />
+What a nice surprise (what a nice surprise)<br />
+Bring your alibis"<br />
+<br />
+Mirrors on the ceiling, the pink champagne on ice<br />
+And she said, "We are all just prisoners here of our own device"<br />
+And in the master's chambers, they gathered for the feast<br />
+They stab it with their steely knives, but they just can't kill the beast<br />
+<br />
+Last thing I remember, I was running for the door<br />
+I had to find the passage back to the place I was before<br />
+"Relax, " said the night man, "We are programmed to receive<br />
+You can check out any time you like, but you can never leave"<br />
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="date">Created: 2024-11-25 Mon 19:43</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

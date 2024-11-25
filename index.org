@@ -1,7 +1,6 @@
-#+title:Index
-#+author:MAO
-#+options: toc:nil
+#+TITLE: index
 
-  - [[file:note.org][note]]
-  - [[file:archive.org][archive]]
-  - [[file:diary.org][diary]]
+- [[file:archive.org][Archive]]
+- [[file:diary.org][Diary]]
+- [[file:lyrics.org][Some lyrics]]
+- [[file:todo.org][TODO(s)]]
