@@ -48,7 +48,7 @@ hr {
     top: 0em;
     background: white;
     max-height: 80%;
-    overflow: auto;
+    overflow: hidden; /* Hide scrollbar */
     width: 200px; /* Fixed width */
 }
 
