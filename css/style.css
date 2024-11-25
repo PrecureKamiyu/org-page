@@ -5,7 +5,7 @@ body {
     margin: 10px auto;
     width: 900px;
     max-width: 100%;
-    background: white;
+    background: #fdf6e3; /* Solarized Light background */
     font-size: 18px;
 }
 
@@ -46,7 +46,7 @@ hr {
     position: fixed;
     left: 1em; /* Adjusted to avoid overlay */
     top: 0em;
-    background: white;
+    background: #eee8d5; /* Solarized Light TOC background */
     max-height: 80%;
     overflow: auto; /* Enable scrolling */
     width: 200px; /* Fixed width */
@@ -67,17 +67,17 @@ hr {
     font-size: 30px;
     line-height: 1.3;
     font-weight: bold;
-    color: #0c2340;
+    color: #657b83; /* Solarized Light title color */
 }
 
 a:link {
-    color: #0c2340;
+    color: #268bd2; /* Solarized Light link color */
 }
 
 a:hover {
     font-weight: bold;
     text-decoration: underline;
-    color: blue;
+    color: #d33682; /* Solarized Light link hover color */
 }
 
 .figure {
@@ -103,7 +103,7 @@ img {
 
 code {
     font-size: 16px;
-    color: #4F894C;
+    color: #2aa198; /* Solarized Light code color */
 }
 
 .subtitle {
@@ -111,7 +111,7 @@ code {
 }
 
 blockquote {
-    border-left: 3px solid #ccc;
+    border-left: 3px solid #93a1a1; /* Solarized Light blockquote border */
     padding-left: 10px; /* Optional: add some left padding for the content */
 }
 
@@ -133,5 +133,5 @@ blockquote {
 }
 
 b {
-    color: red;
+    color: #dc322f; /* Solarized Light bold text color */
 }

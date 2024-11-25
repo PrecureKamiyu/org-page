@@ -201,7 +201,7 @@ img {
     /* max-height: 100%; */
 }
 .figure p {
-    color: #657b83;
+    color: #586e75; /* Solarized Light figure text color */
     text-align: center;
     font-size: 90%;
     font-style: italic;
