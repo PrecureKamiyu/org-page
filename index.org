@@ -1,6 +1,8 @@
 #+TITLE: index
 
 - [[file:archive.org][Archive]]
+- [[file:books.org][Books]]
 - [[file:diary.org][Diary]]
 - [[file:lyrics.org][Some lyrics]]
 - [[file:todo.org][TODO(s)]]
+- [[file:aki.org][aki]]

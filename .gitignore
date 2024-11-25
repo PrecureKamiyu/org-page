@@ -1,2 +1,4 @@
 # texinfo file
 *.texi
+.aider*
+.env

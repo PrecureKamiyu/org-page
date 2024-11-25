@@ -80,6 +80,10 @@ a:hover {
     color: #d33682; /* Solarized Light link hover color */
 }
 
+a:active {
+    color: #268bd2; /* Solarized Light link color */
+}
+
 .figure {
     text-align: center;
 }

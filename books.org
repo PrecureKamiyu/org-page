@@ -1,0 +1,75 @@
+#+title:Books
+
+#+html_head: <link rel="stylesheet" type="text/css" href="./css/style.css"/>
+# #+infojs_opt: view:info toc:2 buttons:t
+#+html_link_home: index.html
+
+* books
+:PROPERTIES:
+:CUSTOM_ID: books
+:END:
+
+** GIVEUP east of eden---John Steinbeck
+:PROPERTIES:
+:CUSTOM_ID: books-east-of-eden
+:END:
+
+二流
+
+  - [[file:diary.org::#review-on-east-of-eden][书评 of east of eden]]
+
+** GIVEUP The History and Allure of Interactive Visual Novel
+
+  - [[file:diary.org::#diary-thehistoryofvisualnovels][The history and allure of interactive visual novels]]
+
+差评！
+
+** GIVEUP 额尔古纳河右岸——迟子建
+
+在 21 世纪想写中国的百年孤独。着实落后。
+
+** GIVEUP 中国通史——吕思勉
+:PROPERTIES:
+:CUSTOM_ID: books-zhongguotongshi
+:END:
+
+对通史不感兴趣
+
+** DONE 厨房——吉本芭娜娜
+
+Underwelming。希望现在日本文学不都是这种轻飘飘的力度。
+
+** DONE 暗の部屋——濑户口廉也
+
+还可以，濑户口正常发挥
+
+** DONE 春雪——三岛由纪夫
+
+Aesthetic!
+
+眼看三岛是如何将那畸形的转化为一种美丽的
+
+** DONE 奔马——三岛由纪夫
+
+暴烈！
+
+勋死的时候最有冲击力，尽管说这人是极右激进分子……
+
+[2024-10-30 Wed]
+
+** DONE 晓寺——三岛由纪夫
+
+Exotic!
+
+晓寺带来的不仅仅是 exotic，更是带了前所未有的变态和畸形！确实是有点过于恶心了，但正因如此，这部书更值得看
+
+[[file:diary.org::#diary-kanwanlexiaosi][看完了晓寺]]
+
+[2024-10-31 Thu]
+
+** DONE 心——夏目漱石
+[2024-11-08 Fri 17:29]
+
+为什么叫《心》呢？
+
+** TODO 天人五衰——三岛由纪夫
