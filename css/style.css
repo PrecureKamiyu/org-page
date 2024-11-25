@@ -80,14 +80,14 @@ a:link {
     text-decoration: none;
 }
 
-a:hover {
-    font-weight: bold;
-    color: #d33682; /* Solarized Light link hover color */
-}
-
 a:visited {
     color: #268bd2; /* Solarized Light link color */
     text-decoration: none;
+}
+
+a:hover {
+    font-weight: bold;
+    color: #d33682; /* Solarized Light link hover color */
 }
 
 .figure {
