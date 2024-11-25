@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css?family=Lobster|EB+Garamond|Zen+Old+Mincho');
+@import url('https://fonts.googleapis.com/css2?family=Merriweather+Sans:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap');
 
 /* Quicksand typefaces */
 @font-face {
@@ -339,6 +340,7 @@ body {
     margin: 0 auto;
     max-width: 1000px;
     padding: 1em;
+    font-family: 'Open Sans', sans-serif;
 }
 
 code {
