@@ -48,8 +48,19 @@ hr {
     top: 0em;
     background: white;
     max-height: 80%;
-    overflow: hidden; /* Hide scrollbar */
+    overflow: auto; /* Enable scrolling */
     width: 200px; /* Fixed width */
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+#table-of-contents::-webkit-scrollbar {
+    display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+#table-of-contents {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
 }
 
 .title {
