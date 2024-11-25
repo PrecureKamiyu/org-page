@@ -6,7 +6,7 @@
 #+tags: archive
 
 #+html_head: <link rel="stylesheet" type="text/css" href="style.css"/>
-#+infojs_opt: view:info toc:4 buttons:t
+#+infojs_opt: view:info toc:2 buttons:t
 #+html_link_home: index.html
 
 * archive
@@ -15,6 +15,7 @@
 :END:
 
 ** 可以给大一学医的我一句忠告吗？
+
 BanXianSch
 Thoughts Memo 等 2.3 万人赞同了该回答
 

@@ -1,0 +1,1379 @@
+#+startup: overview
+* section 4.3 [[https://www.leanprover.cn/fp-lean-zh/type-classes/out-params.html][控制实例搜索 - Lean 函数式编程]]                  :website:lean4:
+
+[2024-11-21 Thu 17:17]
+
+** Article
+
+*** [[#控制实例搜索][控制实例搜索]]
+
+
+要方便地相加两个 =Pos= 类型，并产生另一个 =Pos= ，一个 =Add= 类的的实例就足够了。 但是，在许多情况下，参数可能有不同的类型，重载一个灵活的 *异质* 运算符是更为有用的。 例如，让 =Nat= 和 =Pos= ，或 =Pos= 和 =Nat= 相加总会是一个 =Pos=
+
+#+BEGIN_EXAMPLE
+    def addNatPos : Nat → Pos → Pos
+      | 0, p => p
+      | n + 1, p => Pos.succ (addNatPos n p)
+
+    def addPosNat : Pos → Nat → Pos
+      | p, 0 => p
+      | p, n + 1 => Pos.succ (addPosNat p n)
+#+END_EXAMPLE
+
+这些函数允许自然数与正数相加，但他们不能在 =Add= 类型类中，因为它希望 =add= 的两个参数都有同样的类型。
+
+**** [[#异质重载][异质重载]]
+
+
+就像在 [[./pos#%E9%87%8D%E8%BD%BD%E5%8A%A0%E6%B3%95][重载加法]]一节提到的，Lean 提供了名为 =HAdd= 的类型类来重载异质加法。 =HAdd= 类接受三个类型参数：两个参数的类型和一个返回类型。 =HAdd Nat Pos Pos= 和 =HAdd Pos Nat Pos= 的实例可以让常规加法符号可以接受不同类型。
+
+#+BEGIN_EXAMPLE
+    instance : HAdd Nat Pos Pos where
+      hAdd := addNatPos
+
+    instance : HAdd Pos Nat Pos where
+      hAdd := addPosNat
+#+END_EXAMPLE
+
+有了上面两个实例，就有了下面的例子：
+
+#+BEGIN_EXAMPLE
+     #eval (3 : Pos) + (5 : Nat)
+#+END_EXAMPLE
+
+#+BEGIN_EXAMPLE
+     8
+#+END_EXAMPLE
+
+#+BEGIN_EXAMPLE
+     #eval (3 : Nat) + (5 : Pos)
+#+END_EXAMPLE
+
+#+BEGIN_EXAMPLE
+     8
+#+END_EXAMPLE
+
+=HAdd= 的定义和下面 =HPlus= 的定义很像。下面是 =HPlus= 和它对应的实例：
+
+#+BEGIN_EXAMPLE
+    class HPlus (α : Type) (β : Type) (γ : Type) where
+      hPlus : α → β → γ
+
+    instance : HPlus Nat Pos Pos where
+      hPlus := addNatPos
+
+    instance : HPlus Pos Nat Pos where
+      hPlus := addPosNat
+#+END_EXAMPLE
+
+然而， =HPlus= 的实例明显没有 =HAdd= 的实例有用。 当尝试用 =#eval= 使用这些实例时，一个错误就出现了：
+
+#+BEGIN_EXAMPLE
+     #eval HPlus.hPlus (3 : Pos) (5 : Nat)
+#+END_EXAMPLE
+
+#+BEGIN_EXAMPLE
+    typeclass instance problem is stuck, it is often due to metavariables
+      HPlus Pos Nat ?m.7527
+#+END_EXAMPLE
+
+发生错误是因为类型中有元变量，Lean 没办法解决它。
+
+就像我们在 [[../getting-to-know/polymorphism.html][多态一开始的描述]] 里说的那样，元变量代表了程序无法被推断的未知部分。 当一个表达式被写在 =#eval= 后时，Lean 会尝试去自动确定它的类型。 在这种情况下，它无法做到自动确定类型。 因为 =HPlus= 的第三个类型参数依然是未知的，Lean 没办法进行类型类实例搜索，但是实例搜索是 Lean 唯一可能确定表达式的类型的方式。 也就是说， =HPlus Pos Nat Pos= 实例只能在表达式的类型为 =Pos= 时应用，但除了实例本身之外，程序中没有其他东西表明它应该具有这种类型。
+
+一种解决方法是保证全部三个类型都是已知的，通过给整个表达式添加一个类型标记来实现这一点：
+
+#+BEGIN_EXAMPLE
+    #eval (HPlus.hPlus (3 : Pos) (5 : Nat) : Pos)
+#+END_EXAMPLE
+
+#+BEGIN_EXAMPLE
+    8
+#+END_EXAMPLE
+
+然而，这种解决方式对使用我们的正数库的用户来说并不是很方便。
+
+**** [[#输出参数][输出参数]]
+
+刚才的问题也可以通过声明 =γ= 是一个 *输出参数（output parameter）* 来解决。 多数类型类参数是作为搜索算法的输入：它们被用于选取一个实例。 例如，在 =OfNat= 实例中，类型和自然数都被用于选取一个数字字面量的特定解释。 然而，在一些情况下，在尽管有些类型参数仍然处于未知状态时就开始进行搜索是更方便的。 这样就能使用在搜索中发现的实例来决定元变量的值。 在开始搜索实例时不需要用到的参数就是这个过程的结果，该参数使用 =outParam= 修饰符来声明。
+
+#+BEGIN_EXAMPLE
+    class HPlus (α : Type) (β : Type) (γ : outParam Type) where
+      hPlus : α → β → γ
+#+END_EXAMPLE
+
+有了这个输出参数，类型类实例搜索就能够在不需要知道 =γ= 的情况下选取一个实例了。 例如：
+
+#+BEGIN_EXAMPLE
+    #eval HPlus.hPlus (3 : Pos) (5 : Nat)
+#+END_EXAMPLE
+
+#+BEGIN_EXAMPLE
+    8
+#+END_EXAMPLE
+
+认为输出参数相当于是定义某种函数在思考时可能会有帮助。 任意给定的，类型类的实例都有一个或更多输出参数提供给 Lean。这能指导 Lean 通过输入（的类型参数）来确定输出（的类型）。 一个可能是递归的实例搜索过程，最终会比简单的重载更为强大。 输出参数能够决定程序中的其他类型，实例搜索能够将一族附属实例组合成具有这种类型的程序。
+
+**** [[#默认实例][默认实例]]
+
+确定一个参数是否是一个输入或输出参数控制了 Lean 会在何时启动类型类搜索。 具体而言，直到所有输入都变为已知，类型类搜索才会开始。 然而，在一些情况下，输出参数是不足的。此时，即使一些输入参数仍然处于未知状态，实例搜索也应该开始。 这有点像是 Python 或 Kotlin 中可选函数参数的默认值，但在这里是默认 *类型* 。
+
+*默认实例* 是 *当并不是全部输入均为已知时* 可用的实例。 当一个默认实例能被使用时，他就将会被使用。 这能帮助程序成功通过类型检查，而不是因为关于未知类型和元变量的错误而失败。 但另一方面，默认类型会让实例选取变得不那么可预测。 具体而言，如果一个不合适的实例被选取了，那么表达式将可能具有和预期不同的类型。 这会导致令人困惑的类型错误发生在程序中。 明智地选择要使用默认实例的地方！
+
+默认实例可以发挥作用的一个例子是可以从 =Add= 实例派生出的 =HPlus= 实例。 换句话说，常规的加法是异质加法在三个参数类型都相同时的特殊情况。 这可以用下面的实例来实现：
+
+#+BEGIN_EXAMPLE
+    instance [Add α] : HPlus α α α where
+      hPlus := Add.add
+#+END_EXAMPLE
+
+有了这个实例， =hPlus= 就可以被用于任何可加的类型，就像 =Nat=：
+
+#+BEGIN_EXAMPLE
+    #eval HPlus.hPlus (3 : Nat) (5 : Nat)
+#+END_EXAMPLE
+
+#+BEGIN_EXAMPLE
+    8
+#+END_EXAMPLE
+
+然而，这个实例只会用在两个参数类型都已知的情况下。 例如：
+
+#+BEGIN_EXAMPLE
+    #check HPlus.hPlus (5 : Nat) (3 : Nat)
+#+END_EXAMPLE
+
+产生类型
+
+#+BEGIN_EXAMPLE
+    HPlus.hPlus 5 3 : Nat
+#+END_EXAMPLE
+
+就像我们预想的那样，但是
+
+#+BEGIN_EXAMPLE
+    #check HPlus.hPlus (5 : Nat)
+#+END_EXAMPLE
+
+产生了一个包含剩余参数和返回值类型的两个元变量的类型：
+
+#+BEGIN_EXAMPLE
+    HPlus.hPlus 5 : ?m.7706 → ?m.7708
+#+END_EXAMPLE
+
+在绝大多数情况下，当提供一个加法参数时，另一个参数也会是同一个类型。 来让这个实例成为默认实例，应用 =default_instance= 属性：
+
+#+BEGIN_EXAMPLE
+    @[default_instance]
+    instance [Add α] : HPlus α α α where
+      hPlus := Add.add
+#+END_EXAMPLE
+
+有了默认实例，这个例子就有了更有用的类型：
+
+#+BEGIN_EXAMPLE
+    #check HPlus.hPlus (5 : Nat)
+#+END_EXAMPLE
+
+结果为：
+
+#+BEGIN_EXAMPLE
+    HPlus.hPlus 5 : Nat → Nat
+#+END_EXAMPLE
+
+每个同时重载了异质和同质运算的运算符，都能在默认实例需要异质运算的语境中使用同质运算。 中缀运算符会被替换为异质运算，并且在需要时尽可能选择同质的默认实例。
+
+简单来说，简单地写 =5= 会给出一个 =Nat= 而不是一个需要更多信息来选取 =OfNat= 实例的一个包含元变量的类型。 这是因为 =OfNat= 以 =Nat= 作为默认实例。
+
+默认实例也可以被赋予 *优先级* ，这会影响在可能的应用多于一种的情况下的选择。 更多关于默认实例优先级的信息，请查阅 Lean 手册。
+
+**** [[#练习][练习]]
+
+定义一个 =HMul (PPoint α) α (PPoint α)= 的实例，该实例将两个投影都乘以标量。 它应适用于任何存在 =Mul α= 实例的类型 =α= 。例如：
+
+#+BEGIN_EXAMPLE
+    #eval {x := 2.5, y := 3.7 : PPoint Float} * 2.0
+#+END_EXAMPLE
+
+结果应为
+
+#+BEGIN_EXAMPLE
+    { x := 5.000000, y := 7.400000 }
+#+END_EXAMPLE
+
+
+要定义一个 =HMul (PPoint α) α (PPoint α)= 的实例，使得两个投影都乘以标量，可以按照以下步骤进行：
+
+1. 定义 =PPoint= 类型。
+2. 定义 =HMul= 实例，使得 =PPoint= 的 =x= 和 =y= 投影都乘以标量。
+
+以下是具体的实现：
+
+#+begin_src lean4
+    -- 定义 PPoint 类型
+    structure PPoint (α : Type) where
+      x : α
+      y : α
+    deriving Repr
+
+    -- 定义 HMul 实例
+    instance [Mul α] : HMul (PPoint α) α (PPoint α) where
+      hMul (p : PPoint α) (scalar : α) : PPoint α :=
+        { x := p.x * scalar, y := p.y * scalar }
+
+    -- 示例用法
+    #eval {x := 2.5, y := 3.7 : PPoint Float} * 2.0
+#+end_src
+
+在这个实现中：
+
+- =PPoint α= 是一个
+结构体，包含两个类型为 =α= 的字段 =x= 和 =y=
+- =HMul (PPoint α) α (PPoint α)= 实例定义了如何将 =PPoint= 类型的值乘以一个标量。具体来说，它将 =PPoint= 的 =x= 和 =y= 字段分别乘以给定的标量。
+
+运行示例代码时，结果应为：
+
+#+begin_src lean
+  { x := 5.000000, y := 7.400000 }
+#+end_src
+
+这个实例适用于任何存在 =Mul α= 实例的类型 =α=，例如 =Float=。
+* section 4.4 [[https://www.leanprover.cn/fp-lean-zh/type-classes/indexing.html][数组与索引 - Lean 函数式编程]]                          :website:
+
+[2024-11-21 Thu 17:37]
+
+** Article
+
+*** [[#数组与索引][数组与索引]]
+
+
+在 [[../props-proofs-indexing.html][插入章节]]中描述了如何使用索引符号来通过位置查找列表中的条目。 此语法也由类型类管理，并且可以用于各种不同的类型。
+
+**** [[#数组][数组]]
+
+
+比如说，Lean 中的数组在多数情况下就比链表更为高效。在 Lean 中， =Array α= 类型是一个动态大小的数组，可以用来装类型为 =α= 的值。 这很像是 Java 中的 =ArrayList= ，C++ 中的 =std::vector= ，或者 Rust 中的 =Vec= 。 不像是 =List= 在每一次用到 =cons= 构造子的地方都会有一个指针指向每个节点，数组会占用内存中一段连续的空间。这会带来更好的处理器缓存效果。 并且，在数组中查找值的时间复杂度为常数，但在链表中查找值所需要的时间则与遍历的节点数量成正比。
+
+在像 Lean 这样的纯函数式语言中，在数据结构中改变某位置上的数据的值是不可能的。 相反，Lean 会制作一个副本，该副本具有所需的修改。 当使用一个数组时，Lean 编译器和运行时包含了一个优化：当该数组只被引用了一次时，会在幕后将制作副本优化为原地操作。
+
+数组写起来很像列表，只是在开头多了一个 =#=
+
+#+BEGIN_EXAMPLE
+    def northernTrees : Array String :=
+      #["sloe", "birch", "elm", "oak"]
+#+END_EXAMPLE
+
+数组中值的数量可以通过 =Array.size= 找到。 例如： =northernTrees.size= 结果是 =4= 。 对于小于数组大小的索引值，索引符号可以被用来找到对应的值，就像列表一样。 就是说， =northernTrees[2]= 会被计算为 ="elm"= 类似地，编译器需要一个索引值未越界的证明。尝试去查找越界的值会导致编译时错误，就和列表一样。 例如： =northernTrees[8]= 的结果为：
+
+#+BEGIN_EXAMPLE
+    failed to prove index is valid, possible solutions:
+      - Use `have`-expressions to prove the index is valid
+      - Use `a[i]!` notation instead, runtime check is perfomed, and 'Panic' error message is produced if index is not valid
+      - Use `a[i]?` notation instead, result is an `Option` type
+      - Use `a[i]'h` notation instead, where `h` is a proof that index is valid
+    ⊢ 8 < Array.size northernTrees
+#+END_EXAMPLE
+
+**** [[#非空列表][非空列表]]
+
+一个表示非空列表的数据类型可以被定义为一个结构，这个结构有一个列表头字段，和一个尾字段。尾字段是一个常规的，可能为空的列表。
+
+#+BEGIN_EXAMPLE
+    structure NonEmptyList (α : Type) : Type where
+      head : α
+      tail : List α
+#+END_EXAMPLE
+
+例如：非空列表 =idahoSpiders= （包含了一些美国爱达荷州的本土蜘蛛品种）由 ="Banded Garden Spider"= 和四种其它蜘蛛构成，一共有五种蜘蛛：
+
+#+BEGIN_EXAMPLE
+    def idahoSpiders : NonEmptyList String := {
+      head := "Banded Garden Spider",
+      tail := [
+        "Long-legged Sac Spider",
+        "Wolf Spider",
+        "Hobo Spider",
+        "Cat-faced Spider"
+      ]
+    }
+#+END_EXAMPLE
+
+通过递归函数在列表中查找特定索引的值需要考虑到三种情况：
+
+1. 索引是 =0= ，此时应返回列表头。
+2. 索引是 =n + 1= 并且列表尾是空的，这意味着索引越界了。
+3. 索引是 =n + 1= 并且列表尾非空，此时应该在列表尾上递归调用函数并传入 =n=
+
+例如，一个返回 =Option= 的查找函数可以写成如下形式：
+
+#+BEGIN_EXAMPLE
+    def NonEmptyList.get? : NonEmptyList α → Nat → Option α
+      | xs, 0 => some xs.head
+      | {head := _, tail := []}, _ + 1 => none
+      | {head := _, tail := h :: t}, n + 1 => get? {head := h, tail := t} n
+#+END_EXAMPLE
+
+每种模式匹配的情况都对应于上面的一种可能性。 =get?= 的递归调用不需要 =NonEmptyList= 命名空间标识符，因为定义内部隐式地在定义的命名空间中。 另一种方式来编写这个函数是：当索引大于零时就将 =get?= 应用在列表上。
+
+#+BEGIN_EXAMPLE
+    def NonEmptyList.get? : NonEmptyList α → Nat → Option α
+      | xs, 0 => some xs.head
+      | xs, n + 1 => xs.tail.get? n
+#+END_EXAMPLE
+
+如果列表包含一个条目，那么只有 =0= 是合法的索引。 如果它包含两个条目，那么 =0= 和 =1= 是合法的索引。 如果它包含三个条目，那么 =0=, =1=, 和 =2= 都是合法的索引。 换句话说，非空列表的合法索引是严格小于列表长度的自然数。同时它也是小于等于列表尾的长度的。
+
+“索引值没有出界”意味着什么的这个定义，应该被写成一个 =abbrev= 。 因为这个可以用来证明索引值未越界的策略（tactics）要在不知道 =NonEmptyList.inBounds= 这个方法的情况下解决数字之间的不等关系。 (此处原文表意不明，按原文字面意思译出。原文大致意思应为 =abbrev= 比 =def= 对tactic的适应性更好)
+
+#+BEGIN_EXAMPLE
+    abbrev NonEmptyList.inBounds (xs : NonEmptyList α) (i : Nat) : Prop :=
+      i ≤ xs.tail.length
+#+END_EXAMPLE
+
+这个函数返回一个可能为真也可能为假的命题。 例如， =2= 对于 =idahoSpiders=未越界，而 =5= 就越界了。
+
+#+BEGIN_EXAMPLE
+    theorem atLeastThreeSpiders : idahoSpiders.inBounds 2 := by simp
+
+    theorem notSixSpiders : ¬idahoSpiders.inBounds 5 := by simp
+#+END_EXAMPLE
+
+逻辑非运算符有很低的结合度，这意味着 =¬idahoSpiders.inBounds 5= 等价于 =¬(idahoSpiders.inBounds 5)= 。
+
+这个事实可被用于编写能证明索引值合法的查找函数，并且无需返回一个 =Option= 。 该证据会在编译时检查。下面给出代码：
+
+#+BEGIN_EXAMPLE
+    def NonEmptyList.get (xs : NonEmptyList α) (i : Nat) (ok : xs.inBounds i) : α :=
+      match i with
+      | 0 => xs.head
+      | n + 1 => xs.tail[n]
+#+END_EXAMPLE
+
+当然，将这个函数写成直接用证据的形式也是可能的。 但这需要会玩证明和命题的一些技术，这些内容会在本书后续内容中提到。
+
+**** [[#重载索引][重载索引]]
+
+
+对于集合类型的索引符号，可通过定义 =GetElem= 类型类的实例来重载。 出于灵活性考虑， =GetElem= 有四个参数：
+
+- 集合的类型
+- 索引的类型
+- 集合中元素的类型
+- 一个函数，用于确定什么是索引在边界内的证据
+
+元素类型和证明函数都是输出参数。 =GetElem= 有一个方法 ------ =getElem= ------ 接受一个集合值，一个索引值，和一个索引未越界的证明，并且返回一个元素：
+
+#+BEGIN_EXAMPLE
+  class GetElem (coll : Type) (idx : Type) (item : outParam Type) (inBounds : outParam (coll → idx → Prop)) where
+    getElem : (c : coll) → (i : idx) → inBounds c i → item
+#+END_EXAMPLE
+
+在 =NonEmptyList α= 中，这些参数是：
+
+- 集合是 =NonEmptyList α=
+- 索引的类型是 =Nat=
+- 元素的类型是 =α=
+- 索引如果小于等于列表尾那么就没有越界
+
+事实上， =GetElem= 实例可以直接使用 =NonEmptyList.get=
+
+#+BEGIN_EXAMPLE
+    instance : GetElem (NonEmptyList α) Nat α NonEmptyList.inBounds where
+      getElem := NonEmptyList.get
+#+END_EXAMPLE
+
+有了这个实例， =NonEmptyList= 就和 =List= 一样方便了。 计算 =idahoSpiders[0]= 结果为 ="Banded Garden Spider"= ，而 =idahoSpiders[9]= 会导致编译时错误：
+
+#+BEGIN_EXAMPLE
+     failed to prove index is valid, possible solutions:
+      - Use `have`-expressions to prove the index is valid
+      - Use `a[i]!` notation instead, runtime check is perfomed, and 'Panic' error message is produced if index is not valid
+      - Use `a[i]?` notation instead, result is an `Option` type
+      - Use `a[i]'h` notation instead, where `h` is a proof that index is valid
+    ⊢ NonEmptyList.inBounds idahoSpiders 9
+#+END_EXAMPLE
+
+因为集合的类型和索引的类型都是 =GetElem= 类型类的参数，所以可以使用新类型来索引现有的集合。 之前的 =Pos= 是一个完全合理的可以用来索引 =List= 的类型，但注意它不能指向第一个条目。 下面 =GetElem= 的实例使 =Pos= 在查找列表条目方面和 =Nat= 一样方便。
+
+#+BEGIN_EXAMPLE
+    instance : GetElem (List α) Pos α (fun list n => list.length > n.toNat) where
+      getElem (xs : List α) (i : Pos) ok := xs[i.toNat]
+#+END_EXAMPLE
+
+使用非数字索引值来进行索引也可以是合理的。 例如： =Bool= 也可以被用于选择点中的字段，比如我们可以让 =false= 对应于 =x= ， =true= 对应于 =y=
+
+#+BEGIN_EXAMPLE
+    instance : GetElem (PPoint α) Bool α (fun _ _ => True) where
+      getElem (p : PPoint α) (i : Bool) _ :=
+        if not i then p.x else p.y
+#+END_EXAMPLE
+
+在这个例子中，布尔值都是合法的索引。 因为每个可能的 =Bool= 值都是未越界的，证据我们只需简单地给出 =True= 命题。
+* section 4.5 [[https://www.leanprover.cn/fp-lean-zh/type-classes/standard-classes.html][标准类 - Lean 函数式编程]]                              :website:
+
+[2024-11-21 Thu 17:55]
+
+** Article
+
+*** [[#标准类][标准类]]
+
+
+本节中展示了各种可重载的运算符和函数。在 Lean 中，它们都通过类型类来重载。 每个运算符或函数都对应于一个类型类中的方法。 不像 C++，Lean 中的中缀操作符定义为命名函数的缩写；这意味着为新类型重载它们不是使用操作符本身，而是使用其底层名称（例如 =HAdd.hAdd= ）。
+
+**** [[#算术符号][算术符号]]
+
+
+多数算术运算符都是可以进行异质运算的。 这意味着参数可能有不同的类型，并且输出参数决定了结果表达式的类型。 对于每个异质运算符，都有一个同质运算符与其对应。 只要把字母 =h= 去掉就能找到那个同质运算符了， =HAdd.hAdd= 对应 =Add.add=。 下面的算术运算符都可以被重载：
+
+| Expression   | Desugaring        | Class Name   |
+|--------------+-------------------+--------------|
+| =x + y=      | =HAdd.hAdd x y=   | =HAdd=       |
+| =x - y=      | =HSub.hSub x y=   | =HSub=       |
+| =x * y=      | =HMul.hMul x y=   | =HMul=       |
+| =x / y=      | =HDiv.hDiv x y=   | =HDiv=       |
+| =x % y=      | =HMod.hMod x y=   | =HMod=       |
+| =x ^ y=      | =HPow.hPow x y=   | =HPow=       |
+| =(- x)=      | =Neg.neg x=       | =Neg=        |
+
+**** [[#位运算符][位运算符]]
+
+
+Lean 包含了许多标准位运算符，他们也可以用类型类来重载。 Lean 中有对于定长类型的实例，例如 =UInt8=， =UInt16=， =UInt32=， =UInt64=，和 =USize=。
+
+| Expression   | Desugaring                      | Class Name      |
+|--------------+---------------------------------+-----------------|
+| =x &&& y=    | =HAnd.hAnd x y=                 | =HAnd=          |
+| =x ||| y =   | =HOr.hOr x y=                   | =HOr=           |
+| =x ^^^ y=    | =HXor.hXor x y=                 | =HXor=          |
+| =~~~ x=      | =Complement.complement x=       | =Complement=    |
+| =x >>> y=    | =HShiftRight.hShiftRight x y=   | =HShiftRight=   |
+| =x <<< y=    | =HShiftLeft.hShiftLeft x y=     | =HShiftLeft=    |
+
+由于 =And= 和 =Or= 已经是逻辑连接词了，所以 =HAnd= 和 =HOr= 的同质对应叫做 =AndOp= 和 =OrOp= 而不是 =And= 和 =Or=。
+
+**** [[#相等性与有序性][相等性与有序性]]
+
+
+测试两个值之间的相等性通常会用 =BEq= 类，该类名是 Boolean equality（布尔等价）的缩写。 由于 Lean 是一个定理证明器，所以在 Lean 中其实有两种类型的相等运算符：
+
+- *布尔等价（Boolean equality）* 和你能在其他编程语言中看到的等价是一样的。 这是一个接受两个值并且返回一个 =Bool= 的函数。 布尔等价使用两个等号表示，就像在 Python 和 C# 中那样。 因为 Lean 是一个纯函数式语言，指针并不能被直接看到，所以引用和值等价并没有符号上的区别。
+- *命题等价（Propositional equality）* 是一个 *数学陈述（mathematical statement）* ，指两个东西是等价的。 命题等价并不是一个函数，而是一个可以证明的数学陈述。 可以用一个单等号表示。 一个命题等价的陈述就像一个能检查等价性证据的类型。
+
+这两种等价都很重要，它们有不同的用处。 布尔等价在程序中很有用，有时我们需要考察两个值是否是相等的。 例如： ="Octopus" ==  "Cuttlefish"= 结果为 =false=，以及 ="Octopodes" ==  "Octo".append "podes"= 结果为 =true=。 有一些值，比如函数，无法检查等价性。 例如， =(fun (x : Nat) => 1 + x) == (Nat.succ ·)= 会报错：
+
+#+BEGIN_EXAMPLE
+     failed to synthesize instance
+      BEq (Nat → Nat)
+#+END_EXAMPLE
+
+就像这条信息说的， ==== 是使用了类型类重载的。 表达式 =x == y= 事实上是 =BEq.beq x y= 的缩写。
+
+命题等价是一个数学陈述，而不是程序调用。 因为命题就像描述一些数学陈述的证据的类型，命题等价和像是 =String= 和 =Nat → List Int= 这样的类型有更多的相同之处，而不是布尔等价。 这意味着它并不能被自动检查。 然而，在 Lean 中，只要两个表达式具有相同的类型，就可以陈述它们的相等性。 =(fun (x : Nat) => 1 + x) = (Nat.succ ·)= 是一个十分合理的陈述。 从数学角度来讲，如果两个函数把相等的输入映射到相等的输出，那么这两个函数就是相等的。所以那个陈述是真的，尽管它需要一个两行的证明来让 Lean 相信这个事实。
+
+通常来说，当把 Lean 作为一个编程语言来用时，用布尔值函数会比用命题要更简单。
+
+在 Lean 中， =if= 语句适用于可判定命题。 例如： =2 < 4= 是一个命题。
+
+#+BEGIN_EXAMPLE
+     #check 2 < 4
+#+END_EXAMPLE
+
+#+BEGIN_EXAMPLE
+     2 < 4 : Prop
+#+END_EXAMPLE
+
+尽管如此，将其写作 if 语句中的条件是完全可以接受的。 例如， =if 2 < 4 then 1 else 2= 的类型是 =Nat=，并且计算结果为 =1=。
+
+并不是所有的命题都是可判定的。 如果所有的命题都是可判定的，那么计算机通过运行判定程序就可以证明任何的真命题，数学家们就此失业了。 更具体来说，可判定的命题都会有一个 =Decidable= 类型的实例，实例中的方法是判定程序。 因为认为会返回一个 =Bool= 而尝试去用一个不可判定的命题，最终会报错，因为 Lean 无法找到 =Decidable= 实例。 例如， =if (fun (x : Nat) => 1 + x) = (Nat.succ ·) then "yes" else "no"= 会导致：
+
+#+BEGIN_EXAMPLE
+     failed to synthesize instance
+      Decidable ((fun x => 1 + x) = fun x => Nat.succ x)
+#+END_EXAMPLE
+
+下面的命题，通常都是重载了可判定类型类的：
+
+| Expression   | Desugaring    | Class Name   |
+|--------------+---------------+--------------|
+| =x < y=      | =LT.lt x y=   | =LT=         |
+| =x ≤ y=      | =LE.le x y=   | =LE=         |
+| =x > y=      | =LT.lt y x=   | =LT=         |
+| =x ≥ y=      | =LE.le y x=   | =LE=         |
+
+因为还没有演示如何定义新命题，所以定义新的 =LT= 和 =LE= 实例可能会比较困难。
+
+另外，使用 =<=, ====, 和 =>= 来比较值可能效率不高。 首先检查一个值是否小于另一个值，然后再检查它们是否相等，这可能需要对大型数据结构进行两次遍历。 为了解决这个问题，Java 和 C# 分别有标准的 =compareTo= 和 =CompareTo= 方法，可以通过类来重写以同时实现这三种操作。 这些方法在接收者小于参数时返回负整数，等于时返回零，大于时返回正整数。 Lean 与其重载整数，不如有一个内置的归纳类型来描述这三种可能性：
+
+#+BEGIN_EXAMPLE
+     inductive Ordering where
+    | lt
+    | eq
+    | gt
+#+END_EXAMPLE
+
+=Ord= 类型类可以被重载，这样就可以用于比较。 对于 =Pos= 一个实现可以是：
+
+#+BEGIN_EXAMPLE
+     def Pos.comp : Pos → Pos → Ordering
+      | Pos.one, Pos.one => Ordering.eq
+      | Pos.one, Pos.succ _ => Ordering.lt
+      | Pos.succ _, Pos.one => Ordering.gt
+      | Pos.succ n, Pos.succ k => comp n k
+
+    instance : Ord Pos where
+      compare := Pos.comp
+#+END_EXAMPLE
+
+对于 Java 中应该使用 =compareTo= 的情形，在 Lean 中用 =Ord.compare= 就对了。
+
+**** [[#哈希][哈希]]
+
+
+Java 和 C# 有 =hashCode= 和 =GetHashCode= 方法，用于计算值的哈希值，以便在哈希表等数据结构中使用。 Lean 中的等效类型类称为 =Hashable=：
+
+#+BEGIN_EXAMPLE
+     class Hashable (α : Type) where
+      hash : α → UInt64
+#+END_EXAMPLE
+
+对于两个值而言，如果它们根据各自类型的 =BEq= 实例是相等的，那么它们也应该有相同的哈希值。 换句话说，如果 =x == y=，那么有 =hash x == hash y=。 如果 =x ≠ y=，那么 =hash x= 不一定就和 =hash y= 不一样（毕竟 =Nat= 有无穷多个，而 =UInt64= 最多只能有有限种组合方式。）， 但是如果不一样的值有不一样的哈希值的话，那么建立在其上的数据结构会有更好的表现。 这与 Java 和 C# 中对哈希的要求是一致的。
+
+在标准库中包含了一个函数 =mixHash=，它的类型是 =UInt64 → UInt64 → UInt64=。 它可以用来组合构造子不同字段的哈希值。 一个合理的归纳数据类型的哈希函数可以通过给每个构造函数分配一个唯一的数字，然后将该数字与每个字段的哈希值混合来编写。 例如，可以这样编写 =Pos= 的 =Hashable= 实例：
+
+#+BEGIN_EXAMPLE
+     def hashPos : Pos → UInt64
+      | Pos.one => 0
+      | Pos.succ n => mixHash 1 (hashPos n)
+
+    instance : Hashable Pos where
+      hash := hashPos
+#+END_EXAMPLE
+
+=Hashable= 实例对于多态可以使用递归类型搜索。 哈希化一个 =NonEmptyList α= 需要 =α= 是可以被哈希化的。
+
+#+BEGIN_EXAMPLE
+     instance [Hashable α] : Hashable (NonEmptyList α) where
+      hash xs := mixHash (hash xs.head) (hash xs.tail)
+#+END_EXAMPLE
+
+在二叉树的 =BEq= 和 =Hashable= 的实现中，递归和递归实例搜索这二者都被用到了。
+
+#+BEGIN_EXAMPLE
+     inductive BinTree (α : Type) where
+      | leaf : BinTree α
+      | branch : BinTree α → α → BinTree α → BinTree α
+
+    def eqBinTree [BEq α] : BinTree α → BinTree α → Bool
+      | BinTree.leaf, BinTree.leaf =>
+        true
+      | BinTree.branch l x r, BinTree.branch l2 x2 r2 =>
+        x == x2 && eqBinTree l l2 && eqBinTree r r2
+      | _, _ =>
+        false
+
+    instance [BEq α] : BEq (BinTree α) where
+      beq := eqBinTree
+
+    def hashBinTree [Hashable α] : BinTree α → UInt64
+      | BinTree.leaf =>
+        0
+      | BinTree.branch left x right =>
+        mixHash 1 (mixHash (hashBinTree left) (mixHash (hash x) (hashBinTree right)))
+
+    instance [Hashable α] : Hashable (BinTree α) where
+      hash := hashBinTree
+#+END_EXAMPLE
+
+**** [[#派生标准类][派生标准类]]
+
+
+像 =BEq= 和 =Hashable= 这样的类的实例，手动实现起来通常相当繁琐。Lean 包含一个称为 *实例派生（instance deriving）* 的特性，它使得编译器可以自动构造许多类型类的良好实例。事实上， [[../getting-to-know/structures.html][结构那一节]]中 =Point= 定义中的 =deriving Repr= 短语就是实例派生的一个例子。
+
+派生实例的方法有两种。 第一种在定义一个结构体或归纳类型时使用。 在这种情况下，添加 =deriving= 到类型声明的末尾，后面再跟实例应该派生自的类。 对于已经定义好的类型，单独的 =deriving= 也是可用的。 写 =deriving instance C1, C2, ... for T= 来为类型 =T= 派生 =C1, C2, ...= 实例。
+
+=Pos= 和 =NonEmptyList= 上的 =BEq= 和 =Hashable= 实例可以用很少量的代码派生出来：
+
+#+BEGIN_EXAMPLE
+     deriving instance BEq, Hashable for Pos
+    deriving instance BEq, Hashable, Repr for NonEmptyList
+#+END_EXAMPLE
+
+至少以下几种类型类的实例都是可以派生的：
+
+- =Inhabited=
+- =BEq=
+- =Repr=
+- =Hashable=
+- =Ord=
+
+然而，有些时候 =Ord= 的派生实例可能不是你想要的。 当发生这种事情的时候，就手写一个 =Ord= 实例把。 你如果对自己的 Lean 水平足够有自信的话，你也可以自己添加可以派生实例的类型类。
+
+实例派生除了在开发效率和代码可读性上有很大的优势外，它也使得代码更易于维护，因为实例会随着类型定义的变化而更新。 对数据类型的一系列更新更易于阅读，因为不需要一行又一行地对相等性测试和哈希计算进行公式化的修改。
+
+**** [[#appending][Appending]]
+
+
+许多数据类型都有某种形式的连接操作符。 在 Lean 中，连接两个值的操作被重载为类型类 =HAppend= ，这是一个异质操作，与用于算术运算的操作类似：
+
+#+BEGIN_EXAMPLE
+    class HAppend (α : Type) (β : Type) (γ : outParam Type) where
+      hAppend : α → β → γ
+#+END_EXAMPLE
+
+语法 =xs ++ ys= 会被脱糖为 =HAppend.hAppend xs ys=. 对于同质的情形，按照常规模式实现一个 =Append= 即可：
+
+#+BEGIN_EXAMPLE
+    instance : Append (NonEmptyList α) where
+      append xs ys :=
+        { head := xs.head, tail := xs.tail ++ ys.head :: ys.tail }
+#+END_EXAMPLE
+
+在定义了上面的实例后，
+
+#+BEGIN_EXAMPLE
+    #eval idahoSpiders ++ idahoSpiders
+#+END_EXAMPLE
+
+就有了下面的结果：
+
+#+BEGIN_EXAMPLE
+     { head := "Banded Garden Spider",
+    tail := ["Long-legged Sac Spider",
+             "Wolf Spider",
+             "Hobo Spider",
+             "Cat-faced Spider",
+             "Banded Garden Spider",
+             "Long-legged Sac Spider",
+             "Wolf Spider",
+             "Hobo Spider",
+             "Cat-faced Spider"] }
+#+END_EXAMPLE
+
+类似地：定义一个 =HAppend= 来使常规列表可以和一个非空列表连接。
+
+#+BEGIN_EXAMPLE
+     instance : HAppend (NonEmptyList α) (List α) (NonEmptyList α) where
+      hAppend xs ys :=
+        { head := xs.head, tail := xs.tail ++ ys }
+#+END_EXAMPLE
+
+有了这个实例后，
+
+#+BEGIN_EXAMPLE
+     #eval idahoSpiders ++ ["Trapdoor Spider"]
+#+END_EXAMPLE
+
+结果为
+
+#+BEGIN_EXAMPLE
+     { head := "Banded Garden Spider",
+      tail := ["Long-legged Sac Spider", "Wolf Spider", "Hobo Spider", "Cat-faced Spider", "Trapdoor Spider"] }
+#+END_EXAMPLE
+
+**** [[#函子][函子]]
+
+如果一个多态类型重载了一个函数 =map= ，这个函数将位于上下文中的每个元素都用一个函数来映射，那么这个类型就是一个 *函子（functor）* 。 虽然大多数语言都使用这个术语，但C#中等价于 =map= 的是 =System.Linq.Enumerable.Select= 。 例如，用一个函数对一个列表进行映射会产生一个新的列表，列表中的每个元素都是函数应用在原列表中元素的结果。 用函数 =f= 对一个 =Option= 进行映射，如果 =Option= 的值为 =none= ，那么结果仍为 =none= ； 如果为 =some x= ，那么结果为 =some (f x)= 。
+
+下面是一些函子，这些函子是如何重载 =map= 的例子：
+
+- =Functor.map (· + 5) [1, 2, 3]= 结果为 =[6, 7, 8]=
+- =Functor.map toString (some (List.cons 5 List.nil))= 结果为 =some "[5]"=
+- =Functor.map List.reverse [[1, 2, 3], [4, 5, 6]]= 结果为 =[[3, 2, 1], [6, 5, 4]]=
+
+因为 =Functor.map= 这个操作很常用，但它的名字又有些长了，所以 Lean 也提供了一个中缀运算符来映射函数，叫做 =<$>= 。 下面是一些简单的例子：
+
+- =(· + 5) <$> [1, 2, 3]= 结果为 =[6, 7, 8]=
+- =toString <$> (some (List.cons 5 List.nil))= 结果为 =some "[5]"=
+- =List.reverse <$> [[1, 2, 3], [4, 5, 6]]= 结果为 =[[3, 2, 1], [6, 5, 4]]=
+
+=Functor= 对于 =NonEmptyList= 的实例需要我们提供 =map= 函数。
+
+#+BEGIN_EXAMPLE
+    instance : Functor NonEmptyList where
+      map f xs := { head := f xs.head, tail := f <$> xs.tail }
+#+END_EXAMPLE
+
+在这里， =map= 使用 =List= 上的 =Functor= 实例来将函数映射到列表尾。 这个实例是在 =NonEmptyList= 下定义的，而不是 =NonEmptyList α=。 因为类型参数 =α= 在当前类型类中用不上。 *无论条目的类型是什么* ，我们都可以用一个函数来映射 =NonEmptyList= 。 如果 =α= 是类型类的一个参数，那么我们就可以做出只工作在某个 =α= 类型上的 =Functor= ，比如 =NonEmptyList Nat= 。 但成为一个函子类型的必要条件就是 =map= 对任意条目类型都是有效的。
+
+这里有一个将 =PPoint= 实现为一个函子的实例：
+
+#+BEGIN_EXAMPLE
+    instance : Functor PPoint where
+      map f p := { x := f p.x, y := f p.y }
+#+END_EXAMPLE
+
+在这里， =f= 被应用到 =x= 和 =y= 上。
+
+即使包含在一个函子类型中的类型本身也是一个函子，映射一个函数也只会向下一层。也就是说，当在 =NonEmptyList (PPoint Nat)= 上 =map= 时，被映射的函数会接受 =PPoint Nat= 作为参数，而不是 =Nat= 。
+
+=Functor= 类型类的定义中用到了一个还没介绍的语言特性：默认方法定义。 正常来说，一个类型类会指定一些有意义的最小的可重载操作集合，然后使用具有隐式实例参数的多态函数，这些函数建立在重载操作的基础上，以提供更大的功能库。 例如，函数 =concat= 可以连接任何非空列表的条目，只要条目是可连接的：
+
+#+BEGIN_EXAMPLE
+    def concat [Append α] (xs : NonEmptyList α) : α :=
+      let rec catList (start : α) : List α → α
+        | [] => start
+        | (z :: zs) => catList (start ++ z) zs
+      catList xs.head xs.tail
+#+END_EXAMPLE
+
+然而，对于一些类型类，如果你对数据类型的内部又更深的理解的话，那么就会有一些更高效的运算实现。
+
+在这些情况下，可以提供一个默认方法定义。 默认方法定义提供了一个基于其他方法的默认实现。 然而，实例实现者可以选择用更高效的方法来重写这个默认实现。 默认方法定义在 =class= 定义中，包含 =:== 。
+
+对于 =Functor= 而言，当被映射的函数并不需要参数时，许多类型有更高效的 =map= 实现方式。
+
+#+BEGIN_EXAMPLE
+    class Functor (f : Type → Type) where
+      map : {α β : Type} → (α → β) → f α → f β
+      mapConst {α β : Type} (x : α) (coll : f β) : f α :=
+        map (fun _ => x) coll
+#+END_EXAMPLE
+
+就像不符合 =BEq= 的 =Hashable= 实例是有问题的一样，一个在映射函数时移动数据的 =Functor= 实例也是有问题的。 例如，一个有问题的 =List= 的 =Functor= 实例可能会丢弃其参数并总是返回空列表，或者它可能会反转列表。 一个有问题的 =PPoint= 实例可能会将 =f x= 放在 =x= 和 =y= 字段中。 具体来说， =Functor= 实例应遵循两条规则：
+
+1. 映射恒等函数应返回原始参数。
+2. 映射两个复合函数应具有与它们的映射组合相同的效果。
+
+更形式化的讲，第一个规则说 =id <$> x= 等于 =x= 。 第二个规则说 =map (fun y => f (g y)) x= 等于 =map f (map g x)=。 =fun y => f (g y)= 也可以写成 =f ∘ g= 。 这些规则能防止 =map= 的实现移动数据或删除一些数据。
+
+
+***** 请概括一下上面这些关于函子的内容
+
+函子（Functor）是函数式编程中的一个重要概念，特别是在多态类型上定义的映射操作。在 Lean 中，函子通过 =Functor= 类型类来实现，允许对包含在多态类型中的元素进行映射操作。以下是关于函子的主要内容概括：
+
+1. *定义与用途*
+   - 函子类型类定义了一个 =map= 函数，该函数接受一个函数和一个多态类型的值，返回一个新的多态类型的值，其中每个元素都被应用了该函数。
+   - 例如， =Functor.map (· + 5) [1, 2, 3]= 的结果是 =[6, 7, 8]= 。
+
+2. *中缀运算符*
+   - Lean 提供了中缀运算符 =<$>= 作为 =Functor.map= 的简写，例如 =(· + 5) <$> [1, 2, 3]= 结果同样是 =[6, 7, 8]= 。
+
+3. *实例实现*
+   - 对于自定义类型，可以实现 =Functor= 实例来定义如何映射其元素。例如， =NonEmptyList= 和 =PPoint= 都可以定义为函子。
+   - =NonEmptyList= 的 =map= 实现会将函数应用到列表的头和尾。
+   - =PPoint= 的 =map= 实现会将函数应用到点的 =x= 和 =y= 字段。
+
+4. *默认方法定义*
+   - =Functor= 类型类中包含一个默认方法定义 =mapConst= ，它提供了一个基于 =map= 的默认实现，但允许实例实现者提供更高效的实现。
+
+5. *函子规则*
+   - *恒等规则* ：映射恒等函数应返回原始参数，即 =id <$> x= 等于 =x=
+   - *组合规则* ：映射两个复合函数应具有与它们的映射组合相同的效果，即 =map (fun y => f (g y)) x= 等于 =map f (map g x)= 。
+
+6. *应用场景*
+   - 函子在处理多态数据结构时非常有用，允许在不改变数据结构的情况下对其内容进行变换。
+   - 例如，在处理列表、选项、树等数据结构时，函子可以简化代码并提高可读性。
+
+通过这些内容，可以看出函子在函数式编程中的重要性，特别是在处理多态数据结构时，提供了一种灵活且强大的映射机制。
+
+***** 我们需要证明 functor 的这两个规则吗
+
+在 Lean 中，函子的两个规则（恒等规则和组合规则）通常不需要显式证明，因为它们是函子定义的一部分，并且 Lean 的类型系统会自动确保这些规则在实例化时得到满足。然而，如果你需要明确地验证某个特定的 =Functor= 实例是否满足这些规则，你可以编写相应的定理并进行证明。
+
+以下是如何在 Lean 中验证这两个规则的示例：
+
+1. /恒等规则/
+   - 恒等规则表示 =id <$> x= 应该等于 =x=
+
+#+begin_src lean4
+  theorem functor_id_rule [Functor f] (x : f α) : id <$> x = x := by
+    simp [Functor.map]
+#+end_src
+
+2. /组合规则/
+   - 组合规则表示 =map (fun y ==> f (g y)) x= 应该等于 =map f (map g x)=
+
+#+begin_src lean
+theorem functor_comp_rule [Functor f] (f : β → γ) (g : α → β) (x : f α) :
+  (fun y => f (g y)) <$> x = f <$> (g <$> x) := by
+  simp [Functor.map]
+#+end_src
+
+在这些定理中，=simp [Functor.map]= 会尝试简化表达式并使用 =Functor.map= 的定义来证明等式成立。
+
+如果你在实现自定义的 =Functor= 实例时，确保你的实现满足这两个规则，那么通常不需要显式证明。Lean 的类型系统和实例检查机制会帮助你确保这些规则在实例化时得到满足。
+
+***** =map (fun y => f (g y)) x= 这个表达式是什么意思？
+
+这个表达式 =map (fun y => f (g y)) x= 表示对类型为 =f α= 的值 =x= 进行映射操作，映射函数是 =fun y => f (g y)= 。具体来说：
+
+- =map= 是 =Functor= 类型类中的方法，用于将一个函数应用到多态类型 =f α= 中的每个元素上。
+- =fun y => f (g y)= 是一个匿名函数（也称为 lambda 表达式），它接受一个参数 =y= ，并返回 =f (g y)= 的结果。
+- =x= 是类型为 =f α= 的值，即一个包含类型为 =α= 的元素的多态类型。
+
+整个表达式的意思是：将函数 =fun y => f (g y)= 应用到 =x= 中的每个元素上，生成一个新的多态类型 =f γ= 的值。
+
+具体来说，如果 =f= 是 =List= ， =g= 是 =Nat.succ= ， =x= 是 =[1, 2, 3]= ，那么：
+
+- =g y= 对每个元素 =y= 应用 =Nat.succ= ，得到 =[2, 3, 4]= 。
+- =f (g y)= 对每个元素应用 =f=，假设 =f= 是 =toString= ，那么结果是 =["2", "3", "4"]= 。
+
+因此， =map (fun y => f (g y)) x= 的结果是 =["2", "3", "4"]= 。
+
+总结：这个表达式表示对多态类型 =f α= 中的每个元素应用复合函数 =f ∘ g=，生成一个新的多态类型 =f γ= 的值。
+
+**** [[#你也许会遇到的问题][你也许会遇到的问题]]
+
+Lean 不能为所有类派生实例。 例如代码
+
+#+BEGIN_EXAMPLE
+  structure NonEmptyList (α : Type) : Type where
+    head : α
+    tail : List α
+  deriving instance ToString for NonEmptyList
+#+END_EXAMPLE
+
+会导致如下错误：
+
+#+BEGIN_EXAMPLE
+  default handlers have not been implemented yet, class: 'ToString' types: [NonEmptyList]
+#+END_EXAMPLE
+
+调用 =deriving instance= 会使 Lean 查找一个类型类实例的内部代码生成器的表。 如果找到了代码生成器，那么就会调用它来创建实例。 然而这个报错就意味着没有发现对 =ToString= 的代码生成器。
+
+
+在 Lean 中，虽然许多标准类型类（如 =BEq=, =Hashable=, =Repr= 等）可以通过 =deriving instance= 自动派生实例，但并非所有类型类都有对应的代码生成器。对于 =ToString= 类型类，Lean 目前没有提供自动派生的支持，因此你需要手动实现该实例。
+
+以下是如何手动实现 =NonEmptyList α= 的 =ToString= 实例的示例：
+
+#+begin_src lean
+import Std.Data.List.Basic
+
+structure NonEmptyList (α : Type) where
+  head : α
+  tail : List α
+
+instance [ToString α] : ToString (NonEmptyList α) where
+  toString (xs : NonEmptyList α) :=
+    let tailStr := String.join (xs.tail.map ("," ++ toString ·))
+    s!"{toString xs.head}{tailStr}"
+#+end_src
+
+在这个实现中：
+
+- =toString xs.head= 将列表的头元素转换为字符串。
+- =xs.tail.map ("," ++ toString ·)= 将列表的尾元素转换为字符串，并在每个元素前加上逗号。
+- =String.join= 将尾元素的字符串列表连接成一个单一的字符串。
+- 最终的字符串格式为：头元素的字符串 + 尾元素的字符串（以逗号分隔）。
+
+通过这种方式，你可以手动实现 =ToString= 实例，以便在需要时将 =NonEmptyList α= 转换为字符串。
+
+***** rust 和 haskell 等都有类似的功能，比如说 rust 的 debug 是可以自动生成的，但是为什么 lean 没有呢？这是处于什么考量？
+
+Lean 没有为所有类型类提供自动派生实例的功能，主要是出于以下几个考量：
+
+1. *复杂性和维护成本*
+   - 自动生成代码的复杂性较高，需要为每个类型类编写和维护相应的代码生成器。这会增加开发和维护的负担。
+   - 对于一些复杂的类型类，自动生成代码可能不够灵活，无法满足所有用户的需求。
+
+2. *性能和优化*
+   - 自动生成的代码可能不如手动优化的代码性能高。手动实现实例可以更好地控制代码的性能和行为。
+   - 对于一些需要高性能的场景，手动实现实例可以提供更精细的控制。
+
+3. *灵活性和可定制性*
+   - 手动实现实例可以提供更大的灵活性和可定制性。用户可以根据具体需求定制实例的行为。
+   - 自动生成的代码可能无法满足所有特殊需求，而手动实现可以更好地适应这些需求。
+
+4. *类型系统的限制*
+   - Lean 的类型系统可能对自动生成代码有一些限制。例如，某些类型类的实例可能需要特定的类型约束或证明，这些在自动生成时可能难以处理。
+
+5. *社区和生态系统*
+   - Lean 的社区和生态系统可能还没有足够成熟，无法支持所有类型类的自动生成。随着社区的发展，未来可能会增加更多的自动生成功能。
+
+尽管 Lean 目前没有为所有类型类提供自动派生实例的功能，但它已经支持了一些常见的类型类（如 =BEq=, =Hashable=, =Repr= 等）的自动生成。随着 Lean 的发展，未来可能会增加更多的自动生成功能，以提高开发效率和代码可读性。
+
+对于当前没有自动生成支持的类型类，用户可以通过手动实现实例来满足需求。虽然这增加了一些工作量，但它也提供了更大的灵活性和控制权。
+
+**** [[#练习][练习]]
+
+
+- 写一个 =HAppend (List α) (NonEmptyList α) (NonEmptyList α)= 的实例并测试它
+- 为二叉树实现一个 =Functor= 的实例。
+* Section 4.6 [[https://www.leanprover.cn/fp-lean-zh/type-classes/coercion.html][强制转换 - Lean 函数式编程]]                            :website:
+
+[2024-11-21 Thu 19:25]
+
+** [[#强制转换][强制转换]]
+
+在数学中，用同一个符号来在不同的语境中代表数学对象的不同方面是很常见的。 例如，如果在一个需要集合的语境中给出了一个环，那么理解为该环对应的集合也是很有道理的。
+
+在编程语言中，有一些规则自动地将一种类型转换为另一种类型也是很常见的。 例如，Java 允许 =byte= 自动转换为一个 =int= ，Kotlin 也允许非空类型在可为空的语境中使用。
+
+在 Lean 中，这两个目的都是用一个叫做 *强制转换（coercions）* 的机制实现的。 当 Lean 遇到了在某语境中某表达式的类型与期望类型不一致时，Lean 在报错前会尝试进行强制转换。 不像 Java，C，和 Kotlin，强制转换是通过定义类型类实例实现的，并且是可扩展的。
+
+*** [[#正数][正数]]
+
+
+例如，每个正数都对应一个自然数。 之前定义的函数 =Pos.toNat= 可以将一个 =Pos= 转换成对应的 =Nat=：
+
+#+BEGIN_EXAMPLE
+    def Pos.toNat : Pos → Nat
+      | Pos.one => 1
+      | Pos.succ n => n.toNat + 1
+#+END_EXAMPLE
+
+函数 =List.drop= ，的类型是 ={α : Type} → Nat → List α → List α= ，它将列表的前缀移除。 将 =List.drop= 应用到 =Pos= 会产生一个类型错误：
+
+#+BEGIN_EXAMPLE
+     [1, 2, 3, 4].drop (2 : Pos)
+#+END_EXAMPLE
+
+#+BEGIN_EXAMPLE
+    application type mismatch
+      List.drop 2
+    argument
+      2
+    has type
+      Pos : Type
+    but is expected to have type
+      Nat : Type
+#+END_EXAMPLE
+
+因为 =List.drop= 的作者没有让它成为一个类型类的方法，所以它没有办法通过定义新实例的方式来重写。
+
+=Coe= 类型类描述了类型间强制转换的重载方法。
+
+#+BEGIN_EXAMPLE
+    class Coe (α : Type) (β : Type) where
+      coe : α → β
+#+END_EXAMPLE
+
+一个 =Coe Pos Nat= 的实例就足够让先前的代码正常工作了。
+
+#+BEGIN_EXAMPLE
+     instance : Coe Pos Nat where
+      coe x := x.toNat
+
+    #eval [1, 2, 3, 4].drop (2 : Pos)
+#+END_EXAMPLE
+
+#+BEGIN_EXAMPLE
+     [3, 4]
+#+END_EXAMPLE
+
+用 =#check= 来看隐藏在幕后的实例搜索。
+
+#+BEGIN_EXAMPLE
+     #check [1, 2, 3, 4].drop (2 : Pos)
+#+END_EXAMPLE
+
+#+BEGIN_EXAMPLE
+     List.drop (Pos.toNat 2) [1, 2, 3, 4] : List Nat
+#+END_EXAMPLE
+
+*** [[#链式强制转换][链式强制转换]]
+
+
+在寻找强制转换时，Lean 会尝试通过一系列较小的强制转换来组成一个完整的强制转换。 例如，已经存在一个从 =Nat= 到 =Int= 的强制转换实例。 由于这个实例结合了 =Coe Pos Nat= 实例，我们就可以写出下面的代码：
+
+#+BEGIN_EXAMPLE
+     def oneInt : Int := Pos.one
+#+END_EXAMPLE
+
+这个定义用到了两个强制转换：从 =Pos= 到 =Nat=，再从 =Nat= 到 =Int=。
+
+Lean 编译器在存在循环强制转换的情况下不会陷入无限循环。 例如，即使两个类型 =A= 和 =B= 可以互相强制转换，在转换中 Lean 也可以找到一个路径。
+
+#+BEGIN_EXAMPLE
+     inductive A where
+      | a
+
+    inductive B where
+      | b
+
+    instance : Coe A B where
+      coe _ := B.b
+
+    instance : Coe B A where
+      coe _ := A.a
+
+    instance : Coe Unit A where
+      coe _ := A.a
+
+    def coercedToB : B := ()
+#+END_EXAMPLE
+
+提示：双括号 =()= 是构造子 =Unit.unit= 的简写。 在派生 =Repr B= 实例后，
+
+#+BEGIN_EXAMPLE
+     #eval coercedToB
+#+END_EXAMPLE
+
+结果为：
+
+#+BEGIN_EXAMPLE
+     B.b
+#+END_EXAMPLE
+
+=Option= 类型类似于 C# 和 Kotlin 中可为空的类型： =none= 构造子就代表了一个不存在的值。 Lean 标准库定义了一个从任意类型 =α= 到 =Option α= 的强制转换，效果是会将值包裹在 =some= 中。 这使得 option 类型用起来更像是其他语言中可为空的类型，因为 =some= 是可以忽略的。 例如，可以找到列表中最后一个元素的函数 =List.getLast?=，就可以直接返回值 =x= 而无需加上 =some=：
+
+#+BEGIN_EXAMPLE
+     def List.last? : List α → Option α
+      | [] => none
+      | [x] => x
+      | _ :: x :: xs => last? (x :: xs)
+#+END_EXAMPLE
+
+实例搜索找到强制转换，并插入对 =coe= 的调用，该调用会将参数包装在 =some= 中。这些强制转换可以是链式的，这样嵌套使用 =Option= 时就不需要嵌套的 =some= 构造子：
+
+#+BEGIN_EXAMPLE
+     def perhapsPerhapsPerhaps : Option (Option (Option String)) :=
+      "Please don't tell me"
+#+END_EXAMPLE
+
+仅当 Lean 遇到推断出的类型和剩下的程序需要的类型不匹配时，才会自动使用强制转换。 在遇到其它错误时，强制转换不会被使用。 例如，如果遇到的错误是实例缺失，强制类型转换不会被使用：
+
+#+BEGIN_EXAMPLE
+     def perhapsPerhapsPerhapsNat : Option (Option (Option Nat)) :=
+      392
+#+END_EXAMPLE
+
+#+BEGIN_EXAMPLE
+     failed to synthesize instance
+      OfNat (Option (Option (Option Nat))) 392
+#+END_EXAMPLE
+
+这可以通过手动指定 =OfNat= 所需的类型来解决：
+
+#+BEGIN_EXAMPLE
+     def perhapsPerhapsPerhapsNat : Option (Option (Option Nat)) :=
+      (392 : Nat)
+#+END_EXAMPLE
+
+此外，强制转换用一个上箭头手动调用。
+
+#+BEGIN_EXAMPLE
+     def perhapsPerhapsPerhapsNat : Option (Option (Option Nat)) :=
+      ↑(392 : Nat)
+#+END_EXAMPLE
+
+在一些情况下，这可以保证 Lean 找到了正确的实例。 这也会让程序员的意图更加清晰。
+
+*** [[#非空列表与依值强制转换][非空列表与依值强制转换]]
+
+
+当 =β= 类型中的值可以对应每一个 =α= 类型中的值时， =Coe α β= 实例才是合理的。 将 =Nat= 强制转换为 =Int= 是合理的，因为 =Int= 类型中包含了全部的自然数。 类似地，一个从非空列表到常规列表的强制转换也是合理的，因为 =List= 类型可以表示每一个非空列表：
+
+#+BEGIN_EXAMPLE
+     instance : Coe (NonEmptyList α) (List α) where
+      coe
+        | { head := x, tail := xs } => x :: xs
+#+END_EXAMPLE
+
+这使得非空列表可以使用全部的 =List= API。
+
+另一方面，我们不可能写出一个 =Coe (List α) (NonEmptyList α)= 的实例，因为没有任何一个非空列表可以表示一个空列表。 这个限制可以通过其他方式的强制转换来解决，该强制转换被称为 *依值强制转换（dependent coercions）* 。 当是否能将一种类型强制转换到另一种类型依赖于具体的值时，依值强制转换就派上用场了。 就像 =OfNat= 类型类需要具体的 =Nat= 来作为参数，依值强制转换也接受要被强制转换的值作为参数：
+
+#+BEGIN_EXAMPLE
+     class CoeDep (α : Type) (x : α) (β : Type) where
+      coe : β
+#+END_EXAMPLE
+
+这可以使得只选取特定的值，通过加上进一步的类型类约束或者直接写出特定的构造子。 例如，任意非空的 =List= 都可以被强制转换为一个 =NonEmptyList=：
+
+#+BEGIN_EXAMPLE
+     instance : CoeDep (List α) (x :: xs) (NonEmptyList α) where
+      coe := { head := x, tail := xs }
+#+END_EXAMPLE
+
+*** [[#强制转换为类型本节中-sort-的翻译待讨论][强制转换为类型（ /本节中 sort 的翻译待讨论/）]]
+
+
+在数学中，一个建立在集合上，但是比集合具有额外的结构的概念是很常见的。 例如，一个幺半群就是一些集合 /S/，一个 /S/ 中的元素 /s/，以及一个 /S/ 上结合的二元运算，使得 /s/ 在运算的左侧和右侧都是中性的。 /S/ 是这个幺半群的“载体集”。 自然数集上的零和加法构成一个幺半群，因为加法是满足结合律的，并且为任何一个数字加零都是恒等的。 类似地，自然数上的一和乘法也构成一个幺半群。 幺半群在函数式编程中的应用也很广泛：列表，空列表，和连接运算符构成一个幺半群。 字符串，空字符串，和连接运算符也构成一个幺半群：
+
+#+BEGIN_EXAMPLE
+     structure Monoid where
+      Carrier : Type
+      neutral : Carrier
+      op : Carrier → Carrier → Carrier
+
+    def natMulMonoid : Monoid :=
+      { Carrier := Nat, neutral := 1, op := (· * ·) }
+
+    def natAddMonoid : Monoid :=
+      { Carrier := Nat, neutral := 0, op := (· + ·) }
+
+    def stringMonoid : Monoid :=
+      { Carrier := String, neutral := "", op := String.append }
+
+    def listMonoid (α : Type) : Monoid :=
+      { Carrier := List α, neutral := [], op := List.append }
+#+END_EXAMPLE
+
+给定一个幺半群，我们就可以写出一个 =foldMap= 函数，该函数在一次遍历中将整个列表中的元素映射到载体集中，然后使用幺半群的运算符将它们组合起来。 由于幺半群有单位元，所以当列表为空时我们就可以返回这个值。 又因为运算符是满足结合律的，这个函数的用户不需要关心函数结合元素的顺序到底是从左到右的还是从右到左的。
+
+#+BEGIN_EXAMPLE
+     def foldMap (M : Monoid) (f : α → M.Carrier) (xs : List α) : M.Carrier :=
+      let rec go (soFar : M.Carrier) : List α → M.Carrier
+        | [] => soFar
+        | y :: ys => go (M.op soFar (f y)) ys
+      go M.neutral xs
+#+END_EXAMPLE
+
+尽管一个幺半群是由三部分信息组成的，但在提及它的载体集时使用幺半群的名字也是很常见的。 说“令 /A/ 为一个幺半群，并令 /x/ 和 /y/ 为 /A/ 中的元素”是很常见的，而不是说“令 /A/ 为一个幺半群，并令 /x/ 和 /y/ 为载体集中的元素”。 这种方式可以通过定义一种新的强制转换来在 Lean 中实现，该转换从幺半群到它的载体集。
+
+=CoeSort= 类型类和 =Coe= 大同小异，只是要求强制转换的目标一定要是一个 /sort/，即 =Type= 或 =Prop=。 词语 /sort/ 指的是这些分类其他类型的类型------ =Type= 分类那些本身分类数据的类型，而 =Prop= 分类那些本身分类其真实性证据的命题。 正如在类型不匹配时会检查 =Coe= 一样，当在预期为 sort 的上下文中提供了其他东西时，会使用 =CoeSort=。
+
+从一个幺半群到它的载体集的强制转换会返回该载体集：
+
+#+BEGIN_EXAMPLE
+     instance : CoeSort Monoid Type where
+      coe m := m.Carrier
+#+END_EXAMPLE
+
+有了这个强制转换，类型签名变得不那么繁琐了：
+
+#+BEGIN_EXAMPLE
+     def foldMap (M : Monoid) (f : α → M) (xs : List α) : M :=
+      let rec go (soFar : M) : List α → M
+        | [] => soFar
+        | y :: ys => go (M.op soFar (f y)) ys
+      go M.neutral xs
+#+END_EXAMPLE
+
+另一个有用的 =CoeSort= 使用场景是它可以让 =Bool= 和 =Prop= 建立联系。 就像在 [[./standard-classes#%E7%9B%B8%E7%AD%89%E6%80%A7%E4%B8%8E%E6%9C%89%E5%BA%8F%E6%80%A7][有序性和等价性那一节]]我们提到的，Lean 的 =if= 表达式需要条件为一个可判定的命题而不是一个 =Bool=。 然而，程序通常需要能够根据布尔值进行分支。 Lean 标准库并没有定义两种 =if= 表达式，而是定义了一种从 =Bool= 到命题的强制转换，即该 =Bool= 值等于 =true=：
+
+#+BEGIN_EXAMPLE
+     instance : CoeSort Bool Prop where
+      coe b := b = true
+#+END_EXAMPLE
+
+如此，这个 sort 将是一个 =Prop= 而不是 =Bool=。
+
+*** [[#强制转换为函数-本节翻译需要润色][强制转换为函数 （ /本节翻译需要润色/）]]
+
+
+许多在编程中常见的数据类型都会有一个函数和一些额外的信息组成。 例如，一个函数可能附带一个名称以在日志中显示，或附带一些配置数据。 此外，将一个类型放在结构体的字段中（类似于 =Monoid= 的例子）在某些上下文中是有意义的，这些上下文中存在多种实现操作的方法，并且需要比类型类允许的更手动的控制。 例如，JSON 序列化器生成的值的具体细节可能很重要，因为另一个应用程序期望特定的格式。 有时，仅从配置数据就可以推导出函数本身。
+
+=CoeFun= 类型类可以将非函数类型的值转换为函数类型的值。 =CoeFun= 有两个参数：第一个是需要被转变为函数的值的类型，第二个是一个输出参数，决定了到底应该转换为哪个函数类型。
+
+#+BEGIN_EXAMPLE
+     class CoeFun (α : Type) (makeFunctionType : outParam (α → Type)) where
+      coe : (x : α) → makeFunctionType x
+#+END_EXAMPLE
+
+第二个参数本身是一个可以计算类型的函数。 在 Lean 中，类型是一等公民，可以作为函数参数被传递，也可以作为返回值，就像其他东西一样。
+
+例如，一个将常量加到其参数的函数可以表示为围绕要添加的量的包装，而不是通过定义一个实际的函数：
+
+#+BEGIN_EXAMPLE
+     structure Adder where
+      howMuch : Nat
+#+END_EXAMPLE
+
+一个为参数加上5的函数的 =howMuch= 字段为 =5=：
+
+#+BEGIN_EXAMPLE
+     def add5 : Adder := ⟨5⟩
+#+END_EXAMPLE
+
+这个 =Adder= 类型并不是一个函数，将它应用到一个参数会报错：
+
+#+BEGIN_EXAMPLE
+     #eval add5 3
+#+END_EXAMPLE
+
+#+BEGIN_EXAMPLE
+     function expected at
+      add5
+    term has type
+      Adder
+#+END_EXAMPLE
+
+定义一个 =CoeFun= 实例让 Lean 来将 adder 转换为一个 =Nat → Nat= 的函数：
+
+#+BEGIN_EXAMPLE
+     instance : CoeFun Adder (fun _ => Nat → Nat) where
+      coe a := (· + a.howMuch)
+
+    #eval add5 3
+#+END_EXAMPLE
+
+#+BEGIN_EXAMPLE
+     8
+#+END_EXAMPLE
+
+因为所有的 =Adder= 都应该被转换为 =Nat → Nat= 的函数， =CoeFun= 的第二个参数就被省略了。
+
+当我们需要这个值来决定正确的函数类型时， =CoeFun= 的第二个参数就派上用场了。 例如，给定下面的 JSON 值表示：
+
+#+BEGIN_EXAMPLE
+     inductive JSON where
+      | true : JSON
+      | false : JSON
+      | null : JSON
+      | string : String → JSON
+      | number : Float → JSON
+      | object : List (String × JSON) → JSON
+      | array : List JSON → JSON
+    deriving Repr
+#+END_EXAMPLE
+
+一个 JSON 序列化器是一个结构体，它不仅包含它知道如何序列化的类型，还包含序列化代码本身：
+
+#+BEGIN_EXAMPLE
+     structure Serializer where
+      Contents : Type
+      serialize : Contents → JSON
+#+END_EXAMPLE
+
+对字符串的序列化器只需要将所给的字符串包装在 =JSON.string= 构造子中即可：
+
+#+BEGIN_EXAMPLE
+     def Str : Serializer :=
+      { Contents := String,
+        serialize := JSON.string
+      }
+#+END_EXAMPLE
+
+将 JSON 序列化器视为序列化其参数的函数需要提取可序列化数据的内部类型：
+
+#+BEGIN_EXAMPLE
+     instance : CoeFun Serializer (fun s => s.Contents → JSON) where
+      coe s := s.serialize
+#+END_EXAMPLE
+
+有了这个实例，一个序列化器就能直接应用在参数上。
+
+#+BEGIN_EXAMPLE
+     def buildResponse (title : String) (R : Serializer) (record : R.Contents) : JSON :=
+      JSON.object [
+        ("title", JSON.string title),
+        ("status", JSON.number 200),
+        ("record", R record)
+      ]
+#+END_EXAMPLE
+
+这个序列化器可以直接传入 =buildResponse=：
+
+#+BEGIN_EXAMPLE
+     #eval buildResponse "Functional Programming in Lean" Str "Programming is fun!"
+#+END_EXAMPLE
+
+#+BEGIN_EXAMPLE
+     JSON.object
+      [("title", JSON.string "Functional Programming in Lean"),
+       ("status", JSON.number 200.000000),
+       ("record", JSON.string "Programming is fun!")]
+#+END_EXAMPLE
+
+**** [[#附注将-json-表示为字符串][附注：将 JSON 表示为字符串]]
+
+
+当 JSON 被编码为 Lean 对象时可能有点难以理解。 为了帮助保证序列化的响应是我们所期望的，写一个简单的从 =JSON= 到 =String= 的转换器可能会很方便。 第一步是简化数字的显示。 =JSON= 不区分整数和浮点数， =Float= 类型即可用来代表二者。 在 Lean 中， =Float.toString= 包括数字的后继零。
+
+#+BEGIN_EXAMPLE
+     #eval (5 : Float).toString
+#+END_EXAMPLE
+
+#+BEGIN_EXAMPLE
+     "5.000000"
+#+END_EXAMPLE
+
+解决方案是写一个小函数，这个函数可以清理掉所有的后继零，和后继的小数点：
+
+#+BEGIN_EXAMPLE
+     def dropDecimals (numString : String) : String :=
+      if numString.contains '.' then
+        let noTrailingZeros := numString.dropRightWhile (· == '0')
+        noTrailingZeros.dropRightWhile (· == '.')
+      else numString
+#+END_EXAMPLE
+
+有了这个定义， =#eval dropDecimals (5 : Float).toString= 结果为 ="5"=， =#eval dropDecimals (5.2 : Float).toString= 结果为 ="5.2"=。
+
+下一步是定义一个辅助函数来连接字符串列表，并在中间添加分隔符：
+
+#+BEGIN_EXAMPLE
+     def String.separate (sep : String) (strings : List String) : String :=
+      match strings with
+      | [] => ""
+      | x :: xs => String.join (x :: xs.map (sep ++ ·))
+#+END_EXAMPLE
+
+这个函数用于处理 JSON 数组和对象中的逗号分隔元素。 =#eval ", ".separate ["1", "2"]= 结果为 ="1, 2"=， =#eval ", ".separate ["1"]= 结果为 ="1"=， =#eval ", ".separate []= 结果为 =""=。
+
+最后，需要一个字符串转义程序来处理 JSON 字符串，以便包含 "Hello!" 的 Lean 字符串可以输出为 ""Hello!"”。 幸运的是，Lean 编译器已经包含了一个用于转义 JSON 字符串的内部函数，叫做 =Lean.Json.escape=。 要使用这个函数，可以在文件开头添加 =import Lean=。
+
+将 =JSON= 值转换为字符串的函数被声明了 =partial=，因为 Lean 并不知道它是否停机。 这是因为出现在函数中的 =asString= 的递归调用被应用到了 =List.map=，这种模式的递归已经复杂到 Lean 无法知道递归过程中值的规模是否是减小的。 在一个只需要产生 JSON 字符串而不需要让过程在数学上是合理的的应用中，让函数是 =partial= 的不太可能造成麻烦。
+
+#+BEGIN_EXAMPLE
+     partial def JSON.asString (val : JSON) : String :=
+      match val with
+      | true => "true"
+      | false => "false"
+      | null => "null"
+      | string s => "\"" ++ Lean.Json.escape s ++ "\""
+      | number n => dropDecimals n.toString
+      | object members =>
+        let memberToString mem :=
+          "\"" ++ Lean.Json.escape mem.fst ++ "\": " ++ asString mem.snd
+        "{" ++ ", ".separate (members.map memberToString) ++ "}"
+      | array elements =>
+        "[" ++ ", ".separate (elements.map asString) ++ "]"
+#+END_EXAMPLE
+
+有了这个定义，序列化的结果更加易读了：
+
+#+BEGIN_EXAMPLE
+     #eval (buildResponse "Functional Programming in Lean" Str "Programming is fun!").asString
+#+END_EXAMPLE
+
+#+BEGIN_EXAMPLE
+     "{\\"title\\": \\"Functional Programming in Lean\\", \\"status\\": 200, \\"record\\": \\"Programming is fun!\\"}"
+#+END_EXAMPLE
+
+*** [[#可能会遇到的问题][可能会遇到的问题]]
+
+
+自然数字面量是通过 =OfNat= 类型类重载的。 因为在类型不匹配时才会触发强制转换，而不是在找不到实例时，所以当对于某类型的 =OfNat= 实例缺失时，并不会触发强制转换：
+
+#+BEGIN_EXAMPLE
+     def perhapsPerhapsPerhapsNat : Option (Option (Option Nat)) :=
+      392
+#+END_EXAMPLE
+
+#+BEGIN_EXAMPLE
+     failed to synthesize instance
+      OfNat (Option (Option (Option Nat))) 392
+#+END_EXAMPLE
+
+*** [[#设计原则][设计原则]]
+
+
+强制转换是一个强大的工具，请负责任地使用它。 一方面，它可以使 API 设计得更贴近领域内使用习惯。 这是繁琐的手动转换函数和一个清晰的程序间的差别。 正如 Abelson 和 Sussman 在《计算机程序的构造和解释》（ /Structure and Interpretation of Computer Programs/ ）（麻省理工学院出版社，1996年）前言中所写的那样：
+
+#+BEGIN_QUOTE
+  写程序须以让人读明白为主，让计算机执行为辅。
+#+END_QUOTE
+
+明智地使用强制转换，可以使得代码更加易读------这是与领域内专家的交流的基础。 然而，严重依赖强制转换的 API 会有许多限制。 在你自己的代码中使用强制转换前，认真思考这些限制。
+
+首先，强制转换只应该出现在类型信息充足，Lean 能够知道所有参与的类型的语境中。 因为强制转换类型类中并没有输出参数这么一说。 这意味着在函数上添加返回类型注释可以决定是类型错误还是成功应用强制转换。 例如，从非空列表到列表的强制转换使以下程序得以运行：
+
+#+BEGIN_EXAMPLE
+     def lastSpider : Option String :=
+      List.getLast? idahoSpiders
+#+END_EXAMPLE
+
+另一方面，如果类型注释被省略了，那么结果的类型就是未知的，那么 Lean 就无法找到对应的强制转换。
+
+#+BEGIN_EXAMPLE
+     def lastSpider :=
+      List.getLast? idahoSpiders
+#+END_EXAMPLE
+
+#+BEGIN_EXAMPLE
+     application type mismatch
+      List.getLast? idahoSpiders
+    argument
+      idahoSpiders
+    has type
+      NonEmptyList String : Type
+    but is expected to have type
+      List ?m.34258 : Type
+#+END_EXAMPLE
+
+通常来讲，如果一个强制转换因为一些原因失败了，用户会收到原始的类型错误，这会使在强制转换链上定位错误变得十分困难。
+
+最后，强制转换不会在字段访问符号的上下文中应用。 这意味着需要强制转换的表达式与不需要强制转换的表达式之间仍然存在重要区别，而这个区别对用户来说是肉眼可见的。
