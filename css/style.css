@@ -106,9 +106,12 @@ img {
 
 .org-src-container {
     font-size: 14px;
-    outline: 2px dashed #ccc;
+    background-color: #fdf6e3; /* Solarized Light background */
+    outline: 2px dashed #93a1a1; /* Solarized Light border color */
     outline-offset: 10px;
+    padding: 10px; /* Add padding for better readability */
     position: relative;
+    color: #657b83; /* Solarized Light text color */
 }
 
 code {
