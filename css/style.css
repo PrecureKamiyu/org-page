@@ -52,6 +52,10 @@ hr {
     width: 200px; /* Fixed width */
 }
 
+#table-of-contents ul ul {
+    margin-left: 0; /* Remove indentation for secondary titles */
+}
+
 /* Hide scrollbar for Chrome, Safari and Opera */
 #table-of-contents::-webkit-scrollbar {
     display: none;
