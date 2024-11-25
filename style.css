@@ -321,7 +321,7 @@ p#subtitle{
 /* Fonts for headline */
 h1,h2,h3 {
     padding-top: 0.6em;
-    font-family: Lobster, serif, "Source Han";
+    font-family: 'Merriweather Sans', sans-serif;
     font-weight: bold;
 }
 h4,h5,h6 {
