@@ -130,7 +130,7 @@ blockquote {
     float: left;
 }
 
-.org-ol {
+.org-ol, .org-ul {
     list-style-type: decimal; /* Set the list style type to decimal numbers */
     margin-left: 1.5em; /* Add left margin to the list */
     margin-top: 1em; /* Add top margin to the list */
