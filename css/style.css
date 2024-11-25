@@ -35,16 +35,16 @@ hr {
 }
 
 #content, .content {
-    width: 80%;
+    width: 70%;
     max-width: 980px;
-    margin: auto;
+    margin-left: 5%;
 }
 
 #table-of-contents {
     margin-top: 105px;
     font-size: 12pt;
     position: fixed;
-    left: 1em; /* Adjusted to avoid overlay */
+    right: 1em; /* Adjusted to move TOC to the right */
     top: 0em;
     background: #eee8d5; /* Solarized Light TOC background */
     max-height: 80%;
