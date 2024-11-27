@@ -5,9 +5,12 @@ body {
     margin: 10px auto;
     width: 900px;
     max-width: 100%;
-    background: #fdf6e3; /* Solarized Light background */
+    --background-color: #fdf6e3; /* Solarized Light background */
+    --text-color: #333; /* default text color */
     font-size: 18px;
-    font-family: 'Open Sans', 'Noto Sans SC', sans-serif;
+    font-family: 'Open Sans', 'Noto Sans SC', 'Montserrat', 'Lato', sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
 }
 
 #preamble {
