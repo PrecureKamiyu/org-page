@@ -1,8 +1,11 @@
 #+title:Books
+#+date: [2024-11-26 Tue]
 
+#+todo: TODO | DONE | GIVEUP
+#+options: num:nil
 #+html_head: <link rel="stylesheet" type="text/css" href="./css/style.css"/>
-# #+infojs_opt: view:info toc:2 buttons:t
 #+html_link_home: index.html
+
 
 * books
 :PROPERTIES:
