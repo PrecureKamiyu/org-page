@@ -3,21 +3,22 @@
 
 function addHideTocButton() {
   const tocElement = document.getElementById('table-of-contents');
-  const h2Element = tocElement.querySelector('h2');
+  const listElement = tocElement.querySelector('ul');
   const button = document.createElement('button');
   button.textContent = 'Hide TOC';
   let isHidden = false;
   button.addEventListener('click', () => {
     if (!isHidden) {
-      tocElement.style.display = 'none';
+      listElement.style.display = 'none';
       isHidden = true;
       button.textContent = 'Show TOC';
     } else {
-      tocElement.style.display = 'block';
+      listElement.style.display = 'block';
       isHidden = false;
       button.textContent = 'Hide TOC';
     }
   });
+  const h2Element = tocElement.querySelector('h2');
   h2Element.insertAdjacentElement('afterend', button);
 }
 
