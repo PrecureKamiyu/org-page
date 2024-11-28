@@ -1,8 +1,10 @@
 #+title:Some lyrics
 
-#+html_head: <link rel="stylesheet" type="text/css" href=".css/style.css"/>
-#+infojs_opt: view:info toc:2 buttons:t
 #+html_link_home: index.html
+
+#+begin_export html
+<style type="text/css"> body {font-family: "Source Han Serif", serif;} </style>
+#+end_export
 
 * lyrics
 :PROPERTIES:

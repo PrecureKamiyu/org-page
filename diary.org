@@ -3,7 +3,6 @@
 #+startup: overview
 #+options: H:4 num:nil
 #+infojs_opt: view:info toc:4 buttons:t
-#+html_head: <link rel="stylesheet" type="text/css" href="style.css"/>
 #+html_link_home: index.html
 
 * 2024
