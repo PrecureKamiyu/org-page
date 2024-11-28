@@ -21,5 +21,7 @@ function addHideTocButton() {
   h2Element.insertAdjacentElement('afterend', button);
 }
 
+window.onload = addHideTocButton;
+
 // ... goes in between
 // entire file content ...
