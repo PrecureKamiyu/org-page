@@ -1,0 +1,1674 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2024-12-05 Thu 16:54 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Note</title>
+<meta name="author" content="MAO" />
+<meta name="generator" content="Org Mode" />
+<style type="text/css">
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  pre.src-C\+\+:before { content: 'C++'; }
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+</head>
+<body>
+<div id="preamble" class="status">
+<script src="js/script.js"></script>
+<link rel="stylesheet" type="text/css" href="./css/style.css"/>
+</div>
+<div id="content" class="content">
+<h1 class="title">Note</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#orge2c1ebd">1. supplements</a>
+<ul>
+<li><a href="#org1cc4163">1.1. directed sets</a></li>
+<li><a href="#orgc3e211f">1.2. logic complexity, first order</a></li>
+<li><a href="#org75adf95">1.3. arithmetic RR</a></li>
+<li><a href="#orgd1a0eaf">1.4. PA</a></li>
+<li><a href="#org73f5075">1.5. satisfiable</a></li>
+<li><a href="#org89f4ebb">1.6. there is an assignment makes it true</a></li>
+<li><a href="#org0f73176">1.7. ground terms</a></li>
+<li><a href="#orgaa45ebe">1.8. ground instances</a></li>
+<li><a href="#orgb5d2258">1.9. alternative explain for Herbrand's theorem</a></li>
+<li><a href="#org077a2a9">1.10. simultaneous substitution <img src="./ltximg/org-tex-7e7c341c574d0ab5c94f8dd2451ce16c541718f3.svg" alt="\(\theta\)" style="height: 0.7789em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" /></a></li>
+<li><a href="#orga5e96de">1.11. unifier <img src="./ltximg/org-tex-7e7c341c574d0ab5c94f8dd2451ce16c541718f3.svg" alt="\(\theta\)" style="height: 0.7789em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" /></a></li>
+<li><a href="#org8e86c20">1.12. most general unifier</a></li>
+<li><a href="#orgf5beb67">1.13. unification algorithm</a></li>
+<li><a href="#org6fd2cff">1.14. herbrand's theorem and cut-elimination</a></li>
+<li><a href="#org659ff44">1.15. operational semantics and dynamics</a></li>
+<li><a href="#orgc209b0c">1.16. Logic Programming</a></li>
+<li><a href="#org224bdf6">1.17. sigma type and Martin-Lof type theory</a></li>
+<li><a href="#org582a773">1.18. tensor product according to Bourbaki.</a></li>
+<li><a href="#orgbd705b0">1.19. quotient universal property</a></li>
+<li><a href="#org696491b">1.20. pattern matching and higher order unification</a></li>
+<li><a href="#org4e2ef66">1.21. topology</a></li>
+<li><a href="#orga0ee0d4">1.22. intuitionistic property and herbrand's theorem</a></li>
+<li><a href="#org60167ee">1.23. CoC and Coq and Martin-Lof's system</a></li>
+<li><a href="#orgc0caca4">1.24. CIC</a></li>
+<li><a href="#org5460b0e">1.25. MLCC Martin-Lof's Constructive Type Theory</a></li>
+<li><a href="#org951c92c">1.26. MLCC and universe</a></li>
+<li><a href="#org063e310">1.27. Russell universe and tarski universe</a></li>
+<li><a href="#org753a77a">1.28. existential type</a></li>
+<li><a href="#org0387b84">1.29. substructural logic</a></li>
+<li><a href="#org08f1b8d">1.30. refinement type</a></li>
+</ul>
+</li>
+<li><a href="#coherence-and-linearity">2. Topic: coherent space and linearity</a>
+<ul>
+<li><a href="#org4f34476">2.1. Scott Domain using logic</a></li>
+<li><a href="#orgfb1ca22">2.2. The definition of coherent space: web and coherence</a></li>
+<li><a href="#orgbeb7c3b">2.3. Stable Functions: Definition</a></li>
+<li><a href="#orga39a78d">2.4. Stable Functions: A categorical intuition</a></li>
+<li><a href="#orgf3f390e">2.5. Coherent Space: A relation with topological space</a></li>
+<li><a href="#org328f963">2.6. Coherent Space: Minimal Approximant and Coding of Stable Function</a></li>
+<li><a href="#org54e25f2">2.7. Stable Functions: Skeleton and Trace</a></li>
+<li><a href="#org2fde194">2.8. Stable Functions: Skeleton and Berry Order</a></li>
+<li><a href="#org0b74495">2.9. Coherent Space: Of CC and CCC</a></li>
+<li><a href="#orge0701ed">2.10. Coherent Space: Direct Product <img src="./ltximg/org-tex-0831038b636e1ff1466ce891e7413e7b9b99058e.svg" alt="\(\with\)" style="height: 0.7789em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" /></a></li>
+<li><a href="#org6b3b19e">2.11. Coherent Space: the well-definedness of direct product</a></li>
+<li><a href="#org07b2f4d">2.12. Coherent Space: As a CCC</a></li>
+<li><a href="#orgd373538">2.13. Stable Functions: Representation Theorem of Sk</a></li>
+<li><a href="#orge006597">2.14. Linearity: The Easy Definition</a></li>
+<li><a href="#org5ed9a02">2.15. Linearity: Linear implication</a></li>
+<li><a href="#org5fe8293">2.16. Linearity: The Symmetry Provided by Linear Implication</a></li>
+<li><a href="#orgf023d3d">2.17. Linearity: Linearisation or Of Course!</a></li>
+<li><a href="#org66a5f14">2.18. Linearity: Why Not?</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orge2c1ebd" class="outline-2">
+<h2 id="orge2c1ebd"><span class="section-number-2">1.</span> supplements</h2>
+<div class="outline-text-2" id="text-1">
+</div>
+<div id="outline-container-org1cc4163" class="outline-3">
+<h3 id="org1cc4163"><span class="section-number-3">1.1.</span> directed sets</h3>
+<div class="outline-text-3" id="text-1-1">
+<p>
+A collection of sets is said to be directed, if the sets are indexed by a partially ordered set.
+</p>
+
+<p>
+For example <img src="./ltximg/org-tex-0ff8a3159f469cc0a85cb10e89e6af1c2f1f5e85.svg" alt="\(\{x_{i}\}\)" style="height: 1.0784em; vertical-align: -0.2942em; display: inline-block" class="org-latex org-latex-inline" />, <img src="./ltximg/org-tex-72729eb15a119b32391f3f00e342001f96c30575.svg" alt="\(i \in I\)" style="height: 0.8063em; vertical-align: -0.0875em; display: inline-block" class="org-latex org-latex-inline" />, where<img src="./ltximg/org-tex-6f70208661796436d9af686bc1b4722b61afa2be.svg" alt="\(I\)" style="height: 0.7680em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" /> is a partial order set.
+</p>
+</div>
+</div>
+<div id="outline-container-orgc3e211f" class="outline-3">
+<h3 id="orgc3e211f"><span class="section-number-3">1.2.</span> logic complexity, first order</h3>
+<div class="outline-text-3" id="text-1-2">
+<p>
+Logic complexity is about something like first order, second order; about the logic hierarchy, logic classification.
+</p>
+</div>
+<div id="outline-container-org2040682" class="outline-4">
+<h4 id="org2040682"><span class="section-number-4">1.2.1.</span> unbound quantifiers</h4>
+<div class="outline-text-4" id="text-1-2-1">
+<p>
+Unbound quantifiers refer to quantifiers whose domain is not specified. But I think we can understand it as quantifiers whose domain is unbound, which is infinite.
+</p>
+</div>
+</div>
+<div id="outline-container-orge80e662" class="outline-4">
+<h4 id="orge80e662"><span class="section-number-4">1.2.2.</span> prenex</h4>
+<div class="outline-text-4" id="text-1-2-2">
+<p>
+prenex form is of form
+<img src="./ltximg/org-tex-ef06f08ffa1f14d15b8a692114937a1022c8c233.svg" alt="\[
+Q\sb{1}x\sb{1}\dots Q\sb{n}x\sb{n} A
+\]" style="height: 1.4649em; display: block" class="org-latex org-latex-block" />
+where <img src="./ltximg/org-tex-a5dac8007615cc40cb6b64dfe63cddf7a2294950.svg" alt="\(A\)" style="height: 0.7680em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" /> is quantifier free. <i>prenex</i> is not that useful.
+</p>
+</div>
+</div>
+<div id="outline-container-orgb927392" class="outline-4">
+<h4 id="orgb927392"><span class="section-number-4">1.2.3.</span> <img src="./ltximg/org-tex-7cfbef9d56a71719dd752e146a68a2d12f1b6941.svg" alt="\(\Sigma\sp{0}\sb{1}\)" style="height: 1.1393em; vertical-align: -0.2924em; display: inline-block" class="org-latex org-latex-inline" /> and <img src="./ltximg/org-tex-fe5adb795381ae051d27a20433a7e6ec510ed668.svg" alt="\(\Pi \sb{1}\sp{0}\)" style="height: 1.1393em; vertical-align: -0.2924em; display: inline-block" class="org-latex org-latex-inline" /></h4>
+<div class="outline-text-4" id="text-1-2-3">
+<p>
+The sb of the above notations is about the alternation of unbound quantifiers. I don't really know what is an unbound quantifiers. But zero alternation means no quantifier.
+</p>
+
+<p>
+One alternation means the quantifiers are the same. For <img src="./ltximg/org-tex-dfa2486c6716b0ce0be8a990a563feea76934c84.svg" alt="\(\Sigma\)" style="height: 0.7680em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" />, the quantifer can only be <img src="./ltximg/org-tex-7009267a55a937052cb2fbf04d4bbaa232d284e0.svg" alt="\(\forall\)" style="height: 0.7789em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" />, and for <img src="./ltximg/org-tex-799ae58794452ccc82942cfc348c95758091afc4.svg" alt="\(\Pi\)" style="height: 0.7680em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" /> <img src="./ltximg/org-tex-9870d879ee639e5412ae1756993ba1270bc0768c.svg" alt="\(\exists\)" style="height: 0.7789em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" />. Thus all formulas in <img src="./ltximg/org-tex-1a943ffa8b00d47ed40349a8d2fde45181fdd981.svg" alt="\(\Sigma\sb{1}\sp{0}\)" style="height: 1.1393em; vertical-align: -0.2924em; display: inline-block" class="org-latex org-latex-inline" /> and <img src="./ltximg/org-tex-9bf78b70e5a0b5b58d42527f4ab87bd604ccf4c6.svg" alt="\(\Pi\sb{1}\sp{0}\)" style="height: 1.1393em; vertical-align: -0.2924em; display: inline-block" class="org-latex org-latex-inline" /> are respectively of form:
+<img src="./ltximg/org-tex-673c91170316c64fea57da14f19775897627c3b3.svg" alt="\[
+\exists x\sb{1}\dots\exists x\sb{n}A,\quad\quad
+\forall x\sb{1}\dots\forall x\sb{n}A
+\]" style="height: 1.4649em; display: block" class="org-latex org-latex-block" />
+where <img src="./ltximg/org-tex-a5dac8007615cc40cb6b64dfe63cddf7a2294950.svg" alt="\(A\)" style="height: 0.7680em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" /> is <img src="./ltximg/org-tex-fe91aa73f44700858a134ffe2c05a2d984d7ba28.svg" alt="\(Q\)" style="height: 0.9586em; vertical-align: -0.2397em; display: inline-block" class="org-latex org-latex-inline" />-free. So you know alternation <img src="./ltximg/org-tex-b9eea0dbb04699864fe29a3f426c18dde131df58.svg" alt="\(2\)" style="height: 0.7299em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" /> means something like <img src="./ltximg/org-tex-b8bc0698144b2c5f3fe9d326a4a81ee69b1233a0.svg" alt="\(\forall\forall\forall\exists\exists\exists\exists\exists\exists\)" style="height: 0.7789em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" />
+</p>
+</div>
+</div>
+<div id="outline-container-orgdfd53ff" class="outline-4">
+<h4 id="orgdfd53ff"><span class="section-number-4">1.2.4.</span> <img src="./ltximg/org-tex-7cfbef9d56a71719dd752e146a68a2d12f1b6941.svg" alt="\(\Sigma\sp{0}\sb{1}\)" style="height: 1.1393em; vertical-align: -0.2924em; display: inline-block" class="org-latex org-latex-inline" /> sets</h4>
+<div class="outline-text-4" id="text-1-2-4">
+<p>
+Here we understand <img src="./ltximg/org-tex-7cfbef9d56a71719dd752e146a68a2d12f1b6941.svg" alt="\(\Sigma\sp{0}\sb{1}\)" style="height: 1.1393em; vertical-align: -0.2924em; display: inline-block" class="org-latex org-latex-inline" /> as a collection of sets. A <img src="./ltximg/org-tex-7cfbef9d56a71719dd752e146a68a2d12f1b6941.svg" alt="\(\Sigma\sp{0}\sb{1}\)" style="height: 1.1393em; vertical-align: -0.2924em; display: inline-block" class="org-latex org-latex-inline" /> set is a set <img src="./ltximg/org-tex-a5dac8007615cc40cb6b64dfe63cddf7a2294950.svg" alt="\(A\)" style="height: 0.7680em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" /> that satify:
+<img src="./ltximg/org-tex-d2933b09e59e711748d512cc1ec1b02a96d5fc1d.svg" alt="\[
+x \in A \Leftrightarrow \exists y R(x,y)
+\]" style="height: 1.5194em; display: block" class="org-latex org-latex-block" />
+where <img src="./ltximg/org-tex-7b0f8a939ce88a3d8518b733bed22144d8d1a2d1.svg" alt="\(R\)" style="height: 0.7680em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" /> is a <img src="./ltximg/org-tex-fe91aa73f44700858a134ffe2c05a2d984d7ba28.svg" alt="\(Q\)" style="height: 0.9586em; vertical-align: -0.2397em; display: inline-block" class="org-latex org-latex-inline" />-free quantifier and can not be arbitrary.
+</p>
+</div>
+</div>
+<div id="outline-container-orgf5f3f90" class="outline-4">
+<h4 id="orgf5f3f90"><span class="section-number-4">1.2.5.</span> <img src="./ltximg/org-tex-ecb1e8a6714f0a62a8a4d0dc3a9eccb3b0f7f22a.svg" alt="\(\Delta\sb{1}\sp{0}\)" style="height: 1.1393em; vertical-align: -0.2924em; display: inline-block" class="org-latex org-latex-inline" /></h4>
+<div class="outline-text-4" id="text-1-2-5">
+<p>
+<img src="./ltximg/org-tex-b93ee4840a42a06207da3b7605a18328d5802ba9.svg" alt="\(\Sigma_{1}^{0}\)" style="height: 1.1393em; vertical-align: -0.2924em; display: inline-block" class="org-latex org-latex-inline" /> and <img src="./ltximg/org-tex-9bf78b70e5a0b5b58d42527f4ab87bd604ccf4c6.svg" alt="\(\Pi\sb{1}\sp{0}\)" style="height: 1.1393em; vertical-align: -0.2924em; display: inline-block" class="org-latex org-latex-inline" /> sets are respectively semi-decidable and co-semi-decidable.
+</p>
+
+<p>
+semi-decidable means <img src="./ltximg/org-tex-e05668f54738fc52e6ed9f2c78c5c779829517f6.svg" alt="\(x \in A\)" style="height: 0.8063em; vertical-align: -0.0875em; display: inline-block" class="org-latex org-latex-inline" /> is decidable if <img src="./ltximg/org-tex-e05668f54738fc52e6ed9f2c78c5c779829517f6.svg" alt="\(x \in A\)" style="height: 0.8063em; vertical-align: -0.0875em; display: inline-block" class="org-latex org-latex-inline" />.
+co-semi-decidable means <img src="./ltximg/org-tex-e05668f54738fc52e6ed9f2c78c5c779829517f6.svg" alt="\(x \in A\)" style="height: 0.8063em; vertical-align: -0.0875em; display: inline-block" class="org-latex org-latex-inline" /> is decidable if <img src="./ltximg/org-tex-659b1883cd935787b9bf87f6930fb1177cad807d.svg" alt="\(x \notin A\)" style="height: 0.8717em; vertical-align: -0.0875em; display: inline-block" class="org-latex org-latex-inline" />.
+</p>
+
+<p>
+So a <img src="./ltximg/org-tex-248ffcb4cf3949bbd0b7c5829abf83ade99c5d98.svg" alt="\(\Delta^{0}_{1}\)" style="height: 1.1393em; vertical-align: -0.2924em; display: inline-block" class="org-latex org-latex-inline" /> set is decidable, since <img src="./ltximg/org-tex-69751e8077f9d999e899e77197bf8b49c3bc30b7.svg" alt="\(\Delta^{0}_{1}:= \Sigma^{0}_{1}\cap \Pi _{1}^{0}\)" style="height: 1.1393em; vertical-align: -0.2924em; display: inline-block" class="org-latex org-latex-inline" />.
+</p>
+</div>
+</div>
+<div id="outline-container-org677ac1a" class="outline-4">
+<h4 id="org677ac1a"><span class="section-number-4">1.2.6.</span> a classic example of <img src="./ltximg/org-tex-63b44750af93767194736a6bbbb089a943bd2e80.svg" alt="\(\Delta\sp{0}\sb{1}\)" style="height: 1.1393em; vertical-align: -0.2924em; display: inline-block" class="org-latex org-latex-inline" /> set</h4>
+<div class="outline-text-4" id="text-1-2-6">
+<p>
+(given by Copilot)
+</p>
+
+<p>
+Sure! A classic example of a <img src="./ltximg/org-tex-0b280060c56d6e917bcdeb2843a1473631a6c32b.svg" alt="\(\Delta_1\sp{0}\)" style="height: 1.1393em; vertical-align: -0.2924em; display: inline-block" class="org-latex org-latex-inline" /> set is the set of even numbers.
+</p>
+
+<ul class="org-ul">
+<li>The set of even numbers can be defined by the formula: <img src="./ltximg/org-tex-2970c865e638b3249af95b2efa895fab2edcacc2.svg" alt="\( x \in \text{Even} \iff \exists y \, (x = 2y) \)" style="height: 1.0784em; vertical-align: -0.2942em; display: inline-block" class="org-latex org-latex-inline" />. This shows that the set of even numbers is in <img src="./ltximg/org-tex-190c4e99d5700d97829e2461a8491b7c7a38fa9c.svg" alt="\(\Sigma_1\)" style="height: 0.9150em; vertical-align: -0.1962em; display: inline-block" class="org-latex org-latex-inline" />.</li>
+
+<li>The set of even numbers can also be defined by the formula: <img src="./ltximg/org-tex-793cf6307f30ab3632c24fef3dbefa4ccf6c4701.svg" alt="\(x \in \text{Even} \iff \forall y \, (x \neq 2y + 1) \)" style="height: 1.0784em; vertical-align: -0.2942em; display: inline-block" class="org-latex org-latex-inline" />. This shows that the set of even numbers is in <img src="./ltximg/org-tex-0f8d058f620dad87e616e1a511f57c2725a29c10.svg" alt="\(\Pi_1\)" style="height: 0.9150em; vertical-align: -0.1962em; display: inline-block" class="org-latex org-latex-inline" />.</li>
+</ul>
+
+<p>
+Since the set of even numbers can be characterized by both an existential and a universal quantifier, it is in the intersection of <img src="./ltximg/org-tex-190c4e99d5700d97829e2461a8491b7c7a38fa9c.svg" alt="\(\Sigma_1\)" style="height: 0.9150em; vertical-align: -0.1962em; display: inline-block" class="org-latex org-latex-inline" /> and <img src="./ltximg/org-tex-0f8d058f620dad87e616e1a511f57c2725a29c10.svg" alt="\(\Pi_1\)" style="height: 0.9150em; vertical-align: -0.1962em; display: inline-block" class="org-latex org-latex-inline" />, making it a <img src="./ltximg/org-tex-bc41413c2d3ab7935d8b5c4470fac54e37e96759.svg" alt="\(\Delta_1\)" style="height: 0.9150em; vertical-align: -0.1962em; display: inline-block" class="org-latex org-latex-inline" /> set.
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org75adf95" class="outline-3">
+<h3 id="org75adf95"><span class="section-number-3">1.3.</span> arithmetic RR</h3>
+<div class="outline-text-3" id="text-1-3">
+<p>
+RR is the child of formalism. And we introduce <img src="./ltximg/org-tex-dcf21b5620ad8330376751621235330eb77679f8.svg" alt="\(=\)" style="height: 0.4579em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" /> <img src="./ltximg/org-tex-ae6ed05940e19e2ad06c8f828d650a4c1c78576b.svg" alt="\(&amp;lt;\)" style="height: 0.6650em; vertical-align: -0.0875em; display: inline-block" class="org-latex org-latex-inline" /> and some constant <img src="./ltximg/org-tex-e57af5c08ab1d054dc16f56c03a8b0575c2cbe58.svg" alt="\(0\)" style="height: 0.7299em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" /> <img src="./ltximg/org-tex-1e9a84c3b7b11a8643e81d7a1d81195910a16326.svg" alt="\(S\)" style="height: 0.7680em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" /> <img src="./ltximg/org-tex-3ad1880cb1b935eb17e8d76b6b96a8b4a83a17cc.svg" alt="\(\times\)" style="height: 0.7517em; vertical-align: -0.1309em; display: inline-block" class="org-latex org-latex-inline" /> <img src="./ltximg/org-tex-60ee91fad0c909638e257a5dad3bf252a99d8f44.svg" alt="\(+\)" style="height: 0.7517em; vertical-align: -0.1309em; display: inline-block" class="org-latex org-latex-inline" />.
+</p>
+
+<p>
+Arithmetic system right now is boring because it is merely formalism shit.
+</p>
+</div>
+<div id="outline-container-org71aadab" class="outline-4">
+<h4 id="org71aadab"><span class="section-number-4">1.3.1.</span> group: equality</h4>
+<div class="outline-text-4" id="text-1-3-1">
+<ul class="org-ul">
+<li><img src="./ltximg/org-tex-902b299c1328e6c156c3c97c116edbfabd56bc23.svg" alt="\(x = x\)" style="height: 0.5203em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" /></li>
+<li><img src="./ltximg/org-tex-2731432f4a8b5719df342335bb839f07d9f81836.svg" alt="\(x = y \Rightarrow y = x\)" style="height: 0.7109em; vertical-align: -0.2397em; display: inline-block" class="org-latex org-latex-inline" /></li>
+<li><img src="./ltximg/org-tex-a9fff351f99cbd85575deac9c2cfcf1444a6e31c.svg" alt="\(x = y \land y = z \Rightarrow x = z\)" style="height: 0.8334em; vertical-align: -0.2397em; display: inline-block" class="org-latex org-latex-inline" /></li>
+<li><img src="./ltximg/org-tex-686c4e01e9bb10a8965b7e9336b11f14085b5c33.svg" alt="\(x = y \land z =t \land x &amp;lt; z \Rightarrow y &amp;lt; t\)" style="height: 0.8917em; vertical-align: -0.2397em; display: inline-block" class="org-latex org-latex-inline" /></li>
+<li><img src="./ltximg/org-tex-bba48a8fdc98d75c79abd3b4d483fc42492332a1.svg" alt="\(x  = y \Rightarrow S x = Sy\)" style="height: 0.9586em; vertical-align: -0.2397em; display: inline-block" class="org-latex org-latex-inline" /></li>
+<li><img src="./ltximg/org-tex-aa6bfdf83534af0de752023014ee7bd0394c3b0a.svg" alt="\(x = y \land z = t \Rightarrow x + z = y + t\)" style="height: 0.8917em; vertical-align: -0.2397em; display: inline-block" class="org-latex org-latex-inline" /></li>
+<li><img src="./ltximg/org-tex-bb179915593fb3f57bf288ec31c2f08e7e433d38.svg" alt="\(x = y \land z = t \Rightarrow x \times z = y \times t\)" style="height: 0.8917em; vertical-align: -0.2397em; display: inline-block" class="org-latex org-latex-inline" /></li>
+</ul>
+
+<p>
+There rules are used to prove <img src="./ltximg/org-tex-02ab77991965f8ecbd28ed214f8f8d5f1517a31f.svg" alt="\(x = y \land A[x] \Rightarrow A[y]\)" style="height: 1.0784em; vertical-align: -0.2942em; display: inline-block" class="org-latex org-latex-inline" />.
+</p>
+</div>
+</div>
+<div id="outline-container-org51f3368" class="outline-4">
+<h4 id="org51f3368"><span class="section-number-4">1.3.2.</span> group: definitions</h4>
+<div class="outline-text-4" id="text-1-3-2">
+<ul class="org-ul">
+<li><img src="./ltximg/org-tex-448f57f5ca1615eddc57b4dcdd6bd35ed6ab5245.svg" alt="\(x + 0 = x\)" style="height: 0.8116em; vertical-align: -0.1309em; display: inline-block" class="org-latex org-latex-inline" /></li>
+<li><img src="./ltximg/org-tex-03b65616f3888609b86fc689e2fd72597566478a.svg" alt="\(x + S y = S(x+y)\)" style="height: 1.0784em; vertical-align: -0.2942em; display: inline-block" class="org-latex org-latex-inline" /></li>
+<li><img src="./ltximg/org-tex-85a026f8650d0c9c1a504945aad59e02b2975bf4.svg" alt="\(x \times 0 = 0\)" style="height: 0.8116em; vertical-align: -0.1309em; display: inline-block" class="org-latex org-latex-inline" /></li>
+<li><img src="./ltximg/org-tex-90bc53fffa272f90b1bf2c9daf7a7564306e9827.svg" alt="\(x \times S(y) = (x\times y) + x\)" style="height: 1.0784em; vertical-align: -0.2942em; display: inline-block" class="org-latex org-latex-inline" /></li>
+</ul>
+
+<p>
+These can prove that if two terms <img src="./ltximg/org-tex-1e290dbda63f0e5e036990181c97952115d8860e.svg" alt="\(x,y\)" style="height: 0.7109em; vertical-align: -0.2397em; display: inline-block" class="org-latex org-latex-inline" /> are the same number, then <img src="./ltximg/org-tex-1b35459a349b2679914a765d13d34df0602349b6.svg" alt="\(x = y\)" style="height: 0.7109em; vertical-align: -0.2397em; display: inline-block" class="org-latex org-latex-inline" /> is provable.
+</p>
+
+<p>
+the 3rd and 4th peano axioms
+</p>
+
+<ul class="org-ul">
+<li><img src="./ltximg/org-tex-823178c7ad85b81a233da26b1a7dd552a6adc4a3.svg" alt="\(Sx \ne 0\)" style="height: 0.9695em; vertical-align: -0.2397em; display: inline-block" class="org-latex org-latex-inline" /></li>
+<li><img src="./ltximg/org-tex-6860be3da6ca9e5558665b3825bec5020914c74b.svg" alt="\(S x = S y \Rightarrow x = y\)" style="height: 0.9586em; vertical-align: -0.2397em; display: inline-block" class="org-latex org-latex-inline" /></li>
+</ul>
+
+<p>
+These group can be used to prove that if <img src="./ltximg/org-tex-9ea52981cefe5b3b1cb57d49e2b641720e800279.svg" alt="\(x, y\)" style="height: 0.7109em; vertical-align: -0.2397em; display: inline-block" class="org-latex org-latex-inline" /> are different number, then <img src="./ltximg/org-tex-d86068253a804478a43f3332b04fcaf4d73539ea.svg" alt="\(x \ne y\)" style="height: 0.9695em; vertical-align: -0.2397em; display: inline-block" class="org-latex org-latex-inline" /> is provable.
+Also, these two things shamelessly assume an infinite domain, otherwise <img src="./ltximg/org-tex-e6c602eda0ec530368a5ef7264f021107fbf232d.svg" alt="\(\overline{10} = \bar{0}\)" style="height: 0.9259em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" /> could be proved.
+</p>
+</div>
+</div>
+<div id="outline-container-orge860f07" class="outline-4">
+<h4 id="orge860f07"><span class="section-number-4">1.3.3.</span> group three: a last axiom</h4>
+<div class="outline-text-4" id="text-1-3-3">
+<p>
+<img src="./ltximg/org-tex-c553e39c92b7287e3941d9980b41d8bc6a359785.svg" alt="\[
+x &amp;lt; y  \lor x = y \lor x &amp;gt; y
+\]" style="height: 1.4649em; display: block" class="org-latex org-latex-block" />
+what is this one used for? Let us check what Girard says:
+</p>
+
+<blockquote>
+<p>
+the last axiom of a slightly different nature from the rest, since it is not needed for <i>incompleteness</i>: the representation of expansive properties is handled by the definition axioms. It is used in the representation of recursive functions and therefore in the algorithmic undecidability of RR and all its consistent extensions. It is also used in the Rosser variant.
+</p>
+</blockquote>
+</div>
+</div>
+</div>
+<div id="outline-container-orgd1a0eaf" class="outline-3">
+<h3 id="orgd1a0eaf"><span class="section-number-3">1.4.</span> PA</h3>
+<div class="outline-text-3" id="text-1-4">
+</div>
+<div id="outline-container-orgd56c60b" class="outline-4">
+<h4 id="orgd56c60b"><span class="section-number-4">1.4.1.</span> induction schema</h4>
+<div class="outline-text-4" id="text-1-4-1">
+<p>
+Let us check how to express induction schema:
+<img src="./ltximg/org-tex-fdec06aa95731ba3d2b2cb70e232174c74d3b745.svg" alt="\[
+A[0] \land \forall y (A[y] \Rightarrow A[Sy]) \Rightarrow \forall x A[x]
+\]" style="height: 1.5194em; display: block" class="org-latex org-latex-block" />
+here <a href="note.html#ID-16547be7-8ed1-431b-b733-c1cd6048cda8"><img src="./ltximg/org-tex-8770014a44061d8f1f4200eafc5d537c4b0fe58a.svg" alt="\(\mathrm{PA}\sb{2}\)" style="height: 0.9150em; vertical-align: -0.1962em; display: inline-block" class="org-latex org-latex-inline" /> second order peano arithmetic</a>, we have relative description for induction schema, where we have that if <img src="./ltximg/org-tex-b99c8bdeb593eedd67dbe2576beca1b6fe9dbae2.svg" alt="\(x\)" style="height: 0.5203em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" /> is a nat number, then
+<img src="./ltximg/org-tex-831419e918a4a518cc12032dc23dc54778a83cd2.svg" alt="\[
+A[0]\land \forall y(A[y] \Rightarrow A[Sy]) \Rightarrow A[x]
+\]" style="height: 1.5194em; display: block" class="org-latex org-latex-block" />
+is provable.
+</p>
+</div>
+</div>
+<div id="outline-container-orga60f926" class="outline-4">
+<h4 id="orga60f926"><span class="section-number-4">1.4.2.</span> the definition of PA</h4>
+<div class="outline-text-4" id="text-1-4-2">
+<p>
+Peano's Arithmetic is derived from <img src="./ltximg/org-tex-81d019438d45738a2710a39b0ed1640b346363f9.svg" alt="\textbf{RR}" style="height: 0.7747em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" />, added with induction schema.
+<img src="./ltximg/org-tex-fdec06aa95731ba3d2b2cb70e232174c74d3b745.svg" alt="\[
+A[0] \land \forall y (A[y] \Rightarrow A[Sy]) \Rightarrow \forall x A[x]
+\]" style="height: 1.5194em; display: block" class="org-latex org-latex-block" />
+Here <img src="./ltximg/org-tex-a5dac8007615cc40cb6b64dfe63cddf7a2294950.svg" alt="\(A\)" style="height: 0.7680em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" /> is not arbitrary.
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org73f5075" class="outline-3">
+<h3 id="org73f5075"><span class="section-number-3">1.5.</span> satisfiable</h3>
+<div class="outline-text-3" id="text-1-5">
+<p>
+A formula is satisfiable if there is an assignment that makes it true.
+</p>
+
+<p>
+An assignment for a formula is a set of assignments (the process of give value, some people use validate) for variables in the formula. After giving value to variables, we can now decide the true/false of the formula (by writing down the truth table).
+</p>
+
+<p>
+A (propositional) formula is unsatisfiable means that there is no way for it to be true.
+</p>
+
+<p>
+Remark: The definition of satisfiable can be extended to predicate logic, where instead of assignment, we say <i>model</i>. I just don't remember the terminology.
+</p>
+</div>
+</div>
+<div id="outline-container-org89f4ebb" class="outline-3">
+<h3 id="org89f4ebb"><span class="section-number-3">1.6.</span> there is an assignment makes it true</h3>
+<div class="outline-text-3" id="text-1-6">
+<p>
+There is an entry in truth table that is true.
+</p>
+</div>
+</div>
+<div id="outline-container-org0f73176" class="outline-3">
+<h3 id="org0f73176"><span class="section-number-3">1.7.</span> ground terms</h3>
+<div class="outline-text-3" id="text-1-7">
+<p>
+Ground terms are terms that have no variable.
+</p>
+</div>
+</div>
+<div id="outline-container-orgaa45ebe" class="outline-3">
+<h3 id="orgaa45ebe"><span class="section-number-3">1.8.</span> ground instances</h3>
+<div class="outline-text-3" id="text-1-8">
+<p>
+A ground instance of a formula <img src="./ltximg/org-tex-1e9a84c3b7b11a8643e81d7a1d81195910a16326.svg" alt="\(S\)" style="height: 0.7680em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" /> is a formula derived from <img src="./ltximg/org-tex-1e9a84c3b7b11a8643e81d7a1d81195910a16326.svg" alt="\(S\)" style="height: 0.7680em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" />, where all the variables are replaced with ground terms.
+</p>
+</div>
+</div>
+<div id="outline-container-orgb5d2258" class="outline-3">
+<h3 id="orgb5d2258"><span class="section-number-3">1.9.</span> alternative explain for Herbrand's theorem</h3>
+<div class="outline-text-3" id="text-1-9">
+<p>
+An formula <img src="./ltximg/org-tex-1e9a84c3b7b11a8643e81d7a1d81195910a16326.svg" alt="\(S\)" style="height: 0.7680em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" /> has a Herbrand's model means that there are a set of ground terms that makes <img src="./ltximg/org-tex-1e9a84c3b7b11a8643e81d7a1d81195910a16326.svg" alt="\(S\)" style="height: 0.7680em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" /> true.
+</p>
+</div>
+</div>
+<div id="outline-container-org077a2a9" class="outline-3">
+<h3 id="org077a2a9"><span class="section-number-3">1.10.</span> simultaneous substitution <img src="./ltximg/org-tex-7e7c341c574d0ab5c94f8dd2451ce16c541718f3.svg" alt="\(\theta\)" style="height: 0.7789em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" /></h3>
+<div class="outline-text-3" id="text-1-10">
+<p>
+A <img src="./ltximg/org-tex-7e7c341c574d0ab5c94f8dd2451ce16c541718f3.svg" alt="\(\theta\)" style="height: 0.7789em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" /> can be applied to a formula or expression <img src="./ltximg/org-tex-1838de6f82cf11d7704f5ea9a1bf339409cb760d.svg" alt="\(E\)" style="height: 0.7680em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" />, but anyway I prefer <img src="./ltximg/org-tex-a5dac8007615cc40cb6b64dfe63cddf7a2294950.svg" alt="\(A\)" style="height: 0.7680em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" /> for a formula, <img src="./ltximg/org-tex-4eec2828ae8a0ecd3ff71f52fcf7ba97d310e520.svg" alt="\(\Gamma\)" style="height: 0.7680em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" /> for a set of formulas.
+</p>
+
+<p>
+<img src="./ltximg/org-tex-8bb5b9ceebb5c5dc3e03281d6441de3951782459.svg" alt="\(\Gamma\theta\)" style="height: 0.7789em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" /> means carry the substitution to every formulas in <img src="./ltximg/org-tex-4eec2828ae8a0ecd3ff71f52fcf7ba97d310e520.svg" alt="\(\Gamma\)" style="height: 0.7680em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" />. We can compose those <img src="./ltximg/org-tex-7e7c341c574d0ab5c94f8dd2451ce16c541718f3.svg" alt="\(\theta\)" style="height: 0.7789em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" />. For example, <img src="./ltximg/org-tex-feb27d3262a9af656b09cdd0f73ae7620594a25b.svg" alt="\(\theta\sigma\)" style="height: 0.7789em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" /> means carrying <img src="./ltximg/org-tex-7e7c341c574d0ab5c94f8dd2451ce16c541718f3.svg" alt="\(\theta\)" style="height: 0.7789em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" /> first and then <img src="./ltximg/org-tex-f23d80a1bfdcc3cdb68fb9732bd3e4e2482527c4.svg" alt="\(\sigma\)" style="height: 0.5203em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" />.
+</p>
+</div>
+</div>
+<div id="outline-container-orga5e96de" class="outline-3">
+<h3 id="orga5e96de"><span class="section-number-3">1.11.</span> unifier <img src="./ltximg/org-tex-7e7c341c574d0ab5c94f8dd2451ce16c541718f3.svg" alt="\(\theta\)" style="height: 0.7789em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" /></h3>
+<div class="outline-text-3" id="text-1-11">
+<p>
+A unifer <img src="./ltximg/org-tex-7e7c341c574d0ab5c94f8dd2451ce16c541718f3.svg" alt="\(\theta\)" style="height: 0.7789em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" /> for a set of expressions <img src="./ltximg/org-tex-7496985737933c665d55454bfc95b8a019f11966.svg" alt="\(S:=\{E\sb{i}\}\)" style="height: 1.0784em; vertical-align: -0.2942em; display: inline-block" class="org-latex org-latex-inline" />, is such <img src="./ltximg/org-tex-7e7c341c574d0ab5c94f8dd2451ce16c541718f3.svg" alt="\(\theta\)" style="height: 0.7789em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" />, that
+</p>
+
+<p>
+<img src="./ltximg/org-tex-15c5ff903bf30be75037b63f31157b601d5252df.svg" alt="\[
+E\sb{1}\theta = \dots = E\sb{n}\theta
+\]" style="height: 1.4214em; display: block" class="org-latex org-latex-block" />
+</p>
+</div>
+</div>
+<div id="outline-container-org8e86c20" class="outline-3">
+<h3 id="org8e86c20"><span class="section-number-3">1.12.</span> most general unifier</h3>
+<div class="outline-text-3" id="text-1-12">
+<p>
+The most general unifier, a.k.a., m.g.u. is like the smallest unifier. A m.g.u. noted as <img src="./ltximg/org-tex-7e7c341c574d0ab5c94f8dd2451ce16c541718f3.svg" alt="\(\theta\)" style="height: 0.7789em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" />, suit that <img src="./ltximg/org-tex-08a118bcc4d3075a5f9926a933cfd3825d3baa70.svg" alt="\(\forall \sigma\)" style="height: 0.7789em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" /> which is a unifier, there is a <img src="./ltximg/org-tex-192403837bff965be1369da7678aae1d9581f62c.svg" alt="\(\rho\)" style="height: 0.7109em; vertical-align: -0.2397em; display: inline-block" class="org-latex org-latex-inline" /> such that
+<img src="./ltximg/org-tex-08e17ba6c5e5015b9b14c1dfb829677211d97a00.svg" alt="\[
+\sigma = \theta \rho
+\]" style="height: 1.4649em; display: block" class="org-latex org-latex-block" />
+</p>
+</div>
+</div>
+<div id="outline-container-orgf5beb67" class="outline-3">
+<h3 id="orgf5beb67"><span class="section-number-3">1.13.</span> unification algorithm</h3>
+<div class="outline-text-3" id="text-1-13">
+<p>
+unification algorithm is an effective algorithm used for search m.g.u.
+</p>
+
+<p>
+Using the algorithm, we will find a mgu <img src="./ltximg/org-tex-f23d80a1bfdcc3cdb68fb9732bd3e4e2482527c4.svg" alt="\(\sigma\)" style="height: 0.5203em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" /> satisfies that for all unifier <img src="./ltximg/org-tex-7e7c341c574d0ab5c94f8dd2451ce16c541718f3.svg" alt="\(\theta\)" style="height: 0.7789em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" />
+<img src="./ltximg/org-tex-00f82cf594677f4a5d1cb6cca7e7923e8e9186f4.svg" alt="\[
+\sigma \theta = \theta
+\]" style="height: 1.2744em; display: block" class="org-latex org-latex-block" />
+holds.
+</p>
+</div>
+</div>
+<div id="outline-container-org6fd2cff" class="outline-3">
+<h3 id="org6fd2cff"><span class="section-number-3">1.14.</span> herbrand's theorem and cut-elimination</h3>
+<div class="outline-text-3" id="text-1-14">
+<p>
+Herbrand’s Theorem: This theorem provides a way to transform a first-order logic formula into a purely propositional form.
+</p>
+
+<p>
+It states that if a first-order formula is universally valid, then there is a finite set of ground instances (instances with no variables) of its clauses that are propositionally valid.
+</p>
+
+<p>
+How they are related is that they both transfer something undecidable to decidable.
+</p>
+</div>
+</div>
+<div id="outline-container-org659ff44" class="outline-3">
+<h3 id="org659ff44"><span class="section-number-3">1.15.</span> operational semantics and dynamics</h3>
+<div class="outline-text-3" id="text-1-15">
+<p>
+Harper: Dynamics
+Others: operational semantics
+Me: reduction rules and normalization
+</p>
+</div>
+</div>
+<div id="outline-container-orgc209b0c" class="outline-3">
+<h3 id="orgc209b0c"><span class="section-number-3">1.16.</span> Logic Programming</h3>
+<div class="outline-text-3" id="text-1-16">
+<p>
+Logic programming is based on the idea of seeking the atomic theorems of a theory whose axioms are <i>Horn clauses</i>. Those are sequents <img src="./ltximg/org-tex-d1caba51e70e26fc30d1276ee7cf90cd083e3e3c.svg" alt="\(\mathcal S\)" style="height: 0.7680em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" /> of the form <img src="./ltximg/org-tex-81c3f6337ae5dcd4d322d2ffa5e90fa155eae33e.svg" alt="\(P_{1}\dots P_{n} \vdash Q\)" style="height: 0.9695em; vertical-align: -0.2397em; display: inline-block" class="org-latex org-latex-inline" /> hwere <img src="./ltximg/org-tex-ff30b7269f66e5d162b82d076549eebc007e7695.svg" alt="\(P_{1}\dots P_{n},Q\)" style="height: 0.9586em; vertical-align: -0.2397em; display: inline-block" class="org-latex org-latex-inline" /> are atomic. To each axiom <img src="./ltximg/org-tex-d1caba51e70e26fc30d1276ee7cf90cd083e3e3c.svg" alt="\(\mathcal S\)" style="height: 0.7680em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" /> one cannaturally associate introduction rules:
+</p>
+
+<p>
+<img src="./ltximg/org-tex-f9b043abc000d2c74332199f5fe9cf4621a015ae.svg" alt="\[
+\prftree[r]{$(\mathcal S \theta \ I)$}
+{\prfsummary{}{P_{1} \theta\quad \dots\quad P_{n} \theta}}
+{Q \theta}\]" style="height: 4.5271em; display: block" class="org-latex org-latex-block" />
+</p>
+
+<p>
+where <img src="./ltximg/org-tex-7e7c341c574d0ab5c94f8dd2451ce16c541718f3.svg" alt="\(\theta\)" style="height: 0.7789em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" /> is a subsitution. One easily shows:
+</p>
+
+<ul class="org-ul">
+<li>cut-elimination (immediate, there is no <img src="./ltximg/org-tex-d1caba51e70e26fc30d1276ee7cf90cd083e3e3c.svg" alt="\(\mathcal S\)" style="height: 0.7680em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" />-elimination).</li>
+<li>For formulas of the shape <img src="./ltximg/org-tex-c102751de0e0b09cb8a12b0e8c5b1496148a8e30.svg" alt="\(\exists x_{1}\dots\exists x_{p} (R _{1} \land \dots \land R_{q})\)" style="height: 1.1138em; vertical-align: -0.3296em; display: inline-block" class="org-latex org-latex-inline" />, <img src="./ltximg/org-tex-8cbcca9665ce58c2296dba6761031aca1df4119f.svg" alt="\(R_{1}\)" style="height: 0.9150em; vertical-align: -0.1962em; display: inline-block" class="org-latex org-latex-inline" /> <img src="./ltximg/org-tex-545b7d1904a4457186a016dedc3aad7d0ef2a3fc.svg" alt="\(\dots\)" style="height: 0.2018em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" /> <img src="./ltximg/org-tex-d48c494ab587307c8714eb4be8e5ce460445bcf3.svg" alt="\(R_{q}\)" style="height: 1.0484em; vertical-align: -0.3296em; display: inline-block" class="org-latex org-latex-inline" /> atomic, classical provability matches intuitionistic provability.</li>
+</ul>
+
+<p>
+Thus the follwoing idea: in such an axiomatic system, try to prove formulas of the form <img src="./ltximg/org-tex-3a6ddccc3c3cdc842b3bc0845f4d31cd23c8c9b7.svg" alt="\(\exists _{1} \dots \exists x_{p}\)" style="height: 1.0593em; vertical-align: -0.3296em; display: inline-block" class="org-latex org-latex-inline" /> <img src="./ltximg/org-tex-cf039c72ab873b5ada90bec556c7c5ea2f1bfc78.svg" alt="\((R_{1} \land \dots \land R_{q})\)" style="height: 1.1138em; vertical-align: -0.3296em; display: inline-block" class="org-latex org-latex-inline" />. A cut-free proof will provide one with explicti values (existence property). The search for cut-free proofs is done by means of an algorithm, the <i>resolution method</i>, based on unification.
+</p>
+
+<p>
+4.D.2 PROLOG, its <i>grandeur</i>. The idea is to consider a Horn theory as a program. one will make queries of the form « find the solutions <img src="./ltximg/org-tex-dab3917ae94e5c48aec35541606a1d2675b158f3.svg" alt="\(x_{1}\dots x_{p}\)" style="height: 0.8007em; vertical-align: -0.3296em; display: inline-block" class="org-latex org-latex-inline" /> to the conjunction <img src="./ltximg/org-tex-50173e8fcb1abdf48bf6b42f1770a2a30d7ab828.svg" alt="\(R_{1} \land \dots \land R_{q}\)" style="height: 1.0484em; vertical-align: -0.3296em; display: inline-block" class="org-latex org-latex-inline" /> », which amounts to finding proofs of <img src="./ltximg/org-tex-3d6b1f34da12a0aaae34ce1d13367fe122c5309e.svg" alt="\(\exists x_{1},\dots , \exists x_{p}\)" style="height: 1.0593em; vertical-align: -0.3296em; display: inline-block" class="org-latex org-latex-inline" /> <img src="./ltximg/org-tex-cf039c72ab873b5ada90bec556c7c5ea2f1bfc78.svg" alt="\((R_{1} \land \dots \land R_{q})\)" style="height: 1.1138em; vertical-align: -0.3296em; display: inline-block" class="org-latex org-latex-inline" />, indeed cut-free. The search is done by unification: one seeks to prove <img src="./ltximg/org-tex-7b0f8a939ce88a3d8518b733bed22144d8d1a2d1.svg" alt="\(R\)" style="height: 0.7680em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" /> by finding a clause <img src="./ltximg/org-tex-e8d406236b620d938705e2b05d2b9f42bcdc1ed3.svg" alt="\(\Gamma \vdash \mathcal S\)" style="height: 0.7789em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" /> (axiom written as a sequent) whose <i>head</i> (right formula) unifies with <img src="./ltximg/org-tex-7b0f8a939ce88a3d8518b733bed22144d8d1a2d1.svg" alt="\(R\)" style="height: 0.7680em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" />, by means of <img src="./ltximg/org-tex-7e7c341c574d0ab5c94f8dd2451ce16c541718f3.svg" alt="\(\theta\)" style="height: 0.7789em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" />; then one is led back to similar problems for the formulas <img src="./ltximg/org-tex-78e990c4936389ba5848c40d854a2c81cb2f89c9.svg" alt="\(\Gamma \theta\)" style="height: 0.7789em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" /> of the <i>tail</i> where <img src="./ltximg/org-tex-7e7c341c574d0ab5c94f8dd2451ce16c541718f3.svg" alt="\(\theta\)" style="height: 0.7789em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" /> has been performed. One stops in case one steps on empty tails (success); on the other hand, when no unifier can be found, this is failure. But by far the most likely possibility is that of a search that neither succeeds nor fails, since it does not terminate. The culture of incompleteness is here to inform us as to the pregnancy of this unpleasant eventuality.
+</p>
+
+<p>
+Whatsoever, what we just described is the paradigm of logic programming, which was so glamourous in the years around 1980, mainly because of the Japanese enthusiasm for « the fifth generation ».
+</p>
+
+<p>
+4.D.3 PROLOG, its misery.
+</p>
+
+<p>
+Logic programming was bound to failure, not because of a want of quality, but because of its exaggerations. Indeed, the slogan was something like « pose the question, PROLOG will do the rest ». This paradigm of <i>declarative</i> programming, based on a « generic » algorithmics, is a sort of <i>all-terrain</i> vehicle, capable of doing everything and therefore doing everything badly. It would have been more reasonable to confine PROLOG to tasks for which it is well-adapted, e.g., the maintenance of data bases.
+</p>
+
+<p>
+On the contrary, attempts were made to improve its efficiency. Thus, as systematic search was too costly, « control » primitives, of the style « don’t try this possibility if&#x2026; » were introduced. And this slogan « logic + control », which forgets that the starting point was the logical soundness of the deduction. What can be said of this control which plays <i>against</i> logic14? One recognises the sectarian attitude that we exposed several times: the logic of the idea kills the idea.
+</p>
+
+<p>
+The result is the most inefficient language ever designed; thus, PROLOG is very sensitive to the order in which the clauses (axioms) have been written.
+</p>
+</div>
+</div>
+<div id="outline-container-org224bdf6" class="outline-3">
+<h3 id="org224bdf6"><span class="section-number-3">1.17.</span> sigma type and Martin-Lof type theory</h3>
+<div class="outline-text-3" id="text-1-17">
+<p>
+Martin-Lof appears after System F. Ch-isomorphism is integrated into syntax.
+</p>
+
+<p>
+See also The Blind Spot 5.D Martin-Löf’s type theory.
+</p>
+</div>
+</div>
+<div id="outline-container-org582a773" class="outline-3">
+<h3 id="org582a773"><span class="section-number-3">1.18.</span> tensor product according to Bourbaki.</h3>
+<div class="outline-text-3" id="text-1-18">
+<blockquote>
+<p>
+My advice is to work with multilinear functions in an appropriate setting, without trying to delve into the category-theoretic framework. This may become necessary in certain cases, but one should not forget that ideas are not to be found in diagrams. (true)
+</p>
+</blockquote>
+
+<p>
+We seek a space <img src="./ltximg/org-tex-339c8b0f6334fe2928a74fdf914be9ae9f454b89.svg" alt="\(A \otimes B\)" style="height: 0.8497em; vertical-align: -0.1309em; display: inline-block" class="org-latex org-latex-inline" /> and bilinear function <img src="./ltximg/org-tex-4768fb7b62ea0b13e8ccaf5fa8e8dcd8720497f9.svg" alt="\(\otimes \colon A, B \mapsto A \otimes B\)" style="height: 0.9586em; vertical-align: -0.2397em; display: inline-block" class="org-latex org-latex-inline" />, with the following universal property: if <img src="./ltximg/org-tex-121ff1d7c2da4a8044f50aa1a06eb6bc66dae1c7.svg" alt="\(G\colon A, B \mapsto C\)" style="height: 0.9586em; vertical-align: -0.2397em; display: inline-block" class="org-latex org-latex-inline" /> is another solution (bilinear function), then there is a unique linear <img src="./ltximg/org-tex-d48824c1113b47557058470227afc1fcc5ca3017.svg" alt="\(H \colon A \otimes B \mapsto C\)" style="height: 0.8497em; vertical-align: -0.1309em; display: inline-block" class="org-latex org-latex-inline" /> such that <img src="./ltximg/org-tex-ea1942141c1730b0e5c3e62d057cd4d5b06a7b88.svg" alt="\(G(a, b) = H(a \otimes b)\)" style="height: 1.0784em; vertical-align: -0.2942em; display: inline-block" class="org-latex org-latex-inline" /> for all <img src="./ltximg/org-tex-6211feff179ef9aa336cbe220c7d1958c1d76248.svg" alt="\(a \in A, b  \in B\)" style="height: 0.9695em; vertical-align: -0.2397em; display: inline-block" class="org-latex org-latex-inline" />. We see by the way that the tensor product is of « inductive », positive, style.
+</p>
+
+<p>
+ps. the def provided above is a bit vague. We use the def that everyone is using.
+</p>
+
+<p>
+A tensor product of two spaces <img src="./ltximg/org-tex-a5dac8007615cc40cb6b64dfe63cddf7a2294950.svg" alt="\(A\)" style="height: 0.7680em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" />, <img src="./ltximg/org-tex-b83a3eecc40b8423babb09ea67dc658664012590.svg" alt="\(B\)" style="height: 0.7680em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" />, we find the tensor product of <img src="./ltximg/org-tex-a5dac8007615cc40cb6b64dfe63cddf7a2294950.svg" alt="\(A\)" style="height: 0.7680em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" /> and <img src="./ltximg/org-tex-b83a3eecc40b8423babb09ea67dc658664012590.svg" alt="\(B\)" style="height: 0.7680em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" /> <img src="./ltximg/org-tex-339c8b0f6334fe2928a74fdf914be9ae9f454b89.svg" alt="\(A \otimes B\)" style="height: 0.8497em; vertical-align: -0.1309em; display: inline-block" class="org-latex org-latex-inline" />, together with a bilinear map <img src="./ltximg/org-tex-4eac22f7a7615ed6db4050ff056cee9c62f76630.svg" alt="\(\varphi\colon A \times B \to A \otimes B\)" style="height: 0.9586em; vertical-align: -0.2397em; display: inline-block" class="org-latex org-latex-inline" />. The object is the initial object.
+</p>
+
+<p>
+<img src="./ltximg/org-tex-884c65b8f431bb15fe6450380e2f76bef2cf2303.svg" alt="\[
+\begin{tikzcd}
+  V \times W \arrow[r, &quot;\varphi&quot;] \arrow[rd, &quot;h&quot;]
+    &amp;amp; V \otimes W \arrow[d, dashed, &quot;\bar h&quot;]\\
+    &amp;amp; Z
+\end{tikzcd}\]" style="height: 4.9022em; display: block" class="org-latex org-latex-block" />
+</p>
+
+<p>
+It serves as « the biggest possible » image of a bilinear map.
+</p>
+
+<p>
+How to prove the dimension of the tensor product is equal to the product of the dimensions of <img src="./ltximg/org-tex-b6ce8f71ccc20f546796f184091e88b8ebf1e2f6.svg" alt="\(V\)" style="height: 0.7680em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" /> and <img src="./ltximg/org-tex-679956175d478617cb823b24a88b02ceda4dfca1.svg" alt="\(W\)" style="height: 0.7680em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" />, that <img src="./ltximg/org-tex-2d985a413770c6c5b786a8cc4bee23bc1463547d.svg" alt="\(\dim V \times \dim W\)" style="height: 0.8606em; vertical-align: -0.1309em; display: inline-block" class="org-latex org-latex-inline" />. What is a bilinear map actually?
+</p>
+
+<p>
+There is a vector in <img src="./ltximg/org-tex-8bf74860ecf344bc3f70b9c19864b8b18f3af890.svg" alt="\(V \times W\)" style="height: 0.8497em; vertical-align: -0.1309em; display: inline-block" class="org-latex org-latex-inline" />, namely <img src="./ltximg/org-tex-28bed53d6a25530e8426884421d0b58c4bacb848.svg" alt="\((\sum a_{i} v_{i}, \sum b_{i} w_{i})\)" style="height: 1.0784em; vertical-align: -0.2942em; display: inline-block" class="org-latex org-latex-inline" />. It should be that
+</p>
+
+<p>
+<img src="./ltximg/org-tex-bcc34482e2617b495209e9203a7b9c4523255fae.svg" alt="\[h(\sum a_{i} v_{i}, w) = \sum a_{i}h(v_{i}, w),\]" style="height: 1.8134em; display: block" class="org-latex org-latex-block" />
+</p>
+
+<p>
+and also
+</p>
+
+<p>
+<img src="./ltximg/org-tex-7263e309c2950e38b3509cf09b2c83a28e125982.svg" alt="\[h(v, \sum b_{i} w_{i} ) = \sum b_{i} h(v, w_{i}),\]" style="height: 1.8134em; display: block" class="org-latex org-latex-block" />
+</p>
+
+<p>
+We should start from the basis. Let us say that the basis of <img src="./ltximg/org-tex-b6ce8f71ccc20f546796f184091e88b8ebf1e2f6.svg" alt="\(V\)" style="height: 0.7680em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" /> and <img src="./ltximg/org-tex-679956175d478617cb823b24a88b02ceda4dfca1.svg" alt="\(W\)" style="height: 0.7680em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" /> are respectively <img src="./ltximg/org-tex-c0d06f72e098beed175f7e9f8262a8674ee5395b.svg" alt="\(\alpha _{1}\dots \alpha _{n}\)" style="height: 0.6673em; vertical-align: -0.1962em; display: inline-block" class="org-latex org-latex-inline" /> and <img src="./ltximg/org-tex-12ea5a420029fb568175be6a15e72139c816fd29.svg" alt="\(\beta _{1} \dots \beta _{m}\)" style="height: 0.9695em; vertical-align: -0.2397em; display: inline-block" class="org-latex org-latex-inline" />. When fix <img src="./ltximg/org-tex-7d8d904d046ffca465132dfc1ccb5f5129c47811.svg" alt="\(w = \beta _{j}\)" style="height: 1.0593em; vertical-align: -0.3296em; display: inline-block" class="org-latex org-latex-inline" />, <img src="./ltximg/org-tex-05d056fa30cd3f3e81b5a8c2e2a1b4fbdfefbe32.svg" alt="\(v = \sum a_{i}\alpha _{i}\)" style="height: 1.0784em; vertical-align: -0.2942em; display: inline-block" class="org-latex org-latex-inline" />
+</p>
+
+<p>
+<img src="./ltximg/org-tex-f9182201d81cb6e0b761d6b6839d22ce52baf769.svg" alt="\[h(v, w) = \sum a_{i}h(\alpha _{i}, \beta _{j})\]" style="height: 1.8134em; display: block" class="org-latex org-latex-block" />
+</p>
+
+<p>
+A linear combination of <img src="./ltximg/org-tex-e3b7c16ce8a4c827edfb2543c85da9af7d17147c.svg" alt="\(\big(h(\alpha _{i}, \beta _{j})\big)_{i \in I}\)" style="height: 1.3753em; vertical-align: -0.4931em; display: inline-block" class="org-latex org-latex-inline" /> with <img src="./ltximg/org-tex-aadd2b378865485a9ff44625b36d5b9289220eb0.svg" alt="\(j\)" style="height: 0.9353em; vertical-align: -0.2397em; display: inline-block" class="org-latex org-latex-inline" /> fixated. Okay I think we can show that <img src="./ltximg/org-tex-9dbf7514b33d11f600213c28240bb3f7a0e25d3d.svg" alt="\(h(\alpha_{i} , \beta_{j}) _{i\in I _{n}, j \in I _{m}}\)" style="height: 1.1138em; vertical-align: -0.3296em; display: inline-block" class="org-latex org-latex-inline" /> are linear independent (at most). And that is the set of basis of <img src="./ltximg/org-tex-062d8bb4fd4914f5a88129ec0cf89c5e87915931.svg" alt="\(\mathrm{Im}\, Z\)" style="height: 0.7680em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" />, and thus using the fact that
+</p>
+
+<p>
+<img src="./ltximg/org-tex-d6e745a9add799f1989966eeee3afaaa728d975a.svg" alt="\[h(v, w) = \bar h \cdot \varphi(v, w)\]" style="height: 1.5194em; display: block" class="org-latex org-latex-block" />
+</p>
+
+<p>
+We may conclude that the basis of <img src="./ltximg/org-tex-330d3bc027fdba3fd23dbd627b55364d52404560.svg" alt="\(V \otimes W\)" style="height: 0.8497em; vertical-align: -0.1309em; display: inline-block" class="org-latex org-latex-inline" /> is of the same number as <img src="./ltximg/org-tex-2d985a413770c6c5b786a8cc4bee23bc1463547d.svg" alt="\(\dim V \times \dim W\)" style="height: 0.8606em; vertical-align: -0.1309em; display: inline-block" class="org-latex org-latex-inline" />.
+</p>
+
+<p>
+I don't really know the definition of <img src="./ltximg/org-tex-330d3bc027fdba3fd23dbd627b55364d52404560.svg" alt="\(V \otimes W\)" style="height: 0.8497em; vertical-align: -0.1309em; display: inline-block" class="org-latex org-latex-inline" />.
+</p>
+</div>
+</div>
+<div id="outline-container-orgbd705b0" class="outline-3">
+<h3 id="orgbd705b0"><span class="section-number-3">1.19.</span> quotient universal property</h3>
+<div class="outline-text-3" id="text-1-19">
+<p>
+Let there be a morphism <img src="./ltximg/org-tex-c512562fed7d327ca848532094514909b3fc7939.svg" alt="\(f\colon X \to Y\)" style="height: 0.9695em; vertical-align: -0.2397em; display: inline-block" class="org-latex org-latex-inline" />, the quotient can be expressed with this diagram
+</p>
+
+<p>
+<img src="./ltximg/org-tex-4e0d43ad27c682947e54ed79e96ef4aeb313e65c.svg" alt="\[
+\begin{tikzcd}
+  X \arrow[r, &quot;\bar f&quot;] \arrow[rd, &quot;f&quot;]
+    &amp;amp; Y / \ker f \arrow[d, dashed, &quot;h&quot;]\\
+    &amp;amp; Y
+\end{tikzcd}\]" style="height: 5.3451em; display: block" class="org-latex org-latex-block" />
+</p>
+</div>
+</div>
+<div id="outline-container-org696491b" class="outline-3">
+<h3 id="org696491b"><span class="section-number-3">1.20.</span> pattern matching and higher order unification</h3>
+<div class="outline-text-3" id="text-1-20">
+<p>
+see also: <a href="#orga5e96de">unifier <img src="./ltximg/org-tex-7e7c341c574d0ab5c94f8dd2451ce16c541718f3.svg" alt="\(\theta\)" style="height: 0.7789em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" /></a>
+</p>
+
+<p>
+Why? It seems obvious.
+</p>
+</div>
+</div>
+<div id="outline-container-org4e2ef66" class="outline-3">
+<h3 id="org4e2ef66"><span class="section-number-3">1.21.</span> topology</h3>
+<div class="outline-text-3" id="text-1-21">
+<p>
+We can view a linear map as a functor, which preserving two kinds of computations. What about continuous map?
+</p>
+
+<p>
+An open set in topological space suits that
+</p>
+<ol class="org-ol">
+<li>if <img src="./ltximg/org-tex-a5dac8007615cc40cb6b64dfe63cddf7a2294950.svg" alt="\(A\)" style="height: 0.7680em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" /> and <img src="./ltximg/org-tex-b83a3eecc40b8423babb09ea67dc658664012590.svg" alt="\(B\)" style="height: 0.7680em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" /> is open, then <img src="./ltximg/org-tex-4429ae44ca248b0a325aa40408c092acec33efda.svg" alt="\(A \cup B\)" style="height: 0.7680em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" /> and <img src="./ltximg/org-tex-6794538362ba90d9cf7060938b9cf2b0edd081ff.svg" alt="\(A \cap B\)" style="height: 0.7680em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" /> is open</li>
+<li><img src="./ltximg/org-tex-b71ddba857190e174afcb6b9ddec544fe69cd65b.svg" alt="\(X\)" style="height: 0.7680em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" /> is open and <img src="./ltximg/org-tex-2f417191c0d38c7bba3c1f46c19c7cc4f55ecff7.svg" alt="\(\emptyset\)" style="height: 0.8878em; vertical-align: -0.1036em; display: inline-block" class="org-latex org-latex-inline" /> is open</li>
+</ol>
+</div>
+</div>
+<div id="outline-container-orga0ee0d4" class="outline-3">
+<h3 id="orga0ee0d4"><span class="section-number-3">1.22.</span> intuitionistic property and herbrand's theorem</h3>
+<div class="outline-text-3" id="text-1-22">
+<p>
+In intuitionistic
+</p>
+
+<p>
+<img src="./ltximg/org-tex-d685ed7a4a56947f3f5c088b63cca3c09dfc6f1c.svg" alt="\(\exists x A\)" style="height: 0.7789em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" /> means there is a <img src="./ltximg/org-tex-a67d4ca7582d61dfb8b0de879a635d10199ac86c.svg" alt="\(t\)" style="height: 0.7011em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" /> such that <img src="./ltximg/org-tex-c82180f5907e4389d32d396318d230374b3b80c3.svg" alt="\(A[t/x]\)" style="height: 1.0784em; vertical-align: -0.2942em; display: inline-block" class="org-latex org-latex-inline" />.
+</p>
+
+<p>
+Herbrand's theorem is that, to prove <img src="./ltximg/org-tex-8d59c1365f63db8e197e7ae84b95a9cb314ad7ff.svg" alt="\(\exists x A(x)\)" style="height: 1.0784em; vertical-align: -0.2942em; display: inline-block" class="org-latex org-latex-inline" />, we can equivalently prove
+</p>
+
+<p>
+<img src="./ltximg/org-tex-f8b6bfd8a537b8a3fe9a1bfad9fc11af94abcbbe.svg" alt="\[A(t_{1}) \lor \dots \lor A(t_{n})\]" style="height: 1.5194em; display: block" class="org-latex org-latex-block" />
+</p>
+
+<p>
+for ground terms <img src="./ltximg/org-tex-b9850ac3188b1f3c4ea1f6b5d273bf636ba65ff0.svg" alt="\(t_{1},\dots,t_{n}\)" style="height: 0.8917em; vertical-align: -0.2397em; display: inline-block" class="org-latex org-latex-inline" />. They looks similiar.
+</p>
+</div>
+</div>
+<div id="outline-container-org60167ee" class="outline-3">
+<h3 id="org60167ee"><span class="section-number-3">1.23.</span> CoC and Coq and Martin-Lof's system</h3>
+<div class="outline-text-3" id="text-1-23">
+<p>
+There is connection between constructive logic and CoC and Coq
+</p>
+
+<p>
+See The Blind Spot 6.A.4
+</p>
+</div>
+</div>
+<div id="outline-container-orgc0caca4" class="outline-3">
+<h3 id="orgc0caca4"><span class="section-number-3">1.24.</span> CIC</h3>
+<div class="outline-text-3" id="text-1-24">
+<p>
+what is CIC?
+</p>
+
+<p>
+CIC stands for the Calculus of Inductive Constructions (Calcul des Constructions Inductives). It is a formal system used in the Coq proof assistant. The CIC extends the Calculus of Constructions (CoC) by adding inductive types, which are essential for defining data structures and reasoning about them.
+</p>
+</div>
+<div id="outline-container-org47e0dd8" class="outline-4">
+<h4 id="org47e0dd8"><span class="section-number-4">1.24.1.</span> Key Features of CIC:</h4>
+<div class="outline-text-4" id="text-1-24-1">
+<ol class="org-ol">
+<li><b>Inductive Types</b>: These allow the definition of recursive data structures, such as lists, trees, and natural numbers. Inductive types are defined by a set of constructors that specify how to build elements of the type.</li>
+
+<li><b>Pattern Matching</b>: This is used to define functions over inductive types by case analysis on the constructors.</li>
+
+<li><b>Dependent Types</b>: Like in the Calculus of Constructions, CIC supports dependent types, where the type of a term can depend on another term. This is crucial for expressing properties and proofs in a precise manner.</li>
+
+<li><b>Propositions as Types</b>: In CIC, propositions are represented as types, and proofs of these propositions are represented as terms of these types. This is known as the Curry-Howard isomorphism.</li>
+</ol>
+</div>
+</div>
+<div id="outline-container-orgd5aedab" class="outline-4">
+<h4 id="orgd5aedab"><span class="section-number-4">1.24.2.</span> Example in Coq:</h4>
+<div class="outline-text-4" id="text-1-24-2">
+<p>
+Here is a simple example of defining natural numbers using an inductive type in Coq:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-coq">Inductive nat : Type :=
+  | O : nat
+  | S : nat -&gt; nat.
+</pre>
+</div>
+
+<p>
+This defines the type <code>nat</code> with two constructors: <code>O</code> (representing zero) and <code>S</code> (representing the successor function).
+</p>
+
+<p>
+You can then define a function that adds two natural numbers using pattern matching:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-coq">Fixpoint add (n m : nat) : nat :=
+  match n with
+  | O =&gt; m
+  | S n' =&gt; S (add n' m)
+  end.
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgd45808c" class="outline-4">
+<h4 id="orgd45808c"><span class="section-number-4">1.24.3.</span> Importance in Coq:</h4>
+<div class="outline-text-4" id="text-1-24-3">
+<p>
+The CIC is the foundational logic of Coq, providing a powerful framework for both programming and proving. It allows users to write programs and prove properties about them within the same system, leveraging the Curry-Howard isomorphism to bridge the gap between computation and logic.
+</p>
+</div>
+</div>
+<div id="outline-container-orgf9a3ca1" class="outline-4">
+<h4 id="orgf9a3ca1"><span class="section-number-4">1.24.4.</span> Relation to Martin-Löf's Type Theory:</h4>
+<div class="outline-text-4" id="text-1-24-4">
+<p>
+Martin-Löf's type theory is a foundational system for constructive mathematics, and it has influenced the development of CIC. Both systems emphasize the role of types in both programming and proving, and they share the idea of propositions as types. However, CIC extends Martin-Löf's type theory by incorporating features like inductive types, making it more suitable for practical programming and proof development in Coq.
+</p>
+</div>
+</div>
+<div id="outline-container-orgb470c77" class="outline-4">
+<h4 id="orgb470c77"><span class="section-number-4">1.24.5.</span> Summary:</h4>
+<div class="outline-text-4" id="text-1-24-5">
+<ul class="org-ul">
+<li><b>CIC</b>: Calculus of Inductive Constructions, used in Coq.</li>
+<li><b>Features</b>: Inductive types, pattern matching, dependent types, propositions as types.</li>
+<li><b>Example</b>: Defining natural numbers and addition function in Coq.</li>
+<li><b>Relation</b>: Influenced by Martin-Löf's type theory, extends it with inductive types.</li>
+</ul>
+
+<p>
+Understanding CIC is crucial for working effectively with Coq and for appreciating the interplay between programming and proving in a constructive logic framework.
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org5460b0e" class="outline-3">
+<h3 id="org5460b0e"><span class="section-number-3">1.25.</span> MLCC Martin-Lof's Constructive Type Theory</h3>
+<div class="outline-text-3" id="text-1-25">
+<p>
+MLCC stands for "Martin-Löf's Constructive Type Theory with Co-Inductive Types." It is an extension of Martin-Löf's original constructive type theory, which itself is a foundational system for constructive mathematics. The addition of co-inductive types allows for the definition of potentially infinite data structures, complementing the inductive types that are used for finite data structures.
+</p>
+</div>
+<div id="outline-container-orga6ea085" class="outline-4">
+<h4 id="orga6ea085"><span class="section-number-4">1.25.1.</span> Key Features of MLCC:</h4>
+<div class="outline-text-4" id="text-1-25-1">
+<ol class="org-ol">
+<li><b>Inductive Types</b>: These are used to define finite data structures. For example, natural numbers, lists, and trees can be defined inductively.</li>
+
+<li><b>Co-Inductive Types</b>: These are used to define potentially infinite data structures. For example, streams (infinite sequences) and infinite trees can be defined co-inductively.</li>
+
+<li><b>Dependent Types</b>: Types can depend on terms, allowing for more precise specifications and proofs. This is a core feature of Martin-Löf's type theory.</li>
+
+<li><b>Propositions as Types</b>: The Curry-Howard isomorphism is fully embraced, where propositions are types and proofs are terms of those types.</li>
+</ol>
+</div>
+</div>
+<div id="outline-container-orgad750ba" class="outline-4">
+<h4 id="orgad750ba"><span class="section-number-4">1.25.2.</span> Example in Coq:</h4>
+<div class="outline-text-4" id="text-1-25-2">
+<p>
+In Coq, which is based on the Calculus of Inductive Constructions (CIC), you can define both inductive and co-inductive types.
+</p>
+</div>
+<ol class="org-ol">
+<li><a id="orgfed2472"></a>Inductive Type Example:<br />
+<div class="outline-text-5" id="text-1-25-2-1">
+<p>
+Here is an example of defining natural numbers using an inductive type:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-coq">Inductive nat : Type :=
+  | O : nat
+  | S : nat -&gt; nat.
+</pre>
+</div>
+</div>
+</li>
+<li><a id="org2b72f92"></a>Co-Inductive Type Example:<br />
+<div class="outline-text-5" id="text-1-25-2-2">
+<p>
+Here is an example of defining a stream (an infinite sequence) using a co-inductive type:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-coq">CoInductive Stream (A : Type) : Type :=
+  | Cons : A -&gt; Stream A -&gt; Stream A.
+</pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+<div id="outline-container-orgfceb246" class="outline-4">
+<h4 id="orgfceb246"><span class="section-number-4">1.25.3.</span> Importance of MLCC:</h4>
+<div class="outline-text-4" id="text-1-25-3">
+<ol class="org-ol">
+<li><b>Expressiveness</b>: MLCC allows for the definition of both finite and infinite data structures, making it a powerful tool for both programming and proof development.</li>
+
+<li><b>Proof Automation</b>: The ability to define co-inductive types enables the automation of proofs involving potentially infinite structures, which can be challenging to handle with purely inductive types.</li>
+
+<li><b>Foundational Research</b>: MLCC is used in foundational research on type theory and constructive mathematics, providing a rich framework for exploring the boundaries of what can be expressed and proven constructively.</li>
+</ol>
+</div>
+</div>
+<div id="outline-container-org8c6ee43" class="outline-4">
+<h4 id="org8c6ee43"><span class="section-number-4">1.25.4.</span> Summary:</h4>
+<div class="outline-text-4" id="text-1-25-4">
+<ul class="org-ul">
+<li><b>MLCC</b>: Martin-Löf's Constructive Type Theory with Co-Inductive Types.</li>
+<li><b>Features</b>: Inductive and co-inductive types, dependent types, propositions as types.</li>
+<li><b>Example</b>: Defining natural numbers (inductive) and streams (co-inductive) in Coq.</li>
+<li><b>Importance</b>: Enhances expressiveness, enables proof automation, and supports foundational research.</li>
+</ul>
+
+<p>
+Understanding MLCC is crucial for researchers and practitioners working with constructive type theories and proof assistants like Coq, as it provides a comprehensive framework for both finite and infinite data structures and their associated proofs.
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org951c92c" class="outline-3">
+<h3 id="org951c92c"><span class="section-number-3">1.26.</span> MLCC and universe</h3>
+<div class="outline-text-3" id="text-1-26">
+<p>
+In the context of Martin-Löf's Constructive Type Theory with Co-Inductive Types (MLCC), "universe" refers to a type of types. Universes are used to avoid logical paradoxes that arise from self-referential types, such as Russell's paradox in naive set theory. By organizing types into a hierarchy of universes, MLCC ensures that the type system remains consistent and avoids circular reasoning.
+</p>
+</div>
+<div id="outline-container-orga5fc362" class="outline-4">
+<h4 id="orga5fc362"><span class="section-number-4">1.26.1.</span> Key Concepts:</h4>
+<div class="outline-text-4" id="text-1-26-1">
+<ol class="org-ol">
+<li><i>Universes</i>: A universe is a type whose elements are types. For example, in Coq, the universe <code>Type</code> is a type that contains other types.</li>
+
+<li><i>Hierarchy of Universes</i>: To avoid self-referential paradoxes, universes are organized into a hierarchy. In Coq, this is often denoted as <code>Type(i)</code> where <code>i</code> is a level in the hierarchy. For example, <code>Type(0)</code> is a universe that contains types that do not mention <code>Type(0)</code> itself, <code>Type(1)</code> contains types that may mention <code>Type(0)</code>, and so on.</li>
+
+<li><i>Cumulativity</i>: Universes are cumulative, meaning that if <code>A : Type(i)</code>, then <code>A : Type(j)</code> for any <code>j ≥ i</code>. This allows types to be promoted to higher universes without requiring explicit casts.</li>
+</ol>
+</div>
+</div>
+<div id="outline-container-org1ba1f2c" class="outline-4">
+<h4 id="org1ba1f2c"><span class="section-number-4">1.26.2.</span> Example in Coq:</h4>
+<div class="outline-text-4" id="text-1-26-2">
+<p>
+In Coq, the universe hierarchy is implicit, but you can see its effects in the type-checking process. Here is an example of defining a type in a universe and using it:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-coq">Definition myType : Type := nat.
+
+Definition myFunc (A : Type) : Type := A -&gt; A.
+
+Check myFunc myType.
+</pre>
+</div>
+
+<p>
+In this example:
+</p>
+<ul class="org-ul">
+<li><code>myType</code> is defined as <code>nat</code>, which is a type in the universe <code>Type</code>.</li>
+<li><code>myFunc</code> takes a type <code>A</code> (which is itself a type in some universe) and returns a function type <code>A -&gt; A</code>.</li>
+<li>The <code>Check</code> command verifies that <code>myFunc myType</code> is well-typed.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org96dbb38" class="outline-4">
+<h4 id="org96dbb38"><span class="section-number-4">1.26.3.</span> Importance of Universes in MLCC:</h4>
+<div class="outline-text-4" id="text-1-26-3">
+<ol class="org-ol">
+<li><i>Consistency</i>: Universes prevent logical paradoxes by ensuring that types cannot refer to themselves in a way that leads to inconsistency.</li>
+
+<li><i>Expressiveness</i>: Universes allow for the expression of polymorphic types and higher-order functions, which are essential for writing generic and reusable code.</li>
+
+<li><i>Type Safety</i>: The hierarchy of universes ensures that types are used in a way that maintains type safety, preventing ill-typed expressions from being accepted.</li>
+</ol>
+</div>
+</div>
+<div id="outline-container-org33024d4" class="outline-4">
+<h4 id="org33024d4"><span class="section-number-4">1.26.4.</span> Summary:</h4>
+<div class="outline-text-4" id="text-1-26-4">
+<ul class="org-ul">
+<li><i>Universes</i>: Types of types, organized into a hierarchy to avoid paradoxes.</li>
+<li><i>Hierarchy</i>: Universes are indexed by levels (e.g., <code>Type(0)</code>, <code>Type(1)</code>), ensuring that types cannot refer to themselves in a paradoxical way.</li>
+<li><i>Cumulativity</i>: Types can be promoted to higher universes, allowing for flexible and expressive type systems.</li>
+<li><i>Example</i>: Defining and using types in Coq, with implicit universe levels.</li>
+<li><i>Importance</i>: Ensures consistency, expressiveness, and type safety in constructive type theories.</li>
+</ul>
+
+<p>
+Understanding universes is crucial for working with advanced type systems and proof assistants like Coq, as it provides the foundational framework for organizing and reasoning about types in a consistent and expressive manner.
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org063e310" class="outline-3">
+<h3 id="org063e310"><span class="section-number-3">1.27.</span> Russell universe and tarski universe</h3>
+<div class="outline-text-3" id="text-1-27">
+</div>
+<div id="outline-container-orgfd74077" class="outline-4">
+<h4 id="orgfd74077"><span class="section-number-4">1.27.1.</span> Russell Universes:</h4>
+<div class="outline-text-4" id="text-1-27-1">
+<p>
+In a Russell universe, types are treated as elements of a universe. This means that types themselves are not distinguished from other elements within the universe. Here are the key points:
+</p>
+
+<ol class="org-ol">
+<li><i>Types as Elements</i>: Types are elements of a universe, and the universe is
+a type that contains these elements.</li>
+
+<li><i>No Explicit Type of Types</i>: There is no explicit type of types; instead,
+types are treated uniformly as elements.</li>
+
+<li><i>Example in Coq</i>: In Coq, the universe <code>Type</code> is a Russell universe. Types
+like <code>nat</code> and <code>bool</code> are elements of <code>Type</code>.</li>
+</ol>
+
+<div class="org-src-container">
+<pre class="src src-coq">Definition myType : Type := nat.
+</pre>
+</div>
+
+<p>
+In this example, <code>myType</code> is a type (specifically, <code>nat</code>), and it is an element of the universe <code>Type</code>.
+</p>
+</div>
+</div>
+<div id="outline-container-org3a34394" class="outline-4">
+<h4 id="org3a34394"><span class="section-number-4">1.27.2.</span> Tarski Universes:</h4>
+<div class="outline-text-4" id="text-1-27-2">
+<p>
+In a Tarski universe, types are distinguished from their elements. This means that there is an explicit type of types, and types are not treated uniformly as elements. Here are the key points:
+</p>
+
+<ol class="org-ol">
+<li><i>Types and Elements Distinguished</i>: Types are not elements of the universe;
+instead, there is a separate type of types.</li>
+<li><i>Explicit Type of Types</i>: There is an explicit type of types, often denoted
+as <code>U</code> or <code>Type(i)</code>.</li>
+<li><i>Example in Agda</i>: In Agda, Tarski universes are often used. Types are
+elements of a universe, and there is an explicit type of types.</li>
+</ol>
+
+<div class="org-src-container">
+<pre class="src src-agda">data U : Set where
+  nat : U
+  bool : U
+
+El : U → Set
+El nat = Nat
+El bool = Bool
+</pre>
+</div>
+
+<p>
+In this example:
+</p>
+
+<ul class="org-ul">
+<li><code>U</code> is the universe of types.</li>
+<li><code>nat</code> and <code>bool</code> are types in the universe <code>U</code>.</li>
+<li><code>El</code> is a function that maps a type in <code>U</code> to its corresponding Agda type.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgedd6948" class="outline-4">
+<h4 id="orgedd6948"><span class="section-number-4">1.27.3.</span> Comparison:</h4>
+<div class="outline-text-4" id="text-1-27-3">
+<ol class="org-ol">
+<li><i>Uniformity vs. Distinction</i>:
+<ul class="org-ul">
+<li>Russell universes treat types uniformly as elements of a universe.</li>
+<li>Tarski universes distinguish types from their elements, with an explicit
+type of types.</li>
+</ul></li>
+
+<li><i>Expressiveness</i>:
+<ul class="org-ul">
+<li>Tarski universes can be more expressive because they allow for more
+fine-grained distinctions between types and their elements.</li>
+<li>Russell universes are simpler and more uniform, which can make them
+easier to work with in some contexts.</li>
+</ul></li>
+
+<li><i>Implementation</i>:
+<ul class="org-ul">
+<li>Coq uses Russell universes for its type system.</li>
+<li>Agda often uses Tarski universes to provide more explicit control over
+the type hierarchy.</li>
+</ul></li>
+</ol>
+</div>
+</div>
+<div id="outline-container-orgd07c785" class="outline-4">
+<h4 id="orgd07c785"><span class="section-number-4">1.27.4.</span> Summary:</h4>
+<div class="outline-text-4" id="text-1-27-4">
+<ul class="org-ul">
+<li><i>Russell Universes</i>: Types are elements of a universe; no explicit type of
+types.
+<ul class="org-ul">
+<li>Example: Coq's <code>Type</code>.</li>
+</ul></li>
+<li><i>Tarski Universes</i>: Types are distinguished from their elements; explicit
+type of types.
+<ul class="org-ul">
+<li>Example: Agda's universe hierarchy.</li>
+</ul></li>
+<li><i>Comparison</i>:
+<ul class="org-ul">
+<li>Uniformity vs. Distinction.</li>
+<li>Expressiveness.</li>
+<li>Implementation in Coq and Agda.</li>
+</ul></li>
+</ul>
+
+<p>
+Understanding both Russell and Tarski universes is important for working with advanced type systems and proof assistants, as they provide different approaches to organizing types in a consistent and expressive manner.
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org753a77a" class="outline-3">
+<h3 id="org753a77a"><span class="section-number-3">1.28.</span> existential type</h3>
+<div class="outline-text-3" id="text-1-28">
+<p>
+In system F, the existential type is defined as?
+<img src="./ltximg/org-tex-0d717c34a2b5ad20c03039c3ad6b751acc2508d4.svg" alt="\[\forall Y (\forall X(A \Rightarrow Y) \Rightarrow Y)\]" style="height: 1.5194em; display: block" class="org-latex org-latex-block" />
+</p>
+
+<ol class="org-ol">
+<li>treat existential type as "co-universal type"</li>
+<li>treat existential type as usage involving type class?</li>
+<li>treat existential type constructively in Martin-Lof type system
+see also <a href="#org224bdf6">sigma type and Martin-Lof type theory</a>
+see also <a href="#org60167ee">CoC and Coq and Martin-Lof's system</a></li>
+</ol>
+
+<p>
+See also in zhihu question
+</p>
+</div>
+</div>
+<div id="outline-container-org0387b84" class="outline-3">
+<h3 id="org0387b84"><span class="section-number-3">1.29.</span> substructural logic</h3>
+<div class="outline-text-3" id="text-1-29">
+<p>
+The classic one: linear logic
+</p>
+
+<p>
+See also bananaspace
+See also CMU Course. But I don't like CMU course style though
+</p>
+</div>
+</div>
+<div id="outline-container-org08f1b8d" class="outline-3">
+<h3 id="org08f1b8d"><span class="section-number-3">1.30.</span> refinement type</h3>
+<div class="outline-text-3" id="text-1-30">
+<p>
+I don't know what this is.
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-coherence-and-linearity" class="outline-2">
+<h2 id="coherence-and-linearity"><span class="section-number-2">2.</span> Topic: coherent space and linearity</h2>
+<div class="outline-text-2" id="text-coherence-and-linearity">
+</div>
+<div id="outline-container-org4f34476" class="outline-3">
+<h3 id="org4f34476"><span class="section-number-3">2.1.</span> Scott Domain using logic</h3>
+<div class="outline-text-3" id="text-2-1">
+<p>
+Scott Domain is initially postulate in the language of topology. However, Scott Domain is of no significance as a topological space. Also Scott Domain can be formulated with CPO (complete partially ordered set). The layer, in which topology or order set is used, is requiring not only a correct but proper language.
+</p>
+
+<p>
+Girard defines the Scott Domain using the language of logic, where the relation between elements is formulated with provability.
+This alternative definition is of course useful, but should be mentioned later after you know about the "standard" definition of Scott Domain.
+</p>
+</div>
+</div>
+<div id="outline-container-orgfb1ca22" class="outline-3">
+<h3 id="orgfb1ca22"><span class="section-number-3">2.2.</span> The definition of coherent space: web and coherence</h3>
+<div class="outline-text-3" id="text-2-2">
+<p>
+An "element" in a coherent space <img src="./ltximg/org-tex-b71ddba857190e174afcb6b9ddec544fe69cd65b.svg" alt="\(X\)" style="height: 0.7680em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" />, is called a clique, which is a term in graph theory. The description contains two part for the coherent space <img src="./ltximg/org-tex-b71ddba857190e174afcb6b9ddec544fe69cd65b.svg" alt="\(X\)" style="height: 0.7680em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" />: web and coherence
+</p>
+
+<ul class="org-ul">
+<li>web: <i>web</i> is a set, noted as <img src="./ltximg/org-tex-baa253a40835660b4e0af3d9de80ca51f316c7a6.svg" alt="\(|X|\)" style="height: 1.0784em; vertical-align: -0.2942em; display: inline-block" class="org-latex org-latex-inline" />. All the cliques are subsets of <img src="./ltximg/org-tex-baa253a40835660b4e0af3d9de80ca51f316c7a6.svg" alt="\(|X|\)" style="height: 1.0784em; vertical-align: -0.2942em; display: inline-block" class="org-latex org-latex-inline" />.</li>
+<li>coherence: there is a reflexive and symmetric relation called <i>coherent</i>,
+denoted as <img src="./ltximg/org-tex-d821df6828a86b633017397c7ae436ae9b7e09d9.svg" alt="\(\coh_{X}\)" style="height: 0.6998em; vertical-align: -0.1962em; display: inline-block" class="org-latex org-latex-inline" /> in coherent space <img src="./ltximg/org-tex-b71ddba857190e174afcb6b9ddec544fe69cd65b.svg" alt="\(X\)" style="height: 0.7680em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" />.</li>
+</ul>
+
+<p>
+A clique in a coherent space <img src="./ltximg/org-tex-b71ddba857190e174afcb6b9ddec544fe69cd65b.svg" alt="\(X\)" style="height: 0.7680em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" />, is a subset of web, whose points are all coherent pair-wise. In space <img src="./ltximg/org-tex-b71ddba857190e174afcb6b9ddec544fe69cd65b.svg" alt="\(X\)" style="height: 0.7680em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" />, <img src="./ltximg/org-tex-ba4e8845c885862875b30dfb61602e869601dcfc.svg" alt="\(a\)" style="height: 0.5203em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" /> is a clique is noted as <img src="./ltximg/org-tex-fcd28d2d2d86288cbc4aa4293d129d317e13bf0f.svg" alt="\(a \sqsubset X\)" style="height: 0.8025em; vertical-align: -0.0837em; display: inline-block" class="org-latex org-latex-inline" />.
+</p>
+
+<p>
+And we obviously have that if <img src="./ltximg/org-tex-816201c19b59ad7b9529cce20a4806790df36e04.svg" alt="\(a _{0} \subset a \sqsubset X\)" style="height: 0.9150em; vertical-align: -0.1962em; display: inline-block" class="org-latex org-latex-inline" />, then <img src="./ltximg/org-tex-86dc7acbaa3ec03485c7e963dc2aca1971aa960f.svg" alt="\(a_{0} \sqsubset X\)" style="height: 0.9150em; vertical-align: -0.1962em; display: inline-block" class="org-latex org-latex-inline" />.
+</p>
+</div>
+</div>
+<div id="outline-container-orgbeb7c3b" class="outline-3">
+<h3 id="orgbeb7c3b"><span class="section-number-3">2.3.</span> Stable Functions: Definition</h3>
+<div class="outline-text-3" id="text-2-3">
+<p>
+A stable function <img src="./ltximg/org-tex-cf5b3d61743f509775473fc073603124f296b5d0.svg" alt="\(F\)" style="height: 0.7680em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" /> from <img src="./ltximg/org-tex-b71ddba857190e174afcb6b9ddec544fe69cd65b.svg" alt="\(X\)" style="height: 0.7680em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" /> to <img src="./ltximg/org-tex-40f05f109b883225b8d2a23428fdd3aefb1f5124.svg" alt="\(Y\)" style="height: 0.7680em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" /> is such function that
+</p>
+
+<ol class="org-ol">
+<li><img src="./ltximg/org-tex-fcd28d2d2d86288cbc4aa4293d129d317e13bf0f.svg" alt="\(a \sqsubset X\)" style="height: 0.8025em; vertical-align: -0.0837em; display: inline-block" class="org-latex org-latex-inline" /> <img src="./ltximg/org-tex-5ca09cd654dc2fb8f12614e4010c49f3bc8d044d.svg" alt="\(\Rightarrow\)" style="height: 0.4579em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" /> <img src="./ltximg/org-tex-edd3dbd3c70ff09ef82c5a35e575c4d1a303b417.svg" alt="\(F(a) \sqsubset Y\)" style="height: 1.0784em; vertical-align: -0.2942em; display: inline-block" class="org-latex org-latex-inline" /></li>
+<li><img src="./ltximg/org-tex-f92ec7b33d3f280555dbd077a5fbe643ab4d1119.svg" alt="\(a \subset b \sqsubset X\)" style="height: 0.8172em; vertical-align: -0.0875em; display: inline-block" class="org-latex org-latex-inline" /> <img src="./ltximg/org-tex-5ca09cd654dc2fb8f12614e4010c49f3bc8d044d.svg" alt="\(\Rightarrow\)" style="height: 0.4579em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" /> <img src="./ltximg/org-tex-9efe6d20a8a2d0557f490bb85f9381f0a9da0ff2.svg" alt="\(F(a) \subset F(b)\)" style="height: 1.0784em; vertical-align: -0.2942em; display: inline-block" class="org-latex org-latex-inline" /></li>
+<li><img src="./ltximg/org-tex-cf9f69dc910822337ccf3ca8d43763d27184e8cc.svg" alt="\(F(\uparrow \bigcup _{i}a_{i}) = {\uparrow} \bigcup _{i}F(a_{i})\)" style="height: 1.1274em; vertical-align: -0.3432em; display: inline-block" class="org-latex org-latex-inline" /></li>
+<li><img src="./ltximg/org-tex-d13c82ad00a51fad659bfe3d5a23b2ca17816034.svg" alt="\(a \cup b \sqsubset X\)" style="height: 0.8134em; vertical-align: -0.0837em; display: inline-block" class="org-latex org-latex-inline" /> <img src="./ltximg/org-tex-5ca09cd654dc2fb8f12614e4010c49f3bc8d044d.svg" alt="\(\Rightarrow\)" style="height: 0.4579em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" /> <img src="./ltximg/org-tex-48c8d6bfc6b49d6c1a8b06e021121024bff95e79.svg" alt="\(F(a \cap b) = F(a) \cap F(b)\)" style="height: 1.0784em; vertical-align: -0.2942em; display: inline-block" class="org-latex org-latex-inline" /></li>
+</ol>
+</div>
+</div>
+<div id="outline-container-orga39a78d" class="outline-3">
+<h3 id="orga39a78d"><span class="section-number-3">2.4.</span> Stable Functions: A categorical intuition</h3>
+<div class="outline-text-3" id="text-2-4">
+<p>
+The (1)-(2) is actually saying that a stable function should be a functor. We can define a coherent space as a category where cliques are objects, and morphisms are inclusions. We can say "<img src="./ltximg/org-tex-610451caebd00735e13e24c740e5033f6956d6e4.svg" alt="\(\Hom\)" style="height: 0.7680em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" />(<img src="./ltximg/org-tex-ba4e8845c885862875b30dfb61602e869601dcfc.svg" alt="\(a\)" style="height: 0.5203em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" />, <img src="./ltximg/org-tex-7473c3389158b4f4481e8067832db177745494cf.svg" alt="\(b\)" style="height: 0.7789em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" />) is not empty iff <img src="./ltximg/org-tex-2bded4059b882f538dd0c3585c23ed4b07538d9f.svg" alt="\(a\subset b\)" style="height: 0.8172em; vertical-align: -0.0875em; display: inline-block" class="org-latex org-latex-inline" />"
+</p>
+
+<p>
+There are more than one name for <img src="./ltximg/org-tex-e5afb0ca909cad2114e9d975b5eece12fb849fdd.svg" alt="\({\uparrow}\bigcup_{i}a_{i}\)" style="height: 1.1274em; vertical-align: -0.3432em; display: inline-block" class="org-latex org-latex-inline" />, in proofs and types, this is called <i>filtered colimit</i>, and it is also called directed union. Stable function preserves this thing.
+</p>
+
+<p>
+And also stable function preserves pullback in the coherent space. The pullback is defined given two morphism: one from <img src="./ltximg/org-tex-fed4dc6a0be0bb46a38683c014c411a7ddb0673f.svg" alt="\(\Hom(a, c)\)" style="height: 1.0784em; vertical-align: -0.2942em; display: inline-block" class="org-latex org-latex-inline" />, the other from <img src="./ltximg/org-tex-a62a6ecbe2cf1624c0aad98fc8e5e95e8696cc2e.svg" alt="\(\Hom(b, c)\)" style="height: 1.0784em; vertical-align: -0.2942em; display: inline-block" class="org-latex org-latex-inline" />. the pull back is defined by such diagram:
+<img src="./ltximg/org-tex-0fd392b84faea605ccf73e260b177d45ff27415b.svg" alt="\[
+\begin{tikzcd}
+a \cap b \ar[r] \ar[d] \arrow[dr, phantom, &quot;\lrcorner&quot;, very near start]
+&amp;amp; a \ar[d]\\
+b \ar[r] &amp;amp; a\cup b
+\end{tikzcd}\]" style="height: 4.7553em; display: block" class="org-latex org-latex-block" />
+The pullback of <img src="./ltximg/org-tex-9c020de9cfc8f62fa82d790790f408bd0555f64a.svg" alt="\(a \subset a \cup b\)" style="height: 0.8172em; vertical-align: -0.0875em; display: inline-block" class="org-latex org-latex-inline" /> and <img src="./ltximg/org-tex-9ecbe38435a4b4ce1a054d62eb6f4791496db3a8.svg" alt="\(b \subset a \cup b\)" style="height: 0.8172em; vertical-align: -0.0875em; display: inline-block" class="org-latex org-latex-inline" /> is <img src="./ltximg/org-tex-2c2623bd1334acf87e819a1dbfde1189d7e601b2.svg" alt="\(a \cap b\)" style="height: 0.7789em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" />. The stable function preserves it.
+</p>
+</div>
+</div>
+<div id="outline-container-orgf3f390e" class="outline-3">
+<h3 id="orgf3f390e"><span class="section-number-3">2.5.</span> Coherent Space: A relation with topological space</h3>
+<div class="outline-text-3" id="text-2-5">
+<p>
+Coherent space is originally described with topological space. Although coherent space as topology has no good property in general, we can use an idea of basis.
+</p>
+
+<p>
+Okay, the idea is that all open sets can be expressed as the union of topological basis where all the basis are finite
+<img src="./ltximg/org-tex-25bcf91a9ff8f9bb4e937a3cb11185b4db27437c.svg" alt="\[O = \bigcup _{i} \alpha_{i}\]" style="height: 2.5286em; display: block" class="org-latex org-latex-block" />
+The same is almost true for coherent space: a clique can be expressed by the union of finite cliques.
+</p>
+</div>
+</div>
+<div id="outline-container-org328f963" class="outline-3">
+<h3 id="org328f963"><span class="section-number-3">2.6.</span> Coherent Space: Minimal Approximant and Coding of Stable Function</h3>
+<div class="outline-text-3" id="text-2-6">
+<p>
+The term approximant is used in proofs and types. Anyway, the general idea can be expressed as:
+</p>
+
+<p>
+Let <img src="./ltximg/org-tex-b71ddba857190e174afcb6b9ddec544fe69cd65b.svg" alt="\(X\)" style="height: 0.7680em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" />, <img src="./ltximg/org-tex-40f05f109b883225b8d2a23428fdd3aefb1f5124.svg" alt="\(Y\)" style="height: 0.7680em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" /> be two coherent space, and <img src="./ltximg/org-tex-cf5b3d61743f509775473fc073603124f296b5d0.svg" alt="\(F\)" style="height: 0.7680em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" /> is a stable function from <img src="./ltximg/org-tex-b71ddba857190e174afcb6b9ddec544fe69cd65b.svg" alt="\(X\)" style="height: 0.7680em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" /> to <img src="./ltximg/org-tex-40f05f109b883225b8d2a23428fdd3aefb1f5124.svg" alt="\(Y\)" style="height: 0.7680em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" />. Let <img src="./ltximg/org-tex-a638edf99e4da4917fba69397223be877e42055c.svg" alt="\(A \sqsubset X\)" style="height: 0.8025em; vertical-align: -0.0837em; display: inline-block" class="org-latex org-latex-inline" /> and <img src="./ltximg/org-tex-d75232c70ec992ef3daf3c7e5266eb03e5d058bf.svg" alt="\(y \in F(A)\)" style="height: 1.0784em; vertical-align: -0.2942em; display: inline-block" class="org-latex org-latex-inline" />. Then we have
+</p>
+
+<ol class="org-ol">
+<li>There exists a finite subset <img src="./ltximg/org-tex-373db900c8118fa1e0b3466c4d9ae86f32089db0.svg" alt="\(a \subset A\)" style="height: 0.8063em; vertical-align: -0.0875em; display: inline-block" class="org-latex org-latex-inline" />, such that <img src="./ltximg/org-tex-fd42f0331ba5271560d2648c5946cb9c907c3723.svg" alt="\(y \in F(a)\)" style="height: 1.0784em; vertical-align: -0.2942em; display: inline-block" class="org-latex org-latex-inline" /></li>
+<li>If <img src="./ltximg/org-tex-ba4e8845c885862875b30dfb61602e869601dcfc.svg" alt="\(a\)" style="height: 0.5203em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" /> is chosen minimal, <img src="./ltximg/org-tex-ba4e8845c885862875b30dfb61602e869601dcfc.svg" alt="\(a\)" style="height: 0.5203em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" /> is unique (that is for every <img src="./ltximg/org-tex-fd9412dfc92734d053be0f2d0f094d9caac3a8d4.svg" alt="\(a' \subsetneq  a\)" style="height: 0.9684em; vertical-align: -0.1824em; display: inline-block" class="org-latex org-latex-inline" /> <img src="./ltximg/org-tex-6197c1c45dbb5b587fcabf2df5368a61f86260ee.svg" alt="\(y \notin F(a')\)" style="height: 1.0801em; vertical-align: -0.2942em; display: inline-block" class="org-latex org-latex-inline" />)</li>
+</ol>
+
+<p>
+This is the proposition <img src="./ltximg/org-tex-9742adbf126042c450b72d2e63e9cd5ea1f99625.svg" alt="\(10\)" style="height: 0.7299em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" /> in The Blind Spot. Such <img src="./ltximg/org-tex-ba4e8845c885862875b30dfb61602e869601dcfc.svg" alt="\(a\)" style="height: 0.5203em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" /> can be called minimal approximant. What is it used for?
+</p>
+
+<p>
+Well, the property is important, because it is firstly about finding the value of <img src="./ltximg/org-tex-bb736d152102d8c3b972f09c99312f9c95a1da40.svg" alt="\(F(a)\)" style="height: 1.0784em; vertical-align: -0.2942em; display: inline-block" class="org-latex org-latex-inline" />. So I want to know if <img src="./ltximg/org-tex-aa729b20a2218606cfc9d9a7f85d1573fd53c6fc.svg" alt="\(y\)" style="height: 0.7109em; vertical-align: -0.2397em; display: inline-block" class="org-latex org-latex-inline" /> is in <img src="./ltximg/org-tex-bb736d152102d8c3b972f09c99312f9c95a1da40.svg" alt="\(F(a)\)" style="height: 1.0784em; vertical-align: -0.2942em; display: inline-block" class="org-latex org-latex-inline" />, we only need to check if the minimal approximant is in <img src="./ltximg/org-tex-ba4e8845c885862875b30dfb61602e869601dcfc.svg" alt="\(a\)" style="height: 0.5203em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" />.
+</p>
+
+<p>
+Secondly, it is about the coding of a stable function. For a value <img src="./ltximg/org-tex-aa729b20a2218606cfc9d9a7f85d1573fd53c6fc.svg" alt="\(y\)" style="height: 0.7109em; vertical-align: -0.2397em; display: inline-block" class="org-latex org-latex-inline" /> in <img src="./ltximg/org-tex-f4a20046b074fc2a11678228fd22a96cff73a718.svg" alt="\(F(A)\)" style="height: 1.0784em; vertical-align: -0.2942em; display: inline-block" class="org-latex org-latex-inline" />, there is a unique minimal approximant <img src="./ltximg/org-tex-ba4e8845c885862875b30dfb61602e869601dcfc.svg" alt="\(a\)" style="height: 0.5203em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" />. If we list all the "minimal approximant, value" pair, then we have the coding of the stable function <img src="./ltximg/org-tex-cf5b3d61743f509775473fc073603124f296b5d0.svg" alt="\(F\)" style="height: 0.7680em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" />!
+It is especially important because from now on, we can find a <b>one-one</b> correspondence between stable function space and <img src="./ltximg/org-tex-ff70e5156b963346ca33849ee2fbbdc578dabbdc.svg" alt="\(X_{\mathrm{fin}} \times |Y|\)" style="height: 1.0784em; vertical-align: -0.2942em; display: inline-block" class="org-latex org-latex-inline" /> whose elements are composed of a finite clique in <img src="./ltximg/org-tex-b71ddba857190e174afcb6b9ddec544fe69cd65b.svg" alt="\(X\)" style="height: 0.7680em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" /> and a point in <img src="./ltximg/org-tex-40f05f109b883225b8d2a23428fdd3aefb1f5124.svg" alt="\(Y\)" style="height: 0.7680em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" />.
+</p>
+</div>
+</div>
+<div id="outline-container-org54e25f2" class="outline-3">
+<h3 id="org54e25f2"><span class="section-number-3">2.7.</span> Stable Functions: Skeleton and Trace</h3>
+<div class="outline-text-3" id="text-2-7">
+<p>
+<i>Trace</i> is the old name for upcoming concept. We use skeleton nowadays.
+</p>
+
+<p>
+Given a stable function <img src="./ltximg/org-tex-cf5b3d61743f509775473fc073603124f296b5d0.svg" alt="\(F\)" style="height: 0.7680em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" /> from <img src="./ltximg/org-tex-b71ddba857190e174afcb6b9ddec544fe69cd65b.svg" alt="\(X\)" style="height: 0.7680em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" /> and <img src="./ltximg/org-tex-40f05f109b883225b8d2a23428fdd3aefb1f5124.svg" alt="\(Y\)" style="height: 0.7680em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" />, we can define the skeleton <img src="./ltximg/org-tex-76ef045b9bd665c0db7bb37f858efdf9590a82f2.svg" alt="\(\mathrm{Sk}(F)\)" style="height: 1.0784em; vertical-align: -0.2942em; display: inline-block" class="org-latex org-latex-inline" /> of <img src="./ltximg/org-tex-cf5b3d61743f509775473fc073603124f296b5d0.svg" alt="\(F\)" style="height: 0.7680em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" />.
+</p>
+
+<p>
+<img src="./ltximg/org-tex-18f6b534f83cca3e86a1f7d1ea64f7e8eb494e85.svg" alt="\[\mathrm{Sk}(F) := \{(a, y) \semicolon y \in F(a)\land \forall b\subsetneq a, y \notin F(b)\}.\]" style="height: 1.5194em; display: block" class="org-latex org-latex-block" />
+</p>
+
+<p>
+The condition <img src="./ltximg/org-tex-a72b88229623c179d1aeeef87dc0739fee4297f8.svg" alt="\(\forall b \subsetneq a, y \notin F(b)\)" style="height: 1.0784em; vertical-align: -0.2942em; display: inline-block" class="org-latex org-latex-inline" /> is <i>exactly</i> saying that <img src="./ltximg/org-tex-ba4e8845c885862875b30dfb61602e869601dcfc.svg" alt="\(a\)" style="height: 0.5203em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" /> is the minimal choice. The Sk of <img src="./ltximg/org-tex-cf5b3d61743f509775473fc073603124f296b5d0.svg" alt="\(F\)" style="height: 0.7680em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" /> is important because it is the coding of a stable function <img src="./ltximg/org-tex-cf5b3d61743f509775473fc073603124f296b5d0.svg" alt="\(F\)" style="height: 0.7680em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" />.
+</p>
+</div>
+</div>
+<div id="outline-container-org2fde194" class="outline-3">
+<h3 id="org2fde194"><span class="section-number-3">2.8.</span> Stable Functions: Skeleton and Berry Order</h3>
+<div class="outline-text-3" id="text-2-8">
+<p>
+There is a definition for Berry Order in The Blind Spot:
+</p>
+
+<p>
+<img src="./ltximg/org-tex-17dc721725527ced5323537fea7fb50ee95641ad.svg" alt="\(F \sqsubset G\)" style="height: 0.8025em; vertical-align: -0.0837em; display: inline-block" class="org-latex org-latex-inline" /> iff for all <img src="./ltximg/org-tex-f92ec7b33d3f280555dbd077a5fbe643ab4d1119.svg" alt="\(a \subset b \sqsubset X\)" style="height: 0.8172em; vertical-align: -0.0875em; display: inline-block" class="org-latex org-latex-inline" />, <img src="./ltximg/org-tex-1e888fa25f1f2d770cb3933623746352ced7f908.svg" alt="\(F(a) = F(b) \cap G(a)\)" style="height: 1.0784em; vertical-align: -0.2942em; display: inline-block" class="org-latex org-latex-inline" />.
+</p>
+
+<p>
+But this is uncomprehensible. We can use use Sk for the definition of Berry Order. <img src="./ltximg/org-tex-17dc721725527ced5323537fea7fb50ee95641ad.svg" alt="\(F \sqsubset G\)" style="height: 0.8025em; vertical-align: -0.0837em; display: inline-block" class="org-latex org-latex-inline" /> iff <img src="./ltximg/org-tex-1b878354214bc0395bac0bf46ea9e5bb486cf8bd.svg" alt="\(\mathrm{Sk}(F) \subset \mathrm{Sk}(G)\)" style="height: 1.0784em; vertical-align: -0.2942em; display: inline-block" class="org-latex org-latex-inline" />. The proof can be seen in Proofs and Types page 64.
+</p>
+
+<p>
+The Berry Order is said to preserve the pullback:
+</p>
+
+<p>
+<img src="./ltximg/org-tex-be1fabca75fb98ace2dea8e02d39392d2438471c.svg" alt="\[
+\begin{tikzcd}
+ &amp;amp; (G,a) \\
+ (G ,a ') \ar[ru] &amp;amp;&amp;amp; (F, a) \ar[lu] \\
+ &amp;amp; (F, a')\ar[lu] \ar[ru]
+\end{tikzcd}\]" style="height: 8.8184em; display: block" class="org-latex org-latex-block" />
+For evaluation on <img src="./ltximg/org-tex-042e51062c0931a1e5a471263225ce9d9bfa8618.svg" alt="\(( A \to B) \with A\)" style="height: 1.0784em; vertical-align: -0.2942em; display: inline-block" class="org-latex org-latex-inline" />.
+</p>
+</div>
+</div>
+<div id="outline-container-org0b74495" class="outline-3">
+<h3 id="org0b74495"><span class="section-number-3">2.9.</span> Coherent Space: Of CC and CCC</h3>
+<div class="outline-text-3" id="text-2-9">
+<p>
+We can use coherent space to construct a CC and further more CCC.
+</p>
+
+<p>
+What we need is two kinds of connectives: in this case, <img src="./ltximg/org-tex-0831038b636e1ff1466ce891e7413e7b9b99058e.svg" alt="\(\with\)" style="height: 0.7789em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" /> and <img src="./ltximg/org-tex-5ca09cd654dc2fb8f12614e4010c49f3bc8d044d.svg" alt="\(\Rightarrow\)" style="height: 0.4579em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" />. The former is called direct product (which supposed to be <img src="./ltximg/org-tex-60ee91fad0c909638e257a5dad3bf252a99d8f44.svg" alt="\(+\)" style="height: 0.7517em; vertical-align: -0.1309em; display: inline-block" class="org-latex org-latex-inline" />, but we use <img src="./ltximg/org-tex-0831038b636e1ff1466ce891e7413e7b9b99058e.svg" alt="\(\with\)" style="height: 0.7789em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" /> for notation in linear logic). The latter uses <img src="./ltximg/org-tex-06adc3d7b7d5cdee70810cde0916060f0a9113da.svg" alt="\(\mathrm{Sk}\)" style="height: 0.7789em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" />.
+</p>
+</div>
+</div>
+<div id="outline-container-orge0701ed" class="outline-3">
+<h3 id="orge0701ed"><span class="section-number-3">2.10.</span> Coherent Space: Direct Product <img src="./ltximg/org-tex-0831038b636e1ff1466ce891e7413e7b9b99058e.svg" alt="\(\with\)" style="height: 0.7789em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" /></h3>
+<div class="outline-text-3" id="text-2-10">
+<p>
+This part can be checked on section 8.4 in Proofs and Types and section 8.2.7 in The Blind Spot. This part can be viewed as one step in constructing CC
+</p>
+
+<p>
+We use the definition in The Blind Spot:
+</p>
+
+<ul class="org-ul">
+<li>web: <img src="./ltximg/org-tex-83d9cc5b4064b71245ec45f9a5fb60a618e1677c.svg" alt="\(| X \with Y | := |X| + |Y|\)" style="height: 1.0784em; vertical-align: -0.2942em; display: inline-block" class="org-latex org-latex-inline" /></li>
+<li>coherence: if two points are from the same space, then they coherent iff
+they coherent in the original space. If two points are not from the same
+space, then they are coherent.</li>
+</ul>
+
+<p>
+Proposition: cliques from <img src="./ltximg/org-tex-9d361916a157c0acecac46bd11013c75252461e7.svg" alt="\(X \with Y\)" style="height: 0.7789em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" /> can be explained as the disjoint union of cliques from <img src="./ltximg/org-tex-b71ddba857190e174afcb6b9ddec544fe69cd65b.svg" alt="\(X\)" style="height: 0.7680em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" /> and cliques from <img src="./ltximg/org-tex-40f05f109b883225b8d2a23428fdd3aefb1f5124.svg" alt="\(Y\)" style="height: 0.7680em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" />. Note: a disjoint union of two sets.
+</p>
+</div>
+</div>
+<div id="outline-container-org6b3b19e" class="outline-3">
+<h3 id="org6b3b19e"><span class="section-number-3">2.11.</span> Coherent Space: the well-definedness of direct product</h3>
+<div class="outline-text-3" id="text-2-11">
+<p>
+The well-definedness can be checked through a categorical view point.
+</p>
+
+<p>
+A direct product is defined as
+<img src="./ltximg/org-tex-678022404a7d72f5e9df61773da526e8a119ed66.svg" alt="\[
+\begin{tikzcd}
+Z \ar[rrd, bend left, &quot;F&quot;] \ar[rdd, bend right, &quot;G&quot;] \ar[rd, &quot;H&quot;]\\
+  &amp;amp; X \with Y \ar[r, &quot;\pi_{1}&quot;]
+              \ar[d, &quot;\pi_{2}&quot;]
+      &amp;amp;  X \\
+  &amp;amp; Y
+\end{tikzcd}\]" style="height: 8.1819em; display: block" class="org-latex org-latex-block" />
+So we have to give definition for <img src="./ltximg/org-tex-257aa4a7dd9bbe24507fbe32cd2f230539cbb5dd.svg" alt="\(H\)" style="height: 0.7680em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" /> and <img src="./ltximg/org-tex-6b6ac1bc6c4c98a008485639c34def32c7eb1336.svg" alt="\(\pi_{1}, \pi_{2}\)" style="height: 0.7109em; vertical-align: -0.2397em; display: inline-block" class="org-latex org-latex-inline" />. The construct of <img src="./ltximg/org-tex-257aa4a7dd9bbe24507fbe32cd2f230539cbb5dd.svg" alt="\(H\)" style="height: 0.7680em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" /> is extremely obvious.
+</p>
+</div>
+</div>
+<div id="outline-container-org07b2f4d" class="outline-3">
+<h3 id="org07b2f4d"><span class="section-number-3">2.12.</span> Coherent Space: As a CCC</h3>
+<div class="outline-text-3" id="text-2-12">
+<p>
+We already have <img src="./ltximg/org-tex-0831038b636e1ff1466ce891e7413e7b9b99058e.svg" alt="\(\with\)" style="height: 0.7789em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" /> as the cartesian product, what about exponential?
+</p>
+
+<p>
+We shall use <img src="./ltximg/org-tex-06adc3d7b7d5cdee70810cde0916060f0a9113da.svg" alt="\(\mathrm{Sk}\)" style="height: 0.7789em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" /> for a stable map <img src="./ltximg/org-tex-6ef4d8bc04c1d42fab6e06a4ab6a18911c980a3d.svg" alt="\(F\colon X \to Y\)" style="height: 0.7680em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" />, since we already know that a Sk is a clique in space <img src="./ltximg/org-tex-d5149e4a2c37452d7ae870b5c6b6923392118fcf.svg" alt="\(X _{\mathrm{fin}} \times |Y|\)" style="height: 1.0784em; vertical-align: -0.2942em; display: inline-block" class="org-latex org-latex-inline" />, we shall start from here to create coherent space <img src="./ltximg/org-tex-4e0b0981b07795d56d49b87ac7a3e8ad67528b4d.svg" alt="\(X \Rightarrow Y\)" style="height: 0.7680em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" />:
+</p>
+
+<ul class="org-ul">
+<li>web: <img src="./ltximg/org-tex-6506134274e4b7e45eddcae8050f28eef87cc080.svg" alt="\(|X \Rightarrow Y| := X_{\mathrm{fin}} \times |Y|\)" style="height: 1.0784em; vertical-align: -0.2942em; display: inline-block" class="org-latex org-latex-inline" />, <img src="./ltximg/org-tex-709f5951e404180b78c63ba21a4f58403da875d0.svg" alt="\(X_{\mathrm{fin}}\)" style="height: 0.9150em; vertical-align: -0.1962em; display: inline-block" class="org-latex org-latex-inline" /> being he finite cliques of <img src="./ltximg/org-tex-b71ddba857190e174afcb6b9ddec544fe69cd65b.svg" alt="\(X\)" style="height: 0.7680em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" />.</li>
+<li>coherence: for <img src="./ltximg/org-tex-e4bb644b270dda7886eab335ccdd78b45a49efb2.svg" alt="\((a,y)\)" style="height: 1.0784em; vertical-align: -0.2942em; display: inline-block" class="org-latex org-latex-inline" /> and <img src="./ltximg/org-tex-033d2e99bfd7443f15f62ced2fe826d8dfed5233.svg" alt="\((a',y')\)" style="height: 1.0801em; vertical-align: -0.2942em; display: inline-block" class="org-latex org-latex-inline" /> if <img src="./ltximg/org-tex-c405a54e9a582c59bd68b66a844303c180dbfe62.svg" alt="\(a \cup a' \sqsubset X\)" style="height: 0.8696em; vertical-align: -0.0837em; display: inline-block" class="org-latex org-latex-inline" />, then <img src="./ltximg/org-tex-e4347d84c1239d4c47ca2cdb3673418f82d267fd.svg" alt="\(y  \coh y'\)" style="height: 1.0257em; vertical-align: -0.2397em; display: inline-block" class="org-latex org-latex-inline" />, if additionaly <img src="./ltximg/org-tex-f3503dc072b0677511ec7515829a05fc1925c902.svg" alt="\(a \neq a'\)" style="height: 1.0257em; vertical-align: -0.2397em; display: inline-block" class="org-latex org-latex-inline" />, then <img src="./ltximg/org-tex-2f3b33566779c22926e44f6a5e17d61eb3a6bde2.svg" alt="\(y \scoh y'\)" style="height: 1.0257em; vertical-align: -0.2397em; display: inline-block" class="org-latex org-latex-inline" />.</li>
+</ul>
+
+<p>
+The idea that Sk has a one-one correspondence with stable function, gives the idea that a stable function can be represented with a clique in space <img src="./ltximg/org-tex-4e0b0981b07795d56d49b87ac7a3e8ad67528b4d.svg" alt="\(X \Rightarrow Y\)" style="height: 0.7680em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" />.
+</p>
+</div>
+</div>
+<div id="outline-container-orgd373538" class="outline-3">
+<h3 id="orgd373538"><span class="section-number-3">2.13.</span> Stable Functions: Representation Theorem of Sk</h3>
+<div class="outline-text-3" id="text-2-13">
+<p>
+Sk defiens a bijection between the stable functions from <img src="./ltximg/org-tex-b71ddba857190e174afcb6b9ddec544fe69cd65b.svg" alt="\(X\)" style="height: 0.7680em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" /> into <img src="./ltximg/org-tex-40f05f109b883225b8d2a23428fdd3aefb1f5124.svg" alt="\(Y\)" style="height: 0.7680em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" /> and the cliques of <img src="./ltximg/org-tex-4e0b0981b07795d56d49b87ac7a3e8ad67528b4d.svg" alt="\(X \Rightarrow Y\)" style="height: 0.7680em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" />. The reciprocal bijection associates to a clique <img src="./ltximg/org-tex-22ba665ce5788f43b1ae1b705aa491f712c415d7.svg" alt="\(C \sqsubset X \Rightarrow Y\)" style="height: 0.8025em; vertical-align: -0.0837em; display: inline-block" class="org-latex org-latex-inline" /> the stable function <img src="./ltximg/org-tex-f45d31646c123296ec1ea78646fa4fe7984b7354.svg" alt="\((C) \cdot\)" style="height: 1.0784em; vertical-align: -0.2942em; display: inline-block" class="org-latex org-latex-inline" /> defined by
+</p>
+
+<p>
+<img src="./ltximg/org-tex-f31d7605a8c28f09886d26e4bd58be1e3f394dcb.svg" alt="\[(C)A := \{ y \semicolon \exists a \subset A (a, y) \in C\}.\]" style="height: 1.5194em; display: block" class="org-latex org-latex-block" />
+</p>
+
+<p>
+Moreover the bijection exchanges the Berry Order and Inclusion (by exchange it means Berry Order <img src="./ltximg/org-tex-17dc721725527ced5323537fea7fb50ee95641ad.svg" alt="\(F \sqsubset G\)" style="height: 0.8025em; vertical-align: -0.0837em; display: inline-block" class="org-latex org-latex-inline" /> iff Sk(<img src="./ltximg/org-tex-cf5b3d61743f509775473fc073603124f296b5d0.svg" alt="\(F\)" style="height: 0.7680em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" />) <img src="./ltximg/org-tex-ada5fb936f8b51558005410fde4c34585bdbbc3f.svg" alt="\(\subset\)" style="height: 0.6650em; vertical-align: -0.0875em; display: inline-block" class="org-latex org-latex-inline" /> Sk(<img src="./ltximg/org-tex-0c22d5299463c33cd64edfd3988b866f60e53f12.svg" alt="\(G\)" style="height: 0.7680em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" />), we use such way to define Berry Order, so it might seem weird here).
+</p>
+
+<p>
+After this we do admit that we can construct a CCC with coherent space.
+</p>
+</div>
+</div>
+<div id="outline-container-orge006597" class="outline-3">
+<h3 id="orge006597"><span class="section-number-3">2.14.</span> Linearity: The Easy Definition</h3>
+<div class="outline-text-3" id="text-2-14">
+<p>
+Proofs and Types presents an easy definition of linearity that:
+</p>
+
+<p>
+A stable function <img src="./ltximg/org-tex-cf5b3d61743f509775473fc073603124f296b5d0.svg" alt="\(F\)" style="height: 0.7680em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" /> from <img src="./ltximg/org-tex-b71ddba857190e174afcb6b9ddec544fe69cd65b.svg" alt="\(X\)" style="height: 0.7680em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" /> to <img src="./ltximg/org-tex-40f05f109b883225b8d2a23428fdd3aefb1f5124.svg" alt="\(Y\)" style="height: 0.7680em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" /> is <i>linear</i> iff <img src="./ltximg/org-tex-76ef045b9bd665c0db7bb37f858efdf9590a82f2.svg" alt="\(\mathrm{Sk}(F)\)" style="height: 1.0784em; vertical-align: -0.2942em; display: inline-block" class="org-latex org-latex-inline" /> consists of pair <img src="./ltximg/org-tex-4d36f3bc1864567661e54682b1c361329f5f7f70.svg" alt="\((a, y)\)" style="height: 1.0784em; vertical-align: -0.2942em; display: inline-block" class="org-latex org-latex-inline" /> where <img src="./ltximg/org-tex-ba4e8845c885862875b30dfb61602e869601dcfc.svg" alt="\(a\)" style="height: 0.5203em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" /> <img src="./ltximg/org-tex-f537feedab978e49180e313aa77ae3b5c39cec73.svg" alt="\(\in\)" style="height: 0.6650em; vertical-align: -0.0875em; display: inline-block" class="org-latex org-latex-inline" /> <img src="./ltximg/org-tex-709f5951e404180b78c63ba21a4f58403da875d0.svg" alt="\(X_{\mathrm{fin}}\)" style="height: 0.9150em; vertical-align: -0.1962em; display: inline-block" class="org-latex org-latex-inline" />, but <img src="./ltximg/org-tex-ba4e8845c885862875b30dfb61602e869601dcfc.svg" alt="\(a\)" style="height: 0.5203em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" /> is a singleton, that is, of form <img src="./ltximg/org-tex-bb922243b90ff53521cb1bb1f4cf916cac88a66c.svg" alt="\((\{x\}, y)\)" style="height: 1.0784em; vertical-align: -0.2942em; display: inline-block" class="org-latex org-latex-inline" /> where <img src="./ltximg/org-tex-a9e704bd593d3b4a0c09377455d711c18b3c1150.svg" alt="\(x \in |X|\)" style="height: 1.0784em; vertical-align: -0.2942em; display: inline-block" class="org-latex org-latex-inline" />.
+</p>
+</div>
+</div>
+<div id="outline-container-org5ed9a02" class="outline-3">
+<h3 id="org5ed9a02"><span class="section-number-3">2.15.</span> Linearity: Linear implication</h3>
+<div class="outline-text-3" id="text-2-15">
+<p>
+A linear function <img src="./ltximg/org-tex-cf5b3d61743f509775473fc073603124f296b5d0.svg" alt="\(F\)" style="height: 0.7680em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" /> whose Sk consists of pair <img src="./ltximg/org-tex-4d36f3bc1864567661e54682b1c361329f5f7f70.svg" alt="\((a, y)\)" style="height: 1.0784em; vertical-align: -0.2942em; display: inline-block" class="org-latex org-latex-inline" /> where <img src="./ltximg/org-tex-ba4e8845c885862875b30dfb61602e869601dcfc.svg" alt="\(a\)" style="height: 0.5203em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" /> is a singleton. We know that the first argument in <img src="./ltximg/org-tex-06adc3d7b7d5cdee70810cde0916060f0a9113da.svg" alt="\(\mathrm{Sk}\)" style="height: 0.7789em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" /> can be an element in <img src="./ltximg/org-tex-baa253a40835660b4e0af3d9de80ca51f316c7a6.svg" alt="\(|X|\)" style="height: 1.0784em; vertical-align: -0.2942em; display: inline-block" class="org-latex org-latex-inline" /> rather than <img src="./ltximg/org-tex-709f5951e404180b78c63ba21a4f58403da875d0.svg" alt="\(X_{\mathrm{fin}}\)" style="height: 0.9150em; vertical-align: -0.1962em; display: inline-block" class="org-latex org-latex-inline" /> since <img src="./ltximg/org-tex-ba4e8845c885862875b30dfb61602e869601dcfc.svg" alt="\(a\)" style="height: 0.5203em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" /> is always a singleton in <img src="./ltximg/org-tex-b71ddba857190e174afcb6b9ddec544fe69cd65b.svg" alt="\(X\)" style="height: 0.7680em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" />.
+</p>
+
+<p>
+This notation is introduced in Proofs and Types as <img src="./ltximg/org-tex-13073fdee1ec646e2fc921dd6c1c78901cca1768.svg" alt="\(\mathcal T\kern-2pt\it rlin\)" style="height: 0.7789em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" />, which remove the bracket of the singleton in Sk.
+</p>
+
+<p>
+<img src="./ltximg/org-tex-e4dda4a5b63973f637a605622136b73d569224f1.svg" alt="\[{\mathcal T \kern-2pt \it rlin} (F) = \{ (a , y)\semicolon a \in |X|, y \in F(\{a\})\}\]" style="height: 1.5194em; display: block" class="org-latex org-latex-block" />
+</p>
+
+<p>
+With the similiar idea like <img src="./ltximg/org-tex-4e0b0981b07795d56d49b87ac7a3e8ad67528b4d.svg" alt="\(X \Rightarrow Y\)" style="height: 0.7680em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" />, we can now define a coherent space <img src="./ltximg/org-tex-f50fd45cf8972d0285d092d902198c8147fcb355.svg" alt="\(X \multimap Y\)" style="height: 0.7680em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" /> for linear function:
+</p>
+
+<ul class="org-ul">
+<li>web: <img src="./ltximg/org-tex-143423c26f2252c62845f5c0cd2ccab38c94ca9c.svg" alt="\(|X \multimap Y | = |X | \times |Y|\)" style="height: 1.0784em; vertical-align: -0.2942em; display: inline-block" class="org-latex org-latex-inline" /></li>
+<li>coherence: <img src="./ltximg/org-tex-cf648408c1f26a545f0e52abf8003800c6c2c650.svg" alt="\((x, y)\coh_{X \multimap Y} (x' , y')\)" style="height: 1.0801em; vertical-align: -0.2942em; display: inline-block" class="org-latex org-latex-inline" /> iff <img src="./ltximg/org-tex-9d26500458a0fb1208b87b5f6b745a92203249b5.svg" alt="\(x \coh x' \Rightarrow y\coh y'\)" style="height: 1.0257em; vertical-align: -0.2397em; display: inline-block" class="org-latex org-latex-inline" /> and</li>
+<li><img src="./ltximg/org-tex-ad3506f7d3b3e7e9f3e5aa4d1f5e67dc9dba9e33.svg" alt="\(\beta \incoh \beta '\Rightarrow a \incoh a'\)" style="height: 1.0257em; vertical-align: -0.2397em; display: inline-block" class="org-latex org-latex-inline" /></li>
+</ul>
+
+<p>
+Or alternatively, in The Blind Spot, we define the coherence as
+</p>
+
+<p>
+<img src="./ltximg/org-tex-96b3d6ced2dd9b1f65909b11f12d9df02e0cbd1a.svg" alt="\[
+\begin{aligned}
+(x , y) \coh _{X \multimap Y} (x ' , y') \Leftrightarrow {} &amp;amp; ( x \coh x ' \Rightarrow y \coh y') \\
+&amp;amp; \land (x \scoh x' \Rightarrow y \scoh y').
+\end{aligned}\]" style="height: 2.8424em; display: block" class="org-latex org-latex-block" />
+It can also be written in single line:
+</p>
+
+<p>
+<img src="./ltximg/org-tex-07517c10bf6e64b7b80d657838e85064642cca55.svg" alt="\[(x, y) \scoh _{X \multimap Y} (x',y') \Leftrightarrow (x \coh x'\Rightarrow y\scoh y').\]" style="height: 1.5194em; display: block" class="org-latex org-latex-block" />
+</p>
+
+<p>
+The <img src="./ltximg/org-tex-1f00919c8063f6f83fd5c54e4d7e6dbba36c5879.svg" alt="\(\scoh\)" style="height: 0.9695em; vertical-align: -0.2397em; display: inline-block" class="org-latex org-latex-inline" /> is called strict coherent if you don't remember, <img src="./ltximg/org-tex-198ba6f065a7470d2de32872bebff9d3f2cb706f.svg" alt="\(x \scoh x'\)" style="height: 1.0257em; vertical-align: -0.2397em; display: inline-block" class="org-latex org-latex-inline" /> means that  <img src="./ltximg/org-tex-23406199de74a3ec56fd4836677f6f55cd9cc7e0.svg" alt="\(x \coh x'\)" style="height: 0.8351em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" /> and <img src="./ltximg/org-tex-104cace90246ae779ecc4503c55b7a4f29c43aeb.svg" alt="\(x \neq x'\)" style="height: 1.0257em; vertical-align: -0.2397em; display: inline-block" class="org-latex org-latex-inline" />.
+</p>
+</div>
+</div>
+<div id="outline-container-org5fe8293" class="outline-3">
+<h3 id="org5fe8293"><span class="section-number-3">2.16.</span> Linearity: The Symmetry Provided by Linear Implication</h3>
+<div class="outline-text-3" id="text-2-16">
+<p>
+We first define linear negation as
+</p>
+
+<ul class="org-ul">
+<li>web: <img src="./ltximg/org-tex-07e99801689f787e44548a568b687bfba280de0a.svg" alt="\({\sim} A = |A|\)" style="height: 1.0784em; vertical-align: -0.2942em; display: inline-block" class="org-latex org-latex-inline" /></li>
+<li>coherence: <img src="./ltximg/org-tex-35330f86eb8efde13197f5e7e98e3b07b3ddf977.svg" alt="\(a \coh _{{\sim} A} a'\)" style="height: 0.9821em; vertical-align: -0.1962em; display: inline-block" class="org-latex org-latex-inline" /> iff <img src="./ltximg/org-tex-6fd81a0956dd654428e8945908c375deff865018.svg" alt="\(a \incoh _{A} a'\)" style="height: 0.9821em; vertical-align: -0.1962em; display: inline-block" class="org-latex org-latex-inline" /></li>
+</ul>
+
+<p>
+After we have linear negation, we can find a symmetrical structure for linear implication:
+</p>
+
+<p>
+<img src="./ltximg/org-tex-866f566525c8cbca93a58405ef6bfa2c203385a3.svg" alt="\[A \multimap B \simeq {\sim}B \multimap {\sim} A\]" style="height: 1.2744em; display: block" class="org-latex org-latex-block" />
+</p>
+
+<p>
+The isomorphism being <img src="./ltximg/org-tex-a77908a3656f59737123548bc5d799d2fffbb122.svg" alt="\((a, b) \mapsto (b, a)\)" style="height: 1.0784em; vertical-align: -0.2942em; display: inline-block" class="org-latex org-latex-inline" />.
+</p>
+</div>
+</div>
+<div id="outline-container-orgf023d3d" class="outline-3">
+<h3 id="orgf023d3d"><span class="section-number-3">2.17.</span> Linearity: Linearisation or Of Course!</h3>
+<div class="outline-text-3" id="text-2-17">
+<p>
+I have no idea why Girard would call this "Of Course". Anyway, "Of Course!" is the linearisation of a space <img src="./ltximg/org-tex-b71ddba857190e174afcb6b9ddec544fe69cd65b.svg" alt="\(X\)" style="height: 0.7680em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" />:
+</p>
+
+<ul class="org-ul">
+<li>web: <img src="./ltximg/org-tex-649267529e974acfff89ca50f2e5cf2794ed1845.svg" alt="\(|{!} X| := X_{\mathrm{fin}} = \{a \sqsubset X \semicolon a\ \text{finite}\}\)" style="height: 1.0784em; vertical-align: -0.2942em; display: inline-block" class="org-latex org-latex-inline" /></li>
+<li>coherence: <img src="./ltximg/org-tex-84b3d857003548cb810e80a1a7faa75d281cbb02.svg" alt="\(a \coh_{{!}X} a'\)" style="height: 0.9821em; vertical-align: -0.1962em; display: inline-block" class="org-latex org-latex-inline" /> iff <img src="./ltximg/org-tex-c405a54e9a582c59bd68b66a844303c180dbfe62.svg" alt="\(a \cup a' \sqsubset X\)" style="height: 0.8696em; vertical-align: -0.0837em; display: inline-block" class="org-latex org-latex-inline" /></li>
+</ul>
+
+<p>
+For a clique <img src="./ltximg/org-tex-90f5b341dd5039f54d2133911f697dcf2b80f37f.svg" alt="\(a \subset X\)" style="height: 0.8063em; vertical-align: -0.0875em; display: inline-block" class="org-latex org-latex-inline" />, we can define a mapping from <img src="./ltximg/org-tex-b71ddba857190e174afcb6b9ddec544fe69cd65b.svg" alt="\(X\)" style="height: 0.7680em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" /> to <img src="./ltximg/org-tex-87e3142a5a86b663a9fc54935b89e6da40f09ddc.svg" alt="\({!} X\)" style="height: 0.7789em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" />:
+<img src="./ltximg/org-tex-fb52fa567639673301e73246105f703317638dbf.svg" alt="\[a \mapsto {!}a := \{a _{0} \semicolon a _{0} \subset a, a_{0}\ \text{finite}\}\]" style="height: 1.5194em; display: block" class="org-latex org-latex-block" />
+</p>
+
+<p>
+With linearisation we easily have
+<img src="./ltximg/org-tex-ce3591fac1c947da5b554995977ba9359894c84a.svg" alt="\[X \to Y \simeq ({!}X)\multimap Y\]" style="height: 1.5194em; display: block" class="org-latex org-latex-block" />
+Thus we can know that every stable function can be linearised to a linear function.
+</p>
+</div>
+</div>
+<div id="outline-container-org66a5f14" class="outline-3">
+<h3 id="org66a5f14"><span class="section-number-3">2.18.</span> Linearity: Why Not?</h3>
+<div class="outline-text-3" id="text-2-18">
+<p>
+<i>Why Not?</i> is considered as the dual of <i>Of Course!</i>. Here is the definition of <img src="./ltximg/org-tex-3fbd1ca909bd5a5ea74519e72889f577664ef286.svg" alt="\(?X\)" style="height: 0.7789em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" />
+</p>
+
+<ul class="org-ul">
+<li>web: <img src="./ltximg/org-tex-b26da987cfc5cf561f3744e176c0dd975b07d5e5.svg" alt="\(|{?} X |  = {!}({\sim} X)\)" style="height: 1.0784em; vertical-align: -0.2942em; display: inline-block" class="org-latex org-latex-inline" /></li>
+<li>coherence: <img src="./ltximg/org-tex-58b1b5ca12bab71ecefbfc051f019023c41714fc.svg" alt="\(a \scoh a' \Leftrightarrow a \cup a' \not \sqsubset {\sim} X.\)" style="height: 1.0257em; vertical-align: -0.2397em; display: inline-block" class="org-latex org-latex-inline" /></li>
+</ul>
+
+<p>
+The definition seems not so important. What matters is the dual:
+</p>
+
+<p>
+<img src="./ltximg/org-tex-575fc02cac08602597b6cedd64bd0bd9356ec629.svg" alt="\[
+\begin{aligned}
+{\sim} {!} X &amp;amp; {} = {?} {\sim} X,\\
+{\sim} {?} X &amp;amp; {} = {!} {\sim} X.
+\end{aligned}\]" style="height: 2.8424em; display: block" class="org-latex org-latex-block" />
+</p>
+
+<p>
+the latter can written as <img src="./ltximg/org-tex-432ec2d00123ca8158d651f65d6e4c63ce52aef9.svg" alt="\(? X = {\sim} {!} {\sim} X\)" style="height: 0.7789em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" />. What is <i>Why Not?</i> used for?
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: MAO</p>
+<p class="date">Created: 2024-12-05 Thu 16:54</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>
