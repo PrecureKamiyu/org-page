@@ -99,12 +99,6 @@ a:hover {
     text-align: center;
 }
 
-@media screen and (max-width: 1200px) {
-    img {
-        width: 400px;
-    }
-}
-
 code {
     font-size: 16px;
     color: #2aa198; /* Solarized Light code color */

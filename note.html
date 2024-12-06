@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2024-12-05 Thu 16:54 -->
+<!-- 2024-12-06 Fri 23:25 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Note</title>
@@ -229,14 +229,15 @@
 <li><a href="#org696491b">1.20. pattern matching and higher order unification</a></li>
 <li><a href="#org4e2ef66">1.21. topology</a></li>
 <li><a href="#orga0ee0d4">1.22. intuitionistic property and herbrand's theorem</a></li>
-<li><a href="#org60167ee">1.23. CoC and Coq and Martin-Lof's system</a></li>
-<li><a href="#orgc0caca4">1.24. CIC</a></li>
-<li><a href="#org5460b0e">1.25. MLCC Martin-Lof's Constructive Type Theory</a></li>
-<li><a href="#org951c92c">1.26. MLCC and universe</a></li>
-<li><a href="#org063e310">1.27. Russell universe and tarski universe</a></li>
-<li><a href="#org753a77a">1.28. existential type</a></li>
-<li><a href="#org0387b84">1.29. substructural logic</a></li>
-<li><a href="#org08f1b8d">1.30. refinement type</a></li>
+<li><a href="#orgc7f9745">1.23. functional dependencies</a></li>
+<li><a href="#org60167ee">1.24. CoC and Coq and Martin-Lof's system</a></li>
+<li><a href="#orgc0caca4">1.25. CIC</a></li>
+<li><a href="#org5460b0e">1.26. MLCC Martin-Lof's Constructive Type Theory</a></li>
+<li><a href="#org951c92c">1.27. MLCC and universe</a></li>
+<li><a href="#org063e310">1.28. Russell universe and tarski universe</a></li>
+<li><a href="#org753a77a">1.29. existential type</a></li>
+<li><a href="#org0387b84">1.30. substructural logic</a></li>
+<li><a href="#org08f1b8d">1.31. refinement type</a></li>
 </ul>
 </li>
 <li><a href="#coherence-and-linearity">2. Topic: coherent space and linearity</a>
@@ -259,6 +260,16 @@
 <li><a href="#org5fe8293">2.16. Linearity: The Symmetry Provided by Linear Implication</a></li>
 <li><a href="#orgf023d3d">2.17. Linearity: Linearisation or Of Course!</a></li>
 <li><a href="#org66a5f14">2.18. Linearity: Why Not?</a></li>
+</ul>
+</li>
+<li><a href="#org543993e">3. Topic: pl</a>
+<ul>
+<li><a href="#orgf7ea023">3.1. simple typed calculus: syntax and dynamics</a></li>
+<li><a href="#orgc9ab23a">3.2. rules</a></li>
+<li><a href="#orga13ba6f">3.3. val rules</a></li>
+<li><a href="#orgc7e2020">3.4. dynamics</a></li>
+<li><a href="#org2a54b87">3.5. dynamics rules</a></li>
+<li><a href="#orgd820ce2">3.6. substitution <img src="./ltximg/org-tex-c5f7a6815e21b874ec95f3c22a9d87d144500312.svg" alt="\(\gamma\)" style="height: 0.7109em; vertical-align: -0.2397em; display: inline-block" class="org-latex org-latex-inline" /> from</a></li>
 </ul>
 </li>
 </ul>
@@ -828,9 +839,27 @@ for ground terms <img src="./ltximg/org-tex-b9850ac3188b1f3c4ea1f6b5d273bf636ba6
 </p>
 </div>
 </div>
-<div id="outline-container-org60167ee" class="outline-3">
-<h3 id="org60167ee"><span class="section-number-3">1.23.</span> CoC and Coq and Martin-Lof's system</h3>
+<div id="outline-container-orgc7f9745" class="outline-3">
+<h3 id="orgc7f9745"><span class="section-number-3">1.23.</span> functional dependencies</h3>
 <div class="outline-text-3" id="text-1-23">
+<p>
+Check functional dependencies in haskell
+</p>
+
+<div class="org-src-container">
+<pre class="src src-haskell"><span style="color: #859900; font-weight: bold;">class</span> <span style="color: #b58900; font-style: italic;">Mult</span> a b c <span style="color: #268bd2;">|</span> a b <span style="color: #268bd2;">-&gt;</span> c <span style="color: #859900; font-weight: bold;">where</span>
+  (<span style="color: #268bd2;">*</span>) <span style="color: #268bd2;">::</span> a <span style="color: #268bd2;">-&gt;</span> b <span style="color: #268bd2;">-&gt;</span> c
+</pre>
+</div>
+
+<p>
+it basically says that the type <img src="./ltximg/org-tex-5d738ebf5570584714f006334de401e91721c5b6.svg" alt="\(c\)" style="height: 0.5203em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" /> can be determined give <img src="./ltximg/org-tex-ba4e8845c885862875b30dfb61602e869601dcfc.svg" alt="\(a\)" style="height: 0.5203em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" /> and <img src="./ltximg/org-tex-7473c3389158b4f4481e8067832db177745494cf.svg" alt="\(b\)" style="height: 0.7789em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" />. This gives a type inference hint.
+</p>
+</div>
+</div>
+<div id="outline-container-org60167ee" class="outline-3">
+<h3 id="org60167ee"><span class="section-number-3">1.24.</span> CoC and Coq and Martin-Lof's system</h3>
+<div class="outline-text-3" id="text-1-24">
 <p>
 There is connection between constructive logic and CoC and Coq
 </p>
@@ -841,8 +870,8 @@ See The Blind Spot 6.A.4
 </div>
 </div>
 <div id="outline-container-orgc0caca4" class="outline-3">
-<h3 id="orgc0caca4"><span class="section-number-3">1.24.</span> CIC</h3>
-<div class="outline-text-3" id="text-1-24">
+<h3 id="orgc0caca4"><span class="section-number-3">1.25.</span> CIC</h3>
+<div class="outline-text-3" id="text-1-25">
 <p>
 what is CIC?
 </p>
@@ -852,8 +881,8 @@ CIC stands for the Calculus of Inductive Constructions (Calcul des Constructions
 </p>
 </div>
 <div id="outline-container-org47e0dd8" class="outline-4">
-<h4 id="org47e0dd8"><span class="section-number-4">1.24.1.</span> Key Features of CIC:</h4>
-<div class="outline-text-4" id="text-1-24-1">
+<h4 id="org47e0dd8"><span class="section-number-4">1.25.1.</span> Key Features of CIC:</h4>
+<div class="outline-text-4" id="text-1-25-1">
 <ol class="org-ol">
 <li><b>Inductive Types</b>: These allow the definition of recursive data structures, such as lists, trees, and natural numbers. Inductive types are defined by a set of constructors that specify how to build elements of the type.</li>
 
@@ -865,15 +894,15 @@ CIC stands for the Calculus of Inductive Constructions (Calcul des Constructions
 </ol>
 </div>
 </div>
-<div id="outline-container-orgd5aedab" class="outline-4">
-<h4 id="orgd5aedab"><span class="section-number-4">1.24.2.</span> Example in Coq:</h4>
-<div class="outline-text-4" id="text-1-24-2">
+<div id="outline-container-org1ba1f2c" class="outline-4">
+<h4 id="org1ba1f2c"><span class="section-number-4">1.25.2.</span> Example in Coq:</h4>
+<div class="outline-text-4" id="text-1-25-2">
 <p>
 Here is a simple example of defining natural numbers using an inductive type in Coq:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-coq">Inductive nat : Type :=
+<pre class="src src-coq"><span style="color: #859900; font-weight: bold;">Inductive</span> <span style="color: #b58900;">nat</span> : <span style="color: #b58900; font-style: italic;">Type</span> :=
   | O : nat
   | S : nat -&gt; nat.
 </pre>
@@ -888,34 +917,34 @@ You can then define a function that adds two natural numbers using pattern match
 </p>
 
 <div class="org-src-container">
-<pre class="src src-coq">Fixpoint add (n m : nat) : nat :=
-  match n with
+<pre class="src src-coq"><span style="color: #859900; font-weight: bold;">Fixpoint</span> <span style="color: #b58900;">add</span> (<span style="color: #268bd2;">n m</span> : nat) : nat :=
+  <span style="color: #b58900; font-style: italic;">match</span> n <span style="color: #b58900; font-style: italic;">with</span>
   | O =&gt; m
   | S n' =&gt; S (add n' m)
-  end.
+  <span style="color: #b58900; font-style: italic;">end</span>.
 </pre>
 </div>
 </div>
 </div>
 <div id="outline-container-orgd45808c" class="outline-4">
-<h4 id="orgd45808c"><span class="section-number-4">1.24.3.</span> Importance in Coq:</h4>
-<div class="outline-text-4" id="text-1-24-3">
+<h4 id="orgd45808c"><span class="section-number-4">1.25.3.</span> Importance in Coq:</h4>
+<div class="outline-text-4" id="text-1-25-3">
 <p>
 The CIC is the foundational logic of Coq, providing a powerful framework for both programming and proving. It allows users to write programs and prove properties about them within the same system, leveraging the Curry-Howard isomorphism to bridge the gap between computation and logic.
 </p>
 </div>
 </div>
 <div id="outline-container-orgf9a3ca1" class="outline-4">
-<h4 id="orgf9a3ca1"><span class="section-number-4">1.24.4.</span> Relation to Martin-Löf's Type Theory:</h4>
-<div class="outline-text-4" id="text-1-24-4">
+<h4 id="orgf9a3ca1"><span class="section-number-4">1.25.4.</span> Relation to Martin-Löf's Type Theory:</h4>
+<div class="outline-text-4" id="text-1-25-4">
 <p>
 Martin-Löf's type theory is a foundational system for constructive mathematics, and it has influenced the development of CIC. Both systems emphasize the role of types in both programming and proving, and they share the idea of propositions as types. However, CIC extends Martin-Löf's type theory by incorporating features like inductive types, making it more suitable for practical programming and proof development in Coq.
 </p>
 </div>
 </div>
-<div id="outline-container-orgb470c77" class="outline-4">
-<h4 id="orgb470c77"><span class="section-number-4">1.24.5.</span> Summary:</h4>
-<div class="outline-text-4" id="text-1-24-5">
+<div id="outline-container-orgd07c785" class="outline-4">
+<h4 id="orgd07c785"><span class="section-number-4">1.25.5.</span> Summary:</h4>
+<div class="outline-text-4" id="text-1-25-5">
 <ul class="org-ul">
 <li><b>CIC</b>: Calculus of Inductive Constructions, used in Coq.</li>
 <li><b>Features</b>: Inductive types, pattern matching, dependent types, propositions as types.</li>
@@ -930,15 +959,15 @@ Understanding CIC is crucial for working effectively with Coq and for appreciati
 </div>
 </div>
 <div id="outline-container-org5460b0e" class="outline-3">
-<h3 id="org5460b0e"><span class="section-number-3">1.25.</span> MLCC Martin-Lof's Constructive Type Theory</h3>
-<div class="outline-text-3" id="text-1-25">
+<h3 id="org5460b0e"><span class="section-number-3">1.26.</span> MLCC Martin-Lof's Constructive Type Theory</h3>
+<div class="outline-text-3" id="text-1-26">
 <p>
 MLCC stands for "Martin-Löf's Constructive Type Theory with Co-Inductive Types." It is an extension of Martin-Löf's original constructive type theory, which itself is a foundational system for constructive mathematics. The addition of co-inductive types allows for the definition of potentially infinite data structures, complementing the inductive types that are used for finite data structures.
 </p>
 </div>
 <div id="outline-container-orga6ea085" class="outline-4">
-<h4 id="orga6ea085"><span class="section-number-4">1.25.1.</span> Key Features of MLCC:</h4>
-<div class="outline-text-4" id="text-1-25-1">
+<h4 id="orga6ea085"><span class="section-number-4">1.26.1.</span> Key Features of MLCC:</h4>
+<div class="outline-text-4" id="text-1-26-1">
 <ol class="org-ol">
 <li><b>Inductive Types</b>: These are used to define finite data structures. For example, natural numbers, lists, and trees can be defined inductively.</li>
 
@@ -950,22 +979,22 @@ MLCC stands for "Martin-Löf's Constructive Type Theory with Co-Inductive Types.
 </ol>
 </div>
 </div>
-<div id="outline-container-orgad750ba" class="outline-4">
-<h4 id="orgad750ba"><span class="section-number-4">1.25.2.</span> Example in Coq:</h4>
-<div class="outline-text-4" id="text-1-25-2">
+<div id="outline-container-org273c5a9" class="outline-4">
+<h4 id="org273c5a9"><span class="section-number-4">1.26.2.</span> Example in Coq:</h4>
+<div class="outline-text-4" id="text-1-26-2">
 <p>
 In Coq, which is based on the Calculus of Inductive Constructions (CIC), you can define both inductive and co-inductive types.
 </p>
 </div>
 <ol class="org-ol">
 <li><a id="orgfed2472"></a>Inductive Type Example:<br />
-<div class="outline-text-5" id="text-1-25-2-1">
+<div class="outline-text-5" id="text-1-26-2-1">
 <p>
 Here is an example of defining natural numbers using an inductive type:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-coq">Inductive nat : Type :=
+<pre class="src src-coq"><span style="color: #859900; font-weight: bold;">Inductive</span> <span style="color: #b58900;">nat</span> : <span style="color: #b58900; font-style: italic;">Type</span> :=
   | O : nat
   | S : nat -&gt; nat.
 </pre>
@@ -973,13 +1002,13 @@ Here is an example of defining natural numbers using an inductive type:
 </div>
 </li>
 <li><a id="org2b72f92"></a>Co-Inductive Type Example:<br />
-<div class="outline-text-5" id="text-1-25-2-2">
+<div class="outline-text-5" id="text-1-26-2-2">
 <p>
 Here is an example of defining a stream (an infinite sequence) using a co-inductive type:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-coq">CoInductive Stream (A : Type) : Type :=
+<pre class="src src-coq"><span style="color: #859900; font-weight: bold;">CoInductive</span> <span style="color: #b58900;">Stream</span> (<span style="color: #268bd2;">A</span> : <span style="color: #b58900; font-style: italic;">Type</span>) : <span style="color: #b58900; font-style: italic;">Type</span> :=
   | Cons : A -&gt; Stream A -&gt; Stream A.
 </pre>
 </div>
@@ -988,8 +1017,8 @@ Here is an example of defining a stream (an infinite sequence) using a co-induct
 </ol>
 </div>
 <div id="outline-container-orgfceb246" class="outline-4">
-<h4 id="orgfceb246"><span class="section-number-4">1.25.3.</span> Importance of MLCC:</h4>
-<div class="outline-text-4" id="text-1-25-3">
+<h4 id="orgfceb246"><span class="section-number-4">1.26.3.</span> Importance of MLCC:</h4>
+<div class="outline-text-4" id="text-1-26-3">
 <ol class="org-ol">
 <li><b>Expressiveness</b>: MLCC allows for the definition of both finite and infinite data structures, making it a powerful tool for both programming and proof development.</li>
 
@@ -999,9 +1028,9 @@ Here is an example of defining a stream (an infinite sequence) using a co-induct
 </ol>
 </div>
 </div>
-<div id="outline-container-org8c6ee43" class="outline-4">
-<h4 id="org8c6ee43"><span class="section-number-4">1.25.4.</span> Summary:</h4>
-<div class="outline-text-4" id="text-1-25-4">
+<div id="outline-container-orgad69ee4" class="outline-4">
+<h4 id="orgad69ee4"><span class="section-number-4">1.26.4.</span> Summary:</h4>
+<div class="outline-text-4" id="text-1-26-4">
 <ul class="org-ul">
 <li><b>MLCC</b>: Martin-Löf's Constructive Type Theory with Co-Inductive Types.</li>
 <li><b>Features</b>: Inductive and co-inductive types, dependent types, propositions as types.</li>
@@ -1016,15 +1045,15 @@ Understanding MLCC is crucial for researchers and practitioners working with con
 </div>
 </div>
 <div id="outline-container-org951c92c" class="outline-3">
-<h3 id="org951c92c"><span class="section-number-3">1.26.</span> MLCC and universe</h3>
-<div class="outline-text-3" id="text-1-26">
+<h3 id="org951c92c"><span class="section-number-3">1.27.</span> MLCC and universe</h3>
+<div class="outline-text-3" id="text-1-27">
 <p>
 In the context of Martin-Löf's Constructive Type Theory with Co-Inductive Types (MLCC), "universe" refers to a type of types. Universes are used to avoid logical paradoxes that arise from self-referential types, such as Russell's paradox in naive set theory. By organizing types into a hierarchy of universes, MLCC ensures that the type system remains consistent and avoids circular reasoning.
 </p>
 </div>
 <div id="outline-container-orga5fc362" class="outline-4">
-<h4 id="orga5fc362"><span class="section-number-4">1.26.1.</span> Key Concepts:</h4>
-<div class="outline-text-4" id="text-1-26-1">
+<h4 id="orga5fc362"><span class="section-number-4">1.27.1.</span> Key Concepts:</h4>
+<div class="outline-text-4" id="text-1-27-1">
 <ol class="org-ol">
 <li><i>Universes</i>: A universe is a type whose elements are types. For example, in Coq, the universe <code>Type</code> is a type that contains other types.</li>
 
@@ -1034,19 +1063,19 @@ In the context of Martin-Löf's Constructive Type Theory with Co-Inductive Types
 </ol>
 </div>
 </div>
-<div id="outline-container-org1ba1f2c" class="outline-4">
-<h4 id="org1ba1f2c"><span class="section-number-4">1.26.2.</span> Example in Coq:</h4>
-<div class="outline-text-4" id="text-1-26-2">
+<div id="outline-container-org22fea0c" class="outline-4">
+<h4 id="org22fea0c"><span class="section-number-4">1.27.2.</span> Example in Coq:</h4>
+<div class="outline-text-4" id="text-1-27-2">
 <p>
 In Coq, the universe hierarchy is implicit, but you can see its effects in the type-checking process. Here is an example of defining a type in a universe and using it:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-coq">Definition myType : Type := nat.
+<pre class="src src-coq"><span style="color: #859900; font-weight: bold;">Definition</span> <span style="color: #b58900;">myType</span> : <span style="color: #b58900; font-style: italic;">Type</span> := nat.
 
-Definition myFunc (A : Type) : Type := A -&gt; A.
+<span style="color: #859900; font-weight: bold;">Definition</span> <span style="color: #b58900;">myFunc</span> (<span style="color: #268bd2;">A</span> : <span style="color: #b58900; font-style: italic;">Type</span>) : <span style="color: #b58900; font-style: italic;">Type</span> := A -&gt; A.
 
-Check myFunc myType.
+<span style="color: #859900; font-weight: bold;">Check</span> myFunc myType.
 </pre>
 </div>
 
@@ -1061,8 +1090,8 @@ In this example:
 </div>
 </div>
 <div id="outline-container-org96dbb38" class="outline-4">
-<h4 id="org96dbb38"><span class="section-number-4">1.26.3.</span> Importance of Universes in MLCC:</h4>
-<div class="outline-text-4" id="text-1-26-3">
+<h4 id="org96dbb38"><span class="section-number-4">1.27.3.</span> Importance of Universes in MLCC:</h4>
+<div class="outline-text-4" id="text-1-27-3">
 <ol class="org-ol">
 <li><i>Consistency</i>: Universes prevent logical paradoxes by ensuring that types cannot refer to themselves in a way that leads to inconsistency.</li>
 
@@ -1072,9 +1101,9 @@ In this example:
 </ol>
 </div>
 </div>
-<div id="outline-container-org33024d4" class="outline-4">
-<h4 id="org33024d4"><span class="section-number-4">1.26.4.</span> Summary:</h4>
-<div class="outline-text-4" id="text-1-26-4">
+<div id="outline-container-orga3ac4d0" class="outline-4">
+<h4 id="orga3ac4d0"><span class="section-number-4">1.27.4.</span> Summary:</h4>
+<div class="outline-text-4" id="text-1-27-4">
 <ul class="org-ul">
 <li><i>Universes</i>: Types of types, organized into a hierarchy to avoid paradoxes.</li>
 <li><i>Hierarchy</i>: Universes are indexed by levels (e.g., <code>Type(0)</code>, <code>Type(1)</code>), ensuring that types cannot refer to themselves in a paradoxical way.</li>
@@ -1090,12 +1119,12 @@ Understanding universes is crucial for working with advanced type systems and pr
 </div>
 </div>
 <div id="outline-container-org063e310" class="outline-3">
-<h3 id="org063e310"><span class="section-number-3">1.27.</span> Russell universe and tarski universe</h3>
-<div class="outline-text-3" id="text-1-27">
+<h3 id="org063e310"><span class="section-number-3">1.28.</span> Russell universe and tarski universe</h3>
+<div class="outline-text-3" id="text-1-28">
 </div>
 <div id="outline-container-orgfd74077" class="outline-4">
-<h4 id="orgfd74077"><span class="section-number-4">1.27.1.</span> Russell Universes:</h4>
-<div class="outline-text-4" id="text-1-27-1">
+<h4 id="orgfd74077"><span class="section-number-4">1.28.1.</span> Russell Universes:</h4>
+<div class="outline-text-4" id="text-1-28-1">
 <p>
 In a Russell universe, types are treated as elements of a universe. This means that types themselves are not distinguished from other elements within the universe. Here are the key points:
 </p>
@@ -1112,7 +1141,7 @@ like <code>nat</code> and <code>bool</code> are elements of <code>Type</code>.</
 </ol>
 
 <div class="org-src-container">
-<pre class="src src-coq">Definition myType : Type := nat.
+<pre class="src src-coq"><span style="color: #859900; font-weight: bold;">Definition</span> <span style="color: #b58900;">myType</span> : <span style="color: #b58900; font-style: italic;">Type</span> := nat.
 </pre>
 </div>
 
@@ -1122,8 +1151,8 @@ In this example, <code>myType</code> is a type (specifically, <code>nat</code>),
 </div>
 </div>
 <div id="outline-container-org3a34394" class="outline-4">
-<h4 id="org3a34394"><span class="section-number-4">1.27.2.</span> Tarski Universes:</h4>
-<div class="outline-text-4" id="text-1-27-2">
+<h4 id="org3a34394"><span class="section-number-4">1.28.2.</span> Tarski Universes:</h4>
+<div class="outline-text-4" id="text-1-28-2">
 <p>
 In a Tarski universe, types are distinguished from their elements. This means that there is an explicit type of types, and types are not treated uniformly as elements. Here are the key points:
 </p>
@@ -1160,8 +1189,8 @@ In this example:
 </div>
 </div>
 <div id="outline-container-orgedd6948" class="outline-4">
-<h4 id="orgedd6948"><span class="section-number-4">1.27.3.</span> Comparison:</h4>
-<div class="outline-text-4" id="text-1-27-3">
+<h4 id="orgedd6948"><span class="section-number-4">1.28.3.</span> Comparison:</h4>
+<div class="outline-text-4" id="text-1-28-3">
 <ol class="org-ol">
 <li><i>Uniformity vs. Distinction</i>:
 <ul class="org-ul">
@@ -1187,9 +1216,9 @@ the type hierarchy.</li>
 </ol>
 </div>
 </div>
-<div id="outline-container-orgd07c785" class="outline-4">
-<h4 id="orgd07c785"><span class="section-number-4">1.27.4.</span> Summary:</h4>
-<div class="outline-text-4" id="text-1-27-4">
+<div id="outline-container-org7a66f84" class="outline-4">
+<h4 id="org7a66f84"><span class="section-number-4">1.28.4.</span> Summary:</h4>
+<div class="outline-text-4" id="text-1-28-4">
 <ul class="org-ul">
 <li><i>Russell Universes</i>: Types are elements of a universe; no explicit type of
 types.
@@ -1216,8 +1245,8 @@ Understanding both Russell and Tarski universes is important for working with ad
 </div>
 </div>
 <div id="outline-container-org753a77a" class="outline-3">
-<h3 id="org753a77a"><span class="section-number-3">1.28.</span> existential type</h3>
-<div class="outline-text-3" id="text-1-28">
+<h3 id="org753a77a"><span class="section-number-3">1.29.</span> existential type</h3>
+<div class="outline-text-3" id="text-1-29">
 <p>
 In system F, the existential type is defined as?
 <img src="./ltximg/org-tex-0d717c34a2b5ad20c03039c3ad6b751acc2508d4.svg" alt="\[\forall Y (\forall X(A \Rightarrow Y) \Rightarrow Y)\]" style="height: 1.5194em; display: block" class="org-latex org-latex-block" />
@@ -1237,8 +1266,8 @@ See also in zhihu question
 </div>
 </div>
 <div id="outline-container-org0387b84" class="outline-3">
-<h3 id="org0387b84"><span class="section-number-3">1.29.</span> substructural logic</h3>
-<div class="outline-text-3" id="text-1-29">
+<h3 id="org0387b84"><span class="section-number-3">1.30.</span> substructural logic</h3>
+<div class="outline-text-3" id="text-1-30">
 <p>
 The classic one: linear logic
 </p>
@@ -1250,8 +1279,8 @@ See also CMU Course. But I don't like CMU course style though
 </div>
 </div>
 <div id="outline-container-org08f1b8d" class="outline-3">
-<h3 id="org08f1b8d"><span class="section-number-3">1.30.</span> refinement type</h3>
-<div class="outline-text-3" id="text-1-30">
+<h3 id="org08f1b8d"><span class="section-number-3">1.31.</span> refinement type</h3>
+<div class="outline-text-3" id="text-1-31">
 <p>
 I don't know what this is.
 </p>
@@ -1664,10 +1693,278 @@ the latter can written as <img src="./ltximg/org-tex-432ec2d00123ca8158d651f65d6
 </div>
 </div>
 </div>
+<div id="outline-container-org543993e" class="outline-2">
+<h2 id="org543993e"><span class="section-number-2">3.</span> Topic: pl</h2>
+<div class="outline-text-2" id="text-3">
+</div>
+<div id="outline-container-orgf7ea023" class="outline-3">
+<h3 id="orgf7ea023"><span class="section-number-3">3.1.</span> simple typed calculus: syntax and dynamics</h3>
+<div class="outline-text-3" id="text-3-1">
+<p>
+<img src="./ltximg/org-tex-a5dac8007615cc40cb6b64dfe63cddf7a2294950.svg" alt="\(A\)" style="height: 0.7680em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" /> 是类型、<img src="./ltximg/org-tex-a67d4ca7582d61dfb8b0de879a635d10199ac86c.svg" alt="\(t\)" style="height: 0.7011em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" /> 是 term （或者说 <img src="./ltximg/org-tex-fcc2121ea9737f6227c97e76952f408b036ad679.svg" alt="\(M\)" style="height: 0.7680em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" /> 是 term）。我们的 judgment 形如 <img src="./ltximg/org-tex-703af46ae74b1bb22c1d256f23c3b9adfec7ef42.svg" alt="\(t \colon A\)" style="height: 0.7680em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" />，意思是 <img src="./ltximg/org-tex-a67d4ca7582d61dfb8b0de879a635d10199ac86c.svg" alt="\(t\)" style="height: 0.7011em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" /> 有着类型 <img src="./ltximg/org-tex-a5dac8007615cc40cb6b64dfe63cddf7a2294950.svg" alt="\(A\)" style="height: 0.7680em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" />。
+</p>
+
+<p>
+我们接下来有 <img src="./ltximg/org-tex-a67d4ca7582d61dfb8b0de879a635d10199ac86c.svg" alt="\(t\)" style="height: 0.7011em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" /> 和 <img src="./ltximg/org-tex-a5dac8007615cc40cb6b64dfe63cddf7a2294950.svg" alt="\(A\)" style="height: 0.7680em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" /> 的生成文法。我们知道 STLC 是 CCC，这是说，如果说 <img src="./ltximg/org-tex-a519e85927f07e624605cb3978ccfb8ca8d0dc01.svg" alt="\(A_{1}, A_{2}\)" style="height: 0.9586em; vertical-align: -0.2397em; display: inline-block" class="org-latex org-latex-inline" /> 是类型，则 <img src="./ltximg/org-tex-b778ced1b1e30dca2ce4c20c779134f0c14cb835.svg" alt="\(A_{1} \times A_{2}\)" style="height: 0.9150em; vertical-align: -0.1962em; display: inline-block" class="org-latex org-latex-inline" /> 也是类型，<img src="./ltximg/org-tex-091a3f7d67240d10a9e1e4fd62598a1b403a07a9.svg" alt="\(A_{1} \to A_{2}\)" style="height: 0.9150em; vertical-align: -0.1962em; display: inline-block" class="org-latex org-latex-inline" /> 也是类型。对于 <img src="./ltximg/org-tex-a67d4ca7582d61dfb8b0de879a635d10199ac86c.svg" alt="\(t\)" style="height: 0.7011em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" /> 来说，也有对应的。我们直接写出文法：
+</p>
+<pre class="example">
+t ::= x | () | ⟨t₁, t₂⟩ | π₁·t | π₂·t | λx.t    | (t₁)t₂    | yes | no
+M ::= x | ⟨⟩ | ⟨M₁, M₂⟩ | M·1  | M·2  | λ(x.M)  | ap(M₁;M₂) | yes | no
+</pre>
+
+
+<p>
+我们通过 <img src="./ltximg/org-tex-703af46ae74b1bb22c1d256f23c3b9adfec7ef42.svg" alt="\(t \colon A\)" style="height: 0.7680em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" /> 来建立 ch 同构。这里的同构通过一些 rules 来表示：
+</p>
+</div>
+</div>
+<div id="outline-container-orgc9ab23a" class="outline-3">
+<h3 id="orgc9ab23a"><span class="section-number-3">3.2.</span> rules</h3>
+<div class="outline-text-3" id="text-3-2">
+<pre class="example">
+
+----------------  ----------
+Γ, x : A ⊢ x : A  Γ ⊢ ⟨⟩ : 1
+</pre>
+
+
+<pre class="example">
+Γ ⊢ M₁ : A₁   Γ ⊢ M₂ : A₂
+-------------------------
+ Γ ⊢ ⟨M₁, M₂⟩ : A₁ × A₂
+</pre>
+
+
+
+<p>
+sub / cut
+</p>
+
+<pre class="example">
+Γ, x : B ⊢ N : A    Γ ⊢ M : B   Γ ⊢ B   Γ, B ⊢ A
+-----------------------------   ----------------
+       Γ ⊢ N[M/x] : A                Γ ⊢ A
+</pre>
+</div>
+</div>
+<div id="outline-container-orga13ba6f" class="outline-3">
+<h3 id="orga13ba6f"><span class="section-number-3">3.3.</span> val rules</h3>
+<div class="outline-text-3" id="text-3-3">
+<pre class="example">
+
+---------  --------
+ yes val    no val
+</pre>
+
+
+<pre class="example">
+
+--------------  ------------
+ ⟨M₁, M₂⟩ val     λx.M val
+</pre>
+</div>
+</div>
+<div id="outline-container-orgc7e2020" class="outline-3">
+<h3 id="orgc7e2020"><span class="section-number-3">3.4.</span> dynamics</h3>
+<div class="outline-text-3" id="text-3-4">
+<p>
+Bob 的 dynamics 实际上指的是 reduction，dynamics 关注的是 normalisation 问题。想知道更多可以看 Proofs And Types 的关于 normalization 部分，对于 canonical form 来说，其存在性和唯一性都需要非常繁琐的证明。设 reduction 为 <img src="./ltximg/org-tex-ebb2c3eb98101448b1e6b261cc279296b7d2b9e2.svg" alt="\(\leadsto\)" style="height: 0.4687em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" />，我们有
+</p>
+
+<ul class="org-ul">
+<li>Church Rosser：如果 <img src="./ltximg/org-tex-73d6704efc8b49d9a47592603835dd7de8f6892b.svg" alt="\(u \leadsto u_{1}\)" style="height: 0.6673em; vertical-align: -0.1962em; display: inline-block" class="org-latex org-latex-inline" /> 并且 <img src="./ltximg/org-tex-70d7fd6a72e255ebeca3f66d9d5968589a20d1df.svg" alt="\(u \leadsto u_{2}\)" style="height: 0.6673em; vertical-align: -0.1962em; display: inline-block" class="org-latex org-latex-inline" />，则存在 <img src="./ltximg/org-tex-a6398c9937175267d83fed4ba6ab835be7c8fa9a.svg" alt="\(u'\)" style="height: 0.8351em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" />，满足 <img src="./ltximg/org-tex-f2f843ea02e0e14afe1e5ccf6145f30535a3e345.svg" alt="\(u_{1} \leadsto u'\)" style="height: 0.9821em; vertical-align: -0.1962em; display: inline-block" class="org-latex org-latex-inline" /> <img src="./ltximg/org-tex-6ba0a4585fabc07df6b46a5683f464c8d3a88139.svg" alt="\(u_{2} \leadsto u'\)" style="height: 0.9821em; vertical-align: -0.1962em; display: inline-block" class="org-latex org-latex-inline" /></li>
+<li>Weak Normalization：存在一个 reduction 策略使得 <img src="./ltximg/org-tex-2c57e2ef7c8942a6e47672197a6e0c87c68837a1.svg" alt="\(u\)" style="height: 0.5203em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" /> 能够达到 <img src="./ltximg/org-tex-a6398c9937175267d83fed4ba6ab835be7c8fa9a.svg" alt="\(u'\)" style="height: 0.8351em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" />，其中 <img src="./ltximg/org-tex-a6398c9937175267d83fed4ba6ab835be7c8fa9a.svg" alt="\(u'\)" style="height: 0.8351em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" /> 是 canonical form</li>
+<li>Strong Normalization：对于任意的 reduction 策略都能抵达 canonical form</li>
+</ul>
+
+<p>
+我们有听过 <img src="./ltximg/org-tex-df21b5079c6ab4d9b283027391e564cc903f9a0d.svg" alt="\(\eta\)" style="height: 0.7109em; vertical-align: -0.2397em; display: inline-block" class="org-latex org-latex-inline" />-conversion，这还被称作一个 immediate reduction
+<img src="./ltximg/org-tex-67c4c0c18d879a1ff32b227f2e76dd9c13adb8cd.svg" alt="\[(\lambda x . t) t' \leadsto t [t/x]\]" style="height: 1.5194em; display: block" class="org-latex org-latex-block" />
+还有 <img src="./ltximg/org-tex-3b2a2615de8c09649db4336cfc29f7059488ebfd.svg" alt="\(\alpha\)" style="height: 0.5203em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" />-conversion：
+<img src="./ltximg/org-tex-0862c6953f3803534a726d19b0351508e00b2e5f.svg" alt="\[\lambda x . t \leadsto \lambda y .t[y / x]\]" style="height: 1.5194em; display: block" class="org-latex org-latex-block" />
+还有更多的 reduction，
+</p>
+<ul class="org-ul">
+<li><img src="./ltximg/org-tex-1fcd883098a9cef8239b6da0b04478d9af0c9f3f.svg" alt="\(\pi_{1} (\langle t_{1}, t_{2} \rangle) = t_{1}\)" style="height: 1.0784em; vertical-align: -0.2942em; display: inline-block" class="org-latex org-latex-inline" /></li>
+<li><img src="./ltximg/org-tex-cc8533929b8b06bccbc2014d3cf58a4f953ae99c.svg" alt="\(\pi_{2} (\langle t_{1}, t_{2} \rangle) = t_{2}\)" style="height: 1.0784em; vertical-align: -0.2942em; display: inline-block" class="org-latex org-latex-inline" /></li>
+</ul>
+<p>
+Bob 使用了 evaluation / dynamics 的框架。主要目标是得到这样的 judgment
+<img src="./ltximg/org-tex-2acec6b537a55314cf70eb4a24b4e1d9f0d5d756.svg" alt="\[a\ \mathsf{val}\]" style="height: 1.2744em; display: block" class="org-latex org-latex-block" />
+指的是 <img src="./ltximg/org-tex-ba4e8845c885862875b30dfb61602e869601dcfc.svg" alt="\(a\)" style="height: 0.5203em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" /> 是 value，是 canonical form 也就是不能在 reduce 下去了。
+</p>
+</div>
+</div>
+<div id="outline-container-org2a54b87" class="outline-3">
+<h3 id="org2a54b87"><span class="section-number-3">3.5.</span> dynamics rules</h3>
+<div class="outline-text-3" id="text-3-5">
+<p>
+step fst &amp; step snd:
+</p>
+<pre class="example">
+  M₁ ↦ M₂           M₁ ↦ M₂
+------------      ------------
+ M₁⬝1 ↦ M₂⬝1       M₁⬝2 ↦ M₂·2
+</pre>
+
+
+<p>
+step fst β &amp; step snd β
+</p>
+<pre class="example">
+
+---------------  -------------------
+⟨M₁, M₂⟩·1 ↦ M₁    ⟨M₁, M₂⟩·2 ↦ M₂
+</pre>
+
+
+<p>
+step app
+</p>
+<pre class="example">
+     M₁ ↦ M₁'
+-----------------
+ (M₁)M₂ ↦ (M₁)M₂'
+</pre>
+
+
+<p>
+step app β
+</p>
+<pre class="example">
+
+----------------------
+ (λx.M₁)M₂ ↦ M₁[M₂/x]
+</pre>
+
+
+<pre class="example">
+app[(arr M₁); M₂] → M₁ [M₂]
+</pre>
+</div>
+</div>
+<div id="outline-container-orgd820ce2" class="outline-3">
+<h3 id="orgd820ce2"><span class="section-number-3">3.6.</span> substitution <img src="./ltximg/org-tex-c5f7a6815e21b874ec95f3c22a9d87d144500312.svg" alt="\(\gamma\)" style="height: 0.7109em; vertical-align: -0.2397em; display: inline-block" class="org-latex org-latex-inline" /> from</h3>
+<div class="outline-text-3" id="text-3-6">
+<p>
+substitution <img src="./ltximg/org-tex-c5f7a6815e21b874ec95f3c22a9d87d144500312.svg" alt="\(\gamma\)" style="height: 0.7109em; vertical-align: -0.2397em; display: inline-block" class="org-latex org-latex-inline" /> from context <img src="./ltximg/org-tex-55111027484222a791907da6835a2bf0d290279c.svg" alt="\(\Gamma '\)" style="height: 0.8351em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" /> to <img src="./ltximg/org-tex-4eec2828ae8a0ecd3ff71f52fcf7ba97d310e520.svg" alt="\(\Gamma\)" style="height: 0.7680em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" />, written <img src="./ltximg/org-tex-ea4683258732206d49ebfeeecc8d69cc38ea7939.svg" alt="\(\gamma : \Gamma ' \to \Gamma\)" style="height: 1.0257em; vertical-align: -0.2397em; display: inline-block" class="org-latex org-latex-inline" />, is a finite map sending for each variable <img src="./ltximg/org-tex-7d1db13ad00887bc942dfde79bbde8b765f8008e.svg" alt="\(x \colon A _{x} \)" style="height: 0.9150em; vertical-align: -0.1962em; display: inline-block" class="org-latex org-latex-inline" /> in <img src="./ltximg/org-tex-4eec2828ae8a0ecd3ff71f52fcf7ba97d310e520.svg" alt="\(\Gamma\)" style="height: 0.7680em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" /> to a term <img src="./ltximg/org-tex-6d66390264c86505ed371e3f0d6bd51ff05b7d92.svg" alt="\(\Gamma' \vdash M_{x} \colon A_{x}\)" style="height: 0.9821em; vertical-align: -0.1962em; display: inline-block" class="org-latex org-latex-inline" /> in context <img src="./ltximg/org-tex-55111027484222a791907da6835a2bf0d290279c.svg" alt="\(\Gamma '\)" style="height: 0.8351em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" />.
+</p>
+
+<p>
+The substitution <img src="./ltximg/org-tex-c5f7a6815e21b874ec95f3c22a9d87d144500312.svg" alt="\(\gamma\)" style="height: 0.7109em; vertical-align: -0.2397em; display: inline-block" class="org-latex org-latex-inline" /> can be explicitly written out as <img src="./ltximg/org-tex-4a6cdfe8b3601096a83e7df95c5a2a21f655bafa.svg" alt="\(\{x _{1} \mapsto M_{1} , x_{2} \mapsto M_{2}, \dots\}\)" style="height: 1.0784em; vertical-align: -0.2942em; display: inline-block" class="org-latex org-latex-inline" /> for variables <img src="./ltximg/org-tex-94417f6482c1d81cd5ba3baea07f43db2d32e7f6.svg" alt="\(x _{i} \in \Gamma\)" style="height: 0.9150em; vertical-align: -0.1962em; display: inline-block" class="org-latex org-latex-inline" />. The extension of <img src="./ltximg/org-tex-c5f7a6815e21b874ec95f3c22a9d87d144500312.svg" alt="\(\gamma\)" style="height: 0.7109em; vertical-align: -0.2397em; display: inline-block" class="org-latex org-latex-inline" /> by another variable-term pair is written <img src="./ltximg/org-tex-599b21d13d0423a537c78a27d611dedc5b677bd5.svg" alt="\(\gamma \{x _{n} \mapsto M_{n}\}\)" style="height: 1.0784em; vertical-align: -0.2942em; display: inline-block" class="org-latex org-latex-inline" />.
+</p>
+
+<p>
+Note that in <img src="./ltximg/org-tex-e5e790a6dc5bb391c09c3db73ec1347135d23f46.svg" alt="\(\gamma \colon \Gamma ' \to \Gamma\)" style="height: 1.0257em; vertical-align: -0.2397em; display: inline-block" class="org-latex org-latex-inline" /> the arrow should not be understood as a function arrow in STLC, but a morphism in the syntactic category. This definition is sometimes also written as <img src="./ltximg/org-tex-8feabac209449a3baa7fcb7209c6d9835c05c43e.svg" alt="\(\Gamma ' \vdash \gamma : \Gamma\)" style="height: 1.0257em; vertical-align: -0.2397em; display: inline-block" class="org-latex org-latex-inline" /> and the readers should be able to recognize them interchangeably.
+</p>
+
+<p>
+Given a substitution <img src="./ltximg/org-tex-e5e790a6dc5bb391c09c3db73ec1347135d23f46.svg" alt="\(\gamma \colon \Gamma ' \to \Gamma\)" style="height: 1.0257em; vertical-align: -0.2397em; display: inline-block" class="org-latex org-latex-inline" />, the function sending a term <img src="./ltximg/org-tex-fcc2121ea9737f6227c97e76952f408b036ad679.svg" alt="\(M\)" style="height: 0.7680em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" /> of context <img src="./ltximg/org-tex-4eec2828ae8a0ecd3ff71f52fcf7ba97d310e520.svg" alt="\(\Gamma\)" style="height: 0.7680em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" /> to the term with the subtitutions applied is denoted <img src="./ltximg/org-tex-c216a0761096af0717f3a7dd7a25e6039fb1496a.svg" alt="\(\hat \gamma\)" style="height: 0.9695em; vertical-align: -0.2397em; display: inline-block" class="org-latex org-latex-inline" />.
+</p>
+
+<p>
+can you tell me about this substitution?
+</p>
+
+<p>
+Certainly! The concept of substitution in the context of type theory and lambda calculus is crucial for understanding how terms and types interact within a given context. Let's break down the key points of the substitution <img src="./ltximg/org-tex-c5f7a6815e21b874ec95f3c22a9d87d144500312.svg" alt="\(\gamma\)" style="height: 0.7109em; vertical-align: -0.2397em; display: inline-block" class="org-latex org-latex-inline" /> from context <img src="./ltximg/org-tex-55111027484222a791907da6835a2bf0d290279c.svg" alt="\(\Gamma '\)" style="height: 0.8351em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" /> to <img src="./ltximg/org-tex-4eec2828ae8a0ecd3ff71f52fcf7ba97d310e520.svg" alt="\(\Gamma\)" style="height: 0.7680em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" />.
+</p>
+</div>
+<div id="outline-container-org729f56f" class="outline-4">
+<h4 id="org729f56f"><span class="section-number-4">3.6.1.</span> Context and Substitution</h4>
+<div class="outline-text-4" id="text-3-6-1">
+<ol class="org-ol">
+<li><b>Context</b>:
+<ul class="org-ul">
+<li>A context <img src="./ltximg/org-tex-4eec2828ae8a0ecd3ff71f52fcf7ba97d310e520.svg" alt="\(\Gamma\)" style="height: 0.7680em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" /> is a sequence of variable declarations, typically written as <img src="./ltximg/org-tex-1d6b5a95cf0246955969eaca828b8222173c660c.svg" alt="\(\Gamma = x_1 : A_1, x_2 : A_2, \dots, x_n : A_n\)" style="height: 0.9586em; vertical-align: -0.2397em; display: inline-block" class="org-latex org-latex-inline" />.</li>
+<li>Each <img src="./ltximg/org-tex-0d2b2ec4f98f094374dccdf77d2c6c8a359fe82a.svg" alt="\(x_i\)" style="height: 0.6673em; vertical-align: -0.1962em; display: inline-block" class="org-latex org-latex-inline" /> is a variable, and <img src="./ltximg/org-tex-597969e9659db755c29deb4e2d8dc9fe2ec6eda3.svg" alt="\(A_i\)" style="height: 0.9150em; vertical-align: -0.1962em; display: inline-block" class="org-latex org-latex-inline" /> is its type.</li>
+</ul></li>
+
+<li><b>Substitution</b>:
+<ul class="org-ul">
+<li>A substitution <img src="./ltximg/org-tex-c5f7a6815e21b874ec95f3c22a9d87d144500312.svg" alt="\(\gamma\)" style="height: 0.7109em; vertical-align: -0.2397em; display: inline-block" class="org-latex org-latex-inline" /> from context <img src="./ltximg/org-tex-55111027484222a791907da6835a2bf0d290279c.svg" alt="\(\Gamma '\)" style="height: 0.8351em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" /> to <img src="./ltximg/org-tex-4eec2828ae8a0ecd3ff71f52fcf7ba97d310e520.svg" alt="\(\Gamma\)" style="height: 0.7680em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" /> is a mapping that assigns to each variable <img src="./ltximg/org-tex-0d2b2ec4f98f094374dccdf77d2c6c8a359fe82a.svg" alt="\(x_i\)" style="height: 0.6673em; vertical-align: -0.1962em; display: inline-block" class="org-latex org-latex-inline" /> in <img src="./ltximg/org-tex-4eec2828ae8a0ecd3ff71f52fcf7ba97d310e520.svg" alt="\(\Gamma\)" style="height: 0.7680em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" /> a term <img src="./ltximg/org-tex-2154265e2f5ebe93107944781543286e5db973e6.svg" alt="\(M_i\)" style="height: 0.9150em; vertical-align: -0.1962em; display: inline-block" class="org-latex org-latex-inline" /> in context <img src="./ltximg/org-tex-55111027484222a791907da6835a2bf0d290279c.svg" alt="\(\Gamma '\)" style="height: 0.8351em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" />.</li>
+<li>Formally, <img src="./ltximg/org-tex-ea4683258732206d49ebfeeecc8d69cc38ea7939.svg" alt="\(\gamma : \Gamma ' \to \Gamma\)" style="height: 1.0257em; vertical-align: -0.2397em; display: inline-block" class="org-latex org-latex-inline" /> means that for each <img src="./ltximg/org-tex-fa1f414a5f0babe01344341e6ebedb36dd1f4844.svg" alt="\(x_i : A_i\)" style="height: 0.9150em; vertical-align: -0.1962em; display: inline-block" class="org-latex org-latex-inline" /> in <img src="./ltximg/org-tex-4eec2828ae8a0ecd3ff71f52fcf7ba97d310e520.svg" alt="\(\Gamma\)" style="height: 0.7680em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" />, there is a corresponding term <img src="./ltximg/org-tex-555db735806e8f9eb7d868cb71bac9c9b051334c.svg" alt="\(\Gamma' \vdash M_i : A_i\)" style="height: 0.9821em; vertical-align: -0.1962em; display: inline-block" class="org-latex org-latex-inline" /> in <img src="./ltximg/org-tex-55111027484222a791907da6835a2bf0d290279c.svg" alt="\(\Gamma '\)" style="height: 0.8351em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" />.</li>
+</ul></li>
+</ol>
+</div>
+</div>
+<div id="outline-container-org32ac80d" class="outline-4">
+<h4 id="org32ac80d"><span class="section-number-4">3.6.2.</span> Explicit Representation</h4>
+<div class="outline-text-4" id="text-3-6-2">
+<ul class="org-ul">
+<li>The substitution <img src="./ltximg/org-tex-c5f7a6815e21b874ec95f3c22a9d87d144500312.svg" alt="\(\gamma\)" style="height: 0.7109em; vertical-align: -0.2397em; display: inline-block" class="org-latex org-latex-inline" /> can be explicitly written as a finite map: <img src="./ltximg/org-tex-2d1e8757bf3db96f29a9f933facd21cdafa2cba4.svg" alt="\(\{x_1 \mapsto M_1, x_2 \mapsto M_2, \dots, x_n \mapsto M_n\}\)" style="height: 1.0784em; vertical-align: -0.2942em; display: inline-block" class="org-latex org-latex-inline" />.</li>
+
+<li>This map indicates that each variable <img src="./ltximg/org-tex-0d2b2ec4f98f094374dccdf77d2c6c8a359fe82a.svg" alt="\(x_i\)" style="height: 0.6673em; vertical-align: -0.1962em; display: inline-block" class="org-latex org-latex-inline" /> in <img src="./ltximg/org-tex-4eec2828ae8a0ecd3ff71f52fcf7ba97d310e520.svg" alt="\(\Gamma\)" style="height: 0.7680em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" /> is replaced by
+the term <img src="./ltximg/org-tex-2154265e2f5ebe93107944781543286e5db973e6.svg" alt="\(M_i\)" style="height: 0.9150em; vertical-align: -0.1962em; display: inline-block" class="org-latex org-latex-inline" /> in <img src="./ltximg/org-tex-55111027484222a791907da6835a2bf0d290279c.svg" alt="\(\Gamma '\)" style="height: 0.8351em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" />.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org0b5611d" class="outline-4">
+<h4 id="org0b5611d"><span class="section-number-4">3.6.3.</span> Extension of Substitution</h4>
+<div class="outline-text-4" id="text-3-6-3">
+<ul class="org-ul">
+<li>The extension of <img src="./ltximg/org-tex-c5f7a6815e21b874ec95f3c22a9d87d144500312.svg" alt="\(\gamma\)" style="height: 0.7109em; vertical-align: -0.2397em; display: inline-block" class="org-latex org-latex-inline" /> by another variable-term pair is denoted <img src="./ltximg/org-tex-2f096f53445ed344f26e19f2efa375e5f865c4a4.svg" alt="\(\gamma \{x_n \mapsto M_n\}\)" style="height: 1.0784em; vertical-align: -0.2942em; display: inline-block" class="org-latex org-latex-inline" />.</li>
+<li>This means that <img src="./ltximg/org-tex-c5f7a6815e21b874ec95f3c22a9d87d144500312.svg" alt="\(\gamma\)" style="height: 0.7109em; vertical-align: -0.2397em; display: inline-block" class="org-latex org-latex-inline" /> is extended to include the new mapping <img src="./ltximg/org-tex-489f5f999bb1d9aef46d1acbe1792705abe443d7.svg" alt="\(x_n \mapsto M_n\)" style="height: 0.9150em; vertical-align: -0.1962em; display: inline-block" class="org-latex org-latex-inline" />.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgaf92da1" class="outline-4">
+<h4 id="orgaf92da1"><span class="section-number-4">3.6.4.</span> Application of Substitution</h4>
+<div class="outline-text-4" id="text-3-6-4">
+<ul class="org-ul">
+<li>Given a substitution <img src="./ltximg/org-tex-ea4683258732206d49ebfeeecc8d69cc38ea7939.svg" alt="\(\gamma : \Gamma ' \to \Gamma\)" style="height: 1.0257em; vertical-align: -0.2397em; display: inline-block" class="org-latex org-latex-inline" />, the function that applies <img src="./ltximg/org-tex-c5f7a6815e21b874ec95f3c22a9d87d144500312.svg" alt="\(\gamma\)" style="height: 0.7109em; vertical-align: -0.2397em; display: inline-block" class="org-latex org-latex-inline" /> to a term <img src="./ltximg/org-tex-fcc2121ea9737f6227c97e76952f408b036ad679.svg" alt="\(M\)" style="height: 0.7680em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" /> of context <img src="./ltximg/org-tex-4eec2828ae8a0ecd3ff71f52fcf7ba97d310e520.svg" alt="\(\Gamma\)" style="height: 0.7680em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" /> is denoted <img src="./ltximg/org-tex-c216a0761096af0717f3a7dd7a25e6039fb1496a.svg" alt="\(\hat \gamma\)" style="height: 0.9695em; vertical-align: -0.2397em; display: inline-block" class="org-latex org-latex-inline" />.</li>
+<li>This function replaces each variable in <img src="./ltximg/org-tex-fcc2121ea9737f6227c97e76952f408b036ad679.svg" alt="\(M\)" style="height: 0.7680em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" /> according to the mappings specified by <img src="./ltximg/org-tex-c5f7a6815e21b874ec95f3c22a9d87d144500312.svg" alt="\(\gamma\)" style="height: 0.7109em; vertical-align: -0.2397em; display: inline-block" class="org-latex org-latex-inline" />.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org855034f" class="outline-4">
+<h4 id="org855034f"><span class="section-number-4">3.6.5.</span> Example</h4>
+<div class="outline-text-4" id="text-3-6-5">
+<p>
+Consider the following contexts and substitution:
+</p>
+
+<ul class="org-ul">
+<li><img src="./ltximg/org-tex-c87194ddc99655b7cd7f6b2376a186efec8aa89d.svg" alt="\(\Gamma = x : A, y : B\)" style="height: 0.9586em; vertical-align: -0.2397em; display: inline-block" class="org-latex org-latex-inline" /></li>
+<li><img src="./ltximg/org-tex-37bb8db41d20802dfba6086fcbdbeaeec567c48f.svg" alt="\(\Gamma ' = z : C\)" style="height: 0.8351em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" /></li>
+<li><img src="./ltximg/org-tex-a187ad704a66908279d5b8ee2addd10c047883f0.svg" alt="\(\gamma = \{x \mapsto z, y \mapsto \lambda w. w\}\)" style="height: 1.0784em; vertical-align: -0.2942em; display: inline-block" class="org-latex org-latex-inline" /></li>
+</ul>
+
+<p>
+Here, <img src="./ltximg/org-tex-c5f7a6815e21b874ec95f3c22a9d87d144500312.svg" alt="\(\gamma\)" style="height: 0.7109em; vertical-align: -0.2397em; display: inline-block" class="org-latex org-latex-inline" /> maps:
+</p>
+<ul class="org-ul">
+<li><img src="./ltximg/org-tex-b99c8bdeb593eedd67dbe2576beca1b6fe9dbae2.svg" alt="\(x\)" style="height: 0.5203em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" /> in <img src="./ltximg/org-tex-4eec2828ae8a0ecd3ff71f52fcf7ba97d310e520.svg" alt="\(\Gamma\)" style="height: 0.7680em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" /> to <img src="./ltximg/org-tex-05b452576ccc326d91c5ddc84ba1b49db7c8bab5.svg" alt="\(z\)" style="height: 0.5203em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" /> in <img src="./ltximg/org-tex-55111027484222a791907da6835a2bf0d290279c.svg" alt="\(\Gamma '\)" style="height: 0.8351em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" /></li>
+<li><img src="./ltximg/org-tex-aa729b20a2218606cfc9d9a7f85d1573fd53c6fc.svg" alt="\(y\)" style="height: 0.7109em; vertical-align: -0.2397em; display: inline-block" class="org-latex org-latex-inline" /> in <img src="./ltximg/org-tex-4eec2828ae8a0ecd3ff71f52fcf7ba97d310e520.svg" alt="\(\Gamma\)" style="height: 0.7680em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" /> to <img src="./ltximg/org-tex-89ac530606e398e4c07d3e18e7e9db9583d3a215.svg" alt="\(\lambda w. w\)" style="height: 0.7789em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" /> in <img src="./ltximg/org-tex-55111027484222a791907da6835a2bf0d290279c.svg" alt="\(\Gamma '\)" style="height: 0.8351em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" /></li>
+</ul>
+
+<p>
+If we have a term <img src="./ltximg/org-tex-fcc2121ea9737f6227c97e76952f408b036ad679.svg" alt="\(M\)" style="height: 0.7680em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" /> in context <img src="./ltximg/org-tex-4eec2828ae8a0ecd3ff71f52fcf7ba97d310e520.svg" alt="\(\Gamma\)" style="height: 0.7680em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" />, say <img src="./ltximg/org-tex-9a1249a39a7cd24b512bc5346e4a35121b649d31.svg" alt="\(M = x \, y\)" style="height: 0.9586em; vertical-align: -0.2397em; display: inline-block" class="org-latex org-latex-inline" />, then applying <img src="./ltximg/org-tex-c216a0761096af0717f3a7dd7a25e6039fb1496a.svg" alt="\(\hat \gamma\)" style="height: 0.9695em; vertical-align: -0.2397em; display: inline-block" class="org-latex org-latex-inline" /> to <img src="./ltximg/org-tex-fcc2121ea9737f6227c97e76952f408b036ad679.svg" alt="\(M\)" style="height: 0.7680em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" /> would result in:
+<img src="./ltximg/org-tex-1fddd669e2f3bb8483d8d2bc1b717eb03fc645a3.svg" alt="\[ \hat \gamma(M) = z \, (\lambda w. w) \]" style="height: 1.5194em; display: block" class="org-latex org-latex-block" />
+</p>
+</div>
+</div>
+<div id="outline-container-org666d328" class="outline-4">
+<h4 id="org666d328"><span class="section-number-4">3.6.6.</span> Summary</h4>
+<div class="outline-text-4" id="text-3-6-6">
+<ul class="org-ul">
+<li><b>Context</b>: A sequence of variable declarations.</li>
+<li><b>Substitution</b>: A mapping from variables in one context to terms in another context.</li>
+<li><b>Extension</b>: Adding new variable-term pairs to an existing substitution.</li>
+<li><b>Application</b>: Applying a substitution to a term to replace variables according to the substitution map.</li>
+</ul>
+
+<p>
+Understanding substitution is fundamental for working with typed lambda calculi, as it allows for the manipulation and transformation of terms within different contexts.
+</p>
+</div>
+</div>
+</div>
+</div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: MAO</p>
-<p class="date">Created: 2024-12-05 Thu 16:54</p>
+<p class="date">Created: 2024-12-06 Fri 23:25</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

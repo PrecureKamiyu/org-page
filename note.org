@@ -30,7 +30,7 @@
 #+latex_header: \newcommand{\netarrow}[2]{\ifnum #2>0 \ar[to=#1, to path={ -- ([yshift=#2ex]\tikztostart.north) -| (\tikztotarget)}] \else \ar[to=#1, to path={ -- ([yshift=#2ex]\tikztostart.south) -| (\tikztotarget)}] \fi}
 #+latex_header: \newcommand{\zerohbox}[1]{\makebox[0pt]{$#1$}}
 
-* books                                                            :noexport:
+* books :noexport:
 
 ** The Blind Spot by Girard
 
@@ -2299,6 +2299,17 @@ Herbrand's theorem is that, to prove \(\exists x A(x)\), we can equivalently pro
 
 for ground terms \(t_{1},\dots,t_{n}\). They looks similiar.
 
+** functional dependencies
+
+Check functional dependencies in haskell
+
+#+begin_src haskell
+  class Mult a b c | a b -> c where
+    (*) :: a -> b -> c
+#+end_src
+
+it basically says that the type \(c\) can be determined give \(a\) and \(b\). This gives a type inference hint.
+
 ** CoC and Coq and Martin-Lof's system
 :PROPERTIES:
 :ID:       098bc0a2-af8b-4af0-9487-c4a61e6a339a
@@ -2800,3 +2811,151 @@ The definition seems not so important. What matters is the dual:
 \end{aligned}\]
 
 the latter can written as \(? X = {\sim} {!} {\sim} X\). What is /Why Not?/ used for?
+
+* Topic: pl
+
+** simple typed calculus: syntax and dynamics
+
+\(A\) 是类型、\(t\) 是 term （或者说 \(M\) 是 term）。我们的 judgment 形如 \(t \colon A\)，意思是 \(t\) 有着类型 \(A\)。
+
+我们接下来有 \(t\) 和 \(A\) 的生成文法。我们知道 STLC 是 CCC，这是说，如果说 \(A_{1}, A_{2}\) 是类型，则 \(A_{1} \times A_{2}\) 也是类型，\(A_{1} \to A_{2}\) 也是类型。对于 \(t\) 来说，也有对应的。我们直接写出文法：
+: t ::= x | () | ⟨t₁, t₂⟩ | π₁·t | π₂·t | λx.t    | (t₁)t₂    | yes | no
+: M ::= x | ⟨⟩ | ⟨M₁, M₂⟩ | M·1  | M·2  | λ(x.M)  | ap(M₁;M₂) | yes | no
+
+我们通过 \(t \colon A\) 来建立 ch 同构。这里的同构通过一些 rules 来表示：
+
+** rules
+
+
+:
+: ----------------  ----------
+: Γ, x : A ⊢ x : A  Γ ⊢ ⟨⟩ : 1
+
+: Γ ⊢ M₁ : A₁   Γ ⊢ M₂ : A₂
+: -------------------------
+:  Γ ⊢ ⟨M₁, M₂⟩ : A₁ × A₂
+
+
+sub / cut
+
+: Γ, x : B ⊢ N : A    Γ ⊢ M : B   Γ ⊢ B   Γ, B ⊢ A
+: -----------------------------   ----------------
+:        Γ ⊢ N[M/x] : A                Γ ⊢ A
+
+** val rules
+
+:
+: ---------  --------
+:  yes val    no val
+
+:
+: --------------  ------------
+:  ⟨M₁, M₂⟩ val     λx.M val
+
+** dynamics
+
+Bob 的 dynamics 实际上指的是 reduction，dynamics 关注的是 normalisation 问题。想知道更多可以看 Proofs And Types 的关于 normalization 部分，对于 canonical form 来说，其存在性和唯一性都需要非常繁琐的证明。设 reduction 为 \(\leadsto\)，我们有
+
+- Church Rosser：如果 \(u \leadsto u_{1}\) 并且 \(u \leadsto u_{2}\)，则存在 \(u'\)，满足 \(u_{1} \leadsto u'\) \(u_{2} \leadsto u'\)
+- Weak Normalization：存在一个 reduction 策略使得 \(u\) 能够达到 \(u'\)，其中 \(u'\) 是 canonical form
+- Strong Normalization：对于任意的 reduction 策略都能抵达 canonical form
+
+我们有听过 \(\eta\)-conversion，这还被称作一个 immediate reduction
+\[(\lambda x . t) t' \leadsto t [t/x]\]
+还有 \(\alpha\)-conversion：
+\[\lambda x . t \leadsto \lambda y .t[y / x]\]
+还有更多的 reduction，
+- \(\pi_{1} (\langle t_{1}, t_{2} \rangle) = t_{1}\)
+- \(\pi_{2} (\langle t_{1}, t_{2} \rangle) = t_{2}\)
+Bob 使用了 evaluation / dynamics 的框架。主要目标是得到这样的 judgment
+\[a\ \mathsf{val}\]
+指的是 \(a\) 是 value，是 canonical form 也就是不能在 reduce 下去了。
+
+** dynamics rules
+
+step fst & step snd:
+:   M₁ ↦ M₂           M₁ ↦ M₂
+: ------------      ------------
+:  M₁⬝1 ↦ M₂⬝1       M₁⬝2 ↦ M₂·2
+
+step fst β & step snd β
+:
+: ---------------  -------------------
+: ⟨M₁, M₂⟩·1 ↦ M₁    ⟨M₁, M₂⟩·2 ↦ M₂
+
+step app
+:      M₁ ↦ M₁'
+: -----------------
+:  (M₁)M₂ ↦ (M₁)M₂'
+
+step app β
+:
+: ----------------------
+:  (λx.M₁)M₂ ↦ M₁[M₂/x]
+
+: app[(arr M₁); M₂] → M₁ [M₂]
+
+** substitution \(\gamma\) from
+
+substitution \(\gamma\) from context \(\Gamma '\) to \(\Gamma\), written \(\gamma : \Gamma ' \to \Gamma\), is a finite map sending for each variable \(x \colon A _{x} \) in \(\Gamma\) to a term \(\Gamma' \vdash M_{x} \colon A_{x}\) in context \(\Gamma '\).
+
+The substitution \(\gamma\) can be explicitly written out as \(\{x _{1} \mapsto M_{1} , x_{2} \mapsto M_{2}, \dots\}\) for variables \(x _{i} \in \Gamma\). The extension of \(\gamma\) by another variable-term pair is written \(\gamma \{x _{n} \mapsto M_{n}\}\).
+
+Note that in \(\gamma \colon \Gamma ' \to \Gamma\) the arrow should not be understood as a function arrow in STLC, but a morphism in the syntactic category. This definition is sometimes also written as \(\Gamma ' \vdash \gamma : \Gamma\) and the readers should be able to recognize them interchangeably.
+
+Given a substitution \(\gamma \colon \Gamma ' \to \Gamma\), the function sending a term \(M\) of context \(\Gamma\) to the term with the subtitutions applied is denoted \(\hat \gamma\).
+
+can you tell me about this substitution?
+
+Certainly! The concept of substitution in the context of type theory and lambda calculus is crucial for understanding how terms and types interact within a given context. Let's break down the key points of the substitution \(\gamma\) from context \(\Gamma '\) to \(\Gamma\).
+
+*** Context and Substitution
+
+1. *Context*:
+   - A context \(\Gamma\) is a sequence of variable declarations, typically written as \(\Gamma = x_1 : A_1, x_2 : A_2, \dots, x_n : A_n\).
+   - Each \(x_i\) is a variable, and \(A_i\) is its type.
+
+2. *Substitution*:
+   - A substitution \(\gamma\) from context \(\Gamma '\) to \(\Gamma\) is a mapping that assigns to each variable \(x_i\) in \(\Gamma\) a term \(M_i\) in context \(\Gamma '\).
+   - Formally, \(\gamma : \Gamma ' \to \Gamma\) means that for each \(x_i : A_i\) in \(\Gamma\), there is a corresponding term \(\Gamma' \vdash M_i : A_i\) in \(\Gamma '\).
+
+*** Explicit Representation
+
+- The substitution \(\gamma\) can be explicitly written as a finite map: \(\{x_1 \mapsto M_1, x_2 \mapsto M_2, \dots, x_n \mapsto M_n\}\).
+
+- This map indicates that each variable \(x_i\) in \(\Gamma\) is replaced by
+  the term \(M_i\) in \(\Gamma '\).
+
+*** Extension of Substitution
+
+- The extension of \(\gamma\) by another variable-term pair is denoted \(\gamma \{x_n \mapsto M_n\}\).
+- This means that \(\gamma\) is extended to include the new mapping \(x_n \mapsto M_n\).
+
+*** Application of Substitution
+
+- Given a substitution \(\gamma : \Gamma ' \to \Gamma\), the function that applies \(\gamma\) to a term \(M\) of context \(\Gamma\) is denoted \(\hat \gamma\).
+- This function replaces each variable in \(M\) according to the mappings specified by \(\gamma\).
+
+*** Example
+
+Consider the following contexts and substitution:
+
+- \(\Gamma = x : A, y : B\)
+- \(\Gamma ' = z : C\)
+- \(\gamma = \{x \mapsto z, y \mapsto \lambda w. w\}\)
+
+Here, \(\gamma\) maps:
+- \(x\) in \(\Gamma\) to \(z\) in \(\Gamma '\)
+- \(y\) in \(\Gamma\) to \(\lambda w. w\) in \(\Gamma '\)
+
+If we have a term \(M\) in context \(\Gamma\), say \(M = x \, y\), then applying \(\hat \gamma\) to \(M\) would result in:
+\[ \hat \gamma(M) = z \, (\lambda w. w) \]
+
+*** Summary
+
+- *Context*: A sequence of variable declarations.
+- *Substitution*: A mapping from variables in one context to terms in another context.
+- *Extension*: Adding new variable-term pairs to an existing substitution.
+- *Application*: Applying a substitution to a term to replace variables according to the substitution map.
+
+Understanding substitution is fundamental for working with typed lambda calculi, as it allows for the manipulation and transformation of terms within different contexts.
