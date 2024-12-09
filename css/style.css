@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+SC&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Work+Sans&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inconsolata&display=swap");
 
 body {
     margin: 10px auto;
@@ -9,7 +10,7 @@ body {
     --background-color: #fdf6e3; /* Solarized Light background */
     --text-color: #333; /* default text color */
     font-size: 18px;
-    font-family: 'Open Sans', 'Noto Sans SC', 'Montserrat', 'Lato', sans-serif;
+    font-family: 'Open Sans', 'WenYuan Maru', 'Noto Sans SC', 'DejaVu Sans', sans-serif;
     background-color: var(--background-color);
     color: var(--text-color);
 }
@@ -101,7 +102,12 @@ a:hover {
 
 code {
     font-size: 16px;
+    font-family: "Space Mono", monospace;
     color: #2aa198; /* Solarized Light code color */
+}
+
+pre {
+    font-family: "mononoki", "Anonymous Pro Minus", "Fira Code";
 }
 
 .subtitle {
