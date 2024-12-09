@@ -75,6 +75,10 @@ hr {
     scrollbar-width: none;  /* Firefox */
 }
 
+h1, h2, h3 {
+    color: var(--accent-color); /* Changed to accent color */
+}
+
 .title {
     font-size: 30px;
     line-height: 1.3;
