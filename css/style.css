@@ -9,6 +9,7 @@ body {
     max-width: 100%;
     --background-color: #fdf6e3; /* Solarized Light background */
     --text-color: #333; /* default text color */
+    --accent-color: #6c71c4; /* Added accent color */
     font-size: 18px;
     font-family: 'Open Sans', 'WenYuan Maru', 'Noto Sans SC', 'DejaVu Sans', sans-serif;
     background-color: var(--background-color);
@@ -78,7 +79,7 @@ hr {
     font-size: 30px;
     line-height: 1.3;
     font-weight: bold;
-    color: var(--text-color); /* Changed to match the current theme */
+    color: var(--accent-color); /* Changed to accent color */
 }
 
 a:link {
