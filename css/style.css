@@ -78,7 +78,7 @@ hr {
     font-size: 30px;
     line-height: 1.3;
     font-weight: bold;
-    color: #657b83; /* Solarized Light title color */
+    color: var(--text-color); /* Changed to match the current theme */
 }
 
 a:link {
