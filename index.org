@@ -1,5 +1,6 @@
 #+TITLE: index
 
+- [[file:adult_rudin.org][Adult Rudin]]
 - [[file:archive.org][Archive]]
 - [[file:books.org][Books]]
 - [[file:diary.org][Diary]]

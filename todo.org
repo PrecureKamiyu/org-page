@@ -1,8 +1,7 @@
 #+title:TODO(s)
 #+startup: overview
 
-* TODO
+* TODO list
 
-- 建模：确定好
-- 仿真平台：两周之内
-- 实现算法：两个 baseline 算法以及自己的算法设计对比
+- Tao 的概率论
+- Rudin 的第二章？
