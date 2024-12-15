@@ -4,6 +4,7 @@
 #+options: tex:dvisvgm toc:2
 
 #+latex_header: \usepackage{amsmath}
+#+latex_header: \usepackage{mathrsfs}
 #+latex_header: \usepackage{amssymb}
 #+latex_header: \usepackage{tikz}\usetikzlibrary{cd}
 #+latex_header: \usepackage{bussproofs}
@@ -31,8 +32,9 @@
 #+latex_header: \end{gathered}}
 #+latex_header: \newcommand{\netarrow}[2]{\ifnum #2>0 \ar[to=#1, to path={ -- ([yshift=#2ex]\tikztostart.north) -| (\tikztotarget)}] \else \ar[to=#1, to path={ -- ([yshift=#2ex]\tikztostart.south) -| (\tikztotarget)}] \fi}
 #+latex_header: \newcommand{\zerohbox}[1]{\makebox[0pt]{$#1$}}
+# 802160
 
-* books :noexport:
+* Books :noexport:
 
 ** The Blind Spot by Girard
 
@@ -1980,7 +1982,7 @@ A^{\bot} &&& \zerohbox{A \parr B} &&& B^{\bot}
   &&& \zerohbox{A \otimes B} && B ^{\bot} && A ^{\bot}
 \end{tikzcd}\]
 
-* supplements
+* Little topics :noexport:
 
 ** alternative explain for Herbrand's theorem
 
@@ -2061,6 +2063,9 @@ related tait's method. About the strong normalization of beta reduction.
 beta reduction is reduction of =application=. Application is cut in the sense of ch isomorphism.
 
 ** boolean algebra and sigma algebra
+:PROPERTIES:
+:ID:       2c7e830c-51e5-4974-ac56-4ed1cdffc1af
+:END:
 
 Boolean algebra can be modeled as set.
 Boolean algebra has three operations:
@@ -2084,7 +2089,11 @@ It suffices boolean algebra because for it is closed under operations.
 
 Sigma algebra is boolean algebra added with one condition.
 
-** COMMENT CIC
+** borel sets
+
+We generate borel sets using sigma algebra generator, with the respect to open sets in Euclidean spaces.
+
+** CIC
 
 what is CIC?
 
@@ -2154,6 +2163,11 @@ A collection of sets is said to be directed, if the sets are indexed by a partia
 
 For example \(\{x_{i}\}\), \(i \in I\), where\(I\) is a partial order set.
 
+** dynkin system
+
+- negation: \(d \in D\) then \(d^{c} \in D\)
+- disjoint union: if \(\{d_{i}\}\) disjoint and \(d_{i} \in D\), then \(\bigcup d_{i}\in D\)
+
 ** existential type
 
 In system F, the existential type is defined as?
@@ -2175,8 +2189,6 @@ Check functional dependencies in haskell
   class Mult a b c | a b -> c where
     (*) :: a -> b -> c
 #+end_src
-
-it basically says that the type \(c\) can be determined give \(a\) and \(b\). This gives a type inference hint.
 
 ** ground instances
 
@@ -2756,9 +2768,11 @@ In this example:
 - /Russell Universes/: Types are elements of a universe; no explicit type of
   types.
   - Example: Coq's =Type=.
+
 - /Tarski Universes/: Types are distinguished from their elements; explicit
   type of types.
   - Example: Agda's universe hierarchy.
+
 - /Comparison/:
   - Uniformity vs. Distinction.
   - Expressiveness.
@@ -2782,11 +2796,68 @@ Martin-Lof appears after System F. Ch-isomorphism is integrated into syntax.
 
 See also The Blind Spot 5.D Martin-Löf’s type theory.
 
+** sigma algebra
+
+
+A sigma algebra \(\mathscr A\) on a set \(X\) is a family of subsets of \(X\) with the following properties;
+
+- \(X \in \mathscr A \)
+- \(A \in \mathscr A\) implies \(A ^{c} \in \mathscr A\)
+- \(\{A_{i}\}_{i \in I}\) where \(A_{i} \in \mathscr A\) for all \(i\), implies \(\bigcup A_{i} \in \mathscr A\)
+
+A set \(A\) in \(\mathscr A\) is said to be measurable. or \(\mathscr A\)-measurable.
+
+"a reasonable measure should be able to deal with disjoint countable paritions of sets".
+
+This is just a model. Sigma algebra is based on boolean algebra or simply algebra. See [[id:2c7e830c-51e5-4974-ac56-4ed1cdffc1af][boolean algebra and sigma algebra]]. And be to aware, Set is just a model for this algebra.
+
+** sigma algebra and de Morgan Law
+
+We know that there is de morgan law in boolean algebra and set theory. We have that
+
+De Morgan Law together with negation, union \(\Leftrightarrow\) The definition of intersection
+
+De Morgan Law together with negation, intersection \(\Leftrightarrow\) The definition of union
+
+** sigma algebra and intersection between sigma algebra
+
+The intersection \(\bigcap _{i \in I} \mathscr A _{i}\) is a sigma algebra.
+
+** sigma algebra and explicit definition of generators
+
+Check on the remarks in book Measures, Intergral and Martingales. The author further introduce Dynkin system to further address the problem.
+
+It is not trivial to write out the definition of generators of sigma algebras. Because it is countably infinite. As for boolean algebra, there is no such problem. Fascinating, right?
+
 ** simultaneous substitution \(\theta\)
 
 A \(\theta\) can be applied to a formula or expression \(E\), but anyway I prefer \(A\) for a formula, \(\Gamma\) for a set of formulas.
 
 \(\Gamma\theta\) means carry the substitution to every formulas in \(\Gamma\). We can compose those \(\theta\). For example, \(\theta\sigma\) means carrying \(\theta\) first and then \(\sigma\).
+
+** sheaf
+
+*Sheaf Axioms*:
+
+   - *Identity*: If \( \{U_i\}_{i \in I} \) is an open cover of \( U \), and \( s, t \in \mathcal{F}(U) \) satisfy \( \rho_{U_iU}(s) = \rho_{U_iU}(t) \) for all \( i \), then \( s = t \).
+
+   - *Gluing*: If \( \{U_i\}_{i \in I} \) is an open cover of \( U \), and for each \( i \), \( s_i \in \mathcal{F}(U_i) \) satisfies \( \rho_{U_i \cap U_j, U_i}(s_i) = \rho_{U_i \cap U_j, U_j}(s_j) \) for all \( i, j \), then there exists \( s \in \mathcal{F}(U) \) such that \( \rho_{U_iU}(s) = s_i \) for all \( i \).
+
+** presheaf
+
+A functor from a category of open sets of a topological space to another category (e.g., sets, groups). It assigns data to each open set and specifies how data on smaller open sets restricts to larger ones.
+
+A contravariant functor \( \mathcal{F} \) from the category of open sets of \( X \) (with inclusions as morphisms) to \( \mathcal{C} \):
+   \[
+   \mathcal{F}: \mathbf{Open}(X)^{\text{op}} \to \mathcal{C},
+   \]
+   where:
+   - For each open set \( U \subseteq X \), \( \mathcal{F}(U) \) is an object in \( \mathcal{C} \).
+   - For each inclusion \( V \subseteq U \), there is a restriction morphism \( \rho_{VU}: \mathcal{F}(U) \to \mathcal{F}(V) \).
+
+** stable
+
+stable means \(D, E \in \mathscr D\) implies \(D \cap E \in \mathscr D\)
 
 ** staircase function
 
@@ -2875,77 +2946,6 @@ We may conclude that the basis of \(V \otimes W\) is of the same number as \(\di
 
 I don't really know the definition of \(V \otimes W\).
 
-** text1
-
-In Geometry as well as in Physics, one has often to use the tools of differential and integral calculus on topological spaces which are locally like open subsets of the Euclidean space \(\mathbb{R}^n\), but do not admit coordinates valid everywhere. For example, the sphere \(\{(x, y, z) \in \mathbb{R}^3 : x^2 + y^2 + z^2 = 1\}\), or more generally, the space \(\{(x_1, \ldots, x_n) \in \mathbb{R}^n : \sum x_i^2 = 1\}\) are clearly of geometric interest.
-
-On the other hand, constrained motion has to do with dynamics on surfaces in \(\mathbb{R}^3\). In general relativity, one studies 'space-time' which combines the space on which motion takes place and the time parameter in one abstract space and allows reformulation of problems of Physics in terms of a 4-dimensional object. All these necessitate a framework in which one can work with the tools of analysis, like differentiation, integration, differential equations and the like, on fairly abstract objects.
-
-This would enable one to study Differential Geometry in its appropriate setting on the one hand, and to state mathematically the equations of Physics in the required generality, on the other. The basic objects which accomplish this are called differential manifolds. These are geometric objects which are locally like domains in the Euclidean space, so that the classical machinery of calculus, available in \(\mathbb{R}^n\), can be transferred, first, to small open sets and then patched together. The main tool in the patching up is the notion of a sheaf. We will first define sheaves and discuss about basic notions related to them, before taking up differential manifolds.
-
-*** 1. Sheaves and Presheaves
-
-At the outset, it is clear that functions of interest to us belong to a class such as continuous functions, infinitely differentiable (or \( C^\infty \)) functions, real analytic functions, holomorphic functions of complex variables, and so on. Some properties common to all these classes of functions are that
-
-  i) they are all continuous, and
-
-  ii) the condition for a continuous function to belong to the class is of a local nature.
-
-By this we mean that for a continuous function to be differentiable, real analytic or holomorphic, it is necessary and sufficient for it to be so in the neighbourhood of every point in its domain of definition. We will start with an axiomatisation of the local nature of the classes of functions we seek to study.
-
-
-Here's the text from the image:
-
-*** 1.1. Definition: presheaf
-
-Let \( X \) be a topological space. An assignment to every open subset \( U \) of \( X \), of a set \( \mathcal{F}(U) \) and to every pair of open sets \( U, V \) with \( V \subseteq U \), of a map (to be called restriction map) \( \text{res}_{UV} : \mathcal{F}(U) \to \mathcal{F}(V) \) satisfying:
-\[ \text{res}_{VW} \circ \text{res}_{UV} = \text{res}_{UW} \]
-for every triple \( W \subseteq V \subseteq U \) of open sets, is called a presheaf of sets. If \( \mathcal{F}(U) \) are all abelian groups, rings, vector spaces, etc., and the restriction maps are homomorphisms of the respective structures, then we say that \( \mathcal{F} \) is a presheaf of abelian groups, rings, vector spaces, etc.
-
-\[\begin{tikzcd}
-  & U\ar[rr, dashed] & & \mathcal F(U)\ar[d]\ar[ddl]\\
-  & V\ar[u]\ar[rr, dashed] & & \mathcal F(V)\ar[dl] \\
-  W\ar[ur]\ar[uur]\ar[rr, dashed] & & \mathcal F(W)
-\end{tikzcd}\]
-
-*** 1.2. Definition: sheaf
-
-A presheaf is said to be a sheaf if it satisfies the following additional conditions. Let \( U = \bigcup_{i \in I} U_i \) be any open covering of an open set \( U \). Then:
-
-S_1: Two elements \( s, t \in \mathcal{F}(U) \) are equal if \( \text{res}_{UU_i} s = \text{res}_{UU_i} t \) for all \( i \in I \).
-
-S_2: If \( s_i \in \mathcal{F}(U_i) \) satisfy \( \text{res}_{U_{i}U_i \cap U_j} s_i = \text{res}_{U_{j}U_i \cap U_j} s_j \) for all \( i, j \in I \), then there exists an element \( s \in \mathcal{F}(U) \) with \( \text{res}_{UU_i} s = s_i \) for all \( i \). We will also assume that \( \mathcal{F}(\emptyset) \) consists of a single point.
-
-If there is \(\{s_{i}\in \mathcal F(U_{i})\}\), satisfy \(\text{res}_{U_{i}U_{i}\cap U_{j}}s_{i} = \text{res}_{U_{j}U_{i}\cap U_{j}} s_{j}\) for all \(i,j \in I\).
-
-*** 1.3. Examples
-
-**** 1.3.1. sheaf of Differential Functions
-
-As indicated above, the concepts of differentiability, real analyticity, ... are all local in nature, so that it is no surprise that if \(X\) is an open subspace of \(\mathbb{R}^n\), then the assignment to every open subset \(U\) of \(X\), of the set \(\mathcal{A}(U)\) of differentiable functions with the natural restriction of functions as restriction maps, gives rise to a sheaf.
-
-This sheaf will be called the sheaf of differentiable functions on \(X\). Obviously this sheaf is not merely a sheaf of sets, but of \(\R\) algebras.
-
-**** 1.3.2. bounded functions
-
-The assignment of the set of bounded functions to every open set \( U \) of \( X \), and the natural restriction maps define a presheaf on \( X \).
-# of means target; to means source
-# U is mapped to bounded functions
-
-However, if we are given as in \( S_2 \) any compatible set of bounded functions \( s_i \), then while such data does define a unique function \( s \) on \( U \), there is no guarantee that it will be bounded. Thus this presheaf satisfies \( S_1 \) but not \( S_2 \) and so is not a sheaf. (Can one modify this in order to obtain a sheaf?)
-
-*** 1.4. Sheaf associated to a presheaf.
-
-In the theory of holomorphic functions, one talks of a *germ* of a function at a point, when one wishes to study its properties in an (unspecified) neighbourhood of a point. This means the following. Consider pairs \((U, f)\) consisting of open sets \(U\) containing the given point \(x\) and holomorphic functions \(f\) defined on \(U\). Introduce an equivalence relation in this set by declaring two such pairs \((U, f)\), \((V, g)\) to be *equivalent* if \(f\) and \(g\) coincide in some neighbourhood of \(x\) which is contained in \(U \cap V\). An equivalence class is called a *germ*. This procedure can be imitated in the case of a presheaf and this leads to the concept of a *stalk* of a presheaf at a point.
-
-*** 1.5. Definition: stalk
-
-Let \(\cal F\) be a presheaf on a topo space \(X\). Then the stalk \(\mathcal F_{x}\) of \(\cal F\) at point \(x \in X\) is the quotient set of the set consisting of all \((U,s)\) where \(U\) is an open neightbourhood of \(x\) and \(s\) is an element of \(\mathcal F(U)\) under the equaivalence relation:
-
-\((U,s)\) is equivalent to \((V,t)\)if and only if there exists an open neighbourhood \(W\) of \(x\) contained in \(U \cap V\) such that the restrictions of \(s\) and t to \(W\) are the same.
-
-  If \(s \in \mathcal F(X)\) then, for any \(x \in X\), the pair \((X, s)\) has an image int he talk \(\mathcal F_{x}\), namely the quivalence class containing it. It is called the /germ of \(s\)/ at \(x\). We will denote it by \(s _{x}\).
-
 ** there is an assignment makes it true
 
 There is an entry in truth table that is true.
@@ -3005,7 +3005,42 @@ Def (uniformly continuous). \(f\colon X \to Y\) where \(X, \cal U\) and \(Y, \ca
 \(f\) is said to be uniformly continuous if for every  \(V \in \cal V\), there is an entourage \(U\) in \(\cal U\), such that
 \[x\sim _{U} y \Rightarrow f(x) \sim _{V} f(y)\]
 
-* Topic: coherent space and linearity
+** characteristics function
+
+A characteristic function \( \phi_X(t) \) of a random variable \( X \) is a
+mathematical function that uniquely determines the probability distribution
+of \( X \). It is defined as the expected value of \( e^{itX} \), where \( i \)
+is the imaginary unit and \( t \) is a real number:
+
+\[
+\phi_X(t) = \mathbb{E}[e^{itX}]
+\]
+
+A characteristic function does not distinguish between vrs which differs on null sets.
+
+** cramer's theorem for normal distribution
+
+Theorem 3.15, known as Cramér's Theorem, states that if \( X \) and \( Y \) are independent random variables and their sum \( X + Y \) is normally distributed, then both \( X \) and \( Y \) must themselves be normally distributed.
+
+** brownian motion :probability:
+
+Definition 3.1. A Brownian motion is a continuous process that has stationary independent increments.
+
+
+连续时间随机过程 \( B(t) \)，满足以下条件
+
+1. *初始值为零*：\( B(0) = 0 \)。
+
+2. *独立增量*：对于任意 \( 0 \leq t_1 < t_2 < \dots < t_n \)，增量 \( B(t_2) - B(t_1) \)，\( B(t_3) - B(t_2) \)，…，\( B(t_n) - B(t_{n-1}) \) 是相互独立的随机变量。
+
+3. *平稳增量*：增量 \( B(t + h) - B(t) \) 的分布只依赖于时间间隔 \( h \)，而不依赖于 \( t \)。换句话说，增量的统计特性在时间上是均匀的。
+
+4. （正态布朗运动）： *正态分布增量* 对于任意 \( t \geq s \geq 0 \)，增量 \( B(t) - B(s) \) 服从均值为 0、方差为 \( t - s \) 的正态分布，即：
+   \[
+   B(t) - B(s) \sim \mathcal{N}(0, t - s)
+   \]
+
+* Topic: coherent space and linearity :noexport:
 :PROPERTIES:
 :CUSTOM_ID: coherence-and-linearity
 :END:
@@ -3014,8 +3049,7 @@ Def (uniformly continuous). \(f\colon X \to Y\) where \(X, \cal U\) and \(Y, \ca
 
 Scott Domain is initially postulate in the language of topology. However, Scott Domain is of no significance as a topological space. Also Scott Domain can be formulated with CPO (complete partially ordered set). The layer, in which topology or order set is used, is requiring not only a correct but proper language.
 
-Girard defines the Scott Domain using the language of logic, where the relation between elements is formulated with provability.
-This alternative definition is of course useful, but should be mentioned later after you know about the "standard" definition of Scott Domain.
+Girard defines the Scott Domain using the language of logic, where the relation between elements is formulated with provability. This alternative definition is of course useful, but should be mentioned later after you know about the "standard" definition of Scott Domain.
 
 ** The definition of coherent space: web and coherence
 
@@ -3237,9 +3271,9 @@ The definition seems not so important. What matters is the dual:
 
 the latter can written as \(? X = {\sim} {!} {\sim} X\). What is /Why Not?/ used for?
 
-* Topic: pl
+* Topic: pl :noexport:
 
-** simple typed calculus: syntax and dynamics
+** simple typed lambda calculus: syntax and dynamics
 
 \(A\) 是类型、\(t\) 是 term （或者说 \(M\) 是 term）。我们的 judgment 形如 \(t \colon A\)，意思是 \(t\) 有着类型 \(A\)。
 
@@ -3250,7 +3284,6 @@ the latter can written as \(? X = {\sim} {!} {\sim} X\). What is /Why Not?/ used
 我们通过 \(t \colon A\) 来建立 ch 同构。这里的同构通过一些 rules 来表示：
 
 ** rules
-
 
 :
 : ----------------  ----------
@@ -3279,27 +3312,27 @@ sub / cut
 
 ** dynamics
 
-Bob 的 dynamics 实际上指的是 reduction，dynamics 关注的是 normalisation 问题。想知道更多可以看 Proofs And Types 的关于 normalization 部分，对于 canonical form 来说，其存在性和唯一性都需要非常繁琐的证明。设 reduction 为 \(\leadsto\)，我们有
+Bob 的 dynamics 实际上指的是 reduction，dynamics 关注的是 normalisation 问题。想知道更多可以看 Proofs and Types 的关于 normalization 部分，对于 canonical form 来说，其存在性和唯一性都需要非常繁琐的证明。设 reduction 为 \(\leadsto\)，我们有
 
 - Church Rosser：如果 \(u \leadsto u_{1}\) 并且 \(u \leadsto u_{2}\)，则存在 \(u'\)，满足 \(u_{1} \leadsto u'\) \(u_{2} \leadsto u'\)
 - Weak Normalization：存在一个 reduction 策略使得 \(u\) 能够达到 \(u'\)，其中 \(u'\) 是 canonical form
 - Strong Normalization：对于任意的 reduction 策略都能抵达 canonical form
 
-我们有听过 \(\eta\)-conversion，这还被称作一个 immediate reduction
+这个是 \(\beta\)-conversion 也被称作 immediate reduction
 \[(\lambda x . t) t' \leadsto t [t/x]\]
 还有 \(\alpha\)-conversion：
 \[\lambda x . t \leadsto \lambda y .t[y / x]\]
-还有更多的 reduction，
+还有更多的 reduction （我不知道是不是叫 conversion），
 - \(\pi_{1} (\langle t_{1}, t_{2} \rangle) = t_{1}\)
 - \(\pi_{2} (\langle t_{1}, t_{2} \rangle) = t_{2}\)
 Bob 使用了 evaluation / dynamics 的框架。主要目标是得到这样的 judgment
 \[a\ \mathsf{val}\]
-指的是 \(a\) 是 value，是 canonical form 也就是不能在 reduce 下去了。
+指的是 \(a\) 是 value，是 canonical form 也就是不能 reduce 下去了。
 
 ** dynamics rules
 
 step fst & step snd:
-:   M₁ ↦ M₂           M₁ ↦ M₂
+:    M₁ ↦ M₂           M₁ ↦ M₂
 : ------------      ------------
 :  M₁⬝1 ↦ M₂⬝1       M₁⬝2 ↦ M₂·2
 
@@ -3377,7 +3410,196 @@ Here, \(\gamma\) maps:
 If we have a term \(M\) in context \(\Gamma\), say \(M = x \, y\), then applying \(\hat \gamma\) to \(M\) would result in:
 \[ \hat \gamma(M) = z \, (\lambda w. w) \]
 
-* Topic
+* Topic :noexport:
+
+** index 索引文章
+
+文章连接：
+- [[id:eaad00d6-a916-46d8-bfa6-f115db21da9b][国外的量化水平会比国内头部量化公司高很多吗？主要高在什么地方？]]
+- [[id:a7819a1a-69b5-4142-bd30-d2a0f9b78fe5][做高频，找一些小的市场，小的标的，测一些小 alpha 的因子做。]]
+  - 看不出来到底是在干什么 
+- [[id:5101c40b-eaf8-4ca6-9923-afb6c51fd0fb][加密货币小白指南（2024 版）]]
+  - 基本原则：稳
+  - 分为两种交易：链上交易和中心化交易
+  - 前者可以称为 DEX，后者称为 CEX
+  - [[id:0072b0bf-82c2-4354-bac9-68f7997ccccc][CEX 和 DEX （AI 总结的）]]
+
+** Black-Scholes
+
+Black-Scholes option pricing model, emphasizing its mathematical foundation and practical significance. Key points:
+
+1. *Objective*: Develop the Black-Scholes formula with mathematical rigor.
+2. *Prerequisite*: Learn stochastic calculus, essential for option pricing.
+3. *Applications*: Use stochastic calculus tools for advanced finance and
+   economics problems.
+4. *Impact*: The Black-Scholes model revolutionized finance, with trillions of
+   dollars in options trades annually relying on it.
+5. *Recognition*: Myron Scholes and Robert Merton won the 1997 Nobel Prize in
+   Economics for this work (Fischer Black, a co-developer, had passed away in
+   1995).
+
+** derivative
+
+Definition 1.2. A /derivative/ is a financial instrument whose value is determined by the value of something else.
+
+  That is, a derivative is a financial object /derived/ from other, usually more basic, financial objects. The basic objects are known as assets. According to Higham [12], the term asset is used to describe any financial object whose value is known at present but is liable to change over time. A /stock/ is an example of an asset.
+
+ref: Lectures on Stochastic Calculus with Applications to Finance
+
+** bond
+
+A bond is used to indicate cash invested in a risk-free savings account earning continuously compounded interest at a known rate.
+
+** example of derivative: mutual fund, options, futures, and swaps
+
+This example illustrates that a mutual fund can be viewed as a derivative because it is a financial product composed of multiple underlying assets (stocks and bonds). Key points:
+
+1. /Derivative Nature/: Mutual funds are derivatives since their value depends on a portfolio of underlying investments.
+2. /Risk Management/: Mutual funds help investors diversify risk by spreading investments across various assets.
+3. /Accessibility/: They are suitable for investors who lack capital for individual stock investments or prefer not to focus on a single asset.
+4. /Market Presence/: Banks like TD Canada Trust offer mutual funds alongside other investment products.
+
+ref: Lectures on Stochastic Calculus with Applications to Finance
+
+** CWB
+
+This example highlights a real-world application of options in agriculture, specifically through the Canadian Wheat Board's Guaranteed Delivery Contract. Key points:
+
+1. /Contract Mechanism/: A farmer and the CWB agree on a fixed price for
+   barley delivery in the future (e.g., December).
+
+2. /Farmer's Perspective/: The farmer benefits if the market price in December
+   is lower than the contract price, earning more than market value.
+
+3. /CWB's Perspective/: The CWB profits if the market price in December is
+   higher, allowing them to sell the barley at a higher price.
+
+4. /Option Nature/: This contract is essentially an option, giving the farmer
+   the right to sell barley at a predetermined price.
+
+5. /Valuation Problem/: Determining the fair price for such an option is a
+   fundamental financial problem, crucial for both parties.
+
+This example demonstrates how options can be used in non-traditional markets
+like agriculture, with implications for pricing and risk management.
+
+** options
+
+The text explains that an option is a financial contract giving the buyer the
+right, but not the obligation, to buy (call option) or sell (put option) an
+asset at a fixed price (strike price \( E \)) by a future date (expiration
+time \( T \)).
+
+- /Call Option/: The buyer profits if the asset's market price at \( T \) is
+  higher than \( E \), exercising the option to buy at \( E \) and sell at the
+  higher market price. If the market price is lower, the option is not
+  exercised.
+
+- /Put Option/: The buyer profits if the asset's market price at \( T \) is
+  lower than \( E \), exercising the option to sell at \( E \) and buy at the
+  lower market price. If the market price is higher, the option is not
+  exercised.
+
+The key question is determining the fair price of the option at time 0, which
+is essential for both buyers and sellers to manage risk and maximize returns.
+
+** american/european call and put
+
+Definitions 1.5 and 1.6 describe European call and put options, which grant
+the holder the right, but not the obligation, to buy or sell a specific asset
+at a predetermined price (strike price) on a future date (expiry date).
+
+- /European Call Option/: The holder can buy the asset from the writer at the
+  strike price on the expiry date.
+- /European Put Option/: The holder can sell the asset to the writer at the
+  strike price on the expiry date.
+
+The term "European" distinguishes these options from "American" options, which
+can be exercised at any time between the start and expiry dates. Notably:
+
+- /American Call Options/: Have the same value as European call options, as
+  early exercise is rarely optimal.
+- /American Put Options/: Are more complex and potentially more valuable than
+  European puts, as early exercise can be beneficial.
+
+These distinctions are crucial for understanding option pricing and behavior.
+
+ref: Lectures on Stochastic Calculus with Applications to Finance
+
+** portfolio
+
+A portfolio refers to a combination of:
+
+1. /Assets/: Stocks or other securities.
+2. /Options/: Call or put options.
+3. /Cash/: Money invested in a bank or bonds.
+
+** asset
+
+Since an asset is defined as a financial object whose value is known at present but is liable to change over time, we see that it is reasonable to model the asset price (i.e., stock price) by a stochastic process \(\{S_{t}, t \ge 0\}\). There will be much to say about this later.
+
+** no arbitrage principle
+
+- /No-Arbitrage Principle/: A fundamental assumption in finance stating that
+  there are no risk-free opportunities to earn returns higher than those from
+  bank deposits. This ensures markets are efficient and prevents "free
+  lunches."
+
+same asset could have different prices at different markets. Exploiting that difference is called arbitrage.
+
+** arbitrage with example
+
+
+This example illustrates the concept of arbitrage using currency exchange rates. Key points:
+
+1. /Exchange Rate Discrepancy/: If the exchange rate differs between two
+   markets (e.g., $1.60 = £1 in Toronto vs. $1.58 = £1 in London), it creates
+   an opportunity for arbitrage.
+
+2. /Arbitrage Strategy/: The company could buy pounds in London for $1.58 and
+   sell them in Toronto for $1.60, making a risk-free profit of $0.02 per
+   pound.
+
+3. /Unlimited Profit/: This strategy could be repeated indefinitely, leading
+   to unlimited profits.
+
+4. /Market Correction/: Such discrepancies are rare and short-lived, as market
+   forces quickly adjust prices to eliminate arbitrage opportunities.
+
+The example emphasizes the no-arbitrage principle, where markets efficiently
+correct price differences to prevent risk-free profits.
+
+
+text: Suppose that a company has offices in Toronto and London. The exchange rate between the dollar and the pound must be the same in both cities. If the exchange rate were $1.60 = £1 in Toronto but only $1.58 = £1 in London, then the company could instantly sell pounds in Toronto for $1.60 each and buy them back in London for only $1.58 making a risk-free profit of $0.02 per pound. This would lead to unlimited profit for the company. Others would then execute the same trades leading to more unlimited profit and a total collapse of the market! Of course, the market would never allow such an obvious discrepancy to exist for any period of time.
+
+** law of one price
+
+- /Law of One Price/: States that identical goods should have the same price
+  in an efficient market, preventing arbitrage opportunities.
+
+- /Example of Violation/: Gasoline prices often differ between gas stations in
+  the same area (e.g., Regina), contradicting the law of one price.
+
+- /Challenge/: Exploiting such price discrepancies legally can be complex,
+  involving factors like transaction costs, timing, and market dynamics.
+
+** normal distribution :probability:
+
+density function
+
+\[f_{Z}(z) = \frac{1}{\sqrt{2\pi}}e ^{-\frac{z^{2}}{2}}, - \infty < z < +\infty\]
+
+or more generally,
+
+\[f_{X}(x) = \frac{1}{\sigma\sqrt{2\pi}}e ^{-\frac{(x-\mu)^{2}}{2\sigma^{2}}}, - \infty < x < +\infty\]
+
+\(X \sim \mathcal N (\mu, \sigma^{2})\).
+
+** standard nomral cumulative dis :probability:
+
+\[\Phi (z) = \int ^{z} _{-\infty} \frac{1}{\sqrt{2\pi}} e ^{-\frac{x^{2}}{2}}dx\]
+
+\(\Phi(z) = \mathbf P\{Z \le z\} = F_{Z}(z)\) is the dis function of a random variable \(Z \sim \mathcal N (0,1)\).
 
 ** FMZ
 
@@ -3393,3 +3615,395 @@ Or ein to use jupyter notebook
 ** ccxt
 
 It is an open library to access to exchange platform.
+
+希望什么时候能够入场
+
+** Limit Order 和 Market Order
+
+Limit Order (限价订单): 限价订单是指交易者指定一个特定的价格，只有当市场价格达到或超过这个价格时，订单才会被执行。这种订单类型允许交易者控制他们愿意支付或接受的价格。
+
+Market Order (市场订单): 市场订单是指交易者不指定价格，而是以当前市场价格立即执行的订单。这种订单类型确保了交易的即时性，但交易者无法控制具体成交价格，可能会高于或低于预期。
+
+** Limit Buy Order 和 Limit Sell Order
+
+Limit Buy Order (限价买单): 指交易者指定一个低于当前市场价格的价格，只有当市场价格下跌到或低于这个指定价格时，买单才会被执行。
+
+Limit Sell Order (限价卖单): 指交易者指定一个高于当前市场价格的价格，只有当市场价格上涨到或高于这个指定价格时，卖单才会被执行。
+
+Market Price (市场价格): 指当前市场上实际交易的价格，是买卖双方在市场上达成的即时成交价格。
+
+/优点/: 限价订单允许交易者控制他们愿意支付或接受的价格，避免以不利价格成交。
+
+/缺点/: 限价订单可能不会立即执行，需要等待市场价格达到指定水平，这可能导致交易延迟或无法成交，特别是在市场价格快速变动的情况下。
+
+** Taker 和 Maker
+
+在高频交易中，交易者通常分为两种角色：Maker（做市商）和 Taker（吃单者），每种角色都有其独特的策略和盈利模式。
+
+*Maker策略*：
+Maker策略的核心是通过放置限价订单（limit order）来提供市场流动性，从而成为市场的做市商。做市商在市场上同时提供买入和卖出的报价，确保市场上有足够的买卖双方，从而促进交易的进行。做市商的主要盈利来源有两个：
+1. *Spread（买卖价差）*：做市商通过设置略高于市场价格的卖价（ask）和略低于市场价格的买价（bid），从中赚取买卖价差。这个价差是做市商的主要收入来源之一。
+2. *Rebate（回扣）*：许多交易所为了鼓励做市商提供流动性，会向做市商提供交易费用的回扣。做市商通过提供流动性，可以获得这部分额外的收入。
+
+Maker策略的优点在于，它能够稳定地从市场流动性中获利，风险相对较低。然而，缺点是做市商需要承担库存风险，即持有的股票可能会因为市场波动而贬值。
+
+*Taker策略*：
+Taker策略则依赖于快速的市场预测能力（alpha），通过使用市场订单（market order）立即执行交易，迅速吃掉市场上的限价订单（limit order）。Taker的目标是利用短期市场趋势或价格波动，快速获取利润。
+
+例如，如果Taker预测某只股票的价格即将上涨，他们会立即使用市场订单买入市场上的最佳卖价（best ask），以便在价格上涨后迅速卖出获利。Taker策略的关键在于快速执行交易，因为他们的alpha（市场预测能力）往往会在短时间内衰减（decay），如果不及时执行，可能会错失获利机会。
+
+Taker策略的优点在于，它能够快速捕捉市场机会，尤其是在市场波动较大时，能够迅速实现利润。然而，缺点是Taker需要具备非常强大的市场预测能力，并且由于市场订单的即时性，可能会以不利的价格成交，尤其是在市场流动性不足的情况下。
+
+** Limit Order Book 和 Order 的来源
+
+在高频交易和金融市场运作中，Quotes（报价）和 Trades（交易）是两个核心概念，它们共同构成了市场的基础。为了更好地理解这些概念，我们可以从Limit Order Book (LOB) 和 Market Order 的角度进行深入分析。
+
+Limit Order Book (LOB)：
+LOB是所有限价订单（limit order）的集合，它记录了市场上所有未成交的买卖订单。每个订单都包含两个关键信息：价格和数量。LOB将这些订单按照价格优先、时间优先的原则进行排序，形成一个买卖双方的报价列表。买方报价（bid）通常显示在左侧，卖方报价（ask）显示在右侧，中间的价差（spread）则是市场流动性的体现。
+
+LOB的核心作用是为市场提供透明度和流动性。通过LOB，交易者可以清楚地看到当前市场上所有买卖双方的报价，从而做出更明智的交易决策。做市商（Maker）通常会通过在LOB中放置限价订单（Limit）来提供流动性，而吃单者（Taker）则通过市场订单（Market）来立即执行交易。
+
+/Market Order/：
+市场订单（market order）是一种不指定价格、以当前市场价格立即执行的订单。市场订单的本质是驱动市场交易的主要力量，因为只有当市场订单出现时，LOB中的限价订单才会被撮合成交，形成实际的交易（trade）。换句话说，市场订单是推动市场价格变动和交易发生的关键因素。
+
+/Trade 的生成/：
+所有的交易（trade）都是由市场订单在LOB中撮合限价订单的结果。当一个市场订单进入市场时，它会与LOB中最优的限价订单进行匹配，从而生成一笔交易。例如，一个市场买单会与LOB中最优的卖价（best ask）进行匹配，而一个市场卖单则会与LOB中最优的买价（best bid）进行匹配。
+
+需要注意的是，虽然限价订单可以设置优于市场价格的价格（即高于当前买价或低于当前卖价），但这些订单本质上仍然是通过市场订单来执行的。为了简化理解，我们可以将这些优于市场价格的限价订单视为市场订单，因为它们一旦进入市场，就会立即被执行，形成交易。
+
+/市场驱动的本质/：
+市场的本质是由市场订单驱动的。市场订单的即时性和执行力使得市场价格能够根据供需关系实时调整。限价订单虽然为市场提供了流动性，但它们本身并不会直接导致交易的发生，只有当市场订单出现时，限价订单才会被撮合成交，市场价格才会发生变化。
+
+** Limit Order Book (LOB) and Microstructure
+
+*Limit Order Book (LOB)* ，即限价订单簿，是金融市场中最基础的 microstructure 之一。它是一个集中展示所有未成交限价订单（Limit Order）的信息系统，包含了买入和卖出的限价订单，并按照价格和时间优先级进行排序。简单来说，LOB就像一个“账本”，记录了市场上所有买卖双方在不同价格点上的挂单情况。
+
+*** LOB的结构与功能
+
+LOB的核心功能是为市场提供透明度和流动性。通过LOB，交易者可以清楚地看到当前市场上所有买卖双方的报价，从而做出更明智的交易决策。LOB的结构通常如下：
+
+- *横轴*：表示买卖双方的报价（bid和ask）。
+- *纵轴*：表示在每个价格点上的挂单数量和顺序，即该价格上的队列（queue）。
+
+LOB中的买单和卖单统称为*quotes（订单）*。每个订单都包含两个关键信息：价格和数量。买单（bid）通常显示在左侧，卖单（ask）显示在右侧，中间的价差（spread）则是市场流动性的体现。
+
+*** Best Quotes与Spread
+
+在LOB中，最简单的分析通常从 *第一档best quotes* 开始。*best bid*是市场中可用于出售该股票的最高价格，而*best ask*是任何特定时间内买入该股票的最低价格。例如，如果best bid是$20.07，best ask是$20.09，那么买卖双方之间存在一个$0.02的价差（spread）。
+
+*Spread*是衡量市场流动性的重要指标。较小的spread通常意味着更高的流动性，因为买卖双方更容易在接近的价格点上达成交易。反之，较大的spread则表明市场流动性较低，交易者可能需要支付更高的成本才能完成交易。
+
+*** 为什么买单价格比卖单价格低？
+
+买单价格比卖单价格低的原因很简单：买方希望以尽可能低的价格买入，而卖方希望以尽可能高的价格卖出。这种供需之间的博弈导致了买卖双方在价格上的差异。如果bid order的价格高于ask order的价格，那么这两个订单会立即成交（bid/ask crossed），这种情况通常不会显示在LOB上，因为它们已经变成了实际的交易。
+
+*** Crossed Market与Uncross
+
+在金融市场中，术语*"crossed market"*和*"uncross"*有特定的含义：
+
+- *Crossed Market*：当买入价（bid price）高于卖出价（ask price）时，市场被称为"crossed market"。这种情况通常表明市场处于不稳定状态，可能会很快发生交易。
+
+- *Uncross*：当买入价和卖出价之间的差距被消除并且订单被匹配成交时，这个过程称为"uncross"。此时，市场恢复到一个非跨价状态（non-crossed state）。
+
+*** LOB的工作原理
+
+LOB的工作原理可以通过一个简单的例子来解释。假设市场上有以下LOB结构：
+
+- *Best bid*：$20.07，挂单数量为1200股。
+- *Best ask*：$20.09，挂单数量为1000股。
+
+如果此时有一个大的*market sell order*进入市场，它将首先匹配best bid上的所有限价订单。假设market sell order的数量为1500股，那么它将首先吃掉best bid上的1200股，然后继续吃掉次一档的bid订单。此时，best bid的价格会下降到下一个价格档位，spread也会相应变宽。
+
+相反，如果此时有一个新的*limit buy order*进入市场，且其价格高于当前的best bid，那么这个limit buy order将成为新的best bid，spread也会变窄，表明市场流动性得到了增强。
+
+*** 流动性的定义与衡量
+
+*流动性* 是金融市场中的一个核心概念，尽管每个人都在谈论它，但很少有人能给出明确的定义。根据这本书的解释，流动性是指“在特定交易场所中，所有限价订单在任何给定时间能够满足新进市场订单的累计交易量”。简单来说，流动性衡量的是交易者在特定价格点上买卖股票的容易程度。
+
+流动性的衡量标准包括：
+
+- *Bid和Ask的数量*：在各个价格点上的挂单数量越多，流动性越高。
+- *Spread的大小*：较小的spread通常意味着更高的流动性。
+- *交易活跃度*：交易频率越高，流动性越好。
+- *Market Impact*：下单对市场价格的影响越小，流动性越高。
+
+*** 总结
+
+LOB是金融市场的微观基础，它通过集中展示买卖双方的限价订单，为市场提供了透明度和流动性。通过分析LOB中的best quotes、spread、cross和uncross等概念，交易者可以更好地理解市场的运作机制，并做出更有效的交易决策。流动性的高低直接影响市场的效率和交易成本，因此，深入理解LOB和微观结构对于任何参与金融市场的交易者来说都是至关重要的。
+
+** tick
+:PROPERTIES:
+:CUSTOM_ID: 介绍
+:END:
+
+高频的数据分为 tick 逐笔数据 (比如美股) 和 snapshot 快照数据 (比如 A 股)。tick 指的其实就是一个 update 的 [[https://zhida.zhihu.com/search?content_id=244130853&content_type=Article&match_order=1&q=data+feed&zhida_source=entity][data feed]]，这个 update 可以是最新变动的 quotes 或者 trade 的价格，订单大小和成交量信息，然后高频频数据就是一系列连续 "ticks" 的集合。Tick 数据通常具有以下属性：
+
+- 时间戳
+- 股票代码
+- 买价
+- 卖价
+- 可用买单数量
+- 可用卖单数量
+- 最后交易价格
+- 最后交易数量
+
+时间戳记录了报价产生的日期和时间。它可能是交易所或经纪商发布报价的时间，也可能是[[https://zhida.zhihu.com/search?content_id=244130853&content_type=Article&match_order=1&q=%E4%BA%A4%E6%98%93%E7%B3%BB%E7%BB%9F&zhida_source=entity][交易系统]]收到报价的时间。书里说客户下单到交易所再返回客户并确认订单接收的标准 "往返" 时间在纽约为 15 毫秒或更少。如果经纪商无法以这种现在的标准速度处理订单，客户可能会解雇他们。因此，复杂的报价系统会在时间戳中包括毫秒甚至微秒。
+
+最后交易价格显示了股票最后成交的价格。最后交易价格可能与买价和卖价不同。当客户发布一个有利的 limit order 并立即被经纪商匹配，而不广播客户的报价时，可能会产生差异。最后交易数量显示了最后执行交易的实际数量。
+
+Tick 数据也包含了每次 quote 或者 trade 更新时的 order book 的信息，其实也就是 Level1 和 Level2 数据。Level1 的数据只包括了 quotes 第一档所有的变化信息，比如 best bid price&size， best ask price&size 以及 last trade price&size。Level2 的数据除了包括前面 Level1 里 order book 第一档的所有变化，还包括了远离市场价格 (第二档，第三档以至于第十档) 的 ask 和 bid 的信息。
+
+就比如下面一开始的那张图里，Level1 只包含 best bid@$20.07 和 best ask@$20.09 这两个 queue 的信息，而 Level2 就可以看到整张图，比 Level1 的信息量更多，能做的分析和建模也更多，但自然 Level2 比 Level1 的数据也是贵很多。
+
+[[https://pic4.zhimg.com/v2-f0bca347f70568261d4a19b3df03f207_1440w.jpg]]
+
+其实还有更贵的 Level3 的数据，包括的市场信息会更多。除了包含 Level1 和 Level2 的数据以外，Level3 还会包括比如订单 ID；提交订单的市场参与者的标识，是[[https://zhida.zhihu.com/search?content_id=244130853&content_type=Article&match_order=1&q=%E5%81%9A%E5%B8%82%E5%95%86&zhida_source=entity][做市商]]、流动性提供者、散户还是机构投资者；订单被提交的准确时间戳；订单是买单还是卖单，[[https://zhida.zhihu.com/search?content_id=244130853&content_type=Article&match_order=1&q=%E9%99%90%E4%BB%B7%E5%8D%95&zhida_source=entity][限价单]]还是市价单等；订单当前的状态，如未执行、部分执行、完全执行或已取消；订单的指定价格和指定数量等等。这些信息几乎可以让整个市场的交易变得透明，这样拥有这些数据的人就有了巨大的优势。
+
+我们来看一个书里的例子 tick 数据长什么样子：
+
+[[https://pic4.zhimg.com/v2-a7279537860750465801b3082a716eab_1440w.jpg]]
+
+图 4.1 的 A 和 B 展示了纽约证券交易所 (NYSE) 在 2009 年 11 月 9 日 14:00:16:400 至 14:02:00:000 GMT 期间为 S&P 500 [[https://zhida.zhihu.com/search?content_id=244130853&content_type=Article&match_order=1&q=ETF&zhida_source=entity][ETF]] [[https://zhida.zhihu.com/search?content_id=244130853&content_type=Article&match_order=1&q=SPY&zhida_source=entity][SPY]] 记录的 30 秒一级高频数据日志。A 图显示了报价数据：最佳买价、最佳卖价和最后交易信息，而图 B 显示了相应的持仓规模 (最佳买单数量、最佳卖单数量和最后交易数量)。我们可以看到每次的 bid/ask/trade 的 price 或者 size 有任何变化的时候，都会产生一个 tick 的 update，然后我们收到的 tick 数据就是所有的这些更新的信息。
+
+
+1.2.1 介绍
+
+高频交易的数据主要分为两种类型：/tick 逐笔数据/（如美股）和 /snapshot快照数据/（如A股）。Tick数据指的是每次市场更新时产生的数据流（data feed），这些更新可能是最新变动的报价（quotes）或交易（trades）的价格、订单大小和成交量信息。高频数据就是一系列连续“ticks”的集合，每个tick记录了市场在某一时刻的状态。
+
+*** Tick数据的属性
+
+Tick数据通常包含以下属性：
+
+- /时间戳/：记录报价产生的日期和时间。时间戳可以是交易所发布报价的时间，也可以是交易系统收到报价的时间。在纽约，客户下单到交易所再返回客户并确认订单接收的标准“往返”时间通常为15毫秒或更少。如果经纪商无法以这种速度处理订单，客户可能会解雇他们。因此，复杂的报价系统会在时间戳中包括毫秒甚至微秒。
+- /股票代码/：标识具体的股票。
+- /买价（bid price）*：当前市场上最高的买入报价。
+- /卖价（ask price）*：当前市场上最低的卖出报价。
+- /可用买单数量（bid size）*：在买价上可用的订单数量。
+- /可用卖单数量（ask size）*：在卖价上可用的订单数量。
+- /最后交易价格（last trade price）*：股票最后成交的价格。这个价格可能与买价和卖价不同，尤其是在客户发布有利的限价订单并立即被经纪商匹配时。
+- /最后交易数量（last trade size）*：最后执行交易的实际数量。
+
+*** Tick数据与Order Book
+
+Tick数据还包含了每次报价或交易更新时的订单簿（order book）信息，通常分为*Level1*和*Level2*数据。
+
+- /Level1数据/：只包含订单簿第一档的所有变化信息，如最佳买价（best bid price）、最佳卖价（best ask price）以及最后交易价格（last trade price）和数量（last trade size）。
+- /Level2数据/：除了包含Level1中的信息外，还包括远离市场价格的第二档、第三档甚至第十档的ask和bid信息。Level2数据提供了更详细的市场深度，使得交易者能够更全面地分析市场。
+
+例如，在下面的图中，Level1数据只包含best bid@$20.07和best ask@$20.09这两个队列的信息，而Level2数据则可以看到整张图，信息量更大，能够进行更复杂的分析和建模。当然，Level2数据的价格也比Level1数据贵得多。
+
+[[https://pic4.zhimg.com/v2-f0bca347f70568261d4a19b3df03f207_1440w.jpg]]
+
+*** Level3数据
+
+除了Level1和Level2数据，还有更昂贵的*Level3数据/。Level3数据不仅包含Level1和Level2的所有信息，还包括以下额外信息：
+
+- /订单ID/：每个订单的唯一标识符。
+- /市场参与者标识/：提交订单的市场参与者的身份，如做市商、流动性提供者、散户或机构投资者。
+- /订单提交时间/：订单被提交的准确时间戳。
+- /订单类型/：是买单还是卖单，是限价单还是市价单。
+- /订单状态/：如未执行、部分执行、完全执行或已取消。
+- /指定价格和数量/：订单的指定价格和指定数量。
+
+这些信息几乎可以让整个市场的交易变得透明，拥有这些数据的人可以获得巨大的优势。
+
+*** 示例：Tick数据
+
+我们来看一个书中的例子，展示tick数据的具体内容：
+
+[[https://pic4.zhimg.com/v2-a7279537860750465801b3082a716eab_1440w.jpg]]
+
+图4.1的A和B展示了纽约证券交易所（NYSE）在2009年11月9日14:00:16:400至14:02:00:000 GMT期间为S&P 500 ETF（SPY）记录的30秒一级高频数据日志。A图显示了报价数据：最佳买价、最佳卖价和最后交易信息，而图B显示了相应的持仓规模（最佳买单数量、最佳卖单数量和最后交易数量）。我们可以看到，每次bid/ask/trade的price或size有任何变化时，都会产生一个tick的update，我们收到的tick数据就是所有这些更新的信息。
+
+*** 总结
+
+Tick数据是高频交易的核心数据源，它提供了市场在每个微小时间点的详细状态。通过分析tick数据，交易者可以捕捉到市场的细微变化，从而做出更精确的交易决策。无论是Level1、Level2还是Level3数据，它们都为交易者提供了不同层次的市场透明度和流动性信息，帮助他们在高频交易中占据优势。
+
+** CEX 和 DEX （AI 总结的）
+:PROPERTIES:
+:ID:       0072b0bf-82c2-4354-bac9-68f7997ccccc
+:END:
+
+**DEX（去中心化交易所）和CEX（中心化交易所）的总结*
+
+*1. /定义和特点/：*
+
+- *DEX（去中心化交易所）*：
+  - /定义/：直接在区块链上运行的交易所，无需中介。
+  - /特点/：
+    - 去中心化：用户掌握私钥，无需信任第三方。
+    - 透明：所有交易记录公开，可验证。
+    - 自主：用户直接与智能合约交互，交易自动执行。
+    - 低成本：在某些区块链（如BSC）上，交易费用较低。
+
+- *CEX（中心化交易所）*：
+  - /定义/：由中心化机构运营的交易所，用户通过平台进行交易。
+  - /特点/：
+    - 中心化：平台托管用户资金，用户需信任平台。
+    - 高效：交易速度快，流动性高。
+    - 用户友好：界面简单，适合新手。
+    - 多样性：支持多种加密货币和法币交易。
+
+*2. /常见平台/：*
+
+- *DEX*：
+  - /Uniswap/：基于以太坊的DEX，支持ERC-20代币交易。
+  - /PancakeSwap/：基于币安智能链（BSC）的DEX，手续费较低。
+  - /SushiSwap/：另一个基于以太坊的DEX，提供流动性挖矿和代币交易。
+
+- *CEX*：
+  - /Binance/：全球最大的加密货币交易所，支持多种加密货币交易。
+  - /Coinbase/：美国知名交易所，安全性高，适合初学者。
+  - /Kraken/：提供多种交易对和高级交易功能，适合有一定经验的用户。
+
+*3. /操作流程/：*
+
+- *DEX*：
+  - 设置钱包（如MetaMask、Trust Wallet）。
+  - 连接钱包到DEX平台。
+  - 存入资金到钱包。
+  - 选择交易对，执行交易。
+  - 支付矿工费（Gas Fee）。
+
+- *CEX*：
+  - 注册账户并完成身份验证（KYC）。
+  - 存入资金（银行转账、信用卡或加密货币转账）。
+  - 选择交易对，执行交易。
+  - 查看交易记录和账户余额。
+
+*4. /优缺点/：*
+
+- *DEX*：
+  - /优点/：自主控制、透明、安全、创新机会。
+  - /缺点/：Gas Fee较高、技术门槛较高、市场波动大。
+
+- *CEX*：
+  - /优点/：高效、用户友好、多样性、流动性高。
+  - /缺点/：中心化风险、需信任平台、可能存在监管风险。
+
+*5. /适用人群/：*
+
+- *DEX*：适合有一定技术基础、追求自主控制和透明交易的用户。
+- *CEX*：适合新手、追求高效交易和多样化选择的用户。
+
+总结来说，DEX和CEX各有优缺点，选择哪种平台取决于你的技术水平、风险偏好和交易需求。DEX提供去中心化和透明的交易体验，而CEX则提供高效和用户友好的交易环境。
+
+* COMMENT text1 :noexport:
+
+** prelude
+
+In Geometry as well as in Physics, one has often to use the tools of differential and integral calculus on topological spaces which are locally like open subsets of the Euclidean space \(\mathbb{R}^n\), but do not admit coordinates valid everywhere. For example, the sphere \(\{(x, y, z) \in \mathbb{R}^3 : x^2 + y^2 + z^2 = 1\}\), or more generally, the space \(\{(x_1, \ldots, x_n) \in \mathbb{R}^n : \sum x_i^2 = 1\}\) are clearly of geometric interest.
+
+On the other hand, constrained motion has to do with dynamics on surfaces in \(\mathbb{R}^3\). In general relativity, one studies 'space-time' which combines the space on which motion takes place and the time parameter in one abstract space and allows reformulation of problems of Physics in terms of a 4-dimensional object. All these necessitate a framework in which one can work with the tools of analysis, like differentiation, integration, differential equations and the like, on fairly abstract objects.
+
+This would enable one to study Differential Geometry in its appropriate setting on the one hand, and to state mathematically the equations of Physics in the required generality, on the other. The basic objects which accomplish this are called differential manifolds. These are geometric objects which are locally like domains in the Euclidean space, so that the classical machinery of calculus, available in \(\mathbb{R}^n\), can be transferred, first, to small open sets and then patched together. The main tool in the patching up is the notion of a sheaf. We will first define sheaves and discuss about basic notions related to them, before taking up differential manifolds.
+
+** 1. Sheaves and Presheaves
+
+At the outset, it is clear that functions of interest to us belong to a class such as continuous functions, infinitely differentiable (or \( C^\infty \)) functions, real analytic functions, holomorphic functions of complex variables, and so on. Some properties common to all these classes of functions are that
+
+  (i) they are all continuous, and
+
+  (ii) the condition for a continuous function to belong to the class is of a local nature.
+
+By this we mean that for a continuous function to be differentiable, real analytic or holomorphic, it is necessary and sufficient for it to be so in the neighbourhood of every point in its domain of definition. We will start with an axiomatisation of the local nature of the classes of functions we seek to study.
+
+
+Here's the text from the image:
+
+** 1.1. Definition: presheaf
+
+Let \( X \) be a topological space. An assignment to every open subset \( U \) of \( X \), of a set \( \mathcal{F}(U) \) and to every pair of open sets \( U, V \) with \( V \subseteq U \), of a map (to be called restriction map) \( \text{res}_{UV} : \mathcal{F}(U) \to \mathcal{F}(V) \) satisfying:
+\[ \text{res}_{VW} \circ \text{res}_{UV} = \text{res}_{UW} \]
+for every triple \( W \subseteq V \subseteq U \) of open sets, is called a presheaf of sets. If \( \mathcal{F}(U) \) are all abelian groups, rings, vector spaces, etc., and the restriction maps are homomorphisms of the respective structures, then we say that \( \mathcal{F} \) is a presheaf of abelian groups, rings, vector spaces, etc.
+
+\[\begin{tikzcd}
+  & U\ar[rr, dashed] & & \mathcal F(U)\ar[d]\ar[ddl]\\
+  & V\ar[u]\ar[rr, dashed] & & \mathcal F(V)\ar[dl] \\
+  W\ar[ur]\ar[uur]\ar[rr, dashed] & & \mathcal F(W)
+\end{tikzcd}\]
+
+(supplement) alternative description (because the author's English is kinda tricky): *Presheaf*:
+
+A presheaf on a topological space \( X \) is a collection of sets (or groups, rings, etc.) \( \mathcal{F}(U) \) for each open set \( U \subseteq X \), along with restriction maps \( \text{res}_{UV}: \mathcal{F}(U) \to \mathcal{F}(V) \) for \( V \subseteq U \), satisfying:
+
+   - \( \text{res}_{UU} = \text{id}_{\mathcal{F}(U)} \),
+   - \( \text{res}_{VW} \circ \text{res}_{UV} = \text{res}_{UW} \) for \( W \subseteq V \subseteq U \).
+
+** 1.2. Definition: sheaf
+
+A presheaf is said to be a sheaf if it satisfies the following additional conditions. Let \( U = \bigcup_{i \in I} U_i \) be any open covering of an open set \( U \). Then:
+
+*S1*: Two elements \( s, t \in \mathcal{F}(U) \) are equal if \( \text{res}_{UU_i} s = \text{res}_{UU_i} t \) for all \( i \in I \).
+
+*S2*: If \( s_i \in \mathcal{F}(U_i) \) satisfy \( \text{res}_{U_{i}U_i \cap U_j} s_i = \text{res}_{U_{j}U_i \cap U_j} s_j \) for all \( i, j \in I \), then there exists an element \( s \in \mathcal{F}(U) \) with \( \text{res}_{UU_i} s = s_i \) for all \( i \). We will also assume that \( \mathcal{F}(\emptyset) \) consists of a single point.
+
+If there is \(\{s_{i}\in \mathcal F(U_{i})\}\), satisfy \(\text{res}_{U_{i}U_{i}\cap U_{j}}s_{i} = \text{res}_{U_{j}U_{i}\cap U_{j}} s_{j}\) for all \(i,j \in I\), then there is an element in \(s \in \mathcal F (U)\) that \(\mathrm{res}_{UU_{i}}s = s_{i}\) for all \(i\).
+
+(supplement from editor) The description for two conditions:
+
+- *Locality*: If \( s \in \mathcal{F}(U) \) and \( s \) restricts to the zero element on each \( U_i \cap U \), then \( s = 0 \).
+- *Gluing*: If \( s_i \in \mathcal{F}(U_i), s_{j} \in \mathcal{F}(U_{j}) \) satisfy \( \text{res}_{U_{i}U_i \cap U_j} s_i = \text{res}_{U_{j}U_i \cap U_j} s_j \) for all \( i, j \), then there exists a unique \( s \in \mathcal{F}(U) \) with \( \text{res}_{UU_i} s = s_i \) for all \( i \).
+
+Intuitions:
+
+- *Locality* ensures that sections are determined by their local behavior.
+- *Gluing* ensures that compatible local sections can be "glued" together to
+  form a global section.
+
+Gluing allows us to construct global objects from local data. For example, in a topological space, we can define functions or sections on open sets and then "glue" them together to define a function on the entire space.
+
+** 1.3. Examples
+
+*** 1.3.1. sheaf of Differential Functions
+
+As indicated above, the concepts of differentiability, real analyticity, ... are all local in nature, so that it is no surprise that if \(X\) is an open subspace of \(\mathbb{R}^n\), then the assignment to every open subset \(U\) of \(X\), of the set \(\mathcal{A}(U)\) of differentiable functions with the natural restriction of functions as restriction maps, gives rise to a sheaf.
+
+This sheaf will be called the sheaf of differentiable functions on \(X\). Obviously this sheaf is not merely a sheaf of sets, but of \(\R\) algebras.
+
+*** 1.3.2. bounded functions
+
+The assignment of the set of bounded functions to every open set \( U \) of \( X \), and the natural restriction maps define a presheaf on \( X \).
+# of means target; to means source
+# U is mapped to bounded functions
+
+However, if we are given as in \( S_2 \) any compatible set of bounded functions \( s_i \), then while such data does define a unique function \( s \) on \( U \), there is no guarantee that it will be bounded. Thus this presheaf satisfies \( S_1 \) but not \( S_2 \) and so is not a sheaf. (Can one modify this in order to obtain a sheaf?)
+
+** 1.4. Sheaf associated to a presheaf. germ and stalk
+
+In the theory of holomorphic functions, one talks of a *germ* of a function at a point, when one wishes to study its properties in an (unspecified) neighbourhood of a point. This means the following.
+
+  Consider pairs \((U, f)\) consisting of open sets \(U\) containing the given point \(x\) and holomorphic functions \(f\) defined on \(U\). Introduce an equivalence relation in this set by declaring two such pairs \((U, f)\), \((V, g)\) to be *equivalent* if \(f\) and \(g\) coincide in some neighbourhood of \(x\) which is contained in \(U \cap V\). An equivalence class is called a *germ*. This procedure can be imitated in the case of a presheaf and this leads to the concept of a *stalk* of a presheaf at a point.
+
+** 1.5. Definition: stalk and germ
+
+Let \(\cal F\) be a presheaf on a topo space \(X\). Then the stalk \(\mathcal F_{x}\) of \(\cal F\) at point \(x \in X\) is the quotient set of the set consisting of all \((U,s)\) where \(U\) is an open neightbourhood of \(x\) and \(s\) is an element of \(\mathcal F(U)\) under the *equaivalence relation*:
+
+  \((U,s)\) is equivalent to \((V,t)\) if and only if there exists an open neighbourhood \(W\) of \(x\) contained in \(U \cap V\) (i.e. \(W \subset U \cap V\)) such that the restrictions of \(s\) and t to \(W\) are the same.
+
+  If \(s \in \mathcal F(X)\) then, for any \(x \in X\), the pair \((X, s)\) has an image in the talk \(\mathcal F_{x}\), namely the quivalence class containing it. It is called the /germ of \(s\)/ at \(x\). We will denote it by \(s _{x}\).
+
+(supplement from editor)
+Let \( \mathcal{F} \) be a sheaf on a topological space \( X \), and let \( x \in X \) be a point. The *stalk* \( \mathcal{F}_x \) of \( \mathcal{F} \) at \( x \) is defined as:
+\[
+\mathcal{F}_x = \lim_{\longrightarrow} \mathcal{F}(U)
+\]
+where the direct limit is taken over all open neighborhoods \( U \) of \( x \), ordered by inclusion \( U_1 \subseteq U_2 \).
+
+- In the sheaf of smooth functions on a manifold, the stalk at a point \( x \) consists of all germs of smooth functions defined in some neighborhood of \( x \).
+- In the sheaf of holomorphic functions on a complex manifold, the stalk at a point \( x \) consists of all germs of holomorphic functions near \( x \).
+
+** interlude: The topology on the set of all germs
+
+Let \(E = E(\mathcal F)\) be the germs of all elements at all points of \(X\), that is to say, the disjoint union of all the stalks \(\mathcal F_{x}\) \(x \in X\). What we intend to do now is to provide the set \(E\) with a topology such taht
+
+  - (a) the map \(\pi \colon E \to X\) which maps all of \(\mathcal F_{x}\) to \(x\), is continuous;
+  - (b) if \(s \in \mathcal F(U)\) then the section \(\tilde s\) of \(E\) over \(U\) (i.e. \(\tilde s \colon U \to E\)), defined by setting \(\tilde s(x) = s_{x}\), is continuous.
+
+  We achieve this by associating to each pair \((U,s)\) where \(U\) is an open subset of \(X\) and \(s \in \mathcal F(U)\), the set \(\tilde s (U)\), and defining a topology on \(E\) whose open sets are generated by sets of the form \(\tilde s (U)\). In order to check that with this topology, the maps \(\tilde s\) are continuous, we have only to show that \(\tilde s^{-1}(\tilde t(V))\) is open for every open subset \(V\) of \(X\) and \(t \in \mathcal F(V)\). This is equivalent to the following.
+
+** 1.6. Lemma.
+
+** 1.7. Definition: etale space
+
+todo
