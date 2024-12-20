@@ -1,0 +1,46 @@
+#+title:How to read a poem?
+
+#+begin_export html
+<style type="text/css"> body {font-family: "EB Garamond", serif;} </style>
+#+end_export
+
+Curious about poetry, but don't know where or how to begin? We've reprinted the first chapter from the book /How to Read a Poem/ by Edward Hirsch. Its 16 sections provide strategies for reading poems, and each section has plenty of links to examples of poems in our archive to illustrate the points.
+
+[[https://www.poetryfoundation.org/articles/68412/heartland][*Heartland*]] Poems are like messages in a bottle sent out with little hope of finding a recipient. Those of us who find and read poems become their unknown addresses.
+
+[[https://www.poetryfoundation.org/articles/68413/to-the-reader-setting-out][*To the Reader Setting Out*]] or [[file:to the reader setting out.org][To the Reader Setting Out]] \\
+The reader of poetry is a kind of pilgrim setting out. To read a poem is to depart from the familiar, to leave all expectations behind.
+
+[[https://www.poetryfoundation.org/articles/68414/in-the-beginning-is-the-relation][*In the Beginning is the Relation*]] or 
+
+A lyric poem is a special communiqué between an I and a You. It speaks out of a solitude to a solitude; it begins and ends in silence.
+
+[[https://www.poetryfoundation.org/articles/68415/stored-magic][*Stored Magic*]] The lyric poem seeks to mesmerize time. It crosses frontiers and outwits the temporal. It can bridge the gulf between people otherwise unknown to each other.
+
+[[https://www.poetryfoundation.org/articles/68416/the-immense-intimacy-the-intimate-immensity][*The Immense Intimacy, the Intimate Immensity*]] The experience of reading poetry and the kind of knowledge it provides cannot be duplicated elsewhere.
+
+[[https://www.poetryfoundation.org/articles/68417/mere-air-these-words-but-delicious-to-hear][*Mere Air, These Words, but Delicious to Hear*]] From syllable to word to phrase to sentence, the sound of poetry is the source of its primitive pleasures.
+
+[[https://www.poetryfoundation.org/articles/68418/in-plain-american-which-cats-and-dogs-can-read][*In Plain American Which Cats and Dogs Can Read!*]] A lyric poem walks the line between speaking and singing. Poetry is not speech exactly and yet it is always in relationship to speech, to the spoken word.
+
+[[https://www.poetryfoundation.org/articles/68419/give-a-common-word-the-spell][*Give a Common Word the Spell*]] The medium of poetry is language, our common property. It belongs to no one and to everyone. The precision of poetry restores language. It also defamiliarizes words by wrenching them from familiar or habitual contexts.
+
+[[https://www.poetryfoundation.org/articles/68420/metaphor-a-poet-is-a-nightingale][*Metaphor: A Poet is a Nightingale*]] Metaphor drives the engine of poetry. Figurative language---figures of speech and thought---guides the interaction between poet and reader.
+
+[[https://www.poetryfoundation.org/articles/68421/epic-drama-lyric-be-plural-like-the-universe][*Epic, Drama, Lyric: Be Plentiful Like the Universe*]] Poems may be epic, lyric, dramatic, or a mixture of the three. Most poems find a way to defy these conventional categories.
+
+[[https://www.poetryfoundation.org/articles/68422/harmonious-sisters-voice-and-vers][*Harmonious Sisters, Voice, and Vers*]] The lyric poem began as a work to be performed, to be sung or read aloud. Over time, the lyric transformed into a work for the page, for the reader to imagine in visual terms.
+
+[[https://www.poetryfoundation.org/articles/68423/winged-type][*Winged Type*]] The poem appeals to the eye. It has a shapely dimension and thus relates to the plastic arts, especially painting. The poem is something to look at as well as to recite.
+
+[[https://www.poetryfoundation.org/articles/68424/out-of-the-cradle-endlessly-rocking][*Out of the Cradle Endlessly Rocking*]] Rhythm is a form cut into time, as Ezra Pound said in /ABC of Reading/. It is the combination in English of stressed and unstressed syllables that creates a feeling of fixity and flux, of surprise and inevitability.
+
+[[https://www.poetryfoundation.org/articles/68425/the-wave-always-returns][*The Wave Always Returns*]] The poem is a muscular and composed thing. It moves like a wave, dissolving the literal. We participate in its flow as it moves from the eye to the ear, to the inner ear, the inner eye.
+
+[[https://www.poetryfoundation.org/articles/68426/help-me-o-heavenly-muse][*Help Me, O Heavenly Muse*]] Where does a poem come from? The sources of inspiration are many, from reason to a touch of madness.
+
+[[https://www.poetryfoundation.org/articles/68427/it-is-something-of-an-accident-that-you-are-the-reader-and-i-the-writer][*It Is Something of an Accident That You Are the Reader and I the Writer*]] Reading poetry calls for an active reader. The reader must imaginatively collaborate with a poem to give voice to it.
+
+Poet and author Edward Hirsch has built a reputation as an attentive and elegant writer and reader of poetry. Over the course of many collections of poetry and criticism, and the long-running "Poet's Choice" column in the /Washington Post/, Hirsch has transformed the quotidian into poetry in his own work, as well as demonstrated his adeptness at explicating the nuances and shades of feeling, tradition
+
+[[https://www.poetryfoundation.org/poets/edward-hirsch][Read Full Biography]]

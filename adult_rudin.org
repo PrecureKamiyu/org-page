@@ -1,0 +1,408 @@
+#+title:Adult Rudin
+#+latex_header: \usepackage{amsmath}
+#+latex_header: \usepackage{mathrsfs}
+#+options: tex:dvisvgm
+
+* COMMENT chapter 01 abstract integration :noexport:
+
+** before main
+
+Toward the end of the nineteenth century it became clear to many mathematicians that the Riemann integral (about which one learns in calculus courses) should be replaced by some other type of integral, more general and more flexible, better suited for dealing with limit processes. Among the attempts made in this direction, the most notable ones were due to Jordan, Borel, W. H. Young, and Lebesgue. It was Lebesgue's construction which turned out to be the most successful.
+
+In brief outline, here is the main idea : The Riemann integral of a function \(f\) over an interval \([a,b]\) can be approximated by sums of the form
+
+\[\sum _{i=1} ^{n} f(t_{i})m(E_{i})\]
+
+where \(E_{1}, \dots , E_{n}\) are disjoint intervals whose union is [a,b], \(m (E_{i})\) denotes the length of \(E_{i}\) , and \(t_{i} \in E_{i}\) for i = 1, ... , \(n\). Lebesgue discovered that a completely satisfactory theory of integration results if the sets \(E_{i}\) in the above sum are allowed to belong to a larger class of subsets of the line, the so-called "measurable sets", and if the class of functions under consideration is enlarged to what he called " measvrable functions." The crucial set-theoretic properties involved are the following : The union and the intersection of any countable family of measurable sets are measurable; so is the complement of every measur able set ; and, most important, the notion of" length " (now called " measure ") can be extended to them in such a way that
+
+\[m (E_{1} \cup E_{2} \cup E_{3} \cup \dots) = m(E_{1}) + m(E_{2}) + m(E_{3}) + \dots\]
+
+# end of page 5
+
+for every countable collection \(\left\{E_i\right\}\) of pairwise disjoint measurable sets. This property of \(m\) is called countable additivity.
+
+The passage from Riemann's theory of integration to that of Lebesque is a process of completion (in a sense which will appear more precisely later). It is of the same fundamental importance in analysis as is the construction of the real number system from the rationals.
+
+The above-mentioned measure \(m\) is of course intimately related to the geometry of the real line. In this chapter we shall present an abstract (axiomatic) version of the Lebesgue integral, relative to any countably additive measure on any set. (The precise definitions follow.) This abstract theory is not in any way more difficult than the special case of the real line; it shows that a large part of integration theory is independent of any geometry (or topology) of the underlying space; and, of course, it gives us a tool of much wider applicability. The existence of a large class of measures, among them that of Lebesgue, will be established in Chap. 2.
+
+** Set theoretic notations and Terminology
+
+1.1 Some sets can be described by listing their members. Thus \(\left\{x_1, \ldots, x_n\right\}\) is the set whose members are \(x_1, \ldots, x_n\); and \(\{x\}\) is the set whose only member is \(x\). More often, sets are described by properties. We write
+\[\{x: P\}\]
+for the set of all elements \(x\) which have the property \(P\). The symbol \(\varnothing\) denotes the empty set. The words collection, family, and class will be used synonymously with /set/.
+
+We write \(x \in A\) if \(x\) is a member of the set \(A\); otherwise \(x \notin A\). If \(B\) is a subset of \(A\), i.e., if \(x \in B\) implies \(x \in A\), we write \(B \subset A\). If \(B \subset A\) and \(A \subset B\), then \(A=B\). If \(B \subset A\) and \(A \neq B, B\) is a proper subset of \(A\). Note that \(\varnothing \subset A\) for every set \(A\).
+
+\(A \cup B\) and \(A \cap B\) are the union and intersection of \(A\) and \(B\), respectively. If \(\left\{A_\alpha\right\}\) is a collection of sets, where \(\alpha\) runs through some index set \(I\), we write
+\[\bigcup_{\alpha \in I} A_\alpha \text { and } \bigcap_{\alpha \in I} A_\alpha\]
+for the union and intersection of \(\left\{A_\alpha\right\}\) :
+\[\begin{aligned}
+& \bigcup_{\alpha \in I} A_\alpha=\left\{x: x \in A_\alpha \text { for at least one } \alpha \in I\right\} \\
+& \bigcap_{\alpha \in I} A_\alpha=\left\{x: x \in A_\alpha \text { for every } \alpha \in I\right\}
+\end{aligned}\]
+
+If \(I\) is the set of all positive integers, the customary notations are
+\[
+\bigcup_{n=1}^{\infty} A_n \text { and } \bigcap_{n=1}^{\infty} A_n .
+\]
+# end of page 6
+
+*** page 7
+
+If no two members of \(\left\{A_\alpha\right\}\) have an element in common, then \(\left\{A_\alpha\right\}\) is a /disjoint collection/ of sets.
+
+We write \(A-B=\{x: x \in A, x \notin B\}\), and denote the complement of \(A\) by \(A^c\) whenever it is clear from the context with respect to which larger set the complement is taken.
+
+The /cartesian product/ \(A_1 \times \cdots \times A_n\) of the sets \(A_1, \ldots, A_n\) is the set of all ordered \(n\)-tuples \(\left(a_1, \ldots, a_n\right)\) where \(a_i \in A_i\) for \(i=1, \ldots, n\).
+
+The /real line/ (or real number system) is \(R^1\), and
+\[
+R^k=R^1 \times \cdots \times R^1 \quad(k \text { factors }).
+\]
+
+The /extended real number system/ is \(R^1\) with two symbols, \(\infty\) and \(-\infty\), adjoined, and with the obvious ordering. If \(-\infty \leq a \leq b \leq \infty\), the /interval/ \([a, b]\) and the /segment/ \((a, b)\) are defined to be
+\[ [a, b]=\{x: a \leq x \leq b\}, \quad(a, b)=\{x: a<x<b\} \]
+
+We also write
+\[ [a, b)=\{x: a \leq x<b\}, \quad(a, b]=\{x: a<x \leq b\} .\]
+
+If \(E \subset[-\infty, \infty]\) and \(E \neq \varnothing\), the least upper bound (supremum) and greatest lower bound (infimum) of \(E\) exist in \([-\infty, \infty]\) and are denoted by sup \(E\) and inf \(E\).
+
+Sometimes (but only when \(\sup E \in E\) ) we write max \(E\) for \(\sup E\).
+The symbol
+\[
+f: X \rightarrow Y
+\]
+means that \(f\) is a function (or mapping or transformation) of the set \(X\) into the set \(Y\); i.e., \(f\) assigns to each \(x \in X\) an element \(f(x) \in Y\). If \(A \subset X\) and \(B \subset Y\), the image of \(A\) and the inverse image (or pre-image) of \(B\) are
+\[\begin{aligned}
+f(A) & =\{y: y=f(x) \text { for some } x \in A\}, \\
+f^{-1}(B) & =\{x: f(x) \in B\} .
+\end{aligned}\]
+Note that \(f^{-1}(B)\) may be empty even when \(B \neq \varnothing\).
+
+The domain of \(f\) is \(X\). The range of \(f\) is \(f(X)\).
+
+If \(f(X)=Y, f\) is said to map \(X\) onto \(Y\).
+
+We write \(f^{-1}(y)\), instead of \(f^{-1}(\{y\})\), for every \(y \in Y\). If \(f^{-1}(y)\) consists of at most one point, for each \(y \in Y, f\) is said to be one-to-one. If \(f\) is one-to-one, then \(f^{-1}\) is a function with domain \(f(X)\) and range \(X\).
+
+If \(f: X \rightarrow[-\infty, \infty]\) and \(E \subset X\), it is customary to write \(\sup _{x \in E} f(x)\) rather than sup \(f(E)\).
+
+If \(f: X \rightarrow Y\) and \(g: Y \rightarrow Z\), the composite function \(g \circ f: X \rightarrow Z\) is defined by the formula
+\[(g \circ f) (x) = g(f(x))\quad (x \in X).\]
+# end of page 7
+
+*** page 8
+
+If the range of \(f\) lies in the real line (or in the complex plane), the \(f\)is said to be a /real function/ (or a /complex function/). For a complex function \(f\), the statement \(f \ge 0\), means that all values \(f(x)\) of \(f\) are nonnegative real numbers.
+
+** The concept of measurability
+
+The class of measurable functions plays a fundamental role in integration theory. It has some basic properties in common with another most important class of functions, namely, the continuous ones. It is helpful to keep these similarities in mind. Our presentation is therefore organized in such a way that the analogies between the concepts topological space, open set, and continuous function, on the one hand, and measurable space, measurable set, and measurable function, on the other, are strongly emphasized. It seems that the relations between these concepts emerge most clearly when the setting is quite abstract, and this (rather than a desire for mere generality) motivates our approach to the subject.
+
+<<Def 1.2>> *Def 1.2 topology*
+
+(a) A collection \(\tau\) of subsets of a set \(X\) is said to be a /topology/ in \(X\) if \(\tau\) has the following three properties:
+
+  1. \(\varnothing \in \tau\) and \(X \in \tau\).
+  2. If \(V_i \in \tau\) for \(i = 1, \ldots, n\), then \(V_1 \cap V_2 \cap \cdots \cap V_n \in \tau\).
+  3. If \(\{V_\alpha\}\) is an arbitrary collection of members of \(\tau\) (finite, countable, or uncountable), then \(\bigcup_\alpha V_\alpha \in \tau\).
+
+(b) If \(\tau\) is a topology in \(X\), then \(X\) is called a topological space, and the members of \(\tau\) are called the open sets in \(X\).
+
+(c) If \(X\) and \(Y\) are topological spaces and if \(f\) is a mapping of \(X\) into \(Y\), then \(f\) is said to be continuous provided that \(f^{-1}(V)\) is an open set in \(X\) for every open set \(V\) in \(Y\).
+
+<<Def 1.3>> *Def 1.3 sigma algebra*
+
+(a) A collection \(\mathfrak{M}\) of subsets of a set \(X\) is said to be a \(\sigma\)-algebra in \(X\) if \(\mathfrak{M}\) has the following properties:
+
+  1. \(X \in \mathfrak{M}\).
+  2. If \(A \in \mathfrak{M}\), then \(A^c \in \mathfrak{M}\), where \(A^c\) is the complement of \(A\) relative to \(X\).
+  3. If \(A=\bigcup_{n=1}^{\infty} A_n\) and if \(A_n \in \mathfrak{M}\) for \(n=1,2,3, \dots\), then \(A \in \mathfrak{M}\).
+
+(b) If \(\mathfrak{M}\) is a \(\sigma\)-algebra in \(X\), then \(X\) is called a measurable space, and the members of \(\mathfrak{M}\) are called the measurable sets in \(X\).
+
+(c) If \(X\) is a measurable space, \(Y\) is a topological space, and \(f\) is a mapping of \(X\) into \(Y\), then \(f\) is said to be measurable provided that \(f^{-1}(V)\) is a measurable set in \(X\) for every open set \(V\) in \(Y\).
+# end of page 8
+
+*** page 9
+
+It would perhaps be more satisfactory to apply the term "measurable space" to the ordered pair \((X, \mathfrak{M})\), rather than to \(X\). After all, \(X\) is a set, and \(X\) has not been changed in any way by the fact that we now also have a \(\sigma\)-algebra of its subsets in mind. Similarly, a topological space is an ordered pair \((X, \tau)\). But if this sort of thing were systematically done in all mathematics, the terminology would become awfully cumbersome. We shall discuss this again at somewhat greater length in Sec. 1.21.
+
+*1.4 Comments* on Definition 1.2 The most familiar topological spaces are the metric spaces. We shall assume some familiarity with metric spaces but shall give the basic definitions, for the sake of completeness.
+
+A metric space is a set \(X\) in which a distance function (or metric) \(\rho\) [fn:: we use \(d\) elsewhere] is defined, with the following properties:
+
+- (a) \(0 \leq \rho(x, y)<\infty\) for all \(x\) and \(y \in X\).
+- (b) \(\rho(x, y)=0\) if and only if \(x=y\).
+- (c) \(\rho(x, y)=\rho(y, x)\) for all \(x\) and \(y \in X\).
+- (d) \(\rho(x, y) \leq \rho(x, z)+\rho(z, y)\) for all \(x, y\), and \(z \in X\).
+
+Here property \((d)\) is called the /triangle inequality/.
+
+If \(x \in X\) and \(r \geq 0\), the open ball with center at \(x\) and radius \(r\) is the set \(\{y \in X: \rho(x, y)<r\}\).
+
+If \(X\) is a metric space and if \(\tau\) is the collection of all sets \(E \subset X\) which are arbitrary unions of open balls, then \(\tau\) is a topology in \(X\). This is not hard to verify; the intersection property depends on the fact that if \(x \in B_1 \cap B_2\), where \(B_1\) and \(B_2\) are open balls, then \(x\) is the center of an open ball \(B \subset B_1 \cap B_2\). We leave this as an exercise.
+
+For instance, in the real line \(R^1\) a set is open if and only if it is a union of open segments \((a, b)\). In the plane \(R^2\), the open sets are those which are unions of open circular discs.
+
+Another topological space, which we shall encounter frequently, is the extended real line \([-\infty, \infty]\); its topology is defined by declaring the following sets to be open: \((a, b),[-\infty, a),(a, \infty]\), and any union of segments of this type.
+
+The definition of continuity given in Sec. 1.2(c) is a global one. Frequently it is desirable to define continuity locally: A mapping \(f\) of \(X\) into \(Y\) is said to be continuous at the point \(x_0 \in X\) if to every neighborhood \(V\) of \(f\left(x_0\right)\) there corresponds a neighborhood \(W\) of \(x_0\) such that \(f(W) \subset V\).
+(A neighborhood of a point \(x\) is, by definition, an open set which contains \(x\).)
+When \(X\) and \(Y\) are metric spaces, this local definition is of course the same as the usual epsilon-delta definition, and is equivalent to the requirement that \(\lim f\left(x_n\right)=f\left(x_0\right)\) in \(Y\) whenever \(\lim x_n=x_0\) in \(X\).
+
+The following easy proposition relates the local and global definitions of continuity in the expected manner:
+
+<<Prop 1.5>>
+1.5 Proposition Let \(X\) and \(Y\) be topological spaces. A mapping \(f\) of \(X\) into \(Y\) is continuous if and only iff is continuous at every point of \(X\).
+# end of page 9
+
+*** page 10
+
+*Proof* If \(f\) is continuous and \(x_0 \in X\), then \(f^{-1}(V)\) is a neighborhood of \(x_0\), for every neighborhood \(V\) of \(f\left(x_0\right)\). Since \(f\left(f^{-1}(V)\right) \subset V\), it follows that \(f\) is continuous at \(x_0\).
+
+If \(f\) is continuous at every point of \(X\) and if \(V\) is open in \(Y\), every point \(x \in f^{-1}(V)\) has a neighborhood \(W_x\) such that \(f\left(W_x\right) \subset V\). Therefore \(W_x \subset\) \(f^{-1}(V)\). It follows that \(f^{-1}(V)\) is the union of the open sets \(W_x\), so \(f^{-1}(V)\) is itself open. Thus \(f\) is continuous.
+////
+
+<<Com 1.6>>
+1.6 Comments on Definition 1.3
+
+Let \(\mathfrak{M}\) be a \(\sigma\)-algebra in a set \(X\). Referring to Properties (i) to (iii) of Definition 1.3(a) [[Def 1.3]], we immediately derive the following facts.
+
+(a) Since \(\varnothing=X^c\), (i) and (ii) imply that \(\varnothing \in \mathfrak{M}\).
+(b) Taking \(A_{n+1}=A_{n+2}=\cdots=\varnothing\) in (iii), we see that \(A_1 \cup A_2 \cup \cdots \cup A_n\) \(\in \mathfrak{M}\) if \(A_i \in \mathfrak{M}\) for \(i=1, \ldots, n\).
+(c) Since
+\[
+\bigcap_{n=1}^{\infty} A_n=\left(\bigcup_{n=1}^{\infty} A_n^c\right)^c,
+\]
+\(\mathfrak{M}\) is closed under the formation of countable (and also finite) intersections.
+(d) Since \(A-B=B^c \cap A\), we have \(A-B \in \mathfrak{M}\) if \(A \in \mathfrak{M}\) and \(B \in \mathfrak{M}\).
+
+The prefix \(\sigma\) refers to the fact that (iii) is required to hold for all /countable/ unions of members of \(\mathfrak{M}\). If (iii) is required for finite unions only, then \(\mathfrak{M}\) is called an algebra of sets.
+
+<<Thm 1.7>>
+1.7 Theorem Let \(Y\) and \(Z\) be topological spaces, and let \(g: Y \rightarrow Z\) be continuous.
+
+- (a) If \(X\) is a topological space, if \(f: X \rightarrow Y\) is continuous, and if \(h=g \circ f\), then \(h: X \rightarrow Z\) is continuous.
+- (b) If \(X\) is a measurable space, if \(f: X \rightarrow Y\) is measurable, and if \(h=g \circ f\), then \(h: X \to Z \) is measurable.
+
+Stated informally, continuous functions of continuous functions are continuous; continuous functions of measurable functions are measurable.
+
+Proof If \(V\) is open in \(Z\), then \(g^{-1}(V)\) is open in \(Y\), and
+\[h^{-1}(V)=f^{-1}\left(g^{-1}(V)\right) .\]
+If \(f\) is continuous, it follows that \(h^{-1}(V)\) is open, proving \((a)\).
+If \(f\) is measurable, it follows that \(h^{-1}(V)\) is measurable, proving \((b)\). ////
+# end of page 10
+
+*** page 11
+
+<<Thm 1.8>>
+1.8 Theorem Let \(u\) and \(v\) be real measurable functions on a measurable space \(X\), let \(\Phi\) be a continuous mapping of the plane (\(\mathbb R^{2}\)) into a topological space \(Y\), and define
+\[
+h(x)=\Phi(u(x), v(x))
+\]
+for \(x \in X\). Then \(h: X \rightarrow Y\) is measurable.
+
+Proof. Put \(f(x)=(u(x), v(x))\). Then \(f\) maps \(X\) into the plane. Since \(h=\Phi \circ f\), Theorem 1.7 shows that it is enough to prove the measurability of \(f\).
+
+If \(R\) is any open rectangle in the plane, with sides parallel to the axes, then \(R\) is the cartesian product of two segments \(I_1\) and \(I_2\), and
+\[
+f^{-1}(R)=u^{-1}\left(I_1\right) \cap v^{-1}\left(I_2\right),
+\]
+which is measurable, by our assumption on \(u\) and \(v\). Every open set \(V\) in the plane is a countable union of such rectangles \(R_i\), and since
+\[
+f^{-1}(V)=f^{-1}\left(\bigcup_{i=1}^{\infty} R_i\right)=\bigcup_{i=1}^{\infty} f^{-1}\left(R_i\right),
+\]
+\(f^{-1}(V)\) is measurable. ////
+
+<<Prop 1.9>>
+1.9 Let \(X\) be a measurable space. The following propositions are corollaries of Theorems 1.7 and 1.8:
+
+(a) If \(f=u+i v\), where \(u\) and \(v\) are real measurable functions on \(X\), then \(f\) is \(a\) complex measurable function on \(\boldsymbol{X}\).
+This follows from Theorem 1.8 , with \(\Phi(z)=z\).
+
+(b) If \(f=u+i v\) is a complex measurable function on \(X\), then \(u, v\), and \(|f|\) are real measurable functions on \(X\).
+
+This follows from Theorem 1.7, with \(g(z)=\operatorname{Re}(z), \operatorname{Im}(z)\), and \(|z|\).
+(c) Iff and \(g\) are complex measurable functions on \(X\), then so are \(f+g\) and \(f g\).
+
+For real \(f\) and \(g\) this follqws from Theorem 1.8, with
+\[
+\Phi(s, t)=s+t
+\]
+and \(\Phi(s, t)=s t\). The complex case then follows from \((a)\) and \((b)\).
+
+(d) If \(E\) is a measurable set in \(X\) and if
+\[
+\chi_E(x)= \begin{cases}1 & \text { if } x \in E \\ 0 & \text { if } x \notin E\end{cases}
+\]
+then \(\chi_E\) is a measurable function.
+
+  This obvious. We call \(\chi _{E}\) the characteristic function of the set \(E\). The letter \(\chi\) will be reserved for characteristic functions throughout this book.
+
+(e) If \(f\) is a complex measurable function on \(X\), there is a complex measurable function \(\alpha\) on \(X\) such that \(\vert \alpha \vert = 1\) and \(f = \alpha \vert f \vert\).
+
+*** page 12
+
+*Proof* Let \(E=\{x: f(x)=0\}\), let \(Y\) be the complex plane with the origin removed, define \(\varphi(z)=z /|z|\) for \(z \in Y\), and put
+\[
+\alpha(x)=\varphi\left(f(x)+\chi_E(x)\right) \quad(x \in X) .
+\]
+
+If \(x \in E, \alpha(x)=1\); if \(x \notin E, \alpha(x)=f(x) /|f(x)|\). Since \(\varphi\) is continuous on \(Y\) and since \(E\) is measurable (why?), the measurability of \(\alpha\) follows from (c), (d), and Theorem 1.7.
+
+\bigskip
+We now show that \(\sigma\)-algebras exist in great profusion.
+
+<<Thm 1.10>>
+1.10 Theorem If \(\mathscr{F}\) is any collection of subsets of \(\boldsymbol{X}\), there exists a smallest \(\sigma\)-algebra \(\mathfrak{M}^*\) in \(\boldsymbol{X}\) such that \(\mathscr{F} \subset \mathfrak{M}^*\).
+
+This \(\mathfrak{M}^*\) is sometimes called the \(\sigma\)-algebra generated by \(\mathscr{F}\).
+
+*Proof* Let \(\Omega\) be the family of all \(\sigma\)-algebras \(\mathfrak{M}\) in \(X\) which contain \(\mathscr{F}\). Since the collection of all subsets of \(X\) is such a \(\sigma\)-algebra, \(\Omega\) is not empty. Let \(\mathfrak{M}^*\) be the intersection of all \(\mathfrak{M} \in \Omega\). It is clear that \(\mathscr{F} \subset \mathfrak{M}^*\) and that \(\mathfrak{M}^*\) lies in every \(\sigma\)-algebra in \(X\) which contains \(\mathscr{F}\). To complete the proof, we have to show that \(\mathfrak{M}^*\) is itself a \(\sigma\)-algebra.
+  If \(A_n \in \mathfrak{M}^*\) for \(n=1,2,3, \ldots\), and if \(\mathfrak{M} \in \Omega\), then \(A_n \in \mathfrak{M}\), so \(\bigcup A_n \in \mathfrak{M}\), since \(\mathfrak{M}\) is a \(\sigma\)-algebra. Since \(\bigcup A_n \in \mathfrak{M}\) for every \(\mathfrak{M} \in \Omega\), we conclude that \(\bigcup A_n \in \mathfrak{M}^*\). The other two defining properties of a \(\sigma\)-algebra are verified in the same manner.
+////
+
+<<Def 1.11>>
+*1.11 Borel Sets* Let \(X\) be a topological space. By Theorem 1.10 [[Thm 1.10]], there exists a smallest \(\sigma\)-algebra \(\mathscr{B}\) in \(X\) such that every open set in \(X\) belongs to \(\mathscr{B}\). The members of \(\mathscr{B}\) are called the Borel sets of \(\boldsymbol{X}\).
+
+  In particular, closed sets are Borel sets (being, by definition, the complements of open sets), and so are all countable unions of closed sets and all countable intersections of open sets. These last two are called \(F_\sigma\) 's and \(G_\delta\) 's, respectively, and play a considerable role. The notation is due to Hausdorff. The letters \(F\) and \(G\) were used for closed and open sets, respectively, and \(\sigma\) refers to union (Summe), \(\delta\) to intẹrsection (Durchschnitt). For example, every half-open interval \([a, b)\) is a \(G_\delta\) and an \(F_\sigma\) in \(R^1\).
+
+  Since \(\mathscr{B}\) is a \(\sigma\)-algebra, we may now regard \(X\) as a measurable space, with the Borel sets playing the role of the measurable sets; more concisely, we consider the measurable space \((X, \mathscr{B})\). If \(f: X \rightarrow Y\) is a continuous mapping of \(X\), where \(Y\) is any topological space, then it is evident from the definitions that \(f^{-1}(V) \in \mathscr{B}\) for every open set \(V\) in \(Y\). In other words, every continuous mapping of \(X\) is Borel measurable.
+
+  Borel measurable mappings are often called borel mappigns or borel functions.
+
+*** page 13
+
+<<Thm 1.12>> *Theorem 1.12*
+
+Suppose \( \mathfrak{M} \) is a σ-algebra in \( X \), and \( Y \) is a topological space. Let \( f \) map \( X \) into \( Y \).
+
+(a) If \( \Omega \) is the collection of all sets \( E \subseteq Y \) such that \( f^{-1}(E) \in \mathfrak M\), then \( \Omega \) is a σ-algebra in \( Y \).
+(b) If \( f \) is measurable and \( E \) is a Borel set in \( Y \), then \( f^{-1}(E) \in \mathfrak M\).
+(c) If \( Y = [-\infty, \infty] \) and \( f^{-1}((\alpha, \infty]) \in \mathfrak M\) for every real \( \alpha \), then \( f \) is measurable.
+(d) If \( f \) is measurable, if \( Z \) is a topological space, if \( g: Y \to Z \) is a Borel mapping, and if \( h = g \circ f \), then \( h: X \to Z \) is measurable.
+
+**Proof**: (a) follows from the relations
+\[ f^{-1}(Y) = X, \]
+\[ f^{-1}(Y - A) = X - f^{-1}(A), \]
+and
+
+\[ f^{-1}(A_1 \cup A_2 \cup \cdots) = f^{-1}(A_1) \cup f^{-1}(A_2) \cup \cdots. \]
+
+To prove (b), let \(\Omega\) be as in (a); the measurability of \(f\) implies that \(\Omega\) contains all open sets in \(Y\), and since \(\Omega\) is a σ-algebra, \(\Omega\) contains all Borel sets in \(Y\).
+
+To prove (c), let \(\Omega\) be the collection of all \(E \subset [-\infty, \infty]\) such that \(f^{-1}(E) \in \mathfrak{M}\). Choose a real number \(\alpha\), and choose \(\alpha_n < \alpha\) so that \(\alpha_n \to \alpha\) as \(n \to \infty\). Since \((\alpha_n, \infty] \in \Omega\) for each \(n\), since
+
+\[ [-\infty, \alpha) = \bigcup_{n=1}^{\infty} [-\infty, \alpha_n] = \bigcup_{n=1}^{\infty} (\alpha_n, \infty]^c. \]
+and since \((a)\) shows that \(\Omega\) is a sigma algebra, we see that \([- \infty, \alpha) \in \Omega\). The same is then true of
+
+\[(\alpha, \beta) = [- \infty, \beta) \cap (\alpha, \infty].\]
+Since every open set in \([-\infty, \infty]\) is a countable union of segments of the above types, \(\Omega\) contains every open set. Thus \(f\) is measurable.
+
+  To prove \((d)\), let \(V \subset Z\) be open. Then \(g ^{-1}(V)\) is a Borel set of \(Y\), and since
+\[h^{-1}(V) = f^{-1}(g ^{-1} (V)),\]
+\((b)\) shows that \(h^{-1}(V) \in \mathfrak M\).
+
+<<Def 1.13>> *1.13 Definition* Let \(\{\alpha_{n} \}\) be a sequence in \([-\infty, \infty]\), and put
+\[b_{k} = \sup \{a_{k}, a_{k+1} , a _{k+1}, \dots \}\quad (k = 1,2,3,\dots)\]
+
+*** page 14
+
+** simple functions
+
+<<Def 1.16>>
+Def 1.16 A complex function \(s\) on a measurable space \(X\) whose range consists of only finitely many points will be called a /simple function/.
+Among these are the /nonnegative simple functions/, whose range is a finite subset of \([0, \infty)\). Note that we explicitly exclude \(\infty\) from the values of a simple function.
+
+If \(\alpha_1, \ldots, \alpha_n\) are the distinct values of a simple function \(s\), and if we set \(A_i=\left\{x: s(x)=\alpha_i\right\}\), then clearly
+\[
+s=\sum_{i=1}^n \alpha_i \chi_{A_i}
+\]
+where \(\chi_{A_i}\) is the characteristic function of \(A_i\), as defined in Sec. 1.9(d).
+
+It is also clear that \(s\) is measurable if and only if each of the sets \(A_i\) is measurable.
+
+<<Thm 1.17>>
+1.17 Theorem Let \(f: X \rightarrow[0, \infty]\) be measurable. There exist simple measurable functions \(s_n\) on \(X\) such that
+
+- (a) \(0 \leq s_1 \leq s_2 \leq \cdots \leq f\).
+- (b) \(s_n(x) \rightarrow f(x)\) as \(n \rightarrow \infty\), for every \(x \in X\).
+
+Proof. Put \(\delta_n=2^{-n}\). To each positive integer \(n\) and each real number \(t\) corresponds a unique integer \(k=k_n(t)\) that satisfies \(k_{n}(t) \delta_n \leq t<(k_{n}(t)+1) \delta_n\). Define
+\[\varphi_n(t)= \begin{cases}k_n(t) \delta_n & \text { if } 0 \leq t<n \\ n & \text { if } n \leq t \leq \infty .\end{cases}\]
+# end of page 15
+Each \(\varphi_n\) is then a Borel function on \([0, \infty]\),
+\[
+t-\delta_n<\varphi_n(t) \leq t \quad \text { if } 0 \leq t \leq n
+\]
+\(0 \leq \varphi_1 \leq \varphi_2 \leq \cdots \leq t\), and \(\varphi_n(t) \rightarrow t\) as \(n \rightarrow \infty\), for every \(t \in[0, \infty]\). It follows that the functions
+\[s_n=\varphi_n \circ f\]
+satisfy \((a)\) and \((b)\); they are measurable, by Theorem 1.12(d).
+
+** Elementary Properties of Measures
+
+<<Def 1.18>>
+
+1.18 Definition
+
+(a) A /positive measure/ is a function \(\mu\), defined on a \(\sigma\)-algebra \(\mathfrak{M}\), whose range is in \([0, \infty]\) and which is countably additive. This means that if \(\left\{A_i\right\}\) is a disjoint countable collection of members of \(\mathfrak{M}\), then
+\[
+\mu\left(\bigcup_{i=1}^{\infty} A_i\right)=\sum_{i=1}^{\infty} \mu\left(A_i\right) .
+\]
+
+To avoid trivialities, we shall also assume that \(\mu(A)<\infty\) for at least one \(A \in \mathfrak{M}\).
+(b) A /measure space/ is a measurable space which has a positive measure defined on the \(\sigma\)-algebra of its measurable sets.
+(c) A /complex measure/ is a complex-valued countably additive function defined on a \(\sigma\)-algebra.
+
+/Note/: What we have called a /positive measure/ is frequently just called a /measure/; we add the word "positive" for emphasis. If \(\mu(E)=0\) for every \(E \in \mathfrak{M}\), then \(\mu\) is a positive measure, by our definition. The value \(\infty\) is admissible for a positive measure; but when we talk of a complex measure \(\mu\), it is understood that \(\mu(E)\) is a complex number, for every \(E \in \mathfrak{M}\). The real measures form a subclass of the complex ones, of course.
+
+<<Thm 1.19>>
+1.19 Theorem Let \(\mu\) be a positive measure on a \(\sigma\)-algebra \(\mathfrak{M}\). Then
+
+- (a) \(\mu(\varnothing)=0\).
+- (b) \(\mu\left(A_1 \cup \cdots \cup A_n\right)=\mu\left(A_1\right)+\cdots+\mu\left(A_n\right)\) if \(A_1, \ldots, A_n\) are pairwise disjoint members of \(\mathfrak{M}\).
+- (c) \(A \subset B\) implies \(\mu(A) \leq \mu(B)\) if \(A \in \mathfrak{M}, B \in \mathfrak{M}\).
+- (d) \(\mu\left(A_n\right) \rightarrow \mu(A)\) as \(n \rightarrow \infty\) if \(A=\bigcup_{n=1}^{\infty} A_n, A_n \in \mathfrak{M}\), and
+- (e) \(\mu(A_{n}) \to \mu (A)\) as \(n \to \infty\) if \(A = \bigcap _{n=1}^{\infty} A_{n},\) \(A_{n}\in \mathfrak{M}\),
+  \[A_1 \supset A_{2} \supset A_{3} \supset \dots,\]
+  and \(\mu(A_1)\) is finite.
+# end of page 16
+
+** arithmetic in \([0, \infty]\)
+
+<<1.22>>
+*1.22* Throughout integration theory, one inevitably encounters \(\infty\). One reason is that one wants to be able to integrate over sets of infinite measure; after all, the real line has infinite length. Another reason is that even if one is primarily interested in real-valued functions, the lim sup of a sequence of positive real functions or the sum of a sequence of positive real functions may well be \(\infty\) at some points, and much of the elegance of theorems like 1.26 and 1.27 would be lost if one had to make some special provisions whenever this occurs.
+
+Let us define \( a + \infty = \infty + a = \infty \) if \( 0 \leq a \leq \infty \), and
+\[ a \cdot \infty = \infty \cdot a = \begin{cases}
+\infty & \text{if } 0 < a \leq \infty \\
+0 & \text{if } a = 0;
+\end{cases} \]
+Sums and products of real numbers are of course defined in the usual way.
+
+  It may seem strange to define \( 0 \cdot \infty = 0 \). However, one verifies without difficulty that with this definition the commutative, associative, and distributive laws hold in \([0, \infty]\) without any restriction.
+
+** Integration of Positive Functions
+
+** Integration of Complex Functions
+
+** The Role Played by Sets of Measure Zero
+
+** Exercises
+
+1. Does there exist an infinite sigma algebra has only countably many members?
+   : spoiler: no
+
+2. Prove an analogue of Theorem 1.8 ([[Thm 1.8]] \(h\circ(f_1 \times f_2)\) is measurable) for \(n\) functions.
+
+3. Prove that if \(f\) is a real function on a measurable space \(X\) such that \(\{x \colon f(x)\ge r\}\) is measurable for every rational \(r\) then \(f\) is measurable.
+
+4. Let \(\{a_{n}\}\) and \(\{b_{n}\}\) be sequences in \([-\infty, +\infty]\) and prove the following assertions
+
+* COMMENT chapter 02 positive borel measures :noexport:
+
+** vector spaces
+
+*** page 33

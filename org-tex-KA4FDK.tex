@@ -1,0 +1,61 @@
+% Intended LaTeX compiler: xelatex
+\documentclass{article}
+% Package hyperref omitted
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{xcolor}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tikz}\usetikzlibrary{cd}
+\usepackage{bussproofs}
+\usepackage{prftree}
+\usepackage{cmll}
+\usepackage[mathletters]{ucs}
+\usepackage[utf8x]{inputenc}
+\newcommand{\semicolon}{\mathbin{;}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\B}{\mathbb{B}}
+\newcommand{\DoubleSlash}{/ \kern-3pt /}
+\renewcommand{\succ}{\texttt{succ}}
+\newcommand{\Prop}{\mathsf{Prop}}
+\newcommand{\Type}{\mathsf{Type}}
+\newcommand{\Hom}{\mathrm{Hom}}
+\newcommand{\Fam}{\mathrm{Fam}}
+\newcommand{\Sets}{\mathbf{Sets}}
+\newcommand{\Pred}{\mathbf{Pred}}
+\newcommand{\Fibre}[2]{%
+\begin{gathered}\scriptstyle #1\\[-7pt]
+\scriptstyle \downarrow\\[-7pt]
+\scriptstyle #2
+\end{gathered}}
+\newcommand{\netarrow}[2]{\ifnum #2>0 \ar[to=#1, to path={ -- ([yshift=#2ex]\tikztostart.north) -| (\tikztotarget)}] \else \ar[to=#1, to path={ -- ([yshift=#2ex]\tikztostart.south) -| (\tikztotarget)}] \fi}
+\newcommand{\zerohbox}[1]{\makebox[0pt]{$#1$}}
+
+
+% Generated preamble omitted for snippets.
+
+
+\usepackage[active,tightpage,auctex,dvips]{preview}
+
+\setlength{\textwidth}{0.4\paperwidth}
+
+\begin{document}
+
+\setlength\abovedisplayskip{0pt} % Remove padding before equation environments.
+
+
+\begin{preview}
+\color[rgb]{0.000,0.000,0.004}\special{dvisvgm:currentcolor on}\setcounter{equation}{0}%
+\( (a_x, b_x) \)
+\end{preview}
+
+\begin{preview}
+\setcounter{equation}{0}%
+\( (a_x, b_x) \)
+\end{preview}
+
+\end{document}

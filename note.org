@@ -956,7 +956,7 @@ Examples of translation
   The element \(f_{y}\) in \(X^{p}\) is a way to map \(x\in X\) to \(P\), by
 
   \[f_{y}\colon X \to P, f_{y}(x):= x * y\]
-**** [#A] three layers
+**** [#A] three layers :text:
 
 Instead of the usual explanation of logic with its infinity (transfinite, but /predicative/, they say: see Section 7.B.4) of /matrioshka/-turtles, one will modestly content oneself with three foundational layers, three undergrounds not at all (meta-)isomorphic. Layer--1 will be the level of truth, layer--2 the level of /functions/, layer--3 the level of actions.
 
@@ -976,10 +976,9 @@ This thought quickly finds its limitations which are those of the dichotomy subj
 
 *Completeness*: proofs and models are polar in this duality.
 
-**** layer -1
+**** layer--1
 
 Layer--1 is conceptually very poor: truth, consistency. With a big effort, one arrives at admissible rules: « if A is provable, B is provable ». The $1000 question: find the relation between admissible rules and logical implication... how bleak!
-# what are you even talking about
 
 I have a propensity to believe that an interpretation confined to the « first underground », the layer « true/provable », is quite sufficient in that case. Indeed, classical logic rests upon a duality with an empty pole, which only recognises provable/consistent and succeeds in this way in justifying biased principles such as the excluded middle. It is therefore likely that the search for fine grain interpretation of classical proofs belongs to the realm of /methodological/ mistakes... A non-dogmatic viewpoint, subject to contradictory discussion: I didn’t say « technical baloney » or « triviality », since the works on classical proofs are anyway worthy of interest.
 
@@ -2181,6 +2180,34 @@ In system F, the existential type is defined as?
 
 See also in zhihu question
 
+** existential type explain
+
+#+begin_src lean
+  structure Sigma {α : Type u} (β : α → Type v) where
+    fst : α
+    snd : β fst
+#+end_src
+
+#+begin_src lean
+  def existsType {α : Type u} (A : α → Type v) : Type (max u v) :=
+    Sigma A
+#+end_src
+
+#+begin_src lean
+  def existsTypeSystemF {α : Type u} (A : α → Type v) : Type (max u v) :=
+    (Y : Type (max u v)) → ((X : α) → A X → Y) → Y
+#+end_src
+
+#+begin_src lean
+  def toSystemF {a : Type u} {A : α → Type v} (p : existsType A) : existsTypeSystemF A :=
+    fun Y f => f p.fst p.snd
+#+end_src
+
+#+begin_src lean
+  def fromSystemF {α : Type v} {A : α → Type v} (p : existsTypeSystemF A) : existsType A :=
+    p (Sigma A) (fun X a => ⟨X, a⟩)
+#+end_src
+
 ** functional dependencies
 
 Check functional dependencies in haskell
@@ -2410,6 +2437,28 @@ Denote by \(f\colon [0,1] \to \R\) the Dirichlet function on \([0,1]\). Does \(f
 
 Lattice is partially ordered set with suprema and infimum
 
+** liquid types
+
+https://zhuanlan.zhihu.com/p/701186848
+
+types with a little bit constraint. The grammar is like that in lean4. While in the latter, we should provide the proof for the constraint, liquid type system should check that for you, which is part of the type checking.
+
+** local completeness and local soundness
+
+Soundness means the system does not prove something that is wrong.
+which means no "false" information is added
+Completeness means the system *can* prove something that is right.
+which means no "true" information is lost
+
+In the process of proving soundness and completeness, we can verify local soundness and local completeness first.
+Local soundness refers to that introduction rule will not introduce additional information: introduction rule followed by elimination can be reduced to normal.
+Local completeness refers to that elimination rule will not eliminate original information:
+#+begin_quote
+  if a valid logical structure can be derived using elimination rules, it can also be reconstructed using the corresponding introduction rules
+#+end_quote
+
+
+
 ** logic complexity, first order
 
 Logic complexity is about something like first order, second order; about the logic hierarchy, logic classification.
@@ -2465,7 +2514,7 @@ Sure! A classic example of a \(\Delta_1\sp{0}\) set is the set of even numbers.
 
 Since the set of even numbers can be characterized by both an existential and a universal quantifier, it is in the intersection of \(\Sigma_1\) and \(\Pi_1\), making it a \(\Delta_1\) set.
 
-** Logic Programming
+** Logic Programming :text:
 :PROPERTIES:
 :ID:       579422fc-12f1-4d6c-9ba6-7de991f0ec61
 :END:
@@ -2534,14 +2583,15 @@ In the context of Martin-Löf's Constructive Type Theory with Co-Inductive Types
 In Coq, the universe hierarchy is implicit, but you can see its effects in the type-checking process. Here is an example of defining a type in a universe and using it:
 
 #+begin_src coq
-Definition myType : Type := nat.
+  Definition myType : Type := nat.
 
-Definition myFunc (A : Type) : Type := A -> A.
+  Definition myFunc (A : Type) : Type := A -> A.
 
-Check myFunc myType.
+  Check myFunc myType
 #+end_src
 
 In this example:
+
 - =myType= is defined as =nat=, which is a type in the universe =Type=.
 - =myFunc= takes a type =A= (which is itself a type in some universe) and returns a function type =A -> A=.
 - The =Check= command verifies that =myFunc myType= is well-typed.
@@ -3300,6 +3350,10 @@ sub / cut
 : -----------------------------   ----------------
 :        Γ ⊢ N[M/x] : A                Γ ⊢ A
 
+** smt
+
+SMT in the context of programming languages typically refers to *Satisfiability Modulo Theories (SMT)*, which is a formal system used in automated reasoning and verification. SMT solvers are tools that determine the satisfiability of logical formulas with respect to various background theories (e.g., arithmetic, arrays, bitvectors). They are widely used in program analysis, formal verification, and automated bug-finding.
+
 ** val rules
 
 :
@@ -3416,8 +3470,9 @@ If we have a term \(M\) in context \(\Gamma\), say \(M = x \, y\), then applying
 
 文章连接：
 - [[id:eaad00d6-a916-46d8-bfa6-f115db21da9b][国外的量化水平会比国内头部量化公司高很多吗？主要高在什么地方？]]
+  -
 - [[id:a7819a1a-69b5-4142-bd30-d2a0f9b78fe5][做高频，找一些小的市场，小的标的，测一些小 alpha 的因子做。]]
-  - 看不出来到底是在干什么 
+  - 看不出来到底是在干什么
 - [[id:5101c40b-eaf8-4ca6-9923-afb6c51fd0fb][加密货币小白指南（2024 版）]]
   - 基本原则：稳
   - 分为两种交易：链上交易和中心化交易
