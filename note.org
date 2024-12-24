@@ -1675,13 +1675,13 @@ Linear negation is defined by Me Morgan style equations:
   {\sim}(! A)          & := {?} {\sim} A, \\
   {\sim}(\exists x A)  & := \forall x {\sim} A,
 \end{aligned} \qquad \begin{aligned}
-  \sim \simperp      & := 1, \\
-  \sim \top          & := 0, \\
-  \sim (\sim p)      & := p, \\
-  \sim (A \parr B)   & := \sim A \otimes \sim B, \\
-  \sim (A \with B)   & := \sim A \oplus \sim B, \\
-  \sim (? A)         & := ! \sim A, \\
-  \sim (\forall x A) & := \exists x \sim A.
+  {\sim} \simperp      & := 1, \\
+  {\sim} \top          & := 0, \\
+  {\sim} (\sim p)      & := p, \\
+  {\sim} (A \parr B)   & := \sim A \otimes \sim B, \\
+  {\sim} (A \with B)   & := \sim A \oplus \sim B, \\
+  {\sim} (? A)         & := ! \sim A, \\
+  {\sim} (\forall x A) & := \exists x \sim A.
 \end{aligned}\]
 
 # what the heck!
@@ -1987,6 +1987,47 @@ A^{\bot} &&& \zerohbox{A \parr B} &&& B^{\bot}
 
 An formula \(S\) has a Herbrand's model means that there are a set of ground terms that makes \(S\) true.
 
+** abeliean category and sheaf
+
+4. /Applications in Sheaf Theory/: Sheaves of abelian groups (or more generally, sheaves of modules over a ringed space) form abelian categories. This allows you to apply homological algebra to study sheaf cohomology, which is crucial in algebraic geometry and topology.
+
+** A-module category
+
+\(A\) is a ring.
+
+A module category is a category where all the objects are abelian groups, together with a \(A\) action, \(a \in A\) we have \(a\colon M \to M\) where \(M \in \mathrm{Obj}\).
+
+** additive category
+
+*** *Ad1. Morphisms form abelian groups*
+
+For each pair of objects \( A, B \in C \), the set of morphisms \( \text{Mor}(A, B) \) forms an /abelian group/. This means:
+- There is an operation of /addition/ of morphisms, denoted \( f + g \), satisfying associativity, commutativity, and the existence of an identity element (the /zero morphism/ \( 0: A \to B \)).
+- Each morphism has an /additive inverse/ \( -f \).
+
+Additionally, composition of morphisms /distributes/ over addition. This translates to two distinct statements:
+1. *Left distributivity*: For \( f: A \to B \), \( g, h: B \to C \), we have:
+   \[
+   f \circ (g + h) = f \circ g + f \circ h.
+   \]
+2. *Right distributivity*: For \( f, g: A \to B \), \( h: B \to C \), we have:
+   \[
+   (f + g) \circ h = f \circ h + g \circ h.
+   \]
+
+*** *Ad2. Zero object*
+
+The category \( C \) has a /zero object/, denoted \( 0 \). This is an object that is both:
+
+- *Initial*: There is a unique morphism \( 0 \to A \) for every object \( A \in C \).
+- *Terminal*: There is a unique morphism \( A \to 0 \) for every object \( A \in C \).
+
+The zero object is the "trivial" object where all morphisms to or from it are unique.
+
+*** *Ad3. Finite products*
+
+The category \( C \) has /binary products/ \( A \times B \) for any pair of objects \( A, B \in C \). By induction, this implies the existence of products for any finite number of objects.
+
 ** arithmetic RR
 
 RR is the child of formalism. And we introduce \(=\) \(<\) and some constant \(0\) \(S\) \(\times\) \(+\).
@@ -2162,6 +2203,17 @@ A collection of sets is said to be directed, if the sets are indexed by a partia
 
 For example \(\{x_{i}\}\), \(i \in I\), where\(I\) is a partial order set.
 
+** diagram
+:PROPERTIES:
+:ID:       a96c058c-5a34-4c55-99d4-7943d692bf13
+:END:
+
+A diagram of category \(\mathcal C\) can be defined a wacky way by a functor from a locally small cat \(\mathcal J\) to \(\mathcal C\).
+
+Anyway we can use \(\mathcal J\) to express a graph (because a category can be viewed as a graph). Anyway this is kinda wacky.
+
+We define limit for a diagram.
+
 ** dynkin system
 
 - negation: \(d \in D\) then \(d^{c} \in D\)
@@ -2208,6 +2260,11 @@ See also in zhihu question
     p (Sigma A) (fun X a => ⟨X, a⟩)
 #+end_src
 
+** focalisation
+
+\[\frac{(\vdash \xi_{i} , \Delta)_{i\in I}}{\xi \vdash \Delta}(-)\quad
+\frac{( \xi _{I} \vdash\Delta_{I})_{I \in \mathcal N}}{\vdash \xi , \bigcup \Delta_{I}}(+)\]
+
 ** functional dependencies
 
 Check functional dependencies in haskell
@@ -2242,17 +2299,21 @@ Otherwise \(0\).
 We have
 \[P(E) = \mathbf E(1_{E})\]
 
+** interval in \(\mathbb R^{n}\)
+
+\((a,b)\) in \(\mathbb R^{n}\) is \(\{a_{i}\}\) and \(\{b_{i}\}\). I think \(a_{i} < b_{i}\) for every \(i = 1,\dots,n\).
+
+We can define a \(n\)-dimensional volume for an interval in \(\mathbb R^{n}\).
+
 ** intuitionistic property and herbrand's theorem
 
-In intuitionistic
+In intuitionistic, \(\exists x A\) means there is a \(t\) such that \(A[t/x]\).
 
-\(\exists x A\) means there is a \(t\) such that \(A[t/x]\).
-
-Herbrand's theorem is that, to prove \(\exists x A(x)\), we can equivalently prove
+Herbrand's theorem tells us that to prove \(\exists x A(x)\), we can equivalently prove
 
 \[A(t_{1}) \lor \dots \lor A(t_{n})\]
 
-for ground terms \(t_{1},\dots,t_{n}\). They looks similiar.
+for ground terms \(t_{1},\dots,t_{n}\). Herbrand can be viewed as a version
 
 ** jump continuous function from Amann
 
@@ -2433,15 +2494,102 @@ Prove that every jump continuous function has at most a countable number of disc
 
 Denote by \(f\colon [0,1] \to \R\) the Dirichlet function on \([0,1]\). Does \(f\) belong to \(S([0,1], \R)\).
 
+** kernel
+
+kernel can be defined in a category where there is \(0\) object, which is a terminal and a initial.
+
+A kernel of a morphism \(f\colon B\to C\) is a morphism \(i\colon A \to B\) satisfy
+1. \(f \circ i\) is zero morphism from \(A\to C\).
+2. \(i\) is the "largest" one (subobject of \(B\)) which means that it satisfies the universal property.
+
+\[
+\begin{tikzcd}
+  & Z \ar[ld, dashed, "\exists!\bar j" swap] \ar[d, "j"]\\
+  A \ar[r, "i"] & B \ar[r, "f"] & C
+\end{tikzcd}\]
+
+Cokernel can be defined if you reverse the direction of arrow. Do remember reverse the arrow for dashed morphism in the above diagram.
+
 ** lattice
 
 Lattice is partially ordered set with suprema and infimum
+
+** lebesgue outer measure
+
+we use [[id:6ea8307c-098f-4bcf-a62e-6edb68a48e2e][volume for interval in \(\mathbb R^{n}\)]] to construct the outer measure
+
+\[\mu ^{*}(A) = \inf\big\{\sum \mathrm{vol} (A_{i}) \mid \bigcup\nolimits_{i} A_{i} \subset A\big\}\]
+where \(A_{i}\) are cubes in \(\mathbb R^{n}\).
+
+You should verify that the this is indeed an outer measure.
+You need to verify the sigma-subadditivity. That is
+
+\[\mu^{*}\big(\bigcup A_{i}\big) \le \sum \mu^{ * }(A_{i})\]
+
+*Proof.*
+
+The proof will use the property of inf. That is for an \(B\) and for an arbitrary \(\epsilon\), there would be such \(\{B_{i}\}_{i \in I}\) that
+\[\mu^{ * } (B) \ge \sum \mathrm{vol}(B_{i}) - \epsilon\]
+the difference is arbitrary small.
+
+To verify the subadditivity, for every \(A_{i}\) we need to find a sequence \(\{A_{i,j}\}_{j\in J}\), so we have, for \(i \in I\):
+\[\mu^{  * } (A_{i}) \ge \sum_{j} \mathrm{vol}(A_{i,j}) - \epsilon\]
+we add them up
+\[\sum_{i} \mu(A_{i}) \ge \sum_{i}\sum _{j} \text{vol} (A_{i,j}) - \sum_{i} \epsilon\]
+we choose epislon carefully so it can be arbitrarily small. For example, every \(\epsilon_{i} = \epsilon / 2^{i}\) which leads to \(\sum_{i} \epsilon_{i} \le k \epsilon\) where \(k\) is a constant (or we can carefull choose that \(I\) is those natural number from 1 to infty, and then \(\sum _{i} \epsilon_{i} = \epsilon\). Small modification is needed if \(I\) starts from 0). And we complete the proof.
+
+** limit
+
+Limit is defined for a [[id:a96c058c-5a34-4c55-99d4-7943d692bf13][diagram]]. A diagram \(D \colon \mathcal J \to \mathcal C\)
+
+A limit for \(D\) is an object in \(\mathcal C\), noted as \(L\) with morphism \(\pi _{j} \colon L \to D (j)\) for all \(j\) in \(\mathcal J\).
+
+pullback and product are examples of limit.
+
+The limit \( L \) is the "best approximation" to the diagram \( D \). It is the object that "fits" into the diagram in a universal way, meaning that any other object that fits must factor uniquely through \( L \).
+# answer from AI
+
+** linear logic rules
+:PROPERTIES:
+:ID:       d95d7423-8e9a-4133-8efd-3dffbe78895d
+:END:
+
+\[
+\begin{matrix}
+  & \text{multiplicative} & \text{additive} \\ \\
+  \land:
+  & \displaystyle \frac{\vdash \Gamma, A \quad \vdash \Delta, B}{\vdash \Gamma, \Delta, A\otimes B}
+  & \displaystyle \frac{\vdash \Gamma, A \quad \vdash \Gamma, B}{\vdash \Gamma, A \mathbin{\&} B} \\ \\
+  \lor:
+  & \displaystyle \frac{\vdash \Gamma, A , B}{\vdash \Gamma, A \parr B}
+  & \displaystyle \frac{\vdash \Gamma, A}{\vdash \Gamma, A \oplus B}
+\end{matrix}\]
+
+** linear logic Reversibility
+:PROPERTIES:
+:ID:       d9faa15b-51b8-4aa1-bd76-f3971a80a6b9
+:END:
+
+[[id:d95d7423-8e9a-4133-8efd-3dffbe78895d][linear logic rules]]
+
+The connectives \(\parr\) and \(\with\) are reversible: from the conclusion and active formula, one can recover the premises. Check your self.
+
+For \(\otimes\), you can not split into \(\Gamma, \Delta\). For \(A \otimes B\), you can not choose whether it is \(A\) or \(B\).
+
+** linear logic positive and negative
+
+- negative connectives \(\parr\) and \(\with\) (reversible [[id:d9faa15b-51b8-4aa1-bd76-f3971a80a6b9][linear logic Reversibility]])
+- positive connectives \(\otimes\) and \(\oplus\) (non-reversible)
 
 ** liquid types
 
 https://zhuanlan.zhihu.com/p/701186848
 
 types with a little bit constraint. The grammar is like that in lean4. While in the latter, we should provide the proof for the constraint, liquid type system should check that for you, which is part of the type checking.
+
+** LLC
+
+last-level cache (LLC)
 
 ** local completeness and local soundness
 
@@ -2456,8 +2604,6 @@ Local completeness refers to that elimination rule will not eliminate original i
 #+begin_quote
   if a valid logical structure can be derived using elimination rules, it can also be reconstructed using the corresponding introduction rules
 #+end_quote
-
-
 
 ** logic complexity, first order
 
@@ -2879,11 +3025,130 @@ Check on the remarks in book Measures, Intergral and Martingales. The author fur
 
 It is not trivial to write out the definition of generators of sigma algebras. Because it is countably infinite. As for boolean algebra, there is no such problem. Fascinating, right?
 
+** simple typed lambda calculus: syntax (statics)
+
+\(A\) 是类型、\(t\) 是 term （或者说 \(M\) 是 term）。我们的 judgment 形如 \(t \colon A\)，意思是 \(t\) 有着类型 \(A\)。
+
+我们接下来有 \(t\) 和 \(A\) 的生成文法。我们知道 STLC 是 CCC，这是说，如果说 \(A_{1}, A_{2}\) 是类型，则 \(A_{1} \times A_{2}\) 也是类型，\(A_{1} \to A_{2}\) 也是类型。对于 \(t\) 来说，也有对应的。我们直接写出文法：
+: t ::= x | () | ⟨t₁, t₂⟩ | π₁·t | π₂·t | λx.t    | (t₁)t₂    | yes | no
+: M ::= x | ⟨⟩ | ⟨M₁, M₂⟩ | M·1  | M·2  | λ(x.M)  | ap(M₁;M₂) | yes | no
+
+我们通过 \(t \colon A\) 来建立 ch 同构。这里的同构通过一些 rules 来表示：
+
+axiom
+:
+: ----------------  ----------
+: Γ, x : A ⊢ x : A  Γ ⊢ ⟨⟩ : 1
+
+intro of pair
+: Γ ⊢ M₁ : A₁   Γ ⊢ M₂ : A₂
+: -------------------------
+:  Γ ⊢ ⟨M₁, M₂⟩ : A₁ × A₂
+
+
+sub / cut
+: Γ, x : B ⊢ N : A    Γ ⊢ M : B   Γ ⊢ B   Γ, B ⊢ A
+: -----------------------------   ----------------
+:        Γ ⊢ N[M/x] : A                Γ ⊢ A
+
+** simple typed lambda calculus: semantics (dynamics)
+
+*** val rules
+
+:
+: ---------  --------
+:  yes val    no val
+
+:
+: --------------  ------------
+:  ⟨M₁, M₂⟩ val     λx.M val
+
+*** dynamics rules
+
+step fst & step snd:
+:    M₁ ↦ M₂           M₁ ↦ M₂
+: ------------      ------------
+:  M₁⬝1 ↦ M₂⬝1       M₁⬝2 ↦ M₂·2
+
+step fst β & step snd β
+:
+: ---------------  -------------------
+: ⟨M₁, M₂⟩·1 ↦ M₁    ⟨M₁, M₂⟩·2 ↦ M₂
+
+step app
+:      M₁ ↦ M₁'
+: -----------------
+:  (M₁)M₂ ↦ (M₁)M₂'
+
+step app β
+:
+: ----------------------
+:  (λx.M₁)M₂ ↦ M₁[M₂/x]
+
+: app[(arr M₁); M₂] → M₁ [M₂]
+
 ** simultaneous substitution \(\theta\)
 
 A \(\theta\) can be applied to a formula or expression \(E\), but anyway I prefer \(A\) for a formula, \(\Gamma\) for a set of formulas.
 
 \(\Gamma\theta\) means carry the substitution to every formulas in \(\Gamma\). We can compose those \(\theta\). For example, \(\theta\sigma\) means carrying \(\theta\) first and then \(\sigma\).
+
+** substitution \(\gamma\) from
+
+substitution \(\gamma\) from context \(\Gamma '\) to \(\Gamma\), written \(\gamma : \Gamma ' \to \Gamma\), is a finite map sending for each variable \(x \colon A _{x} \) in \(\Gamma\) to a term \(\Gamma' \vdash M_{x} \colon A_{x}\) in context \(\Gamma '\).
+
+The substitution \(\gamma\) can be explicitly written out as \(\{x _{1} \mapsto M_{1} , x_{2} \mapsto M_{2}, \dots\}\) for variables \(x _{i} \in \Gamma\). The extension of \(\gamma\) by another variable-term pair is written \(\gamma \{x _{n} \mapsto M_{n}\}\).
+
+Note that in \(\gamma \colon \Gamma ' \to \Gamma\) the arrow should not be understood as a function arrow in STLC, but a morphism in the syntactic category. This definition is sometimes also written as \(\Gamma ' \vdash \gamma : \Gamma\) and the readers should be able to recognize them interchangeably.
+
+Given a substitution \(\gamma \colon \Gamma ' \to \Gamma\), the function sending a term \(M\) of context \(\Gamma\) to the term with the subtitutions applied is denoted \(\hat \gamma\).
+
+can you tell me about this substitution?
+
+Certainly! The concept of substitution in the context of type theory and lambda calculus is crucial for understanding how terms and types interact within a given context. Let's break down the key points of the substitution \(\gamma\) from context \(\Gamma '\) to \(\Gamma\).
+
+*** Context and Substitution
+
+1. *Context*:
+   - A context \(\Gamma\) is a sequence of variable declarations, typically written as \(\Gamma = x_1 : A_1, x_2 : A_2, \dots, x_n : A_n\).
+   - Each \(x_i\) is a variable, and \(A_i\) is its type.
+
+2. *Substitution*:
+   - A substitution \(\gamma\) from context \(\Gamma '\) to \(\Gamma\) is a mapping that assigns to each variable \(x_i\) in \(\Gamma\) a term \(M_i\) in context \(\Gamma '\).
+   - Formally, \(\gamma : \Gamma ' \to \Gamma\) means that for each \(x_i : A_i\) in \(\Gamma\), there is a corresponding term \(\Gamma' \vdash M_i : A_i\) in \(\Gamma '\).
+
+*** Explicit Representation
+
+- The substitution \(\gamma\) can be explicitly written as a finite map: \(\{x_1 \mapsto M_1, x_2 \mapsto M_2, \dots, x_n \mapsto M_n\}\).
+
+- This map indicates that each variable \(x_i\) in \(\Gamma\) is replaced by
+  the term \(M_i\) in \(\Gamma '\).
+
+*** Extension of Substitution
+
+- The extension of \(\gamma\) by another variable-term pair is denoted \(\gamma \{x_n \mapsto M_n\}\).
+- This means that \(\gamma\) is extended to include the new mapping \(x_n \mapsto M_n\).
+
+*** Application of Substitution
+
+- Given a substitution \(\gamma : \Gamma ' \to \Gamma\), the function that applies \(\gamma\) to a term \(M\) of context \(\Gamma\) is denoted \(\hat \gamma\).
+
+- This function replaces each variable in \(M\) according to the mappings specified by \(\gamma\).
+
+*** Example
+
+Consider the following contexts and substitution:
+
+- \(\Gamma = x : A, y : B\)
+- \(\Gamma ' = z : C\)
+- \(\gamma = \{x \mapsto z, y \mapsto \lambda w. w\}\)
+
+Here, \(\gamma\) maps:
+- \(x\) in \(\Gamma\) to \(z\) in \(\Gamma '\)
+- \(y\) in \(\Gamma\) to \(\lambda w. w\) in \(\Gamma '\)
+
+If we have a term \(M\) in context \(\Gamma\), say \(M = x \, y\), then applying \(\hat \gamma\) to \(M\) would result in:
+\[ \hat \gamma(M) = z \, (\lambda w. w) \]
 
 ** sheaf
 
@@ -2905,6 +3170,10 @@ A contravariant functor \( \mathcal{F} \) from the category of open sets of \( X
    - For each open set \( U \subseteq X \), \( \mathcal{F}(U) \) is an object in \( \mathcal{C} \).
    - For each inclusion \( V \subseteq U \), there is a restriction morphism \( \rho_{VU}: \mathcal{F}(U) \to \mathcal{F}(V) \).
 
+** smt
+
+SMT in the context of programming languages typically refers to *Satisfiability Modulo Theories (SMT)*, which is a formal system used in automated reasoning and verification. SMT solvers are tools that determine the satisfiability of logical formulas with respect to various background theories (e.g., arithmetic, arrays, bitvectors). They are widely used in program analysis, formal verification, and automated bug-finding.
+
 ** stable
 
 stable means \(D, E \in \mathscr D\) implies \(D \cap E \in \mathscr D\)
@@ -2919,6 +3188,11 @@ The classic one: linear logic
 
 See also bananaspace
 See also CMU Course. But I don't like CMU course style though
+
+** subobject
+
+If i : A → B is a monomorphism, then we say that A is a subobject of B.
+where \(i\) is the kernel of \(f\colon B\to C\)
 
 ** tait's heredity termination aka HT
 
@@ -3067,6 +3341,18 @@ is the imaginary unit and \( t \) is a real number:
 \]
 
 A characteristic function does not distinguish between vrs which differs on null sets.
+
+** volume for interval in \(\mathbb R^{n}\)
+:PROPERTIES:
+:ID:       6ea8307c-098f-4bcf-a62e-6edb68a48e2e
+:END:
+
+\[\mathrm{vol}_{n}(a,b) := \begin{cases} \displaystyle \prod\nolimits_{j=1}^{n} (b_{j}-a_{j}),\quad & a \le b, \\
+0  & \mathrm{otherwise} \end{cases}.\]
+
+An interval in \(\R^{n}\) is like a cube. We can easily define the volume for a cube.
+
+volume can be used in construing
 
 ** cramer's theorem for normal distribution
 
@@ -3312,47 +3598,20 @@ Thus we can know that every stable function can be linearised to a linear functi
   - coherence: \(a \scoh a' \Leftrightarrow a \cup a' \not \sqsubset {\sim} X.\)
 
 The definition seems not so important. What matters is the dual:
-
 \[
 \begin{aligned}
 {\sim} {!} X & {} = {?} {\sim} X,\\
 {\sim} {?} X & {} = {!} {\sim} X.
 \end{aligned}\]
+can written as \(? X = {\sim} {!} {\sim} X\) and \(! X = {\sim} ? {\sim} X\). What is /Why Not?/ used for?
 
-the latter can written as \(? X = {\sim} {!} {\sim} X\). What is /Why Not?/ used for?
+** Linearity: multiplicative connectives
+
+1. web: \(| X \otimes Y | = | X \parr Y | := |X | \times |Y|\)
+2. coh (times): \((x,y) \coh _{X \otimes Y} (x', y') \Leftrightarrow x \coh _{X} x' \land y \coh _{Y} y'\)
+3. coh (parr) : \((x,y) \scoh _{X \parr Y} (x',y') \Leftrightarrow x \scoh _{X} x' \lor y \scoh _{Y} y'\)
 
 * Topic: pl :noexport:
-
-** simple typed lambda calculus: syntax and dynamics
-
-\(A\) 是类型、\(t\) 是 term （或者说 \(M\) 是 term）。我们的 judgment 形如 \(t \colon A\)，意思是 \(t\) 有着类型 \(A\)。
-
-我们接下来有 \(t\) 和 \(A\) 的生成文法。我们知道 STLC 是 CCC，这是说，如果说 \(A_{1}, A_{2}\) 是类型，则 \(A_{1} \times A_{2}\) 也是类型，\(A_{1} \to A_{2}\) 也是类型。对于 \(t\) 来说，也有对应的。我们直接写出文法：
-: t ::= x | () | ⟨t₁, t₂⟩ | π₁·t | π₂·t | λx.t    | (t₁)t₂    | yes | no
-: M ::= x | ⟨⟩ | ⟨M₁, M₂⟩ | M·1  | M·2  | λ(x.M)  | ap(M₁;M₂) | yes | no
-
-我们通过 \(t \colon A\) 来建立 ch 同构。这里的同构通过一些 rules 来表示：
-
-** rules
-
-:
-: ----------------  ----------
-: Γ, x : A ⊢ x : A  Γ ⊢ ⟨⟩ : 1
-
-: Γ ⊢ M₁ : A₁   Γ ⊢ M₂ : A₂
-: -------------------------
-:  Γ ⊢ ⟨M₁, M₂⟩ : A₁ × A₂
-
-
-sub / cut
-
-: Γ, x : B ⊢ N : A    Γ ⊢ M : B   Γ ⊢ B   Γ, B ⊢ A
-: -----------------------------   ----------------
-:        Γ ⊢ N[M/x] : A                Γ ⊢ A
-
-** smt
-
-SMT in the context of programming languages typically refers to *Satisfiability Modulo Theories (SMT)*, which is a formal system used in automated reasoning and verification. SMT solvers are tools that determine the satisfiability of logical formulas with respect to various background theories (e.g., arithmetic, arrays, bitvectors). They are widely used in program analysis, formal verification, and automated bug-finding.
 
 ** val rules
 
@@ -3363,106 +3622,6 @@ SMT in the context of programming languages typically refers to *Satisfiability 
 :
 : --------------  ------------
 :  ⟨M₁, M₂⟩ val     λx.M val
-
-** dynamics
-
-Bob 的 dynamics 实际上指的是 reduction，dynamics 关注的是 normalisation 问题。想知道更多可以看 Proofs and Types 的关于 normalization 部分，对于 canonical form 来说，其存在性和唯一性都需要非常繁琐的证明。设 reduction 为 \(\leadsto\)，我们有
-
-- Church Rosser：如果 \(u \leadsto u_{1}\) 并且 \(u \leadsto u_{2}\)，则存在 \(u'\)，满足 \(u_{1} \leadsto u'\) \(u_{2} \leadsto u'\)
-- Weak Normalization：存在一个 reduction 策略使得 \(u\) 能够达到 \(u'\)，其中 \(u'\) 是 canonical form
-- Strong Normalization：对于任意的 reduction 策略都能抵达 canonical form
-
-这个是 \(\beta\)-conversion 也被称作 immediate reduction
-\[(\lambda x . t) t' \leadsto t [t/x]\]
-还有 \(\alpha\)-conversion：
-\[\lambda x . t \leadsto \lambda y .t[y / x]\]
-还有更多的 reduction （我不知道是不是叫 conversion），
-- \(\pi_{1} (\langle t_{1}, t_{2} \rangle) = t_{1}\)
-- \(\pi_{2} (\langle t_{1}, t_{2} \rangle) = t_{2}\)
-Bob 使用了 evaluation / dynamics 的框架。主要目标是得到这样的 judgment
-\[a\ \mathsf{val}\]
-指的是 \(a\) 是 value，是 canonical form 也就是不能 reduce 下去了。
-
-** dynamics rules
-
-step fst & step snd:
-:    M₁ ↦ M₂           M₁ ↦ M₂
-: ------------      ------------
-:  M₁⬝1 ↦ M₂⬝1       M₁⬝2 ↦ M₂·2
-
-step fst β & step snd β
-:
-: ---------------  -------------------
-: ⟨M₁, M₂⟩·1 ↦ M₁    ⟨M₁, M₂⟩·2 ↦ M₂
-
-step app
-:      M₁ ↦ M₁'
-: -----------------
-:  (M₁)M₂ ↦ (M₁)M₂'
-
-step app β
-:
-: ----------------------
-:  (λx.M₁)M₂ ↦ M₁[M₂/x]
-
-: app[(arr M₁); M₂] → M₁ [M₂]
-
-** substitution \(\gamma\) from
-
-substitution \(\gamma\) from context \(\Gamma '\) to \(\Gamma\), written \(\gamma : \Gamma ' \to \Gamma\), is a finite map sending for each variable \(x \colon A _{x} \) in \(\Gamma\) to a term \(\Gamma' \vdash M_{x} \colon A_{x}\) in context \(\Gamma '\).
-
-The substitution \(\gamma\) can be explicitly written out as \(\{x _{1} \mapsto M_{1} , x_{2} \mapsto M_{2}, \dots\}\) for variables \(x _{i} \in \Gamma\). The extension of \(\gamma\) by another variable-term pair is written \(\gamma \{x _{n} \mapsto M_{n}\}\).
-
-Note that in \(\gamma \colon \Gamma ' \to \Gamma\) the arrow should not be understood as a function arrow in STLC, but a morphism in the syntactic category. This definition is sometimes also written as \(\Gamma ' \vdash \gamma : \Gamma\) and the readers should be able to recognize them interchangeably.
-
-Given a substitution \(\gamma \colon \Gamma ' \to \Gamma\), the function sending a term \(M\) of context \(\Gamma\) to the term with the subtitutions applied is denoted \(\hat \gamma\).
-
-can you tell me about this substitution?
-
-Certainly! The concept of substitution in the context of type theory and lambda calculus is crucial for understanding how terms and types interact within a given context. Let's break down the key points of the substitution \(\gamma\) from context \(\Gamma '\) to \(\Gamma\).
-
-*** Context and Substitution
-
-1. *Context*:
-   - A context \(\Gamma\) is a sequence of variable declarations, typically written as \(\Gamma = x_1 : A_1, x_2 : A_2, \dots, x_n : A_n\).
-   - Each \(x_i\) is a variable, and \(A_i\) is its type.
-
-2. *Substitution*:
-   - A substitution \(\gamma\) from context \(\Gamma '\) to \(\Gamma\) is a mapping that assigns to each variable \(x_i\) in \(\Gamma\) a term \(M_i\) in context \(\Gamma '\).
-   - Formally, \(\gamma : \Gamma ' \to \Gamma\) means that for each \(x_i : A_i\) in \(\Gamma\), there is a corresponding term \(\Gamma' \vdash M_i : A_i\) in \(\Gamma '\).
-
-*** Explicit Representation
-
-- The substitution \(\gamma\) can be explicitly written as a finite map: \(\{x_1 \mapsto M_1, x_2 \mapsto M_2, \dots, x_n \mapsto M_n\}\).
-
-- This map indicates that each variable \(x_i\) in \(\Gamma\) is replaced by
-  the term \(M_i\) in \(\Gamma '\).
-
-*** Extension of Substitution
-
-- The extension of \(\gamma\) by another variable-term pair is denoted \(\gamma \{x_n \mapsto M_n\}\).
-- This means that \(\gamma\) is extended to include the new mapping \(x_n \mapsto M_n\).
-
-*** Application of Substitution
-
-- Given a substitution \(\gamma : \Gamma ' \to \Gamma\), the function that applies \(\gamma\) to a term \(M\) of context \(\Gamma\) is denoted \(\hat \gamma\).
-
-- This function replaces each variable in \(M\) according to the mappings specified by \(\gamma\).
-
-*** Example
-
-Consider the following contexts and substitution:
-
-- \(\Gamma = x : A, y : B\)
-- \(\Gamma ' = z : C\)
-- \(\gamma = \{x \mapsto z, y \mapsto \lambda w. w\}\)
-
-Here, \(\gamma\) maps:
-- \(x\) in \(\Gamma\) to \(z\) in \(\Gamma '\)
-- \(y\) in \(\Gamma\) to \(\lambda w. w\) in \(\Gamma '\)
-
-If we have a term \(M\) in context \(\Gamma\), say \(M = x \, y\), then applying \(\hat \gamma\) to \(M\) would result in:
-\[ \hat \gamma(M) = z \, (\lambda w. w) \]
 
 * Topic :noexport:
 
@@ -4062,3 +4221,47 @@ Let \(E = E(\mathcal F)\) be the germs of all elements at all points of \(X\), t
 ** 1.7. Definition: etale space
 
 todo
+
+* Topic ：初探线性逻辑
+
+** Binary Connectives
+
+Girard 认为 classical 和 intuitionistic 都没有很好的处理 situation 这个概念。我们可以从资源的角度出发，situation 指的就是一些“资源”，而 action 能够对这些“资源”进行变化。可以使用化学方程式的类比：
+2H₂ + O₂ = 2H₂O
+从资源管理的角度出发，等式两边需要配平。如果使用 Linear Logic 的 connectives 就有：
+\[\mathrm H_{2} \otimes \mathrm H_{2} \otimes \mathrm O _{2} \multimap \mathrm H _{2} \mathrm O \otimes \mathrm H _{2} \mathrm O\]
+在这里 \(\multimap\) 的左边的资源被消耗了，得到的右边的资源。可以认为 \(\multimap\) 是资源的转化。
+
+这里先介绍 Linear Connectives
+1. Linear And （或者说 Tensor Product ，或者说 times ，写作 \(\otimes\)）
+2. Classic And （或者说 Direct Product ，或者说 with ，写作 \(\with\)）
+3. Linear Or （或者说 Tensor Sum ，或者说 parr ，写作 \(\parr\)）
+4. Classic Or （或者说 Direct Sum 或者说 plus ，写作 \(\oplus\)）
+
+我们使用的是上面最后一个称呼（times 、with...）。我们需要注意到资源的问题，对于 linear 类型的 connective 来说 \(A \star B\) 来说，需要 \(A\) 和 \(B\) 的资源同时可用。而对于 classic 的就不是如此。比如说这样的 rule 是允许的 \(\displaystyle \frac{\vdash \Gamma , A\quad \vdash \Gamma , B}{\vdash \Gamma, A \mathbin{\&} B}\) （注：因为不是默认使用 intuitionistic 的，所以我们可以使用 one side rule），而对于 \(\otimes\) 上面是不行的，得使用 \(\displaystyle\frac{\vdash \Gamma , A\quad \vdash \Delta , B}{\vdash \Gamma, \Delta, A \otimes B}\).
+
+在这种情况之下 structural rules （weakening rule 和 contraction rule） 就是对“资源守恒”的明显的破坏：
+1. weakening 相当于无中生有创造了资源
+2. contraction 相当于将资源销毁了
+比如说在 contraction 允许的情况下，我们会有：
+
+\begin{prooftree}
+  \AxiomC{$A \vdash A$}
+  \UnaryInfC{$A \mathbin{\&} B \vdash A$}
+  \AxiomC{$B \vdash B$}
+  \UnaryInfC{$A \mathbin{\&} B \vdash B$}
+  \BinaryInfC{$A \mathbin{\&} B, A \mathbin{\&} B \vdash A \otimes B $}
+  \UnaryInfC{$A \mathbin{\&} B \vdash A \otimes B$}
+\end{prooftree}
+
+** Exponential: Of Course! 和 Why Not?
+
+Girard 着实是命名鬼才，Of Course! 和 Why Not? 是什么鬼名字。总之我们有两个 Unary Connectives ：\(!\) 和 \(?\) 。
+
+我们说标记了 \(!\) 的公式就是可以无限使用的：假设 \(A\) 是有 10 块钱，\(B\) 是有 pizza （价值 10 块钱），\(C\) 是有 burger （价值 10 块钱），那么 \(A \vdash B \otimes C\) 是不行的，但是 \(!A \vdash B \otimes C\) （也就是 \(\vdash !A \multimap B \otimes C\)）是可行的，在标记了 \(!\) 之后就相当于“从有着无限钱的账户里面取出 10 块钱了”，是可以复制的。有了这个之后就能表示 classical 的 implication 了 \(A \Rightarrow B \equiv (!A) \multimap B\) ，因为在 \(A \Rightarrow B\) 里的 \(A\) 是可以无限使用的，也就是能够使用 weakening 和 contraction 了。
+\[\frac{\Gamma, A \vdash}{\Gamma, {!} A \vdash}, \quad \frac{\Gamma, !A , !A \vdash}{\Gamma, !A \vdash}\]
+（注：这里用的是单侧的 rule）
+而 \(?\) 是 \(!\) 的对偶：左侧的 \(!\) 到了右侧就是 \(?\) 了
+\[(!A) ^{\bot} = {?} (A ^{\bot})\]
+所以用右手侧的 rule 就有：
+\[\frac{\vdash \Gamma}{\vdash \Gamma, ? A}(\mathrm{weakening}), \quad \frac{\vdash \Gamma, ?A, ?A}{\vdash \Gamma, ?A}(\mathrm{contraction})\]
