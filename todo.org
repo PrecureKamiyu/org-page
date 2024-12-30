@@ -3,5 +3,6 @@
 
 * TODO list
 
-- Tao 的概率论
-- Rudin 的第二章？
+- bi
+- func al
+- proof net

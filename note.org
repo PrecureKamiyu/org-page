@@ -2197,6 +2197,13 @@ There is connection between constructive logic and CoC and Coq
 
 See The Blind Spot 6.A.4
 
+** convex
+
+convex sum for two points \(x,y\) is
+\[w_1 a + w_2 b\]
+where \(w_1 + w_2 = 1\). Convex subset \(X\) is such subset where \(\forall x ,y\) the convex sum
+is in \(X\).
+
 ** directed sets
 
 A collection of sets is said to be directed, if the sets are indexed by a partially ordered set.
@@ -2282,6 +2289,10 @@ A ground instance of a formula \(S\) is a formula derived from \(S\), where all 
 
 Ground terms are terms that have no variable.
 
+** herbrand's theorem
+
+To prove \(\exists x A\), we can interchangably to prove \(A[t_1/x] \lor A[t_2/x] \lor \dots \lor A[t_{n} / x]\) where \(t_{i}\)s are ground terms. This is because the existential quantifier can be satisfied by any one of these ground instances (intuitively saying).
+
 ** herbrand's theorem and cut-elimination
 
 Herbrand’s Theorem: This theorem provides a way to transform a first-order logic formula into a purely propositional form.
@@ -2289,6 +2300,24 @@ Herbrand’s Theorem: This theorem provides a way to transform a first-order log
 It states that if a first-order formula is universally valid, then there is a finite set of ground instances (instances with no variables) of its clauses that are propositionally valid.
 
 How they are related is that they both transfer something undecidable to decidable.
+
+** hausdorff dimensin
+
+Check [[id:c7497fe1-ea96-46f2-a494-66af9d63a675][Amann IX.3.4]]
+
+There are some properties for hausdorff dimension. But I am not interested in them anymore.
+
+** hahn's theorem
+
+For a linear space \(X\) over field \(\R\), if \(p\) is such function:
+
+1. positive Homo: \(p (ax) = ap(x)\) for \(x \ge 0\)
+2. subadditivity: \(p(x+y) \le p(x) + p(y)\)
+3. \(Y\) is a linear subspace in \(X\), and a linear functional on \(Y\) is dominated by \(p\):
+   \[l(y) \le p(y)\]
+   where \(y \in Y\).
+
+Then we have that \(l\) can (whose domain) be extended to \(X\), and still be dominated by \(p\).
 
 ** indicator random variable :probability:
 
@@ -2586,6 +2615,16 @@ For \(\otimes\), you can not split into \(\Gamma, \Delta\). For \(A \otimes B\),
 https://zhuanlan.zhihu.com/p/701186848
 
 types with a little bit constraint. The grammar is like that in lean4. While in the latter, we should provide the proof for the constraint, liquid type system should check that for you, which is part of the type checking.
+
+** Lipschitz continuous
+
+A function \( f : A \to \mathbb{R}^m \) is *Lipschitz continuous* if there exists a constant \( \lambda \geq 0 \) (called the *Lipschitz constant*) such that for all \( x, y \in A \),
+
+\[
+\|f(x) - f(y)\| \leq \lambda \|x - y\|.
+\]
+
+This means the function does not stretch distances between points by more than a factor of \( \lambda \).
 
 ** LLC
 
@@ -3158,6 +3197,36 @@ If we have a term \(M\) in context \(\Gamma\), say \(M = x \, y\), then applying
 
    - *Gluing*: If \( \{U_i\}_{i \in I} \) is an open cover of \( U \), and for each \( i \), \( s_i \in \mathcal{F}(U_i) \) satisfies \( \rho_{U_i \cap U_j, U_i}(s_i) = \rho_{U_i \cap U_j, U_j}(s_j) \) for all \( i, j \), then there exists \( s \in \mathcal{F}(U) \) such that \( \rho_{U_iU}(s) = s_i \) for all \( i \).
 
+** switch in proof net
+
+For the parr rule, we can create (multiple) switching
+proof net for a normal proof net.
+
+A parr link originally looks like this
+\[
+\begin{tikzcd}[column sep=tiny, every arrow/.append style={dash, line width=1pt, rounded corners}]
+  A\ar[rd] && B \ar[ld]\\
+  & A \parr B
+\end{tikzcd}\]
+a left or right switch is
+\[\begin{tikzcd}[column sep=tiny, every arrow/.append style={dash, line width=1pt, rounded corners}]
+  A\ar[rd] && B \ar[ld, dashed]\\
+  & A \parr B
+\end{tikzcd}(L) \quad\begin{tikzcd}[column sep=tiny, every arrow/.append style={dash, line width=1pt, rounded corners}]
+  A\ar[rd, dashed] && B \ar[ld]\\
+  & A \parr B
+\end{tikzcd}(R)\]
+where the dashed means not reachable (the trip should not go through this link) we shall use the link to give definition for a correct proof net structure:
+
+[[id:dec08962-fc1c-418a-b316-261704a583ce][proof net: correctness]]
+
+** proof net: correctness
+:PROPERTIES:
+:ID:       dec08962-fc1c-418a-b316-261704a583ce
+:END:
+
+A correct proof net is such that for all switching net its generated, they are all acyclic and connected.
+
 ** presheaf
 
 A functor from a category of open sets of a topological space to another category (e.g., sets, groups). It assigns data to each open set and specifies how data on smaller open sets restricts to larger ones.
@@ -3375,6 +3444,116 @@ Definition 3.1. A Brownian motion is a continuous process that has stationary in
    \[
    B(t) - B(s) \sim \mathcal{N}(0, t - s)
    \]
+
+** exercise
+
+*** Lax 3.1
+
+Prove that gauge \(p_{K}\) have that \(p_{K}(x) < 1\) iff \(x\) is an interior. p.22
+
+The proof uses some obvious fact and the definition of convex.
+
+**** Proof (verbose)
+
+"⇒" \(p_{K}(x) = \inf a\) where for \(a\), \(x / a \in K\). For every \(a' \in (a,1)\), we have
+\[x / a' \in K\]
+Consider convex combination of \(x / a'\) and \(y\)
+\[\begin{aligned}& a' \cdot \frac{x}{a'} + (1-a')y \in K \\ \Rightarrow\ {}& x + (1-a')y \in K\end{aligned}\tag{1}\]
+where \((1-a') \in (0, 1 - a)\). Because \(0\) is interior in \(K\), \(0 + t y \in K\) holds for \(t \in (-\epsilon, \epsilon)\) where \(\epsilon\)'s value depends on \(y\). Thus we denote that \(-k y \in K\) as the "negative" \(y\) where \(k\) is one of the positive \(t\).
+
+Apply \((1)\) to "negative" \(y\), we have
+\[x - k (1 - a') y \in K.\tag{2}\]
+To satisfy the definition of interior, we take \(\epsilon = \min\{k(1-a), (1-a)\}\). Combine \((1)\) and \((2)\) to complete the answer.
+
+"⇐" if \(x\) is an interior. Means that for \(y \in K\), there is such \(t\) that \(x + t y \in K\). Okay apparently this \(y\) can be \(x\) itself. Then we have
+\[x + t x \in K, \qquad t \in (-\epsilon, \epsilon)\]
+let \(t' > 0, t' \in (-\epsilon, \epsilon)\) then we have \(x/ (\frac{1}{1 + t'}) \in K\) where \(\frac{1}{1 + t'}\) is less than \(1\). Thus \(p_{K}(x)\) must be less than \(1\).
+
+Optional: This is because \(\forall x \in A, \inf A \le x\). \(x/(\frac{1}{1 + t'})\) implies \(\frac{1}{1 + t'}\) is in \(A\). Immediately \(\inf A \le \frac{1}{1 + t'} < 1\) holds.
+
+*** Lax 3.2
+
+Theorem 4. Let \(p\) denote a positive homogeneous, subadditive function defined on a linear space \(X\) over the reals.
+
+(i) The set of points \(x\) satisfying  \(p(x) < 1\)  is a convex subset of \(X\), and \(0\) is an interior point ofit.
+
+(ii) The set ofpoints \(x\) satisfying \(p(x) \le 1\) is a convex subset of \(X\).
+
+Check convex def.
+
+**** Proof
+
+(i) use homogeneous and subadditivity
+Homo: for a positive \(a\), \(p(ax) = ap(x)\) holds. When \(x = 0\), \(p(0) = p(a \cdot 0) = a p(0)\). thus \(p(0)\) must be \(0\). Thus \(0 \in X'\)
+for \(x,y \in X'\), consider convex sum \(w_1 x + w_2 y\).
+\[p(w_1 x + w_2 y) \le p(w_1 x) + p(w_2y) = w_1 p(x) + w_2 p(y)\]
+
+and \(w_1 p(x) + w_2p(y) < w_1 + w_2 = 1\). Thus we have \(w_1 x + w_2 y \in X'\)
+
+(ii) is almost identical.
+
+*** Amann IX.3.1
+
+(1) show that \(I,J \in \mathbb J(n)\), then \(I \cap J \in \mathbb J(n)\)
+(2) \(\{I_{i}\}_{i\in I}\) belongs to \(\mathbb J(n)\), and \(I\) is an interval such that \(I \subset \bigcup_{i}^{n}I_{i}\)
+Then \(\mathrm{vol}_{n}(I)\le\sum^{k}_{j=0}\mathrm{vol}_{n}(I_{j})\).
+
+*** Amann IX.3.2
+
+(a) let \(\mu\)  be a measure on the Borel \(\sigma\)-algebra \(\mathcal B^{1}\) and suppose \(\mu\big((\infty, x)\big)\) is finite for \(x \in \mathbb R\). Further let
+
+\[F_{\mu}(x) := \mu\big((-\infty, x)\big)\]
+for \(x \in \mathbb R\)
+
+show that \(F_{\mu}\) is a measure generating function with \(\lim_{x \to -\infty}\) \(F_{\mu}(x) = 0\)
+: measure generating function is left continuous function and monotonic function
+
+Proof. Apparently, the left limit \(\lim _{x \to a-}F_{\mu}(x) \) which is \(\lim _{x \to a -}\mu(-\infty, x)\). Because of sigma additivity. left continuity is obvious I mean.
+
+And then we need to prove \(\lim _{x \to -\infty} F_{\mu}(x) = 0\). This is apparent since \(\lim _{x \to -\infty}(-\infty , x)\) is equal to \(\emptyset\). (And the limit can commute with \(F\), this is because \(\sigma\)-additivity) And since \(\mu (\varnothing) = 0\). The proof is done.
+
+(b) Determine \(F_{\delta _{0}}\) where \(\delta _{0}\) denotes the Dirac measure on \((\mathbb R,\mathcal B^{1})\) with support at \(0\).
+
+    +  Dirac measure means \(\delta_{0}(A) = 1\) if \(0 \in A\) otherwise \(\delta _{0} (A) = 0\)
+
+Proof. You already know about this shit I think.
+
+*** Amann IX.3.3
+
+Suppose \(f \colon \R \to [0, \infty)\) in improperly integrable and
+
+\[F_{f}(x) := \int ^{x}_{-\infty} f(\xi)\ d\xi,\]
+for \(x \in \R\)
+
+Verify that \(F_{f}\) is a measure-generating function for which \(\mu_{F_{f}}\big([a,b]\big)\)
+\(= \int ^{b}_{a}f(\xi)\ d\xi\) when \(- \infty < a < b < \infty\).
+
+Proof.
+
+*** Amann IX.3.4 :#Amann:
+:PROPERTIES:
+:ID:       c7497fe1-ea96-46f2-a494-66af9d63a675
+:END:
+
+Properties of Hausdorff measure.
+
+Suppose \(A \subset \R ^{n}\) Prove:
+
+(a) \(\mathcal H^{s}_{*}(A) = \lim _{\epsilon \to 0+} \inf \big\{\sum ^{\infty} _{k=0}[\mathrm{diam}(A_{k})]^{s} \colon A _{k} \subset \R ^{n}\big\}\) where \(\mathrm{diam}(A_{k})\le \epsilon\), \(k \in \N\), \(A \subset \bigcup _{k} A_{k}\).
+
+(b) If \( f : A \to \mathbb{R}^m \) is Lipschitz continuous with Lipschitz constant \( \lambda \), then
+\[
+\mathcal{H}^{s}_{*}(f(A)) \leq \lambda^s \mathcal{H}^{s}_{ * }(A).
+\]
+
+(c) For every isometry \( \varphi : \mathbb{R}^n \to \mathbb{R}^n \), we have
+\[
+\mathcal{H}^{s}_{ * }(\varphi(A)) = \mathcal{H}^{s}_{ * }(A).
+\]
+Thus, the Hausdorff outer measure on \( \mathbb{R}^n \) is invariant under isometries, that is, an invariant of motion.
+
+(d) Suppose \( \bar n > n\) and \( \overline{\mathcal{H}}{}^{s}_{ * } \) is the Hausdorff outer measure on \( \mathbb{R}^{\bar n} \). Then \(\overline {\mathcal H }{}^{s}_{ * } (A) = \mathcal H ^{s} _{ * }(A)\).
+That is, the Hausdorff outer measure is independent of the dimension of the ambient \( \mathbb{R}^n \).
 
 * Topic: coherent space and linearity :noexport:
 :PROPERTIES:
@@ -3610,18 +3789,6 @@ can written as \(? X = {\sim} {!} {\sim} X\) and \(! X = {\sim} ? {\sim} X\). Wh
 1. web: \(| X \otimes Y | = | X \parr Y | := |X | \times |Y|\)
 2. coh (times): \((x,y) \coh _{X \otimes Y} (x', y') \Leftrightarrow x \coh _{X} x' \land y \coh _{Y} y'\)
 3. coh (parr) : \((x,y) \scoh _{X \parr Y} (x',y') \Leftrightarrow x \scoh _{X} x' \lor y \scoh _{Y} y'\)
-
-* Topic: pl :noexport:
-
-** val rules
-
-:
-: ---------  --------
-:  yes val    no val
-
-:
-: --------------  ------------
-:  ⟨M₁, M₂⟩ val     λx.M val
 
 * Topic :noexport:
 
@@ -4102,6 +4269,49 @@ Tick数据是高频交易的核心数据源，它提供了市场在每个微小�
 
 总结来说，DEX和CEX各有优缺点，选择哪种平台取决于你的技术水平、风险偏好和交易需求。DEX提供去中心化和透明的交易体验，而CEX则提供高效和用户友好的交易环境。
 
+* Topic ：初探线性逻辑
+
+** Binary Connectives
+
+Girard 认为 classical 和 intuitionistic 都没有很好的处理 situation 这个概念。我们可以从资源的角度出发，situation 指的就是一些“资源”，而 action 能够对这些“资源”进行变化。可以使用化学方程式的类比：
+2H₂ + O₂ = 2H₂O
+从资源管理的角度出发，等式两边需要配平。如果使用 Linear Logic 的 connectives 就有：
+\[\mathrm H_{2} \otimes \mathrm H_{2} \otimes \mathrm O _{2} \multimap \mathrm H _{2} \mathrm O \otimes \mathrm H _{2} \mathrm O\]
+在这里 \(\multimap\) 的左边的资源被消耗了，得到的右边的资源。可以认为 \(\multimap\) 是资源的转化。
+
+这里先介绍 Linear Connectives
+1. Linear And （或者说 Tensor Product ，或者说 times ，写作 \(\otimes\)）
+2. Classic And （或者说 Direct Product ，或者说 with ，写作 \(\with\)）
+3. Linear Or （或者说 Tensor Sum ，或者说 parr ，写作 \(\parr\)）
+4. Classic Or （或者说 Direct Sum 或者说 plus ，写作 \(\oplus\)）
+
+我们使用的是上面最后一个称呼（times 、with...）。我们需要注意到资源的问题，对于 linear 类型的 connective 来说 \(A \star B\) 来说，需要 \(A\) 和 \(B\) 的资源同时可用。而对于 classic 的就不是如此。比如说这样的 rule 是允许的 \(\displaystyle \frac{\vdash \Gamma , A\quad \vdash \Gamma , B}{\vdash \Gamma, A \mathbin{\&} B}\) （注：因为不是默认使用 intuitionistic 的，所以我们可以使用 one side rule），而对于 \(\otimes\) 上面是不行的，得使用 \(\displaystyle\frac{\vdash \Gamma , A\quad \vdash \Delta , B}{\vdash \Gamma, \Delta, A \otimes B}\).
+
+在这种情况之下 structural rules （weakening rule 和 contraction rule） 就是对“资源守恒”的明显的破坏：
+1. weakening 相当于无中生有创造了资源
+2. contraction 相当于将资源销毁了
+比如说在 contraction 允许的情况下，我们会有：
+
+\begin{prooftree}
+  \AxiomC{$A \vdash A$}
+  \UnaryInfC{$A \mathbin{\&} B \vdash A$}
+  \AxiomC{$B \vdash B$}
+  \UnaryInfC{$A \mathbin{\&} B \vdash B$}
+  \BinaryInfC{$A \mathbin{\&} B, A \mathbin{\&} B \vdash A \otimes B $}
+  \UnaryInfC{$A \mathbin{\&} B \vdash A \otimes B$}
+\end{prooftree}
+
+** Exponential: Of Course! 和 Why Not?
+
+Girard 着实是命名鬼才，Of Course! 和 Why Not? 是什么鬼名字。总之我们有两个 Unary Connectives ：\(!\) 和 \(?\) 。
+
+我们说标记了 \(!\) 的公式就是可以无限使用的：假设 \(A\) 是有 10 块钱，\(B\) 是有 pizza （价值 10 块钱），\(C\) 是有 burger （价值 10 块钱），那么 \(A \vdash B \otimes C\) 是不行的，但是 \(!A \vdash B \otimes C\) （也就是 \(\vdash !A \multimap B \otimes C\)）是可行的，在标记了 \(!\) 之后就相当于“从有着无限钱的账户里面取出 10 块钱了”，是可以复制的。有了这个之后就能表示 classical 的 implication 了 \(A \Rightarrow B \equiv (!A) \multimap B\) ，因为在 \(A \Rightarrow B\) 里的 \(A\) 是可以无限使用的，也就是能够使用 weakening 和 contraction 了。
+\[\frac{\Gamma, A \vdash}{\Gamma, {!} A \vdash}, \quad \frac{\Gamma, !A , !A \vdash}{\Gamma, !A \vdash}\]
+（注：这里用的是单侧的 rule）
+而 \(?\) 是 \(!\) 的对偶：左侧的 \(!\) 到了右侧就是 \(?\) 了
+\[(!A) ^{\bot} = {?} (A ^{\bot})\]
+所以用右手侧的 rule 就有：
+\[\frac{\vdash \Gamma}{\vdash \Gamma, ? A}(\mathrm{weakening}), \quad \frac{\vdash \Gamma, ?A, ?A}{\vdash \Gamma, ?A}(\mathrm{contraction})\]
 * COMMENT text1 :noexport:
 
 ** prelude
@@ -4221,47 +4431,3 @@ Let \(E = E(\mathcal F)\) be the germs of all elements at all points of \(X\), t
 ** 1.7. Definition: etale space
 
 todo
-
-* Topic ：初探线性逻辑
-
-** Binary Connectives
-
-Girard 认为 classical 和 intuitionistic 都没有很好的处理 situation 这个概念。我们可以从资源的角度出发，situation 指的就是一些“资源”，而 action 能够对这些“资源”进行变化。可以使用化学方程式的类比：
-2H₂ + O₂ = 2H₂O
-从资源管理的角度出发，等式两边需要配平。如果使用 Linear Logic 的 connectives 就有：
-\[\mathrm H_{2} \otimes \mathrm H_{2} \otimes \mathrm O _{2} \multimap \mathrm H _{2} \mathrm O \otimes \mathrm H _{2} \mathrm O\]
-在这里 \(\multimap\) 的左边的资源被消耗了，得到的右边的资源。可以认为 \(\multimap\) 是资源的转化。
-
-这里先介绍 Linear Connectives
-1. Linear And （或者说 Tensor Product ，或者说 times ，写作 \(\otimes\)）
-2. Classic And （或者说 Direct Product ，或者说 with ，写作 \(\with\)）
-3. Linear Or （或者说 Tensor Sum ，或者说 parr ，写作 \(\parr\)）
-4. Classic Or （或者说 Direct Sum 或者说 plus ，写作 \(\oplus\)）
-
-我们使用的是上面最后一个称呼（times 、with...）。我们需要注意到资源的问题，对于 linear 类型的 connective 来说 \(A \star B\) 来说，需要 \(A\) 和 \(B\) 的资源同时可用。而对于 classic 的就不是如此。比如说这样的 rule 是允许的 \(\displaystyle \frac{\vdash \Gamma , A\quad \vdash \Gamma , B}{\vdash \Gamma, A \mathbin{\&} B}\) （注：因为不是默认使用 intuitionistic 的，所以我们可以使用 one side rule），而对于 \(\otimes\) 上面是不行的，得使用 \(\displaystyle\frac{\vdash \Gamma , A\quad \vdash \Delta , B}{\vdash \Gamma, \Delta, A \otimes B}\).
-
-在这种情况之下 structural rules （weakening rule 和 contraction rule） 就是对“资源守恒”的明显的破坏：
-1. weakening 相当于无中生有创造了资源
-2. contraction 相当于将资源销毁了
-比如说在 contraction 允许的情况下，我们会有：
-
-\begin{prooftree}
-  \AxiomC{$A \vdash A$}
-  \UnaryInfC{$A \mathbin{\&} B \vdash A$}
-  \AxiomC{$B \vdash B$}
-  \UnaryInfC{$A \mathbin{\&} B \vdash B$}
-  \BinaryInfC{$A \mathbin{\&} B, A \mathbin{\&} B \vdash A \otimes B $}
-  \UnaryInfC{$A \mathbin{\&} B \vdash A \otimes B$}
-\end{prooftree}
-
-** Exponential: Of Course! 和 Why Not?
-
-Girard 着实是命名鬼才，Of Course! 和 Why Not? 是什么鬼名字。总之我们有两个 Unary Connectives ：\(!\) 和 \(?\) 。
-
-我们说标记了 \(!\) 的公式就是可以无限使用的：假设 \(A\) 是有 10 块钱，\(B\) 是有 pizza （价值 10 块钱），\(C\) 是有 burger （价值 10 块钱），那么 \(A \vdash B \otimes C\) 是不行的，但是 \(!A \vdash B \otimes C\) （也就是 \(\vdash !A \multimap B \otimes C\)）是可行的，在标记了 \(!\) 之后就相当于“从有着无限钱的账户里面取出 10 块钱了”，是可以复制的。有了这个之后就能表示 classical 的 implication 了 \(A \Rightarrow B \equiv (!A) \multimap B\) ，因为在 \(A \Rightarrow B\) 里的 \(A\) 是可以无限使用的，也就是能够使用 weakening 和 contraction 了。
-\[\frac{\Gamma, A \vdash}{\Gamma, {!} A \vdash}, \quad \frac{\Gamma, !A , !A \vdash}{\Gamma, !A \vdash}\]
-（注：这里用的是单侧的 rule）
-而 \(?\) 是 \(!\) 的对偶：左侧的 \(!\) 到了右侧就是 \(?\) 了
-\[(!A) ^{\bot} = {?} (A ^{\bot})\]
-所以用右手侧的 rule 就有：
-\[\frac{\vdash \Gamma}{\vdash \Gamma, ? A}(\mathrm{weakening}), \quad \frac{\vdash \Gamma, ?A, ?A}{\vdash \Gamma, ?A}(\mathrm{contraction})\]
