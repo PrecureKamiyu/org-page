@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2024-12-30 Mon 12:19 -->
+<!-- 2025-01-04 Sat 11:32 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Note</title>
@@ -201,98 +201,10 @@
 </div>
 <div id="content" class="content">
 <h1 class="title">Note</h1>
-<div id="table-of-contents" role="doc-toc">
-<h2>Table of Contents</h2>
-<div id="text-table-of-contents" role="doc-toc">
-<ul>
-<li><a href="#orgceefd5f">1. Topic ：初探线性逻辑</a>
-<ul>
-<li><a href="#org7e94846">1.1. Binary Connectives</a></li>
-<li><a href="#orge5b658a">1.2. Exponential: Of Course! 和 Why Not?</a></li>
-</ul>
-</li>
-</ul>
-</div>
-</div>
-<div id="outline-container-orgceefd5f" class="outline-2">
-<h2 id="orgceefd5f"><span class="section-number-2">1.</span> Topic ：初探线性逻辑</h2>
-<div class="outline-text-2" id="text-1">
-</div>
-<div id="outline-container-org7e94846" class="outline-3">
-<h3 id="org7e94846"><span class="section-number-3">1.1.</span> Binary Connectives</h3>
-<div class="outline-text-3" id="text-1-1">
-<p>
-Girard 认为 classical 和 intuitionistic 都没有很好的处理 situation 这个概念。我们可以从资源的角度出发，situation 指的就是一些“资源”，而 action 能够对这些“资源”进行变化。可以使用化学方程式的类比：
-2H₂ + O₂ = 2H₂O
-从资源管理的角度出发，等式两边需要配平。如果使用 Linear Logic 的 connectives 就有：
-<img src="/home/one/org/ltximg/org-tex-a1b3da5a0462a84a03d614fe48dbd6cab0b54c98.svg" alt="\[\mathrm H_{2} \otimes \mathrm H_{2} \otimes \mathrm O _{2} \multimap \mathrm H _{2} \mathrm O \otimes \mathrm H _{2} \mathrm O\]" style="height: 1.4214em; display: block" class="org-latex org-latex-block" />
-在这里 <img src="/home/one/org/ltximg/org-tex-886891d78777d2f67fed16f2f8ded9cb04a0f92a.svg" alt="\(\multimap\)" style="height: 0.6372em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" /> 的左边的资源被消耗了，得到的右边的资源。可以认为 <img src="/home/one/org/ltximg/org-tex-886891d78777d2f67fed16f2f8ded9cb04a0f92a.svg" alt="\(\multimap\)" style="height: 0.6372em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" /> 是资源的转化。
-</p>
-
-<p>
-这里先介绍 Linear Connectives
-</p>
-<ol class="org-ol">
-<li>Linear And （或者说 Tensor Product ，或者说 times ，写作 <img src="/home/one/org/ltximg/org-tex-35346f98eb60640a01dfadd43e8350288ccf59ad.svg" alt="\(\otimes\)" style="height: 0.7517em; vertical-align: -0.1309em; display: inline-block" class="org-latex org-latex-inline" />）</li>
-<li>Classic And （或者说 Direct Product ，或者说 with ，写作 <img src="/home/one/org/ltximg/org-tex-8c87a20dd3664f1289906b769ea956c82e60d53a.svg" alt="\(\with\)" style="height: 0.7789em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" />）</li>
-<li>Linear Or （或者说 Tensor Sum ，或者说 parr ，写作 <img src="/home/one/org/ltximg/org-tex-c6d4946eca1f8a8ada5e39aa1525298fc05b11a3.svg" alt="\(\parr\)" style="height: 0.7789em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" />）</li>
-<li>Classic Or （或者说 Direct Sum 或者说 plus ，写作 <img src="/home/one/org/ltximg/org-tex-1bc6c899d5ed278ed9c841e421e36b66d4fcddd7.svg" alt="\(\oplus\)" style="height: 0.7517em; vertical-align: -0.1309em; display: inline-block" class="org-latex org-latex-inline" />）</li>
-</ol>
-
-<p>
-我们使用的是上面最后一个称呼（times 、with&#x2026;）。我们需要注意到资源的问题，对于 linear 类型的 connective 来说 <img src="/home/one/org/ltximg/org-tex-72a7c4096deb42e1d31e9841fa08fee5aa2660d5.svg" alt="\(A \star B\)" style="height: 0.7680em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" /> 来说，需要 <img src="/home/one/org/ltximg/org-tex-27ffadf5069b314e0ba6ecb6be85595b304e608a.svg" alt="\(A\)" style="height: 0.7680em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" /> 和 <img src="/home/one/org/ltximg/org-tex-a385ca27c81970679cac7b3d9e44bfb14fe6372e.svg" alt="\(B\)" style="height: 0.7680em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" /> 的资源同时可用。而对于 classic 的就不是如此。比如说这样的 rule 是允许的 <img src="/home/one/org/ltximg/org-tex-2bb20890fae0360da4f35d41d97b316df9222904.svg" alt="\(\displaystyle \frac{\vdash \Gamma , A\quad \vdash \Gamma , B}{\vdash \Gamma, A \mathbin{\&amp;amp;} B}\)" style="height: 2.3047em; vertical-align: -0.9120em; display: inline-block" class="org-latex org-latex-inline" /> （注：因为不是默认使用 intuitionistic 的，所以我们可以使用 one side rule），而对于 <img src="/home/one/org/ltximg/org-tex-35346f98eb60640a01dfadd43e8350288ccf59ad.svg" alt="\(\otimes\)" style="height: 0.7517em; vertical-align: -0.1309em; display: inline-block" class="org-latex org-latex-inline" /> 上面是不行的，得使用 <img src="/home/one/org/ltximg/org-tex-9fd47ef7668a0c6c11a9f73c16eca7c48c9a3acb.svg" alt="\(\displaystyle\frac{\vdash \Gamma , A\quad \vdash \Delta , B}{\vdash \Gamma, \Delta, A \otimes B}\)" style="height: 2.3047em; vertical-align: -0.9120em; display: inline-block" class="org-latex org-latex-inline" />.
-</p>
-
-<p>
-在这种情况之下 structural rules （weakening rule 和 contraction rule） 就是对“资源守恒”的明显的破坏：
-</p>
-<ol class="org-ol">
-<li>weakening 相当于无中生有创造了资源</li>
-<li>contraction 相当于将资源销毁了</li>
-</ol>
-<p>
-比如说在 contraction 允许的情况下，我们会有：
-</p>
-
-
-<div class="equation-container">
-<span class="equation">
-<img src="/home/one/org/ltximg/org-tex-4a6163e148af890546c2972e808f28e5a61a8949.svg" alt="\begin{prooftree}
-  \AxiomC{$A \vdash A$}
-  \UnaryInfC{$A \mathbin{\&amp;amp;} B \vdash A$}
-  \AxiomC{$B \vdash B$}
-  \UnaryInfC{$A \mathbin{\&amp;amp;} B \vdash B$}
-  \BinaryInfC{$A \mathbin{\&amp;amp;} B, A \mathbin{\&amp;amp;} B \vdash A \otimes B $}
-  \UnaryInfC{$A \mathbin{\&amp;amp;} B \vdash A \otimes B$}
-\end{prooftree}
-" style="height: 4.7239em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" />
-</span>
-</div>
-</div>
-</div>
-<div id="outline-container-orge5b658a" class="outline-3">
-<h3 id="orge5b658a"><span class="section-number-3">1.2.</span> Exponential: Of Course! 和 Why Not?</h3>
-<div class="outline-text-3" id="text-1-2">
-<p>
-Girard 着实是命名鬼才，Of Course! 和 Why Not? 是什么鬼名字。总之我们有两个 Unary Connectives ：<img src="/home/one/org/ltximg/org-tex-cdfa216c92d081b608e0d51ab0ff5121759d694c.svg" alt="\(!\)" style="height: 0.7789em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" /> 和 <img src="/home/one/org/ltximg/org-tex-513c01f3b237a54eae1abccbc7812f88c16f1fe1.svg" alt="\(?\)" style="height: 0.7789em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" /> 。
-</p>
-
-<p>
-我们说标记了 <img src="/home/one/org/ltximg/org-tex-cdfa216c92d081b608e0d51ab0ff5121759d694c.svg" alt="\(!\)" style="height: 0.7789em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" /> 的公式就是可以无限使用的：假设 <img src="/home/one/org/ltximg/org-tex-27ffadf5069b314e0ba6ecb6be85595b304e608a.svg" alt="\(A\)" style="height: 0.7680em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" /> 是有 10 块钱，<img src="/home/one/org/ltximg/org-tex-a385ca27c81970679cac7b3d9e44bfb14fe6372e.svg" alt="\(B\)" style="height: 0.7680em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" /> 是有 pizza （价值 10 块钱），<img src="/home/one/org/ltximg/org-tex-d50a7a40dc136dfc01f837fbd6f1a893187fd18b.svg" alt="\(C\)" style="height: 0.7680em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" /> 是有 burger （价值 10 块钱），那么 <img src="/home/one/org/ltximg/org-tex-8144d9695ecc05d2ba8a866426ba2150c480052a.svg" alt="\(A \vdash B \otimes C\)" style="height: 0.8606em; vertical-align: -0.1309em; display: inline-block" class="org-latex org-latex-inline" /> 是不行的，但是 <img src="/home/one/org/ltximg/org-tex-74795bf6a6e7eb82b4e6eaad25c312f85dc0a3de.svg" alt="\(!A \vdash B \otimes C\)" style="height: 0.8606em; vertical-align: -0.1309em; display: inline-block" class="org-latex org-latex-inline" /> （也就是 <img src="/home/one/org/ltximg/org-tex-a718de3bbc0303c7d6adf0d9081f1e3f153995e2.svg" alt="\(\vdash !A \multimap B \otimes C\)" style="height: 0.8606em; vertical-align: -0.1309em; display: inline-block" class="org-latex org-latex-inline" />）是可行的，在标记了 <img src="/home/one/org/ltximg/org-tex-cdfa216c92d081b608e0d51ab0ff5121759d694c.svg" alt="\(!\)" style="height: 0.7789em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" /> 之后就相当于“从有着无限钱的账户里面取出 10 块钱了”，是可以复制的。有了这个之后就能表示 classical 的 implication 了 <img src="/home/one/org/ltximg/org-tex-95fd89b8b34960c9cbf3f21852ccf5840fc90608.svg" alt="\(A \Rightarrow B \equiv (!A) \multimap B\)" style="height: 1.0784em; vertical-align: -0.2942em; display: inline-block" class="org-latex org-latex-inline" /> ，因为在 <img src="/home/one/org/ltximg/org-tex-0c2a529fe8f5d772a4c1d527e2827c156970f937.svg" alt="\(A \Rightarrow B\)" style="height: 0.7680em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" /> 里的 <img src="/home/one/org/ltximg/org-tex-27ffadf5069b314e0ba6ecb6be85595b304e608a.svg" alt="\(A\)" style="height: 0.7680em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" /> 是可以无限使用的，也就是能够使用 weakening 和 contraction 了。
-<img src="/home/one/org/ltximg/org-tex-264f054ffe7375d34d5c7c764b0518fee293f5f6.svg" alt="\[\frac{\Gamma, A \vdash}{\Gamma, {!} A \vdash}, \quad \frac{\Gamma, !A , !A \vdash}{\Gamma, !A \vdash}\]" style="height: 2.4027em; display: block" class="org-latex org-latex-block" />
-（注：这里用的是单侧的 rule）
-而 <img src="/home/one/org/ltximg/org-tex-513c01f3b237a54eae1abccbc7812f88c16f1fe1.svg" alt="\(?\)" style="height: 0.7789em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" /> 是 <img src="/home/one/org/ltximg/org-tex-cdfa216c92d081b608e0d51ab0ff5121759d694c.svg" alt="\(!\)" style="height: 0.7789em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" /> 的对偶：左侧的 <img src="/home/one/org/ltximg/org-tex-cdfa216c92d081b608e0d51ab0ff5121759d694c.svg" alt="\(!\)" style="height: 0.7789em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" /> 到了右侧就是 <img src="/home/one/org/ltximg/org-tex-513c01f3b237a54eae1abccbc7812f88c16f1fe1.svg" alt="\(?\)" style="height: 0.7789em; vertical-align: -0.0492em; display: inline-block" class="org-latex org-latex-inline" /> 了
-<img src="/home/one/org/ltximg/org-tex-d9cdc8598d8dbe2acde79c0db1bcc1ba45c12908.svg" alt="\[(!A) ^{\bot} = {?} (A ^{\bot})\]" style="height: 1.5194em; display: block" class="org-latex org-latex-block" />
-所以用右手侧的 rule 就有：
-<img src="/home/one/org/ltximg/org-tex-f19cd21c75d6e85abaed8fdbc139e8290c39cab4.svg" alt="\[\frac{\vdash \Gamma}{\vdash \Gamma, ? A}(\mathrm{weakening}), \quad \frac{\vdash \Gamma, ?A, ?A}{\vdash \Gamma, ?A}(\mathrm{contraction})\]" style="height: 2.4027em; display: block" class="org-latex org-latex-block" />
-</p>
-</div>
-</div>
-</div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: MAO</p>
-<p class="date">Created: 2024-12-30 Mon 12:19</p>
+<p class="date">Created: 2025-01-04 Sat 11:32</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

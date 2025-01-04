@@ -564,3 +564,128 @@ The ten sections which together form this chapter contain the essentially standa
 ** 1.1 Fibrations
 
 Basically, a fibration is a categorical structure which captures \textit{indexing} and substitution. Since the formal definition of a fibration is a bit technical—see Definition 1.1.3 below—we start with the following introductory observations. These focus on the special case of a codomain fibration, and will lead to the general definition of fibration towards the end of this section. The exercises contain many elementary results about fibrations, which should help the reader to get acquainted with the concepts involved.
+
+* COMMENT text1 :noexport:
+:PROPERTIES:
+:ARCHIVE_TIME: 2025-01-01 Wed 22:06
+:ARCHIVE_FILE: ~/org/note.org
+:ARCHIVE_CATEGORY: note
+:END:
+
+** prelude
+
+In Geometry as well as in Physics, one has often to use the tools of differential and integral calculus on topological spaces which are locally like open subsets of the Euclidean space \(\mathbb{R}^n\), but do not admit coordinates valid everywhere. For example, the sphere \(\{(x, y, z) \in \mathbb{R}^3 : x^2 + y^2 + z^2 = 1\}\), or more generally, the space \(\{(x_1, \ldots, x_n) \in \mathbb{R}^n : \sum x_i^2 = 1\}\) are clearly of geometric interest.
+
+On the other hand, constrained motion has to do with dynamics on surfaces in \(\mathbb{R}^3\). In general relativity, one studies 'space-time' which combines the space on which motion takes place and the time parameter in one abstract space and allows reformulation of problems of Physics in terms of a 4-dimensional object. All these necessitate a framework in which one can work with the tools of analysis, like differentiation, integration, differential equations and the like, on fairly abstract objects.
+
+This would enable one to study Differential Geometry in its appropriate setting on the one hand, and to state mathematically the equations of Physics in the required generality, on the other. The basic objects which accomplish this are called differential manifolds. These are geometric objects which are locally like domains in the Euclidean space, so that the classical machinery of calculus, available in \(\mathbb{R}^n\), can be transferred, first, to small open sets and then patched together. The main tool in the patching up is the notion of a sheaf. We will first define sheaves and discuss about basic notions related to them, before taking up differential manifolds.
+
+** 1. Sheaves and Presheaves
+
+At the outset, it is clear that functions of interest to us belong to a class such as continuous functions, infinitely differentiable (or \( C^\infty \)) functions, real analytic functions, holomorphic functions of complex variables, and so on. Some properties common to all these classes of functions are that
+
+  (i) they are all continuous, and
+
+  (ii) the condition for a continuous function to belong to the class is of a local nature.
+
+By this we mean that for a continuous function to be differentiable, real analytic or holomorphic, it is necessary and sufficient for it to be so in the neighbourhood of every point in its domain of definition. We will start with an axiomatisation of the local nature of the classes of functions we seek to study.
+
+
+Here's the text from the image:
+
+** 1.1. Definition: presheaf
+
+Let \( X \) be a topological space. An assignment to every open subset \( U \) of \( X \), of a set \( \mathcal{F}(U) \) and to every pair of open sets \( U, V \) with \( V \subseteq U \), of a map (to be called restriction map) \( \text{res}_{UV} : \mathcal{F}(U) \to \mathcal{F}(V) \) satisfying:
+\[ \text{res}_{VW} \circ \text{res}_{UV} = \text{res}_{UW} \]
+for every triple \( W \subseteq V \subseteq U \) of open sets, is called a presheaf of sets. If \( \mathcal{F}(U) \) are all abelian groups, rings, vector spaces, etc., and the restriction maps are homomorphisms of the respective structures, then we say that \( \mathcal{F} \) is a presheaf of abelian groups, rings, vector spaces, etc.
+
+\[\begin{tikzcd}
+  & U\ar[rr, dashed] & & \mathcal F(U)\ar[d]\ar[ddl]\\
+  & V\ar[u]\ar[rr, dashed] & & \mathcal F(V)\ar[dl] \\
+  W\ar[ur]\ar[uur]\ar[rr, dashed] & & \mathcal F(W)
+\end{tikzcd}\]
+
+(supplement) alternative description (because the author's English is kinda tricky): *Presheaf*:
+
+A presheaf on a topological space \( X \) is a collection of sets (or groups, rings, etc.) \( \mathcal{F}(U) \) for each open set \( U \subseteq X \), along with restriction maps \( \text{res}_{UV}: \mathcal{F}(U) \to \mathcal{F}(V) \) for \( V \subseteq U \), satisfying:
+
+   - \( \text{res}_{UU} = \text{id}_{\mathcal{F}(U)} \),
+   - \( \text{res}_{VW} \circ \text{res}_{UV} = \text{res}_{UW} \) for \( W \subseteq V \subseteq U \).
+
+** 1.2. Definition: sheaf
+
+A presheaf is said to be a sheaf if it satisfies the following additional conditions. Let \( U = \bigcup_{i \in I} U_i \) be any open covering of an open set \( U \). Then:
+
+*S1*: Two elements \( s, t \in \mathcal{F}(U) \) are equal if \( \text{res}_{UU_i} s = \text{res}_{UU_i} t \) for all \( i \in I \).
+
+*S2*: If \( s_i \in \mathcal{F}(U_i) \) satisfy \( \text{res}_{U_{i}U_i \cap U_j} s_i = \text{res}_{U_{j}U_i \cap U_j} s_j \) for all \( i, j \in I \), then there exists an element \( s \in \mathcal{F}(U) \) with \( \text{res}_{UU_i} s = s_i \) for all \( i \). We will also assume that \( \mathcal{F}(\emptyset) \) consists of a single point.
+
+If there is \(\{s_{i}\in \mathcal F(U_{i})\}\), satisfy \(\text{res}_{U_{i}U_{i}\cap U_{j}}s_{i} = \text{res}_{U_{j}U_{i}\cap U_{j}} s_{j}\) for all \(i,j \in I\), then there is an element in \(s \in \mathcal F (U)\) that \(\mathrm{res}_{UU_{i}}s = s_{i}\) for all \(i\).
+
+(supplement from editor) The description for two conditions:
+
+- *Locality*: If \( s \in \mathcal{F}(U) \) and \( s \) restricts to the zero element on each \( U_i \cap U \), then \( s = 0 \).
+- *Gluing*: If \( s_i \in \mathcal{F}(U_i), s_{j} \in \mathcal{F}(U_{j}) \) satisfy \( \text{res}_{U_{i}U_i \cap U_j} s_i = \text{res}_{U_{j}U_i \cap U_j} s_j \) for all \( i, j \), then there exists a unique \( s \in \mathcal{F}(U) \) with \( \text{res}_{UU_i} s = s_i \) for all \( i \).
+
+Intuitions:
+
+- *Locality* ensures that sections are determined by their local behavior.
+- *Gluing* ensures that compatible local sections can be "glued" together to
+  form a global section.
+
+Gluing allows us to construct global objects from local data. For example, in a topological space, we can define functions or sections on open sets and then "glue" them together to define a function on the entire space.
+
+** 1.3. Examples
+
+*** 1.3.1. sheaf of Differential Functions
+
+As indicated above, the concepts of differentiability, real analyticity, ... are all local in nature, so that it is no surprise that if \(X\) is an open subspace of \(\mathbb{R}^n\), then the assignment to every open subset \(U\) of \(X\), of the set \(\mathcal{A}(U)\) of differentiable functions with the natural restriction of functions as restriction maps, gives rise to a sheaf.
+
+This sheaf will be called the sheaf of differentiable functions on \(X\). Obviously this sheaf is not merely a sheaf of sets, but of \(\R\) algebras.
+
+*** 1.3.2. bounded functions
+
+The assignment of the set of bounded functions to every open set \( U \) of \( X \), and the natural restriction maps define a presheaf on \( X \).
+# of means target; to means source
+# U is mapped to bounded functions
+
+However, if we are given as in \( S_2 \) any compatible set of bounded functions \( s_i \), then while such data does define a unique function \( s \) on \( U \), there is no guarantee that it will be bounded. Thus this presheaf satisfies \( S_1 \) but not \( S_2 \) and so is not a sheaf. (Can one modify this in order to obtain a sheaf?)
+
+** 1.4. Sheaf associated to a presheaf. germ and stalk
+
+In the theory of holomorphic functions, one talks of a *germ* of a function at a point, when one wishes to study its properties in an (unspecified) neighbourhood of a point. This means the following.
+
+  Consider pairs \((U, f)\) consisting of open sets \(U\) containing the given point \(x\) and holomorphic functions \(f\) defined on \(U\). Introduce an equivalence relation in this set by declaring two such pairs \((U, f)\), \((V, g)\) to be *equivalent* if \(f\) and \(g\) coincide in some neighbourhood of \(x\) which is contained in \(U \cap V\). An equivalence class is called a *germ*. This procedure can be imitated in the case of a presheaf and this leads to the concept of a *stalk* of a presheaf at a point.
+
+** 1.5. Definition: stalk and germ
+
+Let \(\cal F\) be a presheaf on a topo space \(X\). Then the stalk \(\mathcal F_{x}\) of \(\cal F\) at point \(x \in X\) is the quotient set of the set consisting of all \((U,s)\) where \(U\) is an open neightbourhood of \(x\) and \(s\) is an element of \(\mathcal F(U)\) under the *equaivalence relation*:
+
+  \((U,s)\) is equivalent to \((V,t)\) if and only if there exists an open neighbourhood \(W\) of \(x\) contained in \(U \cap V\) (i.e. \(W \subset U \cap V\)) such that the restrictions of \(s\) and t to \(W\) are the same.
+
+  If \(s \in \mathcal F(X)\) then, for any \(x \in X\), the pair \((X, s)\) has an image in the talk \(\mathcal F_{x}\), namely the quivalence class containing it. It is called the /germ of \(s\)/ at \(x\). We will denote it by \(s _{x}\).
+
+(supplement from editor)
+Let \( \mathcal{F} \) be a sheaf on a topological space \( X \), and let \( x \in X \) be a point. The *stalk* \( \mathcal{F}_x \) of \( \mathcal{F} \) at \( x \) is defined as:
+\[
+\mathcal{F}_x = \lim_{\longrightarrow} \mathcal{F}(U)
+\]
+where the direct limit is taken over all open neighborhoods \( U \) of \( x \), ordered by inclusion \( U_1 \subseteq U_2 \).
+
+- In the sheaf of smooth functions on a manifold, the stalk at a point \( x \) consists of all germs of smooth functions defined in some neighborhood of \( x \).
+- In the sheaf of holomorphic functions on a complex manifold, the stalk at a point \( x \) consists of all germs of holomorphic functions near \( x \).
+
+** interlude: The topology on the set of all germs
+
+Let \(E = E(\mathcal F)\) be the germs of all elements at all points of \(X\), that is to say, the disjoint union of all the stalks \(\mathcal F_{x}\) \(x \in X\). What we intend to do now is to provide the set \(E\) with a topology such taht
+
+  - (a) the map \(\pi \colon E \to X\) which maps all of \(\mathcal F_{x}\) to \(x\), is continuous;
+  - (b) if \(s \in \mathcal F(U)\) then the section \(\tilde s\) of \(E\) over \(U\) (i.e. \(\tilde s \colon U \to E\)), defined by setting \(\tilde s(x) = s_{x}\), is continuous.
+
+  We achieve this by associating to each pair \((U,s)\) where \(U\) is an open subset of \(X\) and \(s \in \mathcal F(U)\), the set \(\tilde s (U)\), and defining a topology on \(E\) whose open sets are generated by sets of the form \(\tilde s (U)\). In order to check that with this topology, the maps \(\tilde s\) are continuous, we have only to show that \(\tilde s^{-1}(\tilde t(V))\) is open for every open subset \(V\) of \(X\) and \(t \in \mathcal F(V)\). This is equivalent to the following.
+
+** 1.6. Lemma.
+
+** 1.7. Definition: etale space
+
+todo
